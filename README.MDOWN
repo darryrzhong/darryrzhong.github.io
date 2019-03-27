@@ -1,17 +1,15 @@
-```
-name = 'darryrzhong'
-description = 'Just an Android Enthusiast'
+# darryrzhong的个人博客
 
-blog = 'http://darryrzhong.xyz'
-github = 'https://github.com/darryrzhong'
-sina_weibo = 'darryrzhong'
-Jianshu = 'darryrzhong'
+个人博客站点:   http://darryrzhong.site
 
-while true
-  programing
-  reading
-  share
-  fighting
-end
+# 关于我
+Android开发者 + Python语言爱好者 + ios粉，爱技术， 爱开源，爱赚钱。
 
-```
+# 联系我
+
+* Github: darryrzhong
+
+* Weibo: darryrzhong
+
+* Email: darryrzhong.dev@gmail.com
+
