@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="hexo,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="darryrzhong" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="本篇博文将带大家发现新大陆,教你打造炫酷的个人博客站点.  阅读本文前建议先行阅读本人另外一遍基础博文关于Hexo搭建个人博客(基础篇) #目录  配置博客基本信息 配置主题 优化主题 上传头像,并设置头像旋转效果 设置个人社交图标链接 设置RSS 设置酷炫动态背景 设置主题语言 设置网站logo 设置左上角或者右上角的fork me on github效果 设置顶部滚动加载条 自定义博客底部显">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Hexo6.0搭建个人博客(主题优化进阶篇)">
+<meta property="og:url" content="http://yoursite.com/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/index.html">
+<meta property="og:site_name" content="darryrzhong">
+<meta property="og:description" content="本篇博文将带大家发现新大陆,教你打造炫酷的个人博客站点.  阅读本文前建议先行阅读本人另外一遍基础博文关于Hexo搭建个人博客(基础篇) #目录  配置博客基本信息 配置主题 优化主题 上传头像,并设置头像旋转效果 设置个人社交图标链接 设置RSS 设置酷炫动态背景 设置主题语言 设置网站logo 设置左上角或者右上角的fork me on github效果 设置顶部滚动加载条 自定义博客底部显">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-482e1976e130e564.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-bd3bc18775a42712.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-e5ba02014b1ffbcf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-cdd07a4736fb7e61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-fe9ac26f718e6b42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-51f908629d495d42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-c0edcb59f5481b7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-ae67afe409b32a2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-9b1aafc9f9b44a80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-9f456601e84520fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-45b9b5c535dbdcaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-20c5861e4294c883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-250cccfcbe0a9eb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-ecff9cc69ba138dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-29eeceed36f1aa40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-db9ba6926349302a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-d3027a15a753d407.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-c14b7b4139476942.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-125852e11f2f1929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-d8397b41d9235db7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-4cd76ff64eba4643.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-05e159c9ef5842e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-aa5ab1f48c4f6296.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-842d5d2ec91aaf01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-81c13462a61274a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-f67c10898f2f31ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-27T03:03:14.254Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Hexo6.0搭建个人博客(主题优化进阶篇)">
+<meta name="twitter:description" content="本篇博文将带大家发现新大陆,教你打造炫酷的个人博客站点.  阅读本文前建议先行阅读本人另外一遍基础博文关于Hexo搭建个人博客(基础篇) #目录  配置博客基本信息 配置主题 优化主题 上传头像,并设置头像旋转效果 设置个人社交图标链接 设置RSS 设置酷炫动态背景 设置主题语言 设置网站logo 设置左上角或者右上角的fork me on github效果 设置顶部滚动加载条 自定义博客底部显">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5549640-482e1976e130e564.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/">
+
+
+
+
+
+  <title>关于Hexo6.0搭建个人博客(主题优化进阶篇) | darryrzhong</title>
+  
+
+
+
+
+
+
+
+
+
+  <script>
+class Circle {
+    //创建对象
+    //以一个圆为对象
+    //设置随机的 x，y坐标，r半径，_mx，_my移动的距离
+    //this.r是创建圆的半径，参数越大半径越大
+    //this._mx,this._my是移动的距离，参数越大移动
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.r = Math.random() * 10 ;
+        this._mx = Math.random() ;
+        this._my = Math.random() ;
+
+    }
+
+    //canvas 画圆和画直线
+    //画圆就是正常的用canvas画一个圆
+    //画直线是两个圆连线，为了避免直线过多，给圆圈距离设置了一个值，距离很远的圆圈，就不做连线处理
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+        ctx.arc(this.x, this.y, this.r, 0, 360)
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+        ctx.fill();
+    }
+
+    drawLine(ctx, _circle) {
+        let dx = this.x - _circle.x;
+        let dy = this.y - _circle.y;
+        let d = Math.sqrt(dx * dx + dy * dy)
+        if (d < 150) {
+            ctx.beginPath();
+            //开始一条路径，移动到位置 this.x,this.y。创建到达位置 _circle.x,_circle.y 的一条线：
+            ctx.moveTo(this.x, this.y);   //起始点
+            ctx.lineTo(_circle.x, _circle.y);   //终点
+            ctx.closePath();
+            ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+            ctx.stroke();
+        }
+    }
+
+    // 圆圈移动
+    // 圆圈移动的距离必须在屏幕范围内
+    move(w, h) {
+        this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
+        this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
+        this.x += this._mx / 2;
+        this.y += this._my / 2;
+    }
+}
+//鼠标点画圆闪烁变动
+class currentCirle extends Circle {
+    constructor(x, y) {
+        super(x, y)
+    }
+
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //注释内容为鼠标焦点的地方圆圈半径变化
+        //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+        this.r = 8;
+        ctx.arc(this.x, this.y, this.r, 0, 360);
+        ctx.closePath();
+        //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+        ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'
+        ctx.fill();
+
+    }
+}
+//更新页面用requestAnimationFrame替代setTimeout
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let w = canvas.width = canvas.offsetWidth;
+let h = canvas.height = canvas.offsetHeight;
+let circles = [];
+let current_circle = new currentCirle(0, 0)
+
+let draw = function () {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].move(w, h);
+        circles[i].drawCircle(ctx);
+        for (j = i + 1; j < circles.length; j++) {
+            circles[i].drawLine(ctx, circles[j])
+        }
+    }
+    if (current_circle.x) {
+        current_circle.drawCircle(ctx);
+        for (var k = 1; k < circles.length; k++) {
+            current_circle.drawLine(ctx, circles[k])
+        }
+    }
+    requestAnimationFrame(draw)
+}
+
+let init = function (num) {
+    for (var i = 0; i < num; i++) {
+        circles.push(new Circle(Math.random() * w, Math.random() * h));
+    }
+    draw();
+}
+window.addEventListener('load', init(60));
+window.onmousemove = function (e) {
+    e = e || window.event;
+    current_circle.x = e.clientX;
+    current_circle.y = e.clientY;
+}
+window.onmouseout = function () {
+    current_circle.x = null;
+    current_circle.y = null;
+
+};
+</script>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/darryrzhong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">darryrzhong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">时光，不会辜负每一个平静努力的人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br>
+            
+            摄影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-music">
+          <a href="/music/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br>
+            
+            音乐
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-welfare">
+          <a href="/welfare/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>
+            
+            福利
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            书单
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于Hexo6.0搭建个人博客(主题优化进阶篇)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:00:57+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/" class="leancloud_visitors" data-flag-title="关于Hexo6.0搭建个人博客(主题优化进阶篇)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        <blockquote>
+<p>本篇博文将带大家发现新大陆,教你打造炫酷的个人博客站点.</p>
+</blockquote>
+<p>阅读本文前建议先行阅读本人另外一遍基础博文<a href="https://www.jianshu.com/p/d574962baa16" target="_blank" rel="noopener">关于Hexo搭建个人博客(基础篇)</a></p>
+<p>#目录</p>
+<ul>
+<li>配置博客基本信息</li>
+<li>配置主题</li>
+<li>优化主题<ul>
+<li>上传头像,并设置头像旋转效果</li>
+<li>设置个人社交图标链接</li>
+<li>设置RSS<ul>
+<li>设置酷炫动态背景</li>
+<li>设置主题语言</li>
+<li>设置网站logo</li>
+<li>设置左上角或者右上角的fork me on github效果</li>
+<li>设置顶部滚动加载条</li>
+<li>自定义博客底部显示效果</li>
+<li>为首页文章添加阴影边框效果</li>
+<li>为首页添加自定义菜单栏标签</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="配置博客基本信息"><a href="#配置博客基本信息" class="headerlink" title="配置博客基本信息"></a>配置博客基本信息</h1><blockquote>
+<p>在站点根目录下<code>_config.yml</code>中进行基础配置<br>建议下载个文本编辑器打开,这里推荐<code>Sublime Text</code>,</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-482e1976e130e564.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="set1.png"></p>
+<p>对应显示效果(显示效果因主题不同而不同,只做描述)<br><img src="https://upload-images.jianshu.io/upload_images/5549640-bd3bc18775a42712.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="show.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-e5ba02014b1ffbcf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="show1.png"></p>
+<p>当然了,你们的主题和我的肯定是不一样的,所以下面就开始教大家挑选自己喜欢的主题<br>并自定义个人喜好.</p>
+<h1 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h1><blockquote>
+<p>挑选主题</p>
+</blockquote>
+<a id="more"></a>
+<p>你可以点击这里选择你喜欢的<a href="https://hexo.io/themes/" target="_blank" rel="noopener">Themes</a>,里面有大量美观的主题</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-cdd07a4736fb7e61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="thems.png"></p>
+<blockquote>
+<p>主题很多,可以慢慢挑选,挑选好了,直接<code>clone</code>下来就好了.</p>
+</blockquote>
+<p>我这里以简约著称的<code>Next</code>主题为例讲解,本人用的也是这款主题,当然喜欢炫酷一点的小伙伴们可以自行选择,只是优化会略有不同.<br><img src="https://upload-images.jianshu.io/upload_images/5549640-fe9ac26f718e6b42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="next.png"></p>
+<p>这里有下载主题有两种方式:<br>1.通过get 命令方式直接安装<br>2.直接把整个仓库clone到本地,再移动到你的站点目录Themes下</p>
+<p>这里主要教大家用命令行方式</p>
+<blockquote>
+<p>$ cd hexo<br>$ git clone <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next</a> themes/next</p>
+</blockquote>
+<p>进入hexo根目录下,<code>GitBash</code></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-51f908629d495d42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="clone.png"></p>
+<p>clone成功后,你的Themes文件夹下就会有next主题文件了<br><img src="https://upload-images.jianshu.io/upload_images/5549640-c0edcb59f5481b7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="nextfile.png"></p>
+<p>首先介绍下next文件夹下<code>_config.yml</code>文件,以后我们凡是修改主题,都是修改这个文件</p>
+<p>然后下一步,我们先应用我们刚才clone下来的主题,看看什么效果</p>
+<p>打开blog(<code>你的博客站点跟目录</code>)下的_config.yml文件进行设置:<br>将<code>theme: landscape</code>修改为 <code>theme: next</code><br><img src="https://upload-images.jianshu.io/upload_images/5549640-ae67afe409b32a2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="config_next.png"></p>
+<p>然后<code>hexo g</code>和<code>hexo s</code>一下 ,我们来看一下效果:<br><img src="https://upload-images.jianshu.io/upload_images/5549640-9b1aafc9f9b44a80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="nextshow.png"></p>
+<blockquote>
+<p>好了 ,没错就是这个样子(的确是丑了点,所以需要你自己去优化成你自己想要的样子啦)</p>
+</blockquote>
+<p>当然你也可以直接clone我配置好了的主题<a href="https://github.com/darryrzhong/hexo-theme-next" target="_blank" rel="noopener">darryrzhong-next</a>.顺便star一下最好啦.</p>
+<h1 id="优化主题"><a href="#优化主题" class="headerlink" title="优化主题"></a>优化主题</h1><p>到现在我们基础博客算是搭建完成了,下面手把手教大家美化主题,赶快上车吧</p>
+<p>带大家优化主题之前,先介绍下next目录结构,了解目录结构能帮助我们更快的优化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── .deploy</span><br><span class="line">├── public</span><br><span class="line">├── scaffolds</span><br><span class="line">├── scripts</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">├── themes</span><br><span class="line">├── _config.yml</span><br><span class="line">└── package.json</span><br></pre></td></tr></table></figure></p>
+<p>最新的next已经把我们需要的大部分功能都已经集成了,所以我们需要修改的文件只有那么几个</p>
+<ul>
+<li>deploy：执行hexo deploy命令部署到GitHub上的内容目录</li>
+<li>public：执行hexo generate命令，输出的静态网页内容目录</li>
+<li><code>source：</code>站点资源目录,你写的文章,需要的素材等等都是放在这个目录下,包括以后<br>你需要新建菜单标面目录也是放在这里.</li>
+<li>drafts：草稿文章</li>
+<li>posts：成功发布的文章目录(你发布的文章都在这里面可以看到 )</li>
+<li><code>themes：</code>主题文件目录</li>
+<li><code>_config.yml：</code>全局配置文件，大多数的设置都在这里<br>常用的需要了解的就是这些目录了,其中高亮的地方就是整个next的核心部分了</li>
+</ul>
+<h1 id="1-上传头像-并设置头像旋转效果"><a href="#1-上传头像-并设置头像旋转效果" class="headerlink" title="1. 上传头像,并设置头像旋转效果"></a>1. 上传头像,并设置头像旋转效果</h1><p>设置头像:<br> 打开<code>themes/next/_config.yml</code>找到<code>avatar: /images/avatar.gif</code>;<br>其中<code>images</code>文件在<code>themes/next\source\</code>中,将你的头像图片放到images中,一般默认<br>命名为avatar,记得改下后缀就可以了.<br>设置旋转效果:<br>打开<code>themes\next\source\css\_common\components\sidebar\sidebar-author.styl</code>,<br>添加以下注释代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">.site-author-image &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  padding: $site-author-image-padding;</span><br><span class="line">  max-width: $site-author-image-width;</span><br><span class="line">  height: $site-author-image-height;</span><br><span class="line">  border: $site-author-image-border-width solid $site-author-image-border-color;</span><br><span class="line"></span><br><span class="line">   /* 头像圆形 */</span><br><span class="line">  border-radius: 80px;</span><br><span class="line">  -webkit-border-radius: 80px;</span><br><span class="line">  -moz-border-radius: 80px;</span><br><span class="line">  box-shadow: inset 0 -1px 0 #333sf;</span><br><span class="line"></span><br><span class="line">  /* 鼠标经过头像旋转时间 */</span><br><span class="line">  -webkit-transition: -webkit-transform 1.0s ease-out;</span><br><span class="line">  -moz-transition: -moz-transform 1.0s ease-out;</span><br><span class="line">  transition: transform 1.0s ease-out;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> img:hover &#123;</span><br><span class="line">  /* 鼠标经过停止头像旋转 </span><br><span class="line">  -webkit-animation-play-state:paused;</span><br><span class="line">  animation-play-state:paused;*/</span><br><span class="line"></span><br><span class="line">  /* 鼠标经过头像旋转360度 */</span><br><span class="line">  -webkit-transform: rotateZ(360deg);</span><br><span class="line">  -moz-transform: rotateZ(360deg);</span><br><span class="line">  transform: rotateZ(360deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>做完这一步,头像也就设置完成了.<br><img src="https://upload-images.jianshu.io/upload_images/5549640-9f456601e84520fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="avatar1.png"></p>
+<h1 id="2-设置个人社交图标链接"><a href="#2-设置个人社交图标链接" class="headerlink" title="2.设置个人社交图标链接"></a>2.设置个人社交图标链接</h1><p><img src="https://upload-images.jianshu.io/upload_images/5549640-45b9b5c535dbdcaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="social.png"></p>
+<p> 打开<code>themes/next/_config.yml</code>,找到<code>social</code>;<br><img src="https://upload-images.jianshu.io/upload_images/5549640-20c5861e4294c883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="social1.png"></p>
+<p>其中<code>name</code>为你图标的名字,你可以去<a href="http://www.bootcss.com/p/font-awesome/#" target="_blank" rel="noopener">Font Awesome</a>中挑选你喜欢的,然后复制名字就可以了<br>如 icon-user-md 只需要user-md就可以了,next里面已经集成好了.如果next找不到图标的话,图标就会被一个问号所取代.</p>
+<h1 id="3-设置RSS"><a href="#3-设置RSS" class="headerlink" title="3.设置RSS"></a>3.设置RSS</h1><p><img src="https://upload-images.jianshu.io/upload_images/5549640-250cccfcbe0a9eb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="rss.png"></p>
+<p>来到你的站点根目录(<code>比如我的blog/</code>)下;<br>执行 GitBash 命令 : <code>$ npm install --save hexo-generator-feed</code>安装插件,插件会放在<br><code>node_modules</code>文件夹里面.</p>
+<p>安装好插件后,打开全局配置文件<code>_config.yml</code>,在末尾加入以下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: http://hexo.io/plugins/</span><br><span class="line">plugins: hexo-generate-feed</span><br></pre></td></tr></table></figure>
+<p>然后打开主题配置文件<code>_config.yml</code>,找到<code>rss</code>;<br>添加配置:<code>rss: /atom.xml</code>;<br>到这里就行了,重新运行一下 <code>hexo g</code>,<code>hexo s</code> ,你就会看到效果了.</p>
+<h1 id="4-设置酷炫动态背景"><a href="#4-设置酷炫动态背景" class="headerlink" title="4.设置酷炫动态背景"></a>4.设置酷炫动态背景</h1><p><img src="https://upload-images.jianshu.io/upload_images/5549640-ecff9cc69ba138dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="background.png"></p>
+<p>新版本的next已经支持canvas-nest了,所以直接添加代码就可以了<br>打开<code>next/layout/_layout.swig</code>文件在之前加上以下代码;</p>
+<figure class="highlight plain"><figcaption><span>if theme.canvas_nest %&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>打开主题配置文件<code>_config.yml</code>,  修改以下代码;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Canvas-nest</span><br><span class="line"># Dependencies: https://github.com/theme-next/theme-next-canvas-nest</span><br><span class="line">canvas_nest: true</span><br></pre></td></tr></table></figure>
+<p>重新运行下就可以了,</p>
+<h1 id="5-设置主题语言"><a href="#5-设置主题语言" class="headerlink" title="5.设置主题语言"></a>5.设置主题语言</h1><p>你的博客首页显示的默认是英文名，而我们想要有一个中文的名字的话,就需要设置下语言显示;<br>我们可以在next\language文件下的zh-CN（中文）语言包下增加相应的字段,还可以修改其他的字段;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">title:</span><br><span class="line">  archive: 归档</span><br><span class="line">  category: 分类</span><br><span class="line">  tag: 标签</span><br><span class="line">  schedule: 日程表</span><br><span class="line">menu:</span><br><span class="line">  home: 首页</span><br><span class="line">  archives: 归档</span><br><span class="line">  categories: 分类</span><br><span class="line">  tags: 标签</span><br><span class="line">  about: 关于</span><br><span class="line">  search: 搜索</span><br><span class="line">  schedule: 日程表</span><br><span class="line">  sitemap: 站点地图</span><br><span class="line">  commonweal: 公益 404</span><br><span class="line">sidebar:</span><br><span class="line">  overview: 站点概览</span><br></pre></td></tr></table></figure></p>
+<p>改成我们自己想要的显示效果后.在全局配置文件<code>_config.yml</code>中重新配置,<br><code>language:  zh-CN</code>,重新运行下服务器记得,只要是全局效果,都需要重新clean一下,在重新运行下,否则看不到效果.</p>
+<h1 id="6-设置网站logo"><a href="#6-设置网站logo" class="headerlink" title="6.设置网站logo"></a>6.设置网站logo</h1><p>效果如下:<br><img src="https://upload-images.jianshu.io/upload_images/5549640-29eeceed36f1aa40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="logo.png"><br> 这个小图标就是你的logo了.<br>打开主题配置文件<code>_config.yml</code>    ,找到字段<code>favicon:</code>;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">favicon:</span><br><span class="line">  small: /images/favicon-16x16-next.png</span><br><span class="line">  medium: /images/favicon-32x32-next.png</span><br><span class="line">  apple_touch_icon: /images/apple-touch-icon-next.png</span><br><span class="line">  safari_pinned_tab: /images/logo.svg</span><br></pre></td></tr></table></figure></p>
+<p>可以看到有四种效果,一般我们只需将medium换成我们自己图标路径就行了.<br>对于图标大小也是有要求的,看实例就知道了,就不做过多的说明了.</p>
+<h1 id="7-设置左上角或者右上角的fork-me-on-github效果"><a href="#7-设置左上角或者右上角的fork-me-on-github效果" class="headerlink" title="7.设置左上角或者右上角的fork me on github效果"></a>7.设置左上角或者右上角的fork me on github效果</h1><p>显示效果如下:<br><img src="https://upload-images.jianshu.io/upload_images/5549640-db9ba6926349302a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="fork me github.png"><br>实现方法如下:<br>当然有很多种颜色和效果,你可以在<a href="https://blog.github.com/2008-12-19-github-ribbons/" target="_blank" rel="noopener">这里</a>选择你需要的效果;然后复制你选择效果右侧的代码;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://github.com/you&quot;&gt;&lt;img style=&quot;position: absolute; top: 0; left: 0; border: 0;&quot; src=&quot;https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png&quot; alt=&quot;Fork me on GitHub&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>打开<code>next\layout\_layout.swig</code>,将刚才复制的代码黏贴到<code>&lt;div class=&quot;headband&quot;&gt;&lt;/div&gt;</code>的下面;</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-d3027a15a753d407.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="github.png"></p>
+<p>重新运行下,看看效果吧;</p>
+<h1 id="8-设置顶部滚动加载条"><a href="#8-设置顶部滚动加载条" class="headerlink" title="8. 设置顶部滚动加载条"></a>8. 设置顶部滚动加载条</h1><p>效果如下:<br><img src="https://upload-images.jianshu.io/upload_images/5549640-c14b7b4139476942.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bar.png"></p>
+<p>打开<code>next\layout\_partials\head</code>文件，添加以下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;//cdn.bootcss.com/pace/1.0.2/pace.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;link href=&quot;//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-125852e11f2f1929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="barset.png"><br>以上加载条就可以正常显示了,默认颜色是粉色的,本人觉得粉色的也挺好看就没改了,<br>当然你可以自定义你想要的颜色,做法如下:<br>在刚才添加的代码后面再加上以下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .pace .pace-progress &#123;</span><br><span class="line">        background: #1E92FB; /*进度条颜色*/</span><br><span class="line">        height: 3px;</span><br><span class="line">    &#125;</span><br><span class="line">    .pace .pace-progress-inner &#123;</span><br><span class="line">         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/</span><br><span class="line">    &#125;</span><br><span class="line">    .pace .pace-activity &#123;</span><br><span class="line">        border-top-color: #1E92FB;    /*上边框颜色*/</span><br><span class="line">        border-left-color: #1E92FB;    /*左边框颜色*/</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<p>自定义加载条就大功改成了;</p>
+<h1 id="9-自定义博客底部显示效果"><a href="#9-自定义博客底部显示效果" class="headerlink" title="9.自定义博客底部显示效果"></a>9.自定义博客底部显示效果</h1><p><img src="https://upload-images.jianshu.io/upload_images/5549640-d8397b41d9235db7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bottom.png"></p>
+<p>具体实现如下:<br>1.隐藏网页底部powered By Hexo / 强力驱动<br>打开<code>themes/next/layout/_partials/footer.swig</code>,直接隐藏以下代码即可,建议不要删除<br>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--&#123;% if theme.footer.powered.enable %&#125;</span><br><span class="line">  &lt;div class=&quot;powered-by&quot;&gt;&#123;#</span><br><span class="line">  #&#125;&#123;&#123; __(&apos;footer.powered&apos;, &apos;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&apos; + nofollow + &apos; href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt;&apos;) &#125;&#125;&#123;% if theme.footer.powered.version %&#125; v&#123;&#123; hexo_env(&apos;version&apos;) &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% if theme.footer.powered.enable and theme.footer.theme.enable %&#125;</span><br><span class="line">  &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% if theme.footer.theme.enable %&#125;</span><br><span class="line"> &lt;div class=&quot;theme-info&quot;&gt;&#123;#</span><br><span class="line">  #&#125;&#123;&#123; __(&apos;footer.theme&apos;) &#125;&#125; &amp;mdash; &#123;#</span><br><span class="line">  #&#125;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&#123;&#123; nofollow &#125;&#125; href=&quot;https://github.com/theme-next/hexo-theme-next&quot;&gt;&#123;#</span><br><span class="line">    #&#125;NexT.&#123;&#123; theme.scheme &#125;&#125;&#123;#</span><br><span class="line">  #&#125;&lt;/a&gt;&#123;% if theme.footer.theme.version %&#125; v&#123;&#123; version &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;--&gt;</span><br></pre></td></tr></table></figure></p>
+<p>2.修改网页底部的桃心</p>
+<p>还是在<code>themes/next/layout/_partials/footer.swig</code>中，找到字段<code>with-love</code>;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class=&quot;with-love&quot; id=&quot;animate&quot;&gt;</span><br><span class="line">    &lt;i class=&quot;fa fa-&#123;&#123; theme.footer.icon.name &#125;&#125;&quot;&gt;&lt;/i&gt;</span><br><span class="line">  &lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+<p>然后在<a href="http://www.bootcss.com/p/font-awesome/#" target="_blank" rel="noopener">图标库</a>中找到你想要的图标,修改如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class=&quot;with-love&quot; id=&quot;animate&quot;&gt;</span><br><span class="line">    &lt;i class=&quot;fa fa-heart&quot;&gt;&lt;/i&gt;</span><br><span class="line">  &lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其中heart为图标名字,只要icon-后面的就行了;</p>
+<p>3.实现网站底部访问量显示<br>打开主题配置文件<code>_config.yml</code>,<br>修改如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  enable: true</span><br><span class="line">  total_visitors: true</span><br><span class="line">  total_visitors_icon: user </span><br><span class="line">  total_views: true</span><br><span class="line">  total_views_icon: eye</span><br><span class="line">  post_views: true</span><br><span class="line">  post_views_icon: eye</span><br></pre></td></tr></table></figure></p>
+<h1 id="10-为首页文章添加阴影边框效果"><a href="#10-为首页文章添加阴影边框效果" class="headerlink" title="10.为首页文章添加阴影边框效果"></a>10.为首页文章添加阴影边框效果</h1><p>打开<code>next\source\css\_custom\custom.styl</code>文件,添加以下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 主页文章添加阴影效果</span><br><span class="line"> .post &#123;</span><br><span class="line">   margin-top: 60px;</span><br><span class="line">   margin-bottom: 60px;</span><br><span class="line">   padding: 25px;</span><br><span class="line">   -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);</span><br><span class="line">   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>重新运行下服务器,效果如下:<br><img src="https://upload-images.jianshu.io/upload_images/5549640-4cd76ff64eba4643.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="shandown.png"></p>
+<h1 id="11-为首页添加自定义菜单栏标签"><a href="#11-为首页添加自定义菜单栏标签" class="headerlink" title="11.为首页添加自定义菜单栏标签"></a>11.为首页添加自定义菜单栏标签</h1><p>效果如下:<br><img src="https://upload-images.jianshu.io/upload_images/5549640-05e159c9ef5842e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="menu.png"></p>
+<p>实现如下:<br>进入站点根目录下,使用<code>GitBash</code>新建页面;</p>
+<blockquote>
+<p>$ hexo new page “music”<br>$ hexo new page “photo”<br>$ hexo new page “welfare”</p>
+</blockquote>
+<p>这里我新建三个菜单标签,分别是音乐、摄影、福利.<br><img src="https://upload-images.jianshu.io/upload_images/5549640-aa5ab1f48c4f6296.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="newPage.png"></p>
+<p>可以看到,新建页面在source文件对于的文件夹里;</p>
+<p>打开主题配置文件<code>_config.yml</code>找到字段<code>menu</code>,添加对应菜单;<br><img src="https://upload-images.jianshu.io/upload_images/5549640-842d5d2ec91aaf01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="menu1.png"></p>
+<p>添加完菜单标签项后,效果如下:<br><img src="https://upload-images.jianshu.io/upload_images/5549640-81c13462a61274a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="menu2.png"></p>
+<p>可以看到标签名还是英文的,并且pohto项是空白的,之前已经说过,空白代表这个图标找不到,所以换一个就行了,下面我们来完善一下,将标签名改为中文;</p>
+<p>打开<code>next\language文件下的zh-CN</code>（中文）语言包,添加菜单标签项;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: 首页</span><br><span class="line">  photo: 摄影</span><br><span class="line">  music: 音乐</span><br><span class="line">  welfare: 福利</span><br><span class="line">  archives: 归档</span><br><span class="line">  categories: 分类</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-f67c10898f2f31ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="menu3.png"></p>
+<p>名称一定要和我们主题中的名称一致,到这里我们的菜单栏也就完成了.</p>
+<blockquote>
+<p>到这里,关于博客的基础搭建也就全部做好了</p>
+</blockquote>
+<p>本文只要介绍了博客外观美化的一些小技巧,使得我们的博客看起来更加的美观,关于博客内文章的美观及评论留言区等的优化、以及使用markdown写下第一篇博文等将会在下一篇高级篇手把手教大家,欢迎关注作者<a href="http://www.darryrzhong.site" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p>
+<p>1.<a href="https://www.jianshu.com/p/52753aafd478" target="_blank" rel="noopener">关于Hexo6.0搭建个人博客(高级篇)</a></p>
+<h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote>
+<p>更多精彩文章请关注</p>
+<ul>
+<li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li>
+<li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li>
+<li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li>
+<li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882/articles" target="_blank" rel="noopener">SegmentFault</a></li>
+<li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+    
+</div>
+</div>
+ 
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.png" alt="darryrzhong 微信打赏">
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="darryrzhong 支付宝打赏">
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/27/关于Hexo6-0搭建个人博客-基础编/" rel="next" title="关于Hexo6.0搭建个人博客(基础编)">
+                <i class="fa fa-chevron-left"></i> 关于Hexo6.0搭建个人博客(基础编)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/27/关于Hexo6-0搭建个人博客-coding-百度-收录篇/" rel="prev" title="关于Hexo6.0搭建个人博客(coding+百度-收录篇)">
+                关于Hexo6.0搭建个人博客(coding+百度-收录篇) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="darryrzhong">
+            
+              <p class="site-author-name" itemprop="name">darryrzhong</p>
+              <p class="site-description motion-element" itemprop="description">人必有痴，而后有成</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/darryrzhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/darryrzhong" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/b7fdf53ec0b9" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-book"></i>Jianshu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-spinner"></i>Juejin</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#配置博客基本信息"><span class="nav-number">1.</span> <span class="nav-text">配置博客基本信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置主题"><span class="nav-number">2.</span> <span class="nav-text">配置主题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化主题"><span class="nav-number">3.</span> <span class="nav-text">优化主题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-上传头像-并设置头像旋转效果"><span class="nav-number">4.</span> <span class="nav-text">1. 上传头像,并设置头像旋转效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-设置个人社交图标链接"><span class="nav-number">5.</span> <span class="nav-text">2.设置个人社交图标链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-设置RSS"><span class="nav-number">6.</span> <span class="nav-text">3.设置RSS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-设置酷炫动态背景"><span class="nav-number">7.</span> <span class="nav-text">4.设置酷炫动态背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-设置主题语言"><span class="nav-number">8.</span> <span class="nav-text">5.设置主题语言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-设置网站logo"><span class="nav-number">9.</span> <span class="nav-text">6.设置网站logo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-设置左上角或者右上角的fork-me-on-github效果"><span class="nav-number">10.</span> <span class="nav-text">7.设置左上角或者右上角的fork me on github效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-设置顶部滚动加载条"><span class="nav-number">11.</span> <span class="nav-text">8. 设置顶部滚动加载条</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-自定义博客底部显示效果"><span class="nav-number">12.</span> <span class="nav-text">9.自定义博客底部显示效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-为首页文章添加阴影边框效果"><span class="nav-number">13.</span> <span class="nav-text">10.为首页文章添加阴影边框效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-为首页添加自定义菜单栏标签"><span class="nav-number">14.</span> <span class="nav-text">11.为首页添加自定义菜单栏标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请赏个小红心！因为你的鼓励是我写作的最大动力！"><span class="nav-number">14.0.1.</span> <span class="nav-text">请赏个小红心！因为你的鼓励是我写作的最大动力！</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">darryrzhong</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+
+ <!-- <span class="post-meta-divider">|</span>-->
+
+
+
+  <!--<div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytxCyGhU';
+      var conf = '90b283bdb7ccb472f325f3c891156b33';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("29xnQ1C2kcwORHYYn7xsWTnS-gzGzoHsz", "Rq1Gk75oRwH78BryWUL4oYzj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>

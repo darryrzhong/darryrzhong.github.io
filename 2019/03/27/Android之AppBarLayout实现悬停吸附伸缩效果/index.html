@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AppBarLayout,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="darryrzhong" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前几天看到这样一个UI效果,然后自己也仿照实现了下:   看着挺酷的,也有很多App都用到了这个UI效果,比如开眼App和沪江开心词场就用到了.所以下面就来简单实现一下这个UI效果吧.  组合三剑客 1.AppBarLayout2.CoordinatorLayout3.CollapsingToolbarLayout 实现上面的UI效果需要将这三剑客的组合起来用,下面先介绍下这三个控件: AppBa">
+<meta name="keywords" content="AppBarLayout">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android之AppBarLayout实现悬停吸附伸缩效果">
+<meta property="og:url" content="http://yoursite.com/2019/03/27/Android之AppBarLayout实现悬停吸附伸缩效果/index.html">
+<meta property="og:site_name" content="darryrzhong">
+<meta property="og:description" content="前几天看到这样一个UI效果,然后自己也仿照实现了下:   看着挺酷的,也有很多App都用到了这个UI效果,比如开眼App和沪江开心词场就用到了.所以下面就来简单实现一下这个UI效果吧.  组合三剑客 1.AppBarLayout2.CoordinatorLayout3.CollapsingToolbarLayout 实现上面的UI效果需要将这三剑客的组合起来用,下面先介绍下这三个控件: AppBa">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-9e3cecfad8df9334.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-7e47a81560bdce78.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-1e6bdf17608d33ae.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2019-03-27T03:48:25.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android之AppBarLayout实现悬停吸附伸缩效果">
+<meta name="twitter:description" content="前几天看到这样一个UI效果,然后自己也仿照实现了下:   看着挺酷的,也有很多App都用到了这个UI效果,比如开眼App和沪江开心词场就用到了.所以下面就来简单实现一下这个UI效果吧.  组合三剑客 1.AppBarLayout2.CoordinatorLayout3.CollapsingToolbarLayout 实现上面的UI效果需要将这三剑客的组合起来用,下面先介绍下这三个控件: AppBa">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5549640-9e3cecfad8df9334.gif?imageMogr2/auto-orient/strip">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/27/Android之AppBarLayout实现悬停吸附伸缩效果/">
+
+
+
+
+
+  <title>Android之AppBarLayout实现悬停吸附伸缩效果 | darryrzhong</title>
+  
+
+
+
+
+
+
+
+
+
+  <script>
+class Circle {
+    //创建对象
+    //以一个圆为对象
+    //设置随机的 x，y坐标，r半径，_mx，_my移动的距离
+    //this.r是创建圆的半径，参数越大半径越大
+    //this._mx,this._my是移动的距离，参数越大移动
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.r = Math.random() * 10 ;
+        this._mx = Math.random() ;
+        this._my = Math.random() ;
+
+    }
+
+    //canvas 画圆和画直线
+    //画圆就是正常的用canvas画一个圆
+    //画直线是两个圆连线，为了避免直线过多，给圆圈距离设置了一个值，距离很远的圆圈，就不做连线处理
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+        ctx.arc(this.x, this.y, this.r, 0, 360)
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+        ctx.fill();
+    }
+
+    drawLine(ctx, _circle) {
+        let dx = this.x - _circle.x;
+        let dy = this.y - _circle.y;
+        let d = Math.sqrt(dx * dx + dy * dy)
+        if (d < 150) {
+            ctx.beginPath();
+            //开始一条路径，移动到位置 this.x,this.y。创建到达位置 _circle.x,_circle.y 的一条线：
+            ctx.moveTo(this.x, this.y);   //起始点
+            ctx.lineTo(_circle.x, _circle.y);   //终点
+            ctx.closePath();
+            ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+            ctx.stroke();
+        }
+    }
+
+    // 圆圈移动
+    // 圆圈移动的距离必须在屏幕范围内
+    move(w, h) {
+        this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
+        this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
+        this.x += this._mx / 2;
+        this.y += this._my / 2;
+    }
+}
+//鼠标点画圆闪烁变动
+class currentCirle extends Circle {
+    constructor(x, y) {
+        super(x, y)
+    }
+
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //注释内容为鼠标焦点的地方圆圈半径变化
+        //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+        this.r = 8;
+        ctx.arc(this.x, this.y, this.r, 0, 360);
+        ctx.closePath();
+        //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+        ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'
+        ctx.fill();
+
+    }
+}
+//更新页面用requestAnimationFrame替代setTimeout
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let w = canvas.width = canvas.offsetWidth;
+let h = canvas.height = canvas.offsetHeight;
+let circles = [];
+let current_circle = new currentCirle(0, 0)
+
+let draw = function () {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].move(w, h);
+        circles[i].drawCircle(ctx);
+        for (j = i + 1; j < circles.length; j++) {
+            circles[i].drawLine(ctx, circles[j])
+        }
+    }
+    if (current_circle.x) {
+        current_circle.drawCircle(ctx);
+        for (var k = 1; k < circles.length; k++) {
+            current_circle.drawLine(ctx, circles[k])
+        }
+    }
+    requestAnimationFrame(draw)
+}
+
+let init = function (num) {
+    for (var i = 0; i < num; i++) {
+        circles.push(new Circle(Math.random() * w, Math.random() * h));
+    }
+    draw();
+}
+window.addEventListener('load', init(60));
+window.onmousemove = function (e) {
+    e = e || window.event;
+    current_circle.x = e.clientX;
+    current_circle.y = e.clientY;
+}
+window.onmouseout = function () {
+    current_circle.x = null;
+    current_circle.y = null;
+
+};
+</script>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/darryrzhong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">darryrzhong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">时光，不会辜负每一个平静努力的人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br>
+            
+            摄影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-music">
+          <a href="/music/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br>
+            
+            音乐
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-welfare">
+          <a href="/welfare/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>
+            
+            福利
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            书单
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/Android之AppBarLayout实现悬停吸附伸缩效果/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android之AppBarLayout实现悬停吸附伸缩效果</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:47:26+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/03/27/Android之AppBarLayout实现悬停吸附伸缩效果/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/03/27/Android之AppBarLayout实现悬停吸附伸缩效果/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/03/27/Android之AppBarLayout实现悬停吸附伸缩效果/" class="leancloud_visitors" data-flag-title="Android之AppBarLayout实现悬停吸附伸缩效果">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        <p>前几天看到这样一个UI效果,然后自己也仿照实现了下:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-9e3cecfad8df9334.gif?imageMogr2/auto-orient/strip" alt="开眼app个人中心.gif"></p>
+<blockquote>
+<p>看着挺酷的,也有很多App都用到了这个UI效果,比如开眼App和沪江开心词场就用到了.<br>所以下面就来简单实现一下这个UI效果吧.</p>
+</blockquote>
+<h1 id="组合三剑客"><a href="#组合三剑客" class="headerlink" title="组合三剑客"></a>组合三剑客</h1><p> 1.<a href="https://developer.android.google.cn/reference/android/support/design/widget/AppBarLayout" target="_blank" rel="noopener">AppBarLayout</a><br>2.CoordinatorLayout<br>3.<a href="https://developer.android.google.cn/reference/android/support/design/widget/CollapsingToolbarLayout" target="_blank" rel="noopener">CollapsingToolbarLayout</a></p>
+<p>实现上面的UI效果需要将这三剑客的组合起来用,下面先介绍下这三个控件:</p>
+<h2 id="AppBarLayout"><a href="#AppBarLayout" class="headerlink" title="AppBarLayout:"></a>AppBarLayout:</h2><p>1.AppBarLayout简单介绍</p>
+<p>AppBarLayout是<code>android.support:design</code>包中的支持的控件,继承自LinearLayout,实际上就是一个垂直分布的LinearLayout.父类视图结构如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class AppBarLayout </span><br><span class="line">extends LinearLayout</span><br><span class="line"></span><br><span class="line">java.lang.Object </span><br><span class="line">   ↳  android.view.View</span><br><span class="line">      ↳ android.view.ViewGroup</span><br><span class="line">           ↳  android.widget.LinearLayout  </span><br><span class="line">              ↳ android.support.design.widget.AppBarLayout</span><br></pre></td></tr></table></figure></p>
+<p>其中官方文档中有这么两句话尤为重要:</p>
+<blockquote>
+<p>This view depends heavily on being used as a direct child within a <code>CoordinatorLayout</code>. If you use AppBarLayout within a different <code>ViewGroup</code>, most of it’s functionality will not work.</p>
+</blockquote>
+<blockquote>
+<p><code>AppBarLayout</code> also requires a separate scrolling sibling in order to know when to scroll. The binding is done through the <code>AppBarLayout.ScrollingViewBehavior</code> behavior class, meaning that you should set your scrolling view’s behavior to be an instance of <code>AppBarLayout.ScrollingViewBehavior</code>.</p>
+</blockquote>
+<p>意思就是说AppBarLayout 必须作为<code>CoordinatorLayout</code>的直接子类,否则很多功能是无法实现的.并且AppBarLayout 必须有一个能滚动的兄第ScrollView (实现了<code>NestedScrollView</code>,listview不可以哦),以此来通知AppBarLayout 何时进行滚动,兄弟View必须实现以下标识:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>官方给出的例子如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.CoordinatorLayout</span><br><span class="line">         xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">         xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">         android:layout_width=&quot;match_parent&quot;</span><br><span class="line">         android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">     &lt;android.support.v4.widget.NestedScrollView</span><br><span class="line">             android:layout_width=&quot;match_parent&quot;</span><br><span class="line">             android:layout_height=&quot;match_parent&quot;</span><br><span class="line">             app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;&gt;</span><br><span class="line"></span><br><span class="line">         &lt;!-- Your scrolling content --&gt;</span><br><span class="line"></span><br><span class="line">     &lt;/android.support.v4.widget.NestedScrollView&gt;</span><br><span class="line"></span><br><span class="line">     &lt;android.support.design.widget.AppBarLayout</span><br><span class="line">             android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">             android:layout_width=&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">         &lt;android.support.v7.widget.Toolbar</span><br><span class="line">                 ...</span><br><span class="line">                 app:layout_scrollFlags=&quot;scroll|enterAlways&quot;/&gt;</span><br><span class="line"></span><br><span class="line">         &lt;android.support.design.widget.TabLayout</span><br><span class="line">                 ...</span><br><span class="line">                 app:layout_scrollFlags=&quot;scroll|enterAlways&quot;/&gt;</span><br><span class="line"></span><br><span class="line">     &lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line"> &lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure></p>
+<p>2.AppBarLayout的具体使用</p>
+<ul>
+<li>AppBarLayout直接子View的几种响应方式<blockquote>
+<p>AppbarLayout 可以指定当某个可滑动的兄弟View滑动手势改变时AppbarLayout 内部直接子View的响应动作,只要通过<code>app:layout_scrollFlags</code>属性来指定响应动作,<code>layout_scrollFlags</code>有5种响应动作,下面简单介绍下:</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li><p>app:layout_scrollFlags=”scroll”<br>当子view设置响应动作为<code>app:layout_scrollFlags=&quot;scroll&quot;</code>时,子view会随ScrollView 的滚动而滚动,就相当于这时的子view变成了ScrollView 的item了,会跟随item一起滚动.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v7.widget.Toolbar</span><br><span class="line">                   android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                   android:layout_height=&quot;?attr/actionBarSize&quot;</span><br><span class="line">                   app:title=&quot;AppbarLayout&quot;</span><br><span class="line">                   app:titleTextColor=&quot;@color/white&quot;</span><br><span class="line">                   app:layout_scrollFlags=&quot;scroll&quot;</span><br><span class="line">                   &gt;</span><br><span class="line"></span><br><span class="line">               &lt;/android.support.v7.widget.Toolbar&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>app:layout_scrollFlags=”scroll|enterAlways”<br>当子view设置响应动作为<code>app:layout_scrollFlags=&quot;scroll|enterAlways&quot;</code>时,当ScrollView 向下滑动时，子View 将直接向下滑动，而不管ScrollView 是否在滑动。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v7.widget.Toolbar</span><br><span class="line">                   android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                   android:layout_height=&quot;?attr/actionBarSize&quot;</span><br><span class="line">                   app:title=&quot;AppbarLayout&quot;</span><br><span class="line">                   app:titleTextColor=&quot;@color/white&quot;</span><br><span class="line">                   app:layout_scrollFlags=&quot;scroll|enterAlways&quot;</span><br><span class="line">                   /&gt;</span><br></pre></td></tr></table></figure>
+<p>3.app:layout_scrollFlags=”scroll|enterAlways|enterAlwaysCollapsed”<br>当子view设置响应动作为<code>app:layout_scrollFlags=&quot;scroll|enterAlways|enterAlwaysCollapsed&quot;</code>时,<br>当ScrollView 向下滑动的时候，子View（设置了enterAlwaysCollapsed 的子View）下滑至折叠的高度，当ScrollView 到达滑动范围的结束值的时候，滑动View剩下的部分开始滑动。这个折叠的高度是通过子View的minimum height （最小高度）指定的。</p>
+<p>简单来说,就是第二种的加强版,当ScrollView 向下滑动时候,子view先露出半个头,当ScrollView 下滑到顶时,子view的头就全露出来了.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v7.widget.Toolbar</span><br><span class="line">                   android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                   android:layout_height=&quot;200dp&quot;</span><br><span class="line">                   android:minHeight=&quot;?attr/actionBarSize&quot;</span><br><span class="line">                   app:title=&quot;AppbarLayout&quot;</span><br><span class="line">                   android:gravity=&quot;bottom&quot;</span><br><span class="line">                   android:layout_marginBottom=&quot;25dp&quot;</span><br><span class="line">                   app:titleTextColor=&quot;@color/white&quot;</span><br><span class="line">                   app:layout_scrollFlags=&quot;scroll|enterAlways|enterAlwaysCollapsed&quot;</span><br><span class="line">                   /&gt;</span><br></pre></td></tr></table></figure>
+<p>4.app:layout_scrollFlags=”scroll|exitUntilCollapsed”<br>当子view设置响应动作为<code>app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed&quot;</code>时,<br> 当ScrollView 向上滑动时，子View先响应滑动事件，滑动至折叠高度，也就是通过minimum height 设置的最小高度后，就固定不动了，再把滑动事件交给 scrollview,然后 scrollview才开始滑动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v7.widget.Toolbar</span><br><span class="line">                   android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                   android:layout_height=&quot;200dp&quot;</span><br><span class="line">                   android:minHeight=&quot;?attr/actionBarSize&quot;</span><br><span class="line">                   app:title=&quot;AppbarLayout&quot;</span><br><span class="line">                   android:gravity=&quot;bottom&quot;</span><br><span class="line">                   app:titleTextColor=&quot;@color/white&quot;</span><br><span class="line">                   app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed&quot;</span><br><span class="line">                   /&gt;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>app:layout_scrollFlags=”scroll|snap”<br>当子view设置响应动作为<code>app:layout_scrollFlags=&quot;scroll|snap&quot;</code>时,当ScrollView 下滑到顶部时,如果子view只露出30%的话,子view就会自动折叠回去,如果露出60%的话,就会自动展开.</li>
+</ol>
+<p>简单来说,就是具有弹性且遵守就近原则,露的小就干脆不露头了,露的大,就全部出来了.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v7.widget.Toolbar</span><br><span class="line">                   android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                   android:layout_height=&quot;200dp&quot;</span><br><span class="line">                   android:minHeight=&quot;?attr/actionBarSize&quot;</span><br><span class="line">                   app:title=&quot;AppbarLayout&quot;</span><br><span class="line">                   android:gravity=&quot;bottom&quot;</span><br><span class="line">                   app:titleTextColor=&quot;@color/white&quot;</span><br><span class="line">                   app:layout_scrollFlags=&quot;scroll|snap&quot;</span><br><span class="line">                   /&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="CoordinatorLayout"><a href="#CoordinatorLayout" class="headerlink" title="CoordinatorLayout"></a>CoordinatorLayout</h2><p>CoordinatorLayout 用来调节和控制子View的滚动，而这些子View 的具体响应动作是通过 behavior 属性来指定的,你也可以根据需求自定义自己的behavior, 简单使用如下:,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.CoordinatorLayout</span><br><span class="line">         xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">         xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">         android:layout_width=&quot;match_parent&quot;</span><br><span class="line">         android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">     &lt;android.support.v4.widget.NestedScrollView</span><br><span class="line">             android:layout_width=&quot;match_parent&quot;</span><br><span class="line">             android:layout_height=&quot;match_parent&quot;</span><br><span class="line">             app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot; &gt;</span><br><span class="line"> &lt;!-- 使用此属性指定响应 --&gt;</span><br><span class="line"></span><br><span class="line">         &lt;!-- Your scrolling content --&gt;</span><br><span class="line"></span><br><span class="line">     &lt;/android.support.v4.widget.NestedScrollView&gt;</span><br><span class="line"></span><br><span class="line"> &lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot; &gt;</span><br><span class="line">&lt;!-- 使用此属性指定响应 --&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="CollapsingToolbarLayout"><a href="#CollapsingToolbarLayout" class="headerlink" title="CollapsingToolbarLayout:"></a>CollapsingToolbarLayout:</h2><p>CollapsingToolbarLayout也是<code>android.support:design</code>包中的支持的控件,继承自FrameLayout.主要用于实现ToolBar的伸缩效果,而且必须为<code>AppBarLayout</code>的直接子View;</p>
+<p>继承结构图如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java.lang.Object </span><br><span class="line">   ↳ android.view.View  </span><br><span class="line">    ↳ android.view.ViewGroup  </span><br><span class="line">       ↳ android.widget.FrameLayout   </span><br><span class="line">          ↳  android.support.design.widget.CollapsingToolbarLayout</span><br></pre></td></tr></table></figure></p>
+<p>主要使用到的方法如下:</p>
+<ol>
+<li>setCollapsedTitleGravity</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void setCollapsedTitleGravity（int gravity）</span><br></pre></td></tr></table></figure>
+<p>设置折叠标题和垂直重力的水平对齐方式，当折叠边界中有额外空间超出标题本身所需的空间时，将使用该对齐方式<br>相关的XML属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CollapsingToolbarLayout_collapsedTitleGravity</span><br></pre></td></tr></table></figure></p>
+<p>2.setExpandedTitleGravity<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void setExpandedTitleGravity（int gravity）</span><br></pre></td></tr></table></figure></p>
+<p>设置展开标题和垂直重力的水平对齐方式，当扩展边界中有额外空间超出标题本身所需的空间时，将使用该对齐方式。<br>相关的XML属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CollapsingToolbarLayout_expandedTitleGravity</span><br></pre></td></tr></table></figure></p>
+<p>3.setExpandedTitleTextColor<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void setExpandedTitleTextColor（ColorStateList colors）</span><br></pre></td></tr></table></figure></p>
+<p>设置展开标题的文本颜色。</p>
+<p>4.setCollapsedTitleTextColor<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void setCollapsedTitleTextColor（ColorStateList colors）</span><br></pre></td></tr></table></figure></p>
+<p>设置折叠标题的文本颜色。</p>
+<p>5.setCollapsedTitleTypeface<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void setCollapsedTitleTypeface（字体字体）</span><br></pre></td></tr></table></figure></p>
+<p>设置用于折叠标题的字体。</p>
+<p>5.setExpandedTitleMarginBottom<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void setExpandedTitleMarginBottom（int margin）</span><br></pre></td></tr></table></figure></p>
+<p>以像素为单位设置底部展开的标题边距。<br>相关的XML属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CollapsingToolbarLayout_expandedTitleMarginBottom</span><br></pre></td></tr></table></figure></p>
+<ol start="6">
+<li>固定Toolbar <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app:layout_collapseMode=&quot;pin&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>6.<a href="https://developer.android.google.cn/reference/android/support/design/widget/CollapsingToolbarLayout.html#setExpandedTitleMargin(int,%20int,%20int,%20int" target="_blank" rel="noopener">更多方法见文档</a>)</p>
+<blockquote>
+<p>关于AppBarLayout的三剑客组合就介绍的差不多了,想进一步了解的可以去查阅官方文档,上面都给出了连接的.</p>
+</blockquote>
+<h3 id="特别说明"><a href="#特别说明" class="headerlink" title="特别说明:"></a>特别说明:</h3><p>三剑客配合使用，可以做出一些很炫酷的UI效果.<br>但是前提必须满足:AppbarLayout 要作为CoordinatorLayout 的直接子View，而CollapsingToolbarLayout 要作为AppbarLayout 的直接子View ，否则，上面展示的效果将实现不了.</p>
+<h1 id="AppbarLayout实例展示"><a href="#AppbarLayout实例展示" class="headerlink" title="AppbarLayout实例展示"></a>AppbarLayout实例展示</h1><p>1.仿 [开眼App]个人中心效果</p>
+<ul>
+<li>.xml布局文件:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;android.support.design.widget.CoordinatorLayout</span><br><span class="line"></span><br><span class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    xmlns:fresco=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:imagetext=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;</span><br><span class="line">    android:background=&quot;@color/colorWhite&quot;</span><br><span class="line"></span><br><span class="line">    &gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.design.widget.AppBarLayout</span><br><span class="line">    android:id=&quot;@+id/center_appbar_layout&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    app:elevation=&quot;0dp&quot;</span><br><span class="line">    android:background=&quot;@color/colorWhite&quot;</span><br><span class="line">    android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line"></span><br><span class="line">    &gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.CollapsingToolbarLayout</span><br><span class="line">        android:id=&quot;@+id/collapsing_toobar&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;260dp&quot;</span><br><span class="line">        app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed&quot;</span><br><span class="line">        app:contentScrim=&quot;@color/colorGraylight&quot;</span><br><span class="line">        fresco:expandedTitleTextAppearance=&quot;@style/style_textsize1&quot;</span><br><span class="line">        fresco:collapsedTitleTextAppearance=&quot;@style/style_textsize&quot;</span><br><span class="line">        fresco:collapsedTitleGravity=&quot;left&quot;</span><br><span class="line">       fresco:expandedTitleMarginTop=&quot;185dp&quot;</span><br><span class="line">        fresco:expandedTitleGravity=&quot;left&quot;</span><br><span class="line">        fresco:expandedTitleMarginStart=&quot;30dp&quot;</span><br><span class="line">        &gt;</span><br><span class="line">        &lt;FrameLayout</span><br><span class="line">            app:layout_scrollFlags=&quot;scroll&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;180dp&quot;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;com.facebook.drawee.view.SimpleDraweeView</span><br><span class="line">                android:id=&quot;@+id/avatar_max&quot;</span><br><span class="line">                android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                android:layout_height=&quot;170dp&quot; /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &lt;com.facebook.drawee.view.SimpleDraweeView</span><br><span class="line">                android:layout_marginLeft=&quot;20dp&quot;</span><br><span class="line">                android:layout_gravity=&quot;bottom&quot;</span><br><span class="line">                android:id=&quot;@+id/avatar_min&quot;</span><br><span class="line">                android:layout_width=&quot;70dp&quot;</span><br><span class="line">                android:layout_height=&quot;70dp&quot;</span><br><span class="line">                fresco:actualImageScaleType=&quot;centerCrop&quot;</span><br><span class="line">                fresco:placeholderImageScaleType=&quot;centerCrop&quot;</span><br><span class="line">                fresco:roundedCornerRadius=&quot;50dp&quot;</span><br><span class="line">                /&gt;</span><br><span class="line">        &lt;/FrameLayout&gt;</span><br><span class="line"></span><br><span class="line">        &lt;FrameLayout</span><br><span class="line">            android:layout_marginTop=&quot;180dp&quot;</span><br><span class="line">            app:layout_scrollFlags=&quot;scroll&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;50dp&quot;</span><br><span class="line">            &gt;</span><br><span class="line"></span><br><span class="line">            &lt;Button</span><br><span class="line">                android:id=&quot;@+id/edit_btn&quot;</span><br><span class="line">                android:layout_width=&quot;60dp&quot;</span><br><span class="line">                android:layout_height=&quot;20dp&quot;</span><br><span class="line">                android:layout_marginRight=&quot;20dp&quot;</span><br><span class="line">                android:layout_gravity=&quot;right|center_vertical&quot;</span><br><span class="line">                android:background=&quot;@drawable/login_btn&quot;</span><br><span class="line">                android:gravity=&quot;center&quot;</span><br><span class="line">                android:text=&quot;编辑资料&quot;</span><br><span class="line">                android:textColor=&quot;@color/colorBlacklight&quot;</span><br><span class="line">                android:textSize=&quot;10sp&quot; /&gt;</span><br><span class="line">        &lt;/FrameLayout&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">           android:layout_marginTop=&quot;230dp&quot;</span><br><span class="line">            app:layout_scrollFlags=&quot;scroll&quot;</span><br><span class="line">            android:textSize=&quot;10sp&quot;</span><br><span class="line">            android:id=&quot;@+id/date&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;20dp&quot;</span><br><span class="line">            android:text=&quot;2018.07.08注册&quot;</span><br><span class="line">            android:textColor=&quot;@color/colorGraylight&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:id=&quot;@+id/toolbar&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            app:layout_collapseMode=&quot;pin&quot;</span><br><span class="line">            android:layout_height=&quot;?attr/actionBarSize&quot;</span><br><span class="line">            &gt;</span><br><span class="line">        &lt;/android.support.v7.widget.Toolbar&gt;</span><br><span class="line">    &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:gravity=&quot;center_vertical&quot;</span><br><span class="line">        android:layout_marginTop=&quot;20dp&quot;</span><br><span class="line">        android:background=&quot;@color/colorGrayalpha&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;70dp&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;openeyes.dr.openeyes.widget.CustomImageTextView</span><br><span class="line">            android:id=&quot;@+id/works&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;40dp&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            imagetext:image=&quot;@drawable/works2&quot;</span><br><span class="line">            imagetext:text=&quot;@string/works&quot;</span><br><span class="line">            imagetext:textColor=&quot;@color/colorGraylight&quot;</span><br><span class="line">            &gt;</span><br><span class="line">        &lt;/openeyes.dr.openeyes.widget.CustomImageTextView&gt;</span><br><span class="line"></span><br><span class="line">        &lt;openeyes.dr.openeyes.widget.CustomImageTextView</span><br><span class="line">            android:id=&quot;@+id/attention&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;90dp&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            imagetext:image=&quot;@drawable/attention6&quot;</span><br><span class="line">            imagetext:text=&quot;@string/attention&quot;</span><br><span class="line">            imagetext:textColor=&quot;@color/colorGraylight&quot;</span><br><span class="line">            &gt;</span><br><span class="line">        &lt;/openeyes.dr.openeyes.widget.CustomImageTextView&gt;</span><br><span class="line">        &lt;openeyes.dr.openeyes.widget.CustomImageTextView</span><br><span class="line">            android:id=&quot;@+id/fans&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;90dp&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            imagetext:image=&quot;@drawable/works2&quot;</span><br><span class="line">            imagetext:text=&quot;@string/fans&quot;</span><br><span class="line">            imagetext:textColor=&quot;@color/colorGraylight&quot;</span><br><span class="line">            &gt;</span><br><span class="line">        &lt;/openeyes.dr.openeyes.widget.CustomImageTextView&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.v7.widget.RecyclerView</span><br><span class="line">        android:id=&quot;@+id/recycle_state&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line"></span><br><span class="line">        app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;</span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>java文件:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by darryrzhong on 2018/9/5.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">public class PersonPageActivity extends SwipeBackActivity &#123;</span><br><span class="line"></span><br><span class="line">    @BindView(R.id.avatar_max)</span><br><span class="line">    SimpleDraweeView avatarBackground;</span><br><span class="line">    @BindView(R.id.avatar_min)</span><br><span class="line">    SimpleDraweeView avatarUser;</span><br><span class="line">    @BindView(R.id.date)</span><br><span class="line">    TextView registerDate;</span><br><span class="line">    @BindView(R.id.works)</span><br><span class="line">    CustomImageTextView works;</span><br><span class="line">    @BindView(R.id.attention)</span><br><span class="line">    CustomImageTextView attention;</span><br><span class="line">    @BindView(R.id.fans)</span><br><span class="line">    CustomImageTextView fans;</span><br><span class="line">    @BindView(R.id.center_appbar_layout)</span><br><span class="line">    AppBarLayout appBarLayout;</span><br><span class="line">    @BindView(R.id.collapsing_toobar)</span><br><span class="line">    CollapsingToolbarLayout collToobar;</span><br><span class="line">    @BindView(R.id.toolbar)</span><br><span class="line">    Toolbar toolbar;</span><br><span class="line">    @BindView(R.id.recycle_state)</span><br><span class="line">    RecyclerView recyclerView;</span><br><span class="line">    private SharedPreferences sharedPreferences = MyApplication.sharedPreferences;</span><br><span class="line">    private HistoryDB db;</span><br><span class="line">    private List&lt;HistoryDetails&gt; details  = null;</span><br><span class="line">    private DynamicStateRecyclerAdapter adapter;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_person_page);</span><br><span class="line">        ButterKnife.bind(this);</span><br><span class="line">        initView();</span><br><span class="line">        initData();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initData() &#123;</span><br><span class="line">        db = new HistoryDB();</span><br><span class="line">        details= db.loadHistoryByUserId(sharedPreferences.getString(&quot;userId&quot;,&quot;000&quot;));</span><br><span class="line">        if (details==null||details.size()==0)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            Collections.reverse(details);</span><br><span class="line">            adapter = new DynamicStateRecyclerAdapter(details,this);</span><br><span class="line">            LinearLayoutManager manager = new LinearLayoutManager(this);</span><br><span class="line">            manager.setOrientation(LinearLayoutManager.VERTICAL);</span><br><span class="line">            recyclerView.setLayoutManager(manager);</span><br><span class="line">            recyclerView.setAdapter(adapter);</span><br><span class="line">            recyclerView.setItemAnimator(new DefaultItemAnimator());//添加默认动画</span><br><span class="line">            //设置RecyclerView的item监听事件</span><br><span class="line">            setOnItemClickListener();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void setOnItemClickListener() &#123;</span><br><span class="line"></span><br><span class="line">        adapter.setOnItemClickListener(new DynamicStateRecyclerAdapter.OnItemClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onItemClick(View itemview, DynamicStateRecyclerAdapter.MyViewHolder childview, int position) &#123;</span><br><span class="line">                initVideoDetail( position);//初始化视频详情界面数据并实现跳转</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 初始化视频详情界面数据,跳转至视频详情界面</span><br><span class="line">     * */</span><br><span class="line">    private void initVideoDetail(int position) &#123;</span><br><span class="line">        Intent intent = new Intent(PersonPageActivity.this, VideoDetailActivity.class);</span><br><span class="line">        Bundle bundle = new Bundle();</span><br><span class="line">        bundle.putString(&quot;title&quot;,details.get(position).getTitle());//获取标题</span><br><span class="line">        bundle.putString(&quot;time&quot;, details.get(position).getDetail());</span><br><span class="line">        bundle.putString(&quot;desc&quot;, details.get(position).getDesc());//视频描述</span><br><span class="line">        bundle.putString(&quot;blurred&quot;, details.get(position).getBlurred());//模糊图片地址</span><br><span class="line">        bundle.putString(&quot;feed&quot;, details.get(position).getPhoto());//图片地址</span><br><span class="line">        bundle.putString(&quot;video&quot;, details.get(position).getVideo());//视频播放地址</span><br><span class="line">        bundle.putInt(&quot;collect&quot;, details.get(position).getCollect());//收藏量</span><br><span class="line">        bundle.putInt(&quot;share&quot;, details.get(position).getShare());//分享量</span><br><span class="line">        bundle.putInt(&quot;reply&quot;, details.get(position).getReply());//回复数量</span><br><span class="line">        intent.putExtras(bundle);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initView() &#123;</span><br><span class="line">        avatarBackground.setImageURI(Uri.parse(sharedPreferences.getString(&quot;userIcon&quot;,&quot;&quot;)));</span><br><span class="line">        avatarUser.setImageURI(Uri.parse(sharedPreferences.getString(&quot;userIcon&quot;,&quot;&quot;)));</span><br><span class="line">        toolbar.setTitle(sharedPreferences.getString(&quot;userName&quot;,&quot;&quot;));//设置标题</span><br><span class="line">        collToobar.setExpandedTitleColor(getResources().getColor(R.color.colorBlack));</span><br><span class="line">        setSupportActionBar(toolbar);</span><br><span class="line">        getSupportActionBar().setDisplayShowHomeEnabled(true);</span><br><span class="line">        toolbar.setNavigationIcon(R.drawable.back_black);</span><br><span class="line">        toolbar.setNavigationOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @OnClick(R.id.attention)</span><br><span class="line">    public void onClick()&#123;</span><br><span class="line">        startActivity(new Intent(this,MyAttentionActivity.class));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果展示:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-7e47a81560bdce78.gif?imageMogr2/auto-orient/strip" alt="开眼app个人中心.gif"></p>
+<p>2.仿[开眼App]搜索悬停界面:</p>
+<ul>
+<li><p>.xml布局文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;50dp&quot;&gt;</span><br><span class="line">        &lt;openeyes.dr.openeyes.widget.SearchEditText</span><br><span class="line">            android:id=&quot;@+id/search_editext&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;20dp&quot;</span><br><span class="line">            android:background=&quot;@drawable/shape_search&quot;</span><br><span class="line">            android:layout_width=&quot;300dp&quot;</span><br><span class="line">            android:layout_height=&quot;30dp&quot;</span><br><span class="line">            android:paddingLeft=&quot;15dp&quot;</span><br><span class="line">            android:paddingRight=&quot;15dp&quot;</span><br><span class="line">            android:gravity=&quot;start|center_vertical&quot;</span><br><span class="line">            android:imeOptions=&quot;actionSearch&quot;</span><br><span class="line">            android:singleLine=&quot;true&quot;</span><br><span class="line">            android:hint=&quot;搜索视频、作者、用户及标签&quot;</span><br><span class="line">            android:textSize=&quot;13sp&quot;</span><br><span class="line"></span><br><span class="line">            /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:id=&quot;@+id/cancle_main&quot;</span><br><span class="line">            android:textColor=&quot;@color/colorBlacklight&quot;</span><br><span class="line">            android:gravity=&quot;center&quot;</span><br><span class="line">            android:text=&quot;取消&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;match_parent&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;FrameLayout</span><br><span class="line">        android:id=&quot;@+id/history_fl&quot;</span><br><span class="line">        android:visibility=&quot;gone&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;50dp&quot;</span><br><span class="line">        &gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_gravity=&quot;center_vertical&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;20dp&quot;</span><br><span class="line">            android:textSize=&quot;20sp&quot;</span><br><span class="line">            android:text=&quot;搜索历史&quot;</span><br><span class="line">            android:textColor=&quot;@color/colorBlack&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot; /&gt;</span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:id=&quot;@+id/delete_history&quot;</span><br><span class="line">            android:layout_marginRight=&quot;20dp&quot;</span><br><span class="line">            android:layout_gravity=&quot;center_vertical|right&quot;</span><br><span class="line">            android:textColor=&quot;@color/colorAniBtns&quot;</span><br><span class="line">            android:gravity=&quot;center&quot;</span><br><span class="line">            android:text=&quot;清空&quot;</span><br><span class="line">            android:textSize=&quot;13sp&quot;</span><br><span class="line">            android:layout_width=&quot;50dp&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot; /&gt;</span><br><span class="line">    &lt;/FrameLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.CoordinatorLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        android:orientation=&quot;vertical&quot;</span><br><span class="line">        android:background=&quot;@color/colorWhite&quot;</span><br><span class="line">        &gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;android.support.design.widget.AppBarLayout</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:background=&quot;@color/colorWhite&quot;</span><br><span class="line"></span><br><span class="line">            &gt;</span><br><span class="line">            &lt;android.support.v7.widget.RecyclerView</span><br><span class="line">                android:id=&quot;@+id/search_history_rv&quot;</span><br><span class="line">                android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                app:layout_scrollFlags=&quot;scroll&quot;</span><br><span class="line">                &gt;</span><br><span class="line"></span><br><span class="line">            &lt;/android.support.v7.widget.RecyclerView&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &lt;TextView</span><br><span class="line">                android:layout_marginLeft=&quot;20dp&quot;</span><br><span class="line">                android:text=&quot;热搜关键词&quot;</span><br><span class="line">                android:textSize=&quot;20sp&quot;</span><br><span class="line">                android:textColor=&quot;@color/colorBlack&quot;</span><br><span class="line">                android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                android:layout_height=&quot;wrap_content&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.RecyclerView</span><br><span class="line">            android:id=&quot;@+id/hot_search_rv&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;match_parent&quot;</span><br><span class="line">            app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;</span><br><span class="line">            &gt;</span><br><span class="line"></span><br><span class="line">        &lt;/android.support.v7.widget.RecyclerView&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java文件:</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line">package openeyes.dr.openeyes.view.activity;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created by darryrzhong on 2018/9/10.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">public class SearchActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    @BindView(R.id.search_editext)</span><br><span class="line">    SearchEditText searchEditText;</span><br><span class="line">    @BindView(R.id.cancle_main)</span><br><span class="line">    TextView cancleMain;</span><br><span class="line">    @BindView(R.id.history_fl)</span><br><span class="line">    FrameLayout hintLayout;</span><br><span class="line">    @BindView(R.id.delete_history)</span><br><span class="line">    TextView deleteHistory;</span><br><span class="line">    @BindView(R.id.search_history_rv)</span><br><span class="line">    RecyclerView recyclerSearch;</span><br><span class="line">    @BindView(R.id.hot_search_rv)</span><br><span class="line">    RecyclerView recyclerHot;</span><br><span class="line">    private String [] hotKeyWord = &#123;&quot;美食&quot;,&quot;旅行&quot;,&quot;生活小技巧&quot;,&quot;健身&quot;,&quot;汽车&quot;,&quot;广告&quot;,&quot;动画&quot;,</span><br><span class="line">            &quot;创意灵感&quot;,&quot;当下乱码&quot;,&quot;一条&quot;,&quot;日食记&quot;,&quot;视知TV&quot;&#125;;</span><br><span class="line">    private List&lt;SearchHistory&gt; searchHistories;</span><br><span class="line">    private List&lt;SearchHistory&gt; hotKeyWords = new ArrayList&lt;&gt;();;</span><br><span class="line">    private SearchRecyclerAdapter adapter;</span><br><span class="line">    private SearchDB db;</span><br><span class="line">    private SearchRecyclerAdapter adapter1;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_search);</span><br><span class="line">        ButterKnife.bind(this);</span><br><span class="line">        initData();</span><br><span class="line">        setListener();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initData() &#123;</span><br><span class="line">        db = new SearchDB();</span><br><span class="line">        hotKeyWords.clear();</span><br><span class="line">        for (String keyWord:hotKeyWord)&#123;</span><br><span class="line">            hotKeyWords.add(new SearchHistory(keyWord));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        LinearLayoutManager manager = new LinearLayoutManager(this);</span><br><span class="line">        manager.setOrientation(LinearLayout.VERTICAL);</span><br><span class="line">        recyclerHot.setLayoutManager(manager);</span><br><span class="line">        adapter = new SearchRecyclerAdapter(hotKeyWords);</span><br><span class="line">        recyclerHot.setAdapter(adapter);</span><br><span class="line">        recyclerHot.setItemAnimator(new DefaultItemAnimator());</span><br><span class="line"></span><br><span class="line">        searchHistories = db.loadSearchHistoryAll();</span><br><span class="line">        if (searchHistories==null||searchHistories.size()==0)&#123;</span><br><span class="line">            hintLayout.setVisibility(View.GONE);</span><br><span class="line">            recyclerSearch.setVisibility(View.GONE);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            hintLayout.setVisibility(View.VISIBLE);</span><br><span class="line">            Collections.reverse(searchHistories);</span><br><span class="line">            LinearLayoutManager manager1 = new LinearLayoutManager(this);</span><br><span class="line">            manager.setOrientation(LinearLayout.VERTICAL);</span><br><span class="line">            recyclerSearch.setLayoutManager(manager1);</span><br><span class="line">            adapter1 = new SearchRecyclerAdapter(searchHistories);</span><br><span class="line">            recyclerSearch.setAdapter(adapter1);</span><br><span class="line">            recyclerSearch.setItemAnimator(new DefaultItemAnimator());//添加默认动画</span><br><span class="line">            adapter1.setOnItemClickListener(new SearchRecyclerAdapter.OnItemClickListener() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void onItemClick(View itemview, SearchRecyclerAdapter.MyViewHolder childview, int position) &#123;</span><br><span class="line">                    Intent intent = new Intent(SearchActivity.this,SearchResultActivity.class);</span><br><span class="line">                    Bundle bundle = new Bundle();</span><br><span class="line">                    bundle.putString(&quot;keyWord&quot;,searchHistories.get(position).getKeyWord());</span><br><span class="line">                    intent.putExtras(bundle);</span><br><span class="line">                    startActivity(intent);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void setListener() &#123;</span><br><span class="line">        searchEditText.setOnKeyListener(new View.OnKeyListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) &#123;</span><br><span class="line">                if (keyCode==KeyEvent.KEYCODE_ENTER&amp;&amp;keyEvent.getAction()==KeyEvent.ACTION_DOWN)&#123;</span><br><span class="line">                       String keyWord = searchEditText.getText().toString().trim();</span><br><span class="line">                       if (&quot;&quot;.equals(keyWord))&#123;</span><br><span class="line">                           ToastUtil.showToast(SearchActivity.this,&quot;请输入搜索内容&quot;);</span><br><span class="line">                       &#125;else &#123;</span><br><span class="line">                           SearchHistory searchHistory = new SearchHistory(keyWord);</span><br><span class="line">                           List&lt;SearchHistory&gt; temp = db.loadSearchByKeyWord(keyWord);</span><br><span class="line">                           if (temp==null)&#123;</span><br><span class="line">                               db.saveOrUpdate(searchHistory);</span><br><span class="line">                           &#125;else if (temp.size()==0)&#123;</span><br><span class="line">                               db.saveOrUpdate(searchHistory);</span><br><span class="line">                           &#125;</span><br><span class="line">                           Intent intent = new Intent(SearchActivity.this,SearchResultActivity.class);</span><br><span class="line">                           Bundle bundle = new Bundle();</span><br><span class="line">                           bundle.putString(&quot;keyWord&quot;,keyWord);</span><br><span class="line">                           intent.putExtras(bundle);</span><br><span class="line">                           startActivity(intent);</span><br><span class="line">                       &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        adapter.setOnItemClickListener(new SearchRecyclerAdapter.OnItemClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onItemClick(View itemview, SearchRecyclerAdapter.MyViewHolder childview, int position) &#123;</span><br><span class="line">                Intent intent = new Intent(SearchActivity.this,SearchResultActivity.class);</span><br><span class="line">                Bundle bundle = new Bundle();</span><br><span class="line">                bundle.putString(&quot;keyWord&quot;,hotKeyWords.get(position).getKeyWord());</span><br><span class="line">                intent.putExtras(bundle);</span><br><span class="line">                startActivity(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @OnClick(&#123;R.id.cancle_main,R.id.delete_history,R.id.search_editext&#125;)</span><br><span class="line">    public void onClick(View v)&#123;</span><br><span class="line">        switch (v.getId())&#123;</span><br><span class="line">            case R.id.cancle_main:</span><br><span class="line">                finish();</span><br><span class="line">                break;</span><br><span class="line">            case R.id.delete_history:</span><br><span class="line">                try &#123;</span><br><span class="line">                    db.delTable();</span><br><span class="line">                &#125; catch (DbException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                initData();</span><br><span class="line"></span><br><span class="line">                break;</span><br><span class="line">            case R.id.search_editext:</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onResume() &#123;</span><br><span class="line">        super.onResume();</span><br><span class="line">        initData();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果展示:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-1e6bdf17608d33ae.gif?imageMogr2/auto-orient/strip" alt="开眼app搜索记录.gif"></p>
+<blockquote>
+<p>好了,到这里关于AppBarLayout三剑客的基本使用就介绍完了,使用三剑客能够实现许多炫酷的UI效果,感兴趣的朋友可以自行自定义.</p>
+</blockquote>
+<p>欢迎关注作者<a href="http://www.darryrzhong.site" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p>
+<h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote>
+<p>更多精彩文章请关注</p>
+<ul>
+<li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li>
+<li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li>
+<li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li>
+<li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882/articles" target="_blank" rel="noopener">SegmentFault</a></li>
+<li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+    
+</div>
+</div>
+ 
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.png" alt="darryrzhong 微信打赏">
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="darryrzhong 支付宝打赏">
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AppBarLayout/" rel="tag"><i class="fa fa-tag"></i> AppBarLayout</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/27/Android之xUtils-3-0数据库框架详解/" rel="next" title="Android之xUtils-3.0数据库框架详解">
+                <i class="fa fa-chevron-left"></i> Android之xUtils-3.0数据库框架详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/27/Android入门开源项目之仿开眼视频APP/" rel="prev" title="Android入门开源项目之仿开眼视频APP">
+                Android入门开源项目之仿开眼视频APP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="darryrzhong">
+            
+              <p class="site-author-name" itemprop="name">darryrzhong</p>
+              <p class="site-description motion-element" itemprop="description">人必有痴，而后有成</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/darryrzhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/darryrzhong" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/b7fdf53ec0b9" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-book"></i>Jianshu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-spinner"></i>Juejin</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#组合三剑客"><span class="nav-number">1.</span> <span class="nav-text">组合三剑客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AppBarLayout"><span class="nav-number">1.1.</span> <span class="nav-text">AppBarLayout:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CoordinatorLayout"><span class="nav-number">1.2.</span> <span class="nav-text">CoordinatorLayout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CollapsingToolbarLayout"><span class="nav-number">1.3.</span> <span class="nav-text">CollapsingToolbarLayout:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特别说明"><span class="nav-number">1.3.1.</span> <span class="nav-text">特别说明:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AppbarLayout实例展示"><span class="nav-number">2.</span> <span class="nav-text">AppbarLayout实例展示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请赏个小红心！因为你的鼓励是我写作的最大动力！"><span class="nav-number">2.0.1.</span> <span class="nav-text">请赏个小红心！因为你的鼓励是我写作的最大动力！</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">darryrzhong</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+
+ <!-- <span class="post-meta-divider">|</span>-->
+
+
+
+  <!--<div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytxCyGhU';
+      var conf = '90b283bdb7ccb472f325f3c891156b33';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("29xnQ1C2kcwORHYYn7xsWTnS-gzGzoHsz", "Rq1Gk75oRwH78BryWUL4oYzj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>

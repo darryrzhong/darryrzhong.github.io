@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="mvc/p,">
 
 
 
@@ -82,16 +82,21 @@
 
 
 
-<meta name="description" content="人必有痴，而后有成">
-<meta property="og:type" content="website">
-<meta property="og:title" content="darryrzhong">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+<meta name="description" content="写在最前面的那些话相信对于大多数小白来说,关于MVP、MVC设计模式肯定是听过也看到过很多次了,也许也有过一些简单了解,但关于TA的具体概念,如何使用以及具体应用等都毫无所知,所以本着许多小伙伴一看到mvp、mvc就一脸懵逼的表情(当然也包括本人了⊙▽⊙)#),最近上手一个基于mvp框架的mosby框架的练手项目,所以决定去好好研究一番mvp设计模式以及mosby的原理以及使用,所以在此写下这篇博">
+<meta name="keywords" content="mvc&#x2F;p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于MVC&#x2F;P 的简单介绍">
+<meta property="og:url" content="http://yoursite.com/2019/03/27/关于MVC-P-的简单介绍/index.html">
 <meta property="og:site_name" content="darryrzhong">
-<meta property="og:description" content="人必有痴，而后有成">
+<meta property="og:description" content="写在最前面的那些话相信对于大多数小白来说,关于MVP、MVC设计模式肯定是听过也看到过很多次了,也许也有过一些简单了解,但关于TA的具体概念,如何使用以及具体应用等都毫无所知,所以本着许多小伙伴一看到mvp、mvc就一脸懵逼的表情(当然也包括本人了⊙▽⊙)#),最近上手一个基于mvp框架的mosby框架的练手项目,所以决定去好好研究一番mvp设计模式以及mosby的原理以及使用,所以在此写下这篇博">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-d19032132e09b611.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-a805ca72d8a5219f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-27T03:10:24.044Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="darryrzhong">
-<meta name="twitter:description" content="人必有痴，而后有成">
+<meta name="twitter:title" content="关于MVC&#x2F;P 的简单介绍">
+<meta name="twitter:description" content="写在最前面的那些话相信对于大多数小白来说,关于MVP、MVC设计模式肯定是听过也看到过很多次了,也许也有过一些简单了解,但关于TA的具体概念,如何使用以及具体应用等都毫无所知,所以本着许多小伙伴一看到mvp、mvc就一脸懵逼的表情(当然也包括本人了⊙▽⊙)#),最近上手一个基于mvp框架的mosby框架的练手项目,所以决定去好好研究一番mvp设计模式以及mosby的原理以及使用,所以在此写下这篇博">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5549640-d19032132e09b611.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -121,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/27/关于MVC-P-的简单介绍/">
 
 
 
 
 
-  <title>归档 | darryrzhong</title>
+  <title>关于MVC/P 的简单介绍 | darryrzhong</title>
   
 
 
@@ -265,7 +270,7 @@ window.onmouseout = function () {
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 <a href="https://github.com/darryrzhong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
@@ -420,391 +425,307 @@ window.onmouseout = function () {
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/关于MVC-P-的简单介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">关于MVC/P 的简单介绍</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:09:39+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 18 篇日志。 继续努力。
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/Android入门开源项目之仿开眼视频APP/" itemprop="url">
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
               
-                <span itemprop="name">Android入门开源项目之仿开眼视频APP</span>
+                <a href="/2019/03/27/关于MVC-P-的简单介绍/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/03/27/关于MVC-P-的简单介绍/" itemprop="commentsCount"></span>
+                </a>
               
-            </a>
-        
-      </h2>
+            
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T11:49:03+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
+          
+          
+             <span id="/2019/03/27/关于MVC-P-的简单介绍/" class="leancloud_visitors" data-flag-title="关于MVC/P 的简单介绍">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-    </header>
-  </article>
+          
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/Android之AppBarLayout实现悬停吸附伸缩效果/" itemprop="url">
-              
-                <span itemprop="name">Android之AppBarLayout实现悬停吸附伸缩效果</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T11:47:26+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/Android之xUtils-3-0数据库框架详解/" itemprop="url">
-              
-                <span itemprop="name">Android之xUtils-3.0数据库框架详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T11:45:54+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h4 id="写在最前面的那些话"><a href="#写在最前面的那些话" class="headerlink" title="写在最前面的那些话"></a>写在最前面的那些话</h4><p>相信对于大多数小白来说,关于<code>MVP</code>、<code>MVC</code>设计模式肯定是听过也看到过很多次了,也许也有过一些简单了解,但关于TA的具体概念,如何使用以及具体应用等都毫无所知,所以本着许多小伙伴一看到<code>mvp</code>、<code>mvc</code>就一脸懵逼的表情(当然也包括本人了⊙▽⊙)#),最近上手一个基于<code>mvp</code>框架的<code>mosby</code>框架的练手项目,所以决定<br>去好好研究一番<code>mvp</code>设计模式以及<code>mosby</code>的原理以及使用,所以在此写下这篇博文,希望能够帮助到正在学习或者准备学习<code>mvp</code>设计模式的那些小伙伴了.<br>相信很多小伙伴应该都有这样一个共同的认知,关于技术,网上一搜一大堆,但是质量自然是参差不齐,身处互联网时代最好的一点就是资源共享,本着为更多的小伙伴节省搜寻资源的时间以及筛选优质资源的时间成本,决定以小白的身份来写写<code>mvp</code>那些事,旨在共享资源,共同进步,不喜勿喷!</p>
+<blockquote>
+<p>快加入学习的队伍来吧,欢迎各路大神留下宝贵意见.</p>
+</blockquote>
+<p><code>什么是MVC(Model View Controller)模式?</code><br><img src="https://upload-images.jianshu.io/upload_images/5549640-d19032132e09b611.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mvc模式"></p>
+<p><code>MVC</code>全名是<code>Model View Controller</code>，是模型(<code>model</code>)－视图(<code>view</code>)－控制器(<code>controller</code>)的缩写，一种软件设计典范，用一种业务逻辑、数据、界面显示分离的方法组织代码，将业务逻辑聚集到一个部件里面，在改进和个性化定制界面及用户交互的同时，不需要重新编写业务逻辑。其中M层处理数据，业务逻辑等(适合做一些业务逻辑处理，比如数据库存取操作，网络操作，复杂的算法，耗时的任务等都在model层处理)；V层处理界面的显示结果(XML布局可以视为V层，显示Model层的数据结果)；C层起到桥梁的作用，来控制V层和M层通信以此来达到分离视图显示和业务逻辑层(在Android中，Activity处理用户交互问题，因此可以认为Activity是控制器，Activity读取V视图层的数据，控制用户输入，并向Model发送数据请求)。</p>
+<p><code>Model</code>: 数据层. 负责与网络层和数据库层的逻辑交互.<br><code>View</code>: UI层. 显示数据, 并向Controller报告用户行为.<br><code>Controller</code>:负责从视图中取得数据然后发送给模型,根据用户在视图中的行为去更新模型的逻辑.</p>
+<p>一般业务逻辑如下:</p>
+<a id="more"></a>
+<p>1、为了使得视图接口可以与模型和控制器进行交互，控制器执行一些初始化事件<br>2、用户通过视图（用户接口）执行一些操作<br>3、控制器处理用户行为(可以用观察着模式实现)并通知模型进行更新<br>4、模型引发一些事件，以便将改变发告知视图<br>5、视图处理模型变更的事件，然后显示新的模型数据<br>6、用户接口等待用户的进一步操作</p>
+<p><code>什么是MVP(Model-View-Presenter)模式?</code><br><img src="https://upload-images.jianshu.io/upload_images/5549640-a805ca72d8a5219f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mvp模式"></p>
+<p><code>MVP</code>是从经典的模式<code>MVC</code>演变而来，它们的基本思想有相通的地方：<code>Controller</code>/<code>Presenter</code>负责逻辑的处理，<code>Model</code>提供数据，<code>View</code>负责显示。作为一种新的模式，<code>MVP</code>与<code>MVC</code>有着一个重大的区别：在<code>MVP</code>中<code>View</code>并不直接使用<code>Model</code>，它们之间的通信是通过<code>Presenter</code> (<code>MVC</code>中的<code>Controller</code>)来进行的，所有的交互都发生在<code>Presenter</code>内部，而在<code>MVC</code>中<code>View</code>会从直接<code>Model</code>中读取数据而不是通过 <code>Controller</code>。</p>
+<p><code>Model</code>: 数据层. 负责与网络层和数据库层的逻辑交互.<br><code>View</code>: UI层. 显示数据, 并向Presenter报告用户行为.<br><code>Presenter</code>: 从Model拿数据, 应用到UI层, 管理UI的状态, 决定要显示什么, 响应用户的行为.</p>
+<p><code>MVP</code>模式的最主要优势就是耦合降低, <code>Presenter</code>变为纯Java的代码逻辑, 不再与Android Framework中的类如Activity, Fragment等关联, 便于写单元测试.</p>
+<blockquote>
+<p>因为在mvc模式中view层与Controller层并没有完全分离开,所以当模块功能越来越大,扩展越来越多时,代码依然会显得臃肿,所以在Android开发中mvc几乎被mvp所取代了,所以开发中首选自然是mvp设计模式了.</p>
+</blockquote>
+<p>MVP与MVC有着一个重大的区别：在MVP中View并不直接使用Model，它们之间的通信是通过Presenter (MVC中的Controller)来进行的，所有的交互都发生在Presenter内部，而在MVC中View会从直接Model中读取数据而不是通过 Controller。<br>MVC/P模式的核心是为了将模型从视图/控制器中分离出来，从而使得模型独立于它们，因此模型不包含对视图和控制的引用。</p>
+<blockquote>
+<p>好了,关于mvc/mvp设计模式最简单概念部分已经介绍完了,相信大家对TA不在是一脸懵逼了吧,当然这里值得一提的是,这两种设计模式一般是不用在小项目中的,那样反而会显得代码过度臃肿,一般在大型项目中,且业务逻辑相对复杂,页面切换显示比较多需要进行模块化设计时就需要使用MVP设计模式了,这时你就能体会到TA的优势了.</p>
+</blockquote>
+<hr>
+<h1 id="后记总结"><a href="#后记总结" class="headerlink" title="后记总结:"></a>后记总结:</h1><p>相信看完上面的简单介绍(是不是想说一句,尼玛怎么这么少还没看过瘾呢、哈哈),你应该对mvp、mvc设计模式有了一些基本的了解,但肯定对TA还是有很多不清楚,不明白的地方,所以这里才是真正分享资源的开始,也是你开始学习mvp设计模式的开始之地.</p>
+<blockquote>
+<p>本着不重复造轮子和胡乱复制、粘贴忽悠人的原则,就直接拿过来分享给你们了:</p>
+</blockquote>
+<ul>
+<li><a href="https://blog.csdn.net/wu371894545/article/details/55258668" target="_blank" rel="noopener">MVC和MVP的详细比较以及简单代码展示</a></li>
+</ul>
+<hr>
+<h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote>
+<p>更多精彩文章请关注</p>
+<ul>
+<li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li>
+<li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li>
+<li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li>
+<li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882" target="_blank" rel="noopener">SegmentFault</a></li>
+<li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li>
+</ul>
+</blockquote>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/Android常用之Butterknife使用详解/" itemprop="url">
-              
-                <span itemprop="name">Android常用之Butterknife使用详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T11:44:19+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/Android之Handler消息传递机制详解/" itemprop="url">
-              
-                <span itemprop="name">Android之Handler消息传递机制详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T11:42:29+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/Android之Activity全面解析/" itemprop="url">
-              
-                <span itemprop="name">Android之Activity全面解析</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T11:40:43+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/1024程序员节最新福利之2018最全大数据资料集合/" itemprop="url">
-              
-                <span itemprop="name">1024程序员节最新福利之2018最全大数据资料集合</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T11:18:57+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/1024程序员节最新福利之2018最全Android资料集合/" itemprop="url">
-              
-                <span itemprop="name">1024程序员节最新福利之2018最全Android资料集合</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T11:17:47+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/1024程序员节最新福利之2018最全java资料集合/" itemprop="url">
-              
-                <span itemprop="name">1024程序员节最新福利之2018最全java资料集合</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T11:16:43+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/27/1024程序员节最新福利之2018最全H5前端资料集/" itemprop="url">
-              
-                <span itemprop="name">1024程序员节最新福利之2018最全H5前端资料集</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T11:15:09+08:00" content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+
+<div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+    
+</div>
+</div>
+ 
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.png" alt="darryrzhong 微信打赏">
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="darryrzhong 支付宝打赏">
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mvc-p/" rel="tag"><i class="fa fa-tag"></i> mvc/p</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/27/最全面的UML教程/" rel="next" title="最全面的UML教程">
+                <i class="fa fa-chevron-left"></i> 最全面的UML教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/27/史上最全计算机类编程资料大集合/" rel="prev" title="史上最全计算机类编程资料大集合">
+                史上最全计算机类编程资料大集合 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -812,6 +733,15 @@ window.onmouseout = function () {
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -832,8 +762,17 @@ window.onmouseout = function () {
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -930,6 +869,22 @@ window.onmouseout = function () {
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#写在最前面的那些话"><span class="nav-number">1.</span> <span class="nav-text">写在最前面的那些话</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#后记总结"><span class="nav-number"></span> <span class="nav-text">后记总结:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请赏个小红心！因为你的鼓励是我写作的最大动力！"><span class="nav-number"></span> <span class="nav-text">请赏个小红心！因为你的鼓励是我写作的最大动力！</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1096,6 +1051,10 @@ window.onmouseout = function () {
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
