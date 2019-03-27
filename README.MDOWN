@@ -1,0 +1,17 @@
+```
+name = 'darryrzhong'
+description = 'Just an Android Enthusiast'
+
+blog = 'http://darryrzhong.xyz'
+github = 'https://github.com/darryrzhong'
+sina_weibo = 'darryrzhong'
+Jianshu = 'darryrzhong'
+
+while true
+  programing
+  reading
+  share
+  fighting
+end
+
+```
