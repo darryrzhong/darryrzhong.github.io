@@ -5,9 +5,9 @@
   <subtitle>时光，不会辜负每一个平静努力的人</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://darryrzhong.xyz/"/>
   <updated>2019-03-27T03:50:20.523Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://darryrzhong.xyz/</id>
   
   <author>
     <name>darryrzhong</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Android入门开源项目之仿开眼视频APP</title>
-    <link href="http://yoursite.com/2019/03/27/Android%E5%85%A5%E9%97%A8%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B9%8B%E4%BB%BF%E5%BC%80%E7%9C%BC%E8%A7%86%E9%A2%91APP/"/>
-    <id>http://yoursite.com/2019/03/27/Android入门开源项目之仿开眼视频APP/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/Android%E5%85%A5%E9%97%A8%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B9%8B%E4%BB%BF%E5%BC%80%E7%9C%BC%E8%A7%86%E9%A2%91APP/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/Android入门开源项目之仿开眼视频APP/</id>
     <published>2019-03-27T03:49:03.000Z</published>
     <updated>2019-03-27T03:50:20.523Z</updated>
     
@@ -36,17 +36,17 @@
     
     </summary>
     
-      <category term="开源Demo" scheme="http://yoursite.com/categories/%E5%BC%80%E6%BA%90Demo/"/>
+      <category term="开源Demo" scheme="http://darryrzhong.xyz/categories/%E5%BC%80%E6%BA%90Demo/"/>
     
     
-      <category term="开源demo" scheme="http://yoursite.com/tags/%E5%BC%80%E6%BA%90demo/"/>
+      <category term="开源demo" scheme="http://darryrzhong.xyz/tags/%E5%BC%80%E6%BA%90demo/"/>
     
   </entry>
   
   <entry>
     <title>Android之AppBarLayout实现悬停吸附伸缩效果</title>
-    <link href="http://yoursite.com/2019/03/27/Android%E4%B9%8BAppBarLayout%E5%AE%9E%E7%8E%B0%E6%82%AC%E5%81%9C%E5%90%B8%E9%99%84%E4%BC%B8%E7%BC%A9%E6%95%88%E6%9E%9C/"/>
-    <id>http://yoursite.com/2019/03/27/Android之AppBarLayout实现悬停吸附伸缩效果/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/Android%E4%B9%8BAppBarLayout%E5%AE%9E%E7%8E%B0%E6%82%AC%E5%81%9C%E5%90%B8%E9%99%84%E4%BC%B8%E7%BC%A9%E6%95%88%E6%9E%9C/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/Android之AppBarLayout实现悬停吸附伸缩效果/</id>
     <published>2019-03-27T03:47:26.000Z</published>
     <updated>2019-03-27T03:48:25.688Z</updated>
     
@@ -75,17 +75,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://darryrzhong.xyz/categories/Android/"/>
     
     
-      <category term="AppBarLayout" scheme="http://yoursite.com/tags/AppBarLayout/"/>
+      <category term="AppBarLayout" scheme="http://darryrzhong.xyz/tags/AppBarLayout/"/>
     
   </entry>
   
   <entry>
     <title>Android之xUtils-3.0数据库框架详解</title>
-    <link href="http://yoursite.com/2019/03/27/Android%E4%B9%8BxUtils-3-0%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://yoursite.com/2019/03/27/Android之xUtils-3-0数据库框架详解/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/Android%E4%B9%8BxUtils-3-0%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/Android之xUtils-3-0数据库框架详解/</id>
     <published>2019-03-27T03:45:54.000Z</published>
     <updated>2019-03-27T03:46:40.074Z</updated>
     
@@ -108,17 +108,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://darryrzhong.xyz/categories/Android/"/>
     
     
-      <category term="xUtils" scheme="http://yoursite.com/tags/xUtils/"/>
+      <category term="xUtils" scheme="http://darryrzhong.xyz/tags/xUtils/"/>
     
   </entry>
   
   <entry>
     <title>Android常用之Butterknife使用详解</title>
-    <link href="http://yoursite.com/2019/03/27/Android%E5%B8%B8%E7%94%A8%E4%B9%8BButterknife%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://yoursite.com/2019/03/27/Android常用之Butterknife使用详解/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/Android%E5%B8%B8%E7%94%A8%E4%B9%8BButterknife%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/Android常用之Butterknife使用详解/</id>
     <published>2019-03-27T03:44:19.000Z</published>
     <updated>2019-03-27T03:45:13.792Z</updated>
     
@@ -139,17 +139,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://darryrzhong.xyz/categories/Android/"/>
     
     
-      <category term="Butterknife" scheme="http://yoursite.com/tags/Butterknife/"/>
+      <category term="Butterknife" scheme="http://darryrzhong.xyz/tags/Butterknife/"/>
     
   </entry>
   
   <entry>
     <title>Android之Handler消息传递机制详解</title>
-    <link href="http://yoursite.com/2019/03/27/Android%E4%B9%8BHandler%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://yoursite.com/2019/03/27/Android之Handler消息传递机制详解/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/Android%E4%B9%8BHandler%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/Android之Handler消息传递机制详解/</id>
     <published>2019-03-27T03:42:29.000Z</published>
     <updated>2019-03-27T03:43:23.728Z</updated>
     
@@ -186,17 +186,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://darryrzhong.xyz/categories/Android/"/>
     
     
-      <category term="Handler" scheme="http://yoursite.com/tags/Handler/"/>
+      <category term="Handler" scheme="http://darryrzhong.xyz/tags/Handler/"/>
     
   </entry>
   
   <entry>
     <title>Android之Activity全面解析</title>
-    <link href="http://yoursite.com/2019/03/27/Android%E4%B9%8BActivity%E5%85%A8%E9%9D%A2%E8%A7%A3%E6%9E%90/"/>
-    <id>http://yoursite.com/2019/03/27/Android之Activity全面解析/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/Android%E4%B9%8BActivity%E5%85%A8%E9%9D%A2%E8%A7%A3%E6%9E%90/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/Android之Activity全面解析/</id>
     <published>2019-03-27T03:40:43.000Z</published>
     <updated>2019-03-27T03:41:48.326Z</updated>
     
@@ -214,17 +214,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://darryrzhong.xyz/categories/Android/"/>
     
     
-      <category term="activity" scheme="http://yoursite.com/tags/activity/"/>
+      <category term="activity" scheme="http://darryrzhong.xyz/tags/activity/"/>
     
   </entry>
   
   <entry>
     <title>1024程序员节最新福利之2018最全大数据资料集合</title>
-    <link href="http://yoursite.com/2019/03/27/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82%E6%9C%80%E6%96%B0%E7%A6%8F%E5%88%A9%E4%B9%8B2018%E6%9C%80%E5%85%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%B5%84%E6%96%99%E9%9B%86%E5%90%88/"/>
-    <id>http://yoursite.com/2019/03/27/1024程序员节最新福利之2018最全大数据资料集合/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82%E6%9C%80%E6%96%B0%E7%A6%8F%E5%88%A9%E4%B9%8B2018%E6%9C%80%E5%85%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%B5%84%E6%96%99%E9%9B%86%E5%90%88/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全大数据资料集合/</id>
     <published>2019-03-27T03:18:57.000Z</published>
     <updated>2019-03-27T03:19:32.380Z</updated>
     
@@ -253,17 +253,17 @@
     
     </summary>
     
-      <category term="编程资料" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
+      <category term="编程资料" scheme="http://darryrzhong.xyz/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
     
     
-      <category term="大数据学习" scheme="http://yoursite.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/"/>
+      <category term="大数据学习" scheme="http://darryrzhong.xyz/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>1024程序员节最新福利之2018最全Android资料集合</title>
-    <link href="http://yoursite.com/2019/03/27/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82%E6%9C%80%E6%96%B0%E7%A6%8F%E5%88%A9%E4%B9%8B2018%E6%9C%80%E5%85%A8Android%E8%B5%84%E6%96%99%E9%9B%86%E5%90%88/"/>
-    <id>http://yoursite.com/2019/03/27/1024程序员节最新福利之2018最全Android资料集合/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82%E6%9C%80%E6%96%B0%E7%A6%8F%E5%88%A9%E4%B9%8B2018%E6%9C%80%E5%85%A8Android%E8%B5%84%E6%96%99%E9%9B%86%E5%90%88/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全Android资料集合/</id>
     <published>2019-03-27T03:17:47.000Z</published>
     <updated>2019-03-27T03:18:37.574Z</updated>
     
@@ -297,17 +297,17 @@
     
     </summary>
     
-      <category term="编程资料" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
+      <category term="编程资料" scheme="http://darryrzhong.xyz/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
     
     
-      <category term="Android学习" scheme="http://yoursite.com/tags/Android%E5%AD%A6%E4%B9%A0/"/>
+      <category term="Android学习" scheme="http://darryrzhong.xyz/tags/Android%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>1024程序员节最新福利之2018最全java资料集合</title>
-    <link href="http://yoursite.com/2019/03/27/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82%E6%9C%80%E6%96%B0%E7%A6%8F%E5%88%A9%E4%B9%8B2018%E6%9C%80%E5%85%A8java%E8%B5%84%E6%96%99%E9%9B%86%E5%90%88/"/>
-    <id>http://yoursite.com/2019/03/27/1024程序员节最新福利之2018最全java资料集合/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82%E6%9C%80%E6%96%B0%E7%A6%8F%E5%88%A9%E4%B9%8B2018%E6%9C%80%E5%85%A8java%E8%B5%84%E6%96%99%E9%9B%86%E5%90%88/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全java资料集合/</id>
     <published>2019-03-27T03:16:43.000Z</published>
     <updated>2019-03-27T03:17:26.140Z</updated>
     
@@ -340,17 +340,17 @@
     
     </summary>
     
-      <category term="编程资料" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
+      <category term="编程资料" scheme="http://darryrzhong.xyz/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
     
     
-      <category term="java学习" scheme="http://yoursite.com/tags/java%E5%AD%A6%E4%B9%A0/"/>
+      <category term="java学习" scheme="http://darryrzhong.xyz/tags/java%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>1024程序员节最新福利之2018最全H5前端资料集</title>
-    <link href="http://yoursite.com/2019/03/27/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82%E6%9C%80%E6%96%B0%E7%A6%8F%E5%88%A9%E4%B9%8B2018%E6%9C%80%E5%85%A8H5%E5%89%8D%E7%AB%AF%E8%B5%84%E6%96%99%E9%9B%86/"/>
-    <id>http://yoursite.com/2019/03/27/1024程序员节最新福利之2018最全H5前端资料集/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82%E6%9C%80%E6%96%B0%E7%A6%8F%E5%88%A9%E4%B9%8B2018%E6%9C%80%E5%85%A8H5%E5%89%8D%E7%AB%AF%E8%B5%84%E6%96%99%E9%9B%86/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全H5前端资料集/</id>
     <published>2019-03-27T03:15:09.000Z</published>
     <updated>2019-03-27T03:16:20.722Z</updated>
     
@@ -373,21 +373,21 @@
     
     </summary>
     
-      <category term="编程资料" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
+      <category term="编程资料" scheme="http://darryrzhong.xyz/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
     
     
-      <category term="H5学习" scheme="http://yoursite.com/tags/H5%E5%AD%A6%E4%B9%A0/"/>
+      <category term="H5学习" scheme="http://darryrzhong.xyz/tags/H5%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>史上最全2018最新前端学习资料</title>
-    <link href="http://yoursite.com/2019/03/27/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A82018%E6%9C%80%E6%96%B0%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
-    <id>http://yoursite.com/2019/03/27/史上最全2018最新前端学习资料/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A82018%E6%9C%80%E6%96%B0%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/史上最全2018最新前端学习资料/</id>
     <published>2019-03-27T03:13:49.000Z</published>
     <updated>2019-03-27T03:14:47.887Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>你想要的干货，都在这里哟！</p><blockquote><p>史上最全2018最新前端学习资料</p></blockquote></blockquote><h1 id="写在最前的话"><a href="#写在最前的话" class="headerlink" title="写在最前的话"></a>写在最前的话</h1><p>本博文所列全部前端学习资料均整理自网络开放资源,由于某种原因资源链接在此暂不给出,建议先行浏览目录,若所整理的资料符合你的需求,请前往个人站点<a href="http://darryrzhong.site/" target="_blank" rel="noopener">darryrzhong</a>送给你的<code>福利</code>获取你所需的学习资源!</p><blockquote><p>旨在分享优质干货、让我们携手共同进步吧!</p></blockquote><p><img src="https://upload-images.jianshu.io/upload_images/5549640-5d71d6eeff2b51f7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="web前端.jpg"></p><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><hr><ul><li>前端学习之PS基础</li><li>HTML5+CSS3从入门到精通</li><li>JavaScript视频教程</li><li>jQuery视频教程</li><li>前端开发常用的库—Bootstrap</li><li>Vue.js</li><li>Smarty模板引擎视频教程</li><li>NodeJS</li><li>Mysql视频教程</li><li>PHP视频教程</li><li>oracle视频教程</li><li>nginx视频教程</li><li>ajax</li><li>mongodb视频教程</li><li>Angularjs系列视频</li><li>React</li><li>dedeCMS织梦视频</li><li>ThinkPHP视频教程</li><li>案例和总结</li><li>天猫商城购物车实战</li><li>java学科</li><li>Python</li><li>node.js微信开发</li><li>提升自己的10个PDF文档</li></ul><a id="more"></a><blockquote><p>后续有时间会继续分享整理好的各类学习资源,当然所有资源均是建立在个人兴趣爱好上的,期待志同道合的你与我一同学习、进步.</p></blockquote><blockquote><p>更多优质干货分享,请持续关注<a href="http://darryrzhong.xyz/" target="_blank" rel="noopener">darryrzhong</a>!</p></blockquote><h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote><p>更多精彩文章请关注</p><ul><li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li><li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li><li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li><li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882" target="_blank" rel="noopener">SegmentFault</a></li><li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>你想要的干货，都在这里哟！</p><blockquote><p>史上最全2018最新前端学习资料</p></blockquote></blockquote><h1 id="写在最前的话"><a href="#写在最前的话" class="headerlink" title="写在最前的话"></a>写在最前的话</h1><p>本博文所列全部前端学习资料均整理自网络开放资源,由于某种原因资源链接在此暂不给出,建议先行浏览目录,若所整理的资料符合你的需求,请前往个人站点<a href="http://darryrzhong.site/" target="_blank" rel="noopener">darryrzhong</a>送给你的<code>福利</code>获取你所需的学习资源!</p><blockquote><p>旨在分享优质干货、让我们携手共同进步吧!</p></blockquote><p><img src="https://upload-images.jianshu.io/upload_images/5549640-5d71d6eeff2b51f7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="web前端.jpg"></p><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><hr><ul><li>前端学习之PS基础</li><li>HTML5+CSS3从入门到精通</li><li>JavaScript视频教程</li><li>jQuery视频教程</li><li>前端开发常用的库—Bootstrap</li><li>Vue.js</li><li>Smarty模板引擎视频教程</li><li>NodeJS</li><li>Mysql视频教程</li><li>PHP视频教程</li><li>oracle视频教程</li><li>nginx视频教程</li><li>ajax</li><li>mongodb视频教程</li><li>Angularjs系列视频</li><li>React</li><li>dedeCMS织梦视频</li><li>ThinkPHP视频教程</li><li>案例和总结</li><li>天猫商城购物车实战</li><li>java学科</li><li>Python</li><li>node.js微信开发</li><li>提升自己的10个PDF文档</li></ul><a id="more"></a><blockquote><p>后续有时间会继续分享整理好的各类学习资源,当然所有资源均是建立在个人兴趣爱好上的,期待志同道合的你与我一同学习、进步.</p></blockquote><blockquote><p>更多优质干货分享,请持续关注<a href="http://darryrzhong.xyz/">darryrzhong</a>!</p></blockquote><h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote><p>更多精彩文章请关注</p><ul><li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li><li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li><li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li><li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882" target="_blank" rel="noopener">SegmentFault</a></li><li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li></ul></blockquote>]]></content>
     
     <summary type="html">
     
@@ -432,17 +432,17 @@
     
     </summary>
     
-      <category term="编程资料" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
+      <category term="编程资料" scheme="http://darryrzhong.xyz/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
     
     
-      <category term="前端学习" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/"/>
+      <category term="前端学习" scheme="http://darryrzhong.xyz/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>史上最全计算机类编程资料大集合</title>
-    <link href="http://yoursite.com/2019/03/27/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99%E5%A4%A7%E9%9B%86%E5%90%88/"/>
-    <id>http://yoursite.com/2019/03/27/史上最全计算机类编程资料大集合/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99%E5%A4%A7%E9%9B%86%E5%90%88/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/史上最全计算机类编程资料大集合/</id>
     <published>2019-03-27T03:11:04.000Z</published>
     <updated>2019-03-27T03:12:08.998Z</updated>
     
@@ -523,17 +523,17 @@
     
     </summary>
     
-      <category term="编程资料" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
+      <category term="编程资料" scheme="http://darryrzhong.xyz/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
     
     
-      <category term="计算机相关" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/"/>
+      <category term="计算机相关" scheme="http://darryrzhong.xyz/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
   <entry>
     <title>关于MVC/P 的简单介绍</title>
-    <link href="http://yoursite.com/2019/03/27/%E5%85%B3%E4%BA%8EMVC-P-%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/"/>
-    <id>http://yoursite.com/2019/03/27/关于MVC-P-的简单介绍/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/%E5%85%B3%E4%BA%8EMVC-P-%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/关于MVC-P-的简单介绍/</id>
     <published>2019-03-27T03:09:39.000Z</published>
     <updated>2019-03-27T03:10:24.044Z</updated>
     
@@ -552,17 +552,17 @@
     
     </summary>
     
-      <category term="设计模式" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://darryrzhong.xyz/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-      <category term="mvc/p" scheme="http://yoursite.com/tags/mvc-p/"/>
+      <category term="mvc/p" scheme="http://darryrzhong.xyz/tags/mvc-p/"/>
     
   </entry>
   
   <entry>
     <title>最全面的UML教程</title>
-    <link href="http://yoursite.com/2019/03/27/%E6%9C%80%E5%85%A8%E9%9D%A2%E7%9A%84UML%E6%95%99%E7%A8%8B/"/>
-    <id>http://yoursite.com/2019/03/27/最全面的UML教程/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/%E6%9C%80%E5%85%A8%E9%9D%A2%E7%9A%84UML%E6%95%99%E7%A8%8B/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/最全面的UML教程/</id>
     <published>2019-03-27T03:08:02.000Z</published>
     <updated>2019-03-27T03:09:03.906Z</updated>
     
@@ -602,17 +602,17 @@
     
     </summary>
     
-      <category term="设计" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1/"/>
+      <category term="设计" scheme="http://darryrzhong.xyz/categories/%E8%AE%BE%E8%AE%A1/"/>
     
     
-      <category term="UML" scheme="http://yoursite.com/tags/UML/"/>
+      <category term="UML" scheme="http://darryrzhong.xyz/tags/UML/"/>
     
   </entry>
   
   <entry>
     <title>关于Hexo6.0搭建个人博客(github+Google-收录篇)</title>
-    <link href="http://yoursite.com/2019/03/27/%E5%85%B3%E4%BA%8EHexo6-0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-github-Google-%E6%94%B6%E5%BD%95%E7%AF%87/"/>
-    <id>http://yoursite.com/2019/03/27/关于Hexo6-0搭建个人博客-github-Google-收录篇/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/%E5%85%B3%E4%BA%8EHexo6-0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-github-Google-%E6%94%B6%E5%BD%95%E7%AF%87/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/关于Hexo6-0搭建个人博客-github-Google-收录篇/</id>
     <published>2019-03-27T03:06:42.000Z</published>
     <updated>2019-03-27T03:07:27.791Z</updated>
     
@@ -636,17 +636,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+      <category term="hexo" scheme="http://darryrzhong.xyz/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://darryrzhong.xyz/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>关于Hexo6.0搭建个人博客(coding+百度-收录篇)</title>
-    <link href="http://yoursite.com/2019/03/27/%E5%85%B3%E4%BA%8EHexo6-0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-coding-%E7%99%BE%E5%BA%A6-%E6%94%B6%E5%BD%95%E7%AF%87/"/>
-    <id>http://yoursite.com/2019/03/27/关于Hexo6-0搭建个人博客-coding-百度-收录篇/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/%E5%85%B3%E4%BA%8EHexo6-0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-coding-%E7%99%BE%E5%BA%A6-%E6%94%B6%E5%BD%95%E7%AF%87/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/关于Hexo6-0搭建个人博客-coding-百度-收录篇/</id>
     <published>2019-03-27T03:05:34.000Z</published>
     <updated>2019-03-27T03:06:19.707Z</updated>
     
@@ -670,17 +670,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+      <category term="hexo" scheme="http://darryrzhong.xyz/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://darryrzhong.xyz/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>关于Hexo6.0搭建个人博客(主题优化进阶篇)</title>
-    <link href="http://yoursite.com/2019/03/27/%E5%85%B3%E4%BA%8EHexo6-0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E8%BF%9B%E9%98%B6%E7%AF%87/"/>
-    <id>http://yoursite.com/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/%E5%85%B3%E4%BA%8EHexo6-0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E8%BF%9B%E9%98%B6%E7%AF%87/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/</id>
     <published>2019-03-27T03:00:57.000Z</published>
     <updated>2019-03-27T03:03:14.254Z</updated>
     
@@ -726,17 +726,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+      <category term="hexo" scheme="http://darryrzhong.xyz/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://darryrzhong.xyz/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>关于Hexo6.0搭建个人博客(基础编)</title>
-    <link href="http://yoursite.com/2019/03/27/%E5%85%B3%E4%BA%8EHexo6-0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E5%9F%BA%E7%A1%80%E7%BC%96/"/>
-    <id>http://yoursite.com/2019/03/27/关于Hexo6-0搭建个人博客-基础编/</id>
+    <link href="http://darryrzhong.xyz/2019/03/27/%E5%85%B3%E4%BA%8EHexo6-0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E5%9F%BA%E7%A1%80%E7%BC%96/"/>
+    <id>http://darryrzhong.xyz/2019/03/27/关于Hexo6-0搭建个人博客-基础编/</id>
     <published>2019-03-27T02:56:07.000Z</published>
     <updated>2019-03-27T02:58:03.126Z</updated>
     
@@ -766,10 +766,10 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+      <category term="hexo" scheme="http://darryrzhong.xyz/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://darryrzhong.xyz/tags/hexo/"/>
     
   </entry>
   
