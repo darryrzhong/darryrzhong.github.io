@@ -435,6 +435,232 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/28/Android-Retrofit-2-5-0使用基础详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/28/Android-Retrofit-2-5-0使用基础详解/" itemprop="url">Android Retrofit 2.5.0使用基础详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-28T19:37:41+08:00">
+                2019-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/03/28/Android-Retrofit-2-5-0使用基础详解/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/03/28/Android-Retrofit-2-5-0使用基础详解/" class="cy_cmt_count" data-xid="2019/03/28/Android-Retrofit-2-5-0使用基础详解/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/03/28/Android-Retrofit-2-5-0使用基础详解/" class="leancloud_visitors" data-flag-title="Android Retrofit 2.5.0使用基础详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li>在Andrroid开发中，网络请求必不可少</li>
+<li>而在Android所有网络请求库中，<code>Retrofit</code>是最受开发者欢迎的一个网络请求库</li>
+</ul>
+<p><a href="https://square.github.io/retrofit/" target="_blank" rel="noopener">retrofit:2.5.0 官方文档</a></p>
+<p><a href="https://github.com/square/retrofit" target="_blank" rel="noopener">retrofit:2.5.0 - github</a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li><code>Retrofit</code>是Square公司开发的一款针对Android网络请求的框架,遵循Restful设计风格,底层基于OkHttp.</li>
+</ul>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
+<li>支持同步/异步网络请求</li>
+<li>支持多种数据的解析&amp;序列化格式(Gson、json、XML等等)</li>
+<li>通过注解配置网络请求参数</li>
+<li>提供对Rxjava的支持</li>
+<li>高度解耦,使用方便</li>
+</ul>
+<h2 id="对比其他网络请求框架"><a href="#对比其他网络请求框架" class="headerlink" title="对比其他网络请求框架"></a>对比其他网络请求框架</h2><ul>
+<li>性能最好,速度最快</li>
+<li>高度封装导致扩展性差</li>
+<li>简洁易用,代码简化</li>
+<li>解耦彻底,职责细分</li>
+<li>易与其他框架联用(Rxjava)</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/28/Android-Retrofit-2-5-0使用基础详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2376,231 +2602,6 @@ window.onmouseout = function () {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全java资料集合/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="darryrzhong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="darryrzhong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/27/1024程序员节最新福利之2018最全java资料集合/" itemprop="url">1024程序员节最新福利之2018最全java资料集合</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:16:43+08:00">
-                2019-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程资料/" itemprop="url" rel="index">
-                    <span itemprop="name">编程资料</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2019/03/27/1024程序员节最新福利之2018最全java资料集合/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全java资料集合/" class="cy_cmt_count" data-xid="2019/03/27/1024程序员节最新福利之2018最全java资料集合/" itemprop="commentsCount"></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/2019/03/27/1024程序员节最新福利之2018最全java资料集合/" class="leancloud_visitors" data-flag-title="1024程序员节最新福利之2018最全java资料集合">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </span></div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-
-      
-      
-
-      
-        
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有好久没有写博客了,主要这段时间都沉迷学习无法自拔了,哈哈.自吹一波.</p>
-<blockquote>
-<p>前两天不是1024节吗,所以就有很多福利出现了,当然每个人能都获得的信息都有所不同,这就是所谓的信息差.秉着好东西需要分享和开源的好习惯,所以来给你们送福利了.</p>
-</blockquote>
-<blockquote>
-<p>其他福利</p>
-</blockquote>
-<p>一、<a href="https://www.imooc.com/article/256999" target="_blank" rel="noopener">1024程序员节最新福利之2018最全Android资料集合</a></p>
-<p>二、<a href="https://www.imooc.com/article/256998" target="_blank" rel="noopener">1024程序员节最新福利之2018最全H5前端资料集</a></p>
-<p>三、<a href="https://www.imooc.com/article/257000" target="_blank" rel="noopener">1024程序员节最新福利之2018最全大数据资料集合</a></p>
-<h3 id="Java基础阶段"><a href="#Java基础阶段" class="headerlink" title="Java基础阶段"></a>Java基础阶段</h3><p>一、20天横扫Java基础（课堂实录）</p>
-<p><a href="https://pan.baidu.com/s/1htTzZRQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1htTzZRQ</a></p>
-<p>二、尚硅谷Java基础实战——Bank项目</p>
-<p><a href="http://pan.baidu.com/share/link?shareid=3690978764&amp;uk=573533038" target="_blank" rel="noopener">http://pan.baidu.com/share/link?shareid=3690978764&amp;uk=573533038</a></p>
-<p>三、尚硅谷_ORACLE、SQL、PLSQL 视频教程</p>
-<p><a href="https://pan.baidu.com/s/1ghb9ENL" target="_blank" rel="noopener">https://pan.baidu.com/s/1ghb9ENL</a></p>
-<p>四、尚硅谷JDBC视频教程</p>
-<p> <a href="https://pan.baidu.com/s/1c3XBTk8" target="_blank" rel="noopener">https://pan.baidu.com/s/1c3XBTk8</a></p>
-<p>五、Java8新特性</p>
-<p> <a href="http://pan.baidu.com/s/1cgWOH4" target="_blank" rel="noopener">http://pan.baidu.com/s/1cgWOH4</a></p>
-<p>六、Java——JUC</p>
-<p> <a href="http://pan.baidu.com/s/1hsoh76k" target="_blank" rel="noopener">http://pan.baidu.com/s/1hsoh76k</a></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/27/1024程序员节最新福利之2018最全java资料集合/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-
-
-    
-
-    
-
-    
-
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2653,7 +2654,7 @@ window.onmouseout = function () {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2675,7 +2676,7 @@ window.onmouseout = function () {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
