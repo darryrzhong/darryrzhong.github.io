@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://darryrzhong.xyz/"/>
-  <updated>2019-03-29T02:11:20.728Z</updated>
+  <updated>2019-03-29T02:19:06.622Z</updated>
   <id>http://darryrzhong.xyz/</id>
   
   <author>
@@ -21,16 +21,19 @@
     <link href="http://darryrzhong.xyz/2019/03/29/Android-%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E6%80%9D%E7%BB%B4%E5%A4%A7%E7%BA%B2/"/>
     <id>http://darryrzhong.xyz/2019/03/29/Android-进阶学习思维大纲/</id>
     <published>2019-03-29T02:10:28.000Z</published>
-    <updated>2019-03-29T02:11:20.728Z</updated>
+    <updated>2019-03-29T02:19:06.622Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>随着近几年移动开发越来越成熟,市场对于Android开发人员的要求也越来越高,而对于大多数人来说,也是越来越多的新技术和跨平台框架需要学习,为此大多是人都很迷茫,不知道要学什么,在这里给大家分享一个Android学习进阶的思维大纲,以至于大家对于Android学习树立点方向,少走一点弯路,提高学习效率,节省时间成本.</p><p><img src="https://upload-images.jianshu.io/upload_images/5549640-7b52be8a118a9214.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><p><a href="http://naotu.baidu.com/file/12435141647f83f55799f1e3a9b336a5?token=309b64e441344599" target="_blank" rel="noopener">大纲地址</a></p><ul><li>觉得Android学习没有方向的可以对照着去学习哟</li></ul><p>欢迎关注作者<a href="http://www.darryrzhong.site" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p><h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote><p>更多精彩文章请关注</p><ul><li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li><li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li><li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li><li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882/articles" target="_blank" rel="noopener">SegmentFault</a></li><li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>随着近几年移动开发越来越成熟,市场对于Android开发人员的要求也越来越高,而对于大多数人来说,也是越来越多的新技术和跨平台框架需要学习,为此大多是人都很迷茫,不知道要学什么,在这里给大家分享一个Android学习进阶的思维大纲,以至于大家对于Android学习树立点方向,少走一点弯路,提高学习效率,节省时间成本.</p><p><img src="https://upload-images.jianshu.io/upload_images/5549640-7b52be8a118a9214.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><p><a href="http://naotu.baidu.com/file/12435141647f83f55799f1e3a9b336a5?token=309b64e441344599" target="_blank" rel="noopener">大纲地址</a></p><ul><li>觉得Android学习没有方向的可以对照着去学习哟</li></ul><p>欢迎关注作者<a href="http://www.darryrzhong.site" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p><a id="more"></a><h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote><p>更多精彩文章请关注</p><ul><li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li><li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li><li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li><li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882/articles" target="_blank" rel="noopener">SegmentFault</a></li><li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li></ul></blockquote>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;随着近几年移动开发越来越成熟,市场对于Android开发人员的要求也越来越高,而对于大多数人来说,也是越来越多的新技术和跨平台框架需要学习,
-      
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;随着近几年移动开发越来越成熟,市场对于Android开发人员的要求也越来越高,而对于大多数人来说,也是越来越多的新技术和跨平台框架需要学习,为此大多是人都很迷茫,不知道要学什么,在这里给大家分享一个Android学习进阶的思维大纲,以至于大家对于Android学习树立点方向,少走一点弯路,提高学习效率,节省时间成本.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/5549640-7b52be8a118a9214.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://naotu.baidu.com/file/12435141647f83f55799f1e3a9b336a5?token=309b64e441344599&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;大纲地址&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;觉得Android学习没有方向的可以对照着去学习哟&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;欢迎关注作者&lt;a href=&quot;http://www.darryrzhong.site&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;darryrzhong&lt;/a&gt;,更多干货等你来拿哟.&lt;/p&gt;
     
     </summary>
     
