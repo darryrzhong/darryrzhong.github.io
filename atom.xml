@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://darryrzhong.xyz/"/>
-  <updated>2019-03-28T11:38:33.776Z</updated>
+  <updated>2019-03-29T02:11:20.728Z</updated>
   <id>http://darryrzhong.xyz/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android  进阶学习思维大纲</title>
+    <link href="http://darryrzhong.xyz/2019/03/29/Android-%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E6%80%9D%E7%BB%B4%E5%A4%A7%E7%BA%B2/"/>
+    <id>http://darryrzhong.xyz/2019/03/29/Android-进阶学习思维大纲/</id>
+    <published>2019-03-29T02:10:28.000Z</published>
+    <updated>2019-03-29T02:11:20.728Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>随着近几年移动开发越来越成熟,市场对于Android开发人员的要求也越来越高,而对于大多数人来说,也是越来越多的新技术和跨平台框架需要学习,为此大多是人都很迷茫,不知道要学什么,在这里给大家分享一个Android学习进阶的思维大纲,以至于大家对于Android学习树立点方向,少走一点弯路,提高学习效率,节省时间成本.</p><p><img src="https://upload-images.jianshu.io/upload_images/5549640-7b52be8a118a9214.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><p><a href="http://naotu.baidu.com/file/12435141647f83f55799f1e3a9b336a5?token=309b64e441344599" target="_blank" rel="noopener">大纲地址</a></p><ul><li>觉得Android学习没有方向的可以对照着去学习哟</li></ul><p>欢迎关注作者<a href="http://www.darryrzhong.site" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p><h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote><p>更多精彩文章请关注</p><ul><li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li><li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li><li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li><li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882/articles" target="_blank" rel="noopener">SegmentFault</a></li><li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li></ul></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;随着近几年移动开发越来越成熟,市场对于Android开发人员的要求也越来越高,而对于大多数人来说,也是越来越多的新技术和跨平台框架需要学习,
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://darryrzhong.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="http://darryrzhong.xyz/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>Android Retrofit 2.5.0使用基础详解</title>
@@ -795,46 +820,6 @@
 &lt;h1 id=&quot;配置主题&quot;&gt;&lt;a href=&quot;#配置主题&quot; class=&quot;headerlink&quot; title=&quot;配置主题&quot;&gt;&lt;/a&gt;配置主题&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;挑选主题&lt;/p&gt;
 &lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="hexo" scheme="http://darryrzhong.xyz/categories/hexo/"/>
-    
-    
-      <category term="hexo" scheme="http://darryrzhong.xyz/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于Hexo6.0搭建个人博客(基础编)</title>
-    <link href="http://darryrzhong.xyz/2019/03/27/%E5%85%B3%E4%BA%8EHexo6-0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E5%9F%BA%E7%A1%80%E7%BC%96/"/>
-    <id>http://darryrzhong.xyz/2019/03/27/关于Hexo6-0搭建个人博客-基础编/</id>
-    <published>2019-03-27T02:56:07.000Z</published>
-    <updated>2019-03-27T02:58:03.126Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>初识Hexo</p></blockquote><h1 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo?"></a><code>什么是Hexo?</code></h1><p><code>Hexo</code>是一个快速，简单而强大的博客框架。您可以使用<a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他语言）编写文章，Hexo可以在几秒钟内生成具有美丽主题的静态文件。<br>对的,就是这么简单明了,其实就是一个搭建博客的工具而已,也不是什么高深莫测的东西,接下来我将带着大家一步步徒手搭建属于自己的博客.<code>说明:(这里说的搭建属于自己的博客,并不是指搭建属于自己的独一无二的博客,那是前端的本事了,我们这里只说最基本的)</code></p><h1 id="1-安装Hexo"><a href="#1-安装Hexo" class="headerlink" title="1.安装Hexo"></a>1.安装Hexo</h1><p>建立Hexo只需要几分钟,安装Hexo非常简单。但是，您首先需要安装其他一些东西.</p><ul><li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a></li><li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a></li></ul><p>如果你的电脑已经有这些，祝贺！只需使用npm安装Hexo：</p><blockquote><p>$ npm install -g hexo-cli</p></blockquote><p>如果没有,那就一起来看下面吧(<code>这里只说windows的安装,因为本人太穷,买不起mac啊o(╥﹏╥)o</code>)</p><h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p><img src="https://upload-images.jianshu.io/upload_images/5549640-6357f7847468f282.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装git.png"></p><ul><li>Windows：下载并安装<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git</a>。<br>一切按照默认走就行了,没什么特殊的地方.</li></ul><h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p><img src="https://upload-images.jianshu.io/upload_images/5549640-affa652a4cf53b61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Nodejs安装.png"></p><a id="more"></a><p>我们这里简单点,直接下载并运行<a href="http://nodejs.org/" target="_blank" rel="noopener">安装程序</a>就完了.<br>还是走默认就行.</p><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>一旦安装了所有需求，就可以用npm安装Hexo：</p><blockquote><p>$ npm install -g hexo-cli</p></blockquote><p>随便找个地方, <code>Git Bash -&gt;$ npm install -g hexo-cli</code> 就行了<br>我这里直接在桌面上GitBash<br><img src="https://upload-images.jianshu.io/upload_images/5549640-b16e6205d228e21e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GitBash.png"><br>如果出现以下就说明安装成功了<br><img src="https://upload-images.jianshu.io/upload_images/5549640-6114f3db7039eb70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="success.png"></p><blockquote><p>好了,到这里我们就算是已经成功完成了第一步:<code>安装Hexo</code></p></blockquote><h1 id="2-利用Hexo初始化我们的站点跟目录-文件"><a href="#2-利用Hexo初始化我们的站点跟目录-文件" class="headerlink" title="2.利用Hexo初始化我们的站点跟目录(文件)"></a>2.利用Hexo初始化我们的站点跟目录(文件)</h1><blockquote><p>$ hexo init &lt;文件夹&gt;<br>$ cd &lt;文件夹&gt;<br>$ npm install</p></blockquote><p>选择你想要的盘符来建立我们的博客站点文件,我这里选择D:/<br><img src="https://upload-images.jianshu.io/upload_images/5549640-1564927dc14691b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="init.png"><br>这里的<code>blog</code> 是你的文件夹名字,一般默认blog就要行了<br>看到下面的提示就说明站点目录建立成功了<br><img src="https://upload-images.jianshu.io/upload_images/5549640-f431e9ac66e2e7a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="successHexo.png"></p><p>然后 初始化<code>$ npm install</code></p><p><img src="https://upload-images.jianshu.io/upload_images/5549640-ad7551d9a4bdd023.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="install.png"></p><p>ok了,看看你的blog文件是不是这样的,是的话就对了<br><img src="https://upload-images.jianshu.io/upload_images/5549640-ff6f52f6837e6ff4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="blog.png"></p><p>然后在介绍两个命令 ,以后经常要用到的</p><blockquote><p>hexo generate（可简写为hexo g）<br>hexo sever（可简写为hexo s）<br>hexo clean</p></blockquote><p><code>hexo g</code>: 编译,生成静态文件,也就是public文件夹的东西<br><code>hexo s</code>: 开启本地服务(以上两步的操作可以合并成hexo s -g)<br><code>hexo&#39; clean</code>:顾名思义就是清除缓存的意思了啦,这招一般在你改动之后网站没有变化时候用.</p><p>接下来看看 你博客的初步成果吧.<br>进入blog文件根目录:<br><code>Git Bash -&gt;$ hexo g</code><br> <code>$ hexo s</code></p><p><img src="https://upload-images.jianshu.io/upload_images/5549640-9e983a6bed9a4bbd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo g.png"></p><p><img src="https://upload-images.jianshu.io/upload_images/5549640-b3c2dbbc1c767dee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="localhost.png"></p><p>然后在你的浏览器输入<code>http://localhost:4000</code>,查看你的博客.<br><img src="https://upload-images.jianshu.io/upload_images/5549640-5918ee50f1c270cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Myblog.png"></p><blockquote><p>到此为止,你的个人博客就已经搭建完成了,是不是很简单</p></blockquote><p>好了,关于怎么用Hexo搭建个人博客站点就介绍到这里了,后面我还会继续介绍<a href>关于Hexo<br>的主题优化</a>,[搭建漂亮的博客]、<code>利用Markdown写出第一遍博文</code>、<code>SEO优化等等一系列的教程</code>,希望能够帮到更多的小伙伴.<br>1.<a href="https://www.jianshu.com/p/043a4ae7684d" target="_blank" rel="noopener">关于Hexo6.0搭建个人博客(进阶篇)</a><br>2.<a href="https://www.jianshu.com/p/52753aafd478" target="_blank" rel="noopener">关于Hexo6.0搭建个人博客(高级篇)</a></p><h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote><p>更多精彩文章请关注</p><ul><li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li><li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li><li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li><li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882/articles" target="_blank" rel="noopener">SegmentFault</a></li><li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li></ul></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;初识Hexo&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;什么是Hexo&quot;&gt;&lt;a href=&quot;#什么是Hexo&quot; class=&quot;headerlink&quot; title=&quot;什么是Hexo?&quot;&gt;&lt;/a&gt;&lt;code&gt;什么是Hexo?&lt;/code&gt;&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Hexo&lt;/code&gt;是一个快速，简单而强大的博客框架。您可以使用&lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Markdown&lt;/a&gt;（或其他语言）编写文章，Hexo可以在几秒钟内生成具有美丽主题的静态文件。&lt;br&gt;对的,就是这么简单明了,其实就是一个搭建博客的工具而已,也不是什么高深莫测的东西,接下来我将带着大家一步步徒手搭建属于自己的博客.&lt;code&gt;说明:(这里说的搭建属于自己的博客,并不是指搭建属于自己的独一无二的博客,那是前端的本事了,我们这里只说最基本的)&lt;/code&gt;&lt;/p&gt;
-&lt;h1 id=&quot;1-安装Hexo&quot;&gt;&lt;a href=&quot;#1-安装Hexo&quot; class=&quot;headerlink&quot; title=&quot;1.安装Hexo&quot;&gt;&lt;/a&gt;1.安装Hexo&lt;/h1&gt;&lt;p&gt;建立Hexo只需要几分钟,安装Hexo非常简单。但是，您首先需要安装其他一些东西.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://nodejs.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Node.js&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://git-scm.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Git&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;如果你的电脑已经有这些，祝贺！只需使用npm安装Hexo：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ npm install -g hexo-cli&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;如果没有,那就一起来看下面吧(&lt;code&gt;这里只说windows的安装,因为本人太穷,买不起mac啊o(╥﹏╥)o&lt;/code&gt;)&lt;/p&gt;
-&lt;h3 id=&quot;安装Git&quot;&gt;&lt;a href=&quot;#安装Git&quot; class=&quot;headerlink&quot; title=&quot;安装Git&quot;&gt;&lt;/a&gt;安装Git&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/5549640-6357f7847468f282.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;安装git.png&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Windows：下载并安装&lt;a href=&quot;https://git-scm.com/download/win&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;git&lt;/a&gt;。&lt;br&gt;一切按照默认走就行了,没什么特殊的地方.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;安装Node-js&quot;&gt;&lt;a href=&quot;#安装Node-js&quot; class=&quot;headerlink&quot; title=&quot;安装Node.js&quot;&gt;&lt;/a&gt;安装Node.js&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/5549640-affa652a4cf53b61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Nodejs安装.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
