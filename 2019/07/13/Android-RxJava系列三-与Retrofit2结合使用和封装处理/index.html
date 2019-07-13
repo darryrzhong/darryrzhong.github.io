@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Rxjava,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="darryrzhong" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前言本篇文章主要介绍Rxjava与Retrofit结合使用,对Rxjava和Retrofit不熟悉的可以去看我之前的两篇介绍  Android RxJava：基础介绍与使用 Android RxJava系列二: 常用拓展操作符 Android Retrofit 2.5.0使用基础详解  基本使用定义请求接口123456public interface GetRequest_Interface &amp;#">
+<meta name="keywords" content="Rxjava">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android RxJava系列三:  与Retrofit2结合使用和封装处理">
+<meta property="og:url" content="http://darryrzhong.xyz/2019/07/13/Android-RxJava系列三-与Retrofit2结合使用和封装处理/index.html">
+<meta property="og:site_name" content="darryrzhong">
+<meta property="og:description" content="前言本篇文章主要介绍Rxjava与Retrofit结合使用,对Rxjava和Retrofit不熟悉的可以去看我之前的两篇介绍  Android RxJava：基础介绍与使用 Android RxJava系列二: 常用拓展操作符 Android Retrofit 2.5.0使用基础详解  基本使用定义请求接口123456public interface GetRequest_Interface &amp;#">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-13T06:52:49.704Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android RxJava系列三:  与Retrofit2结合使用和封装处理">
+<meta name="twitter:description" content="前言本篇文章主要介绍Rxjava与Retrofit结合使用,对Rxjava和Retrofit不熟悉的可以去看我之前的两篇介绍  Android RxJava：基础介绍与使用 Android RxJava系列二: 常用拓展操作符 Android Retrofit 2.5.0使用基础详解  基本使用定义请求接口123456public interface GetRequest_Interface &amp;#">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://darryrzhong.xyz/2019/07/13/Android-RxJava系列三-与Retrofit2结合使用和封装处理/">
+
+
+
+
+
+  <title>Android RxJava系列三:  与Retrofit2结合使用和封装处理 | darryrzhong</title>
+  
+
+
+
+
+
+
+
+
+
+  <script>
+class Circle {
+    //创建对象
+    //以一个圆为对象
+    //设置随机的 x，y坐标，r半径，_mx，_my移动的距离
+    //this.r是创建圆的半径，参数越大半径越大
+    //this._mx,this._my是移动的距离，参数越大移动
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.r = Math.random() * 10 ;
+        this._mx = Math.random() ;
+        this._my = Math.random() ;
+
+    }
+
+    //canvas 画圆和画直线
+    //画圆就是正常的用canvas画一个圆
+    //画直线是两个圆连线，为了避免直线过多，给圆圈距离设置了一个值，距离很远的圆圈，就不做连线处理
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+        ctx.arc(this.x, this.y, this.r, 0, 360)
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+        ctx.fill();
+    }
+
+    drawLine(ctx, _circle) {
+        let dx = this.x - _circle.x;
+        let dy = this.y - _circle.y;
+        let d = Math.sqrt(dx * dx + dy * dy)
+        if (d < 150) {
+            ctx.beginPath();
+            //开始一条路径，移动到位置 this.x,this.y。创建到达位置 _circle.x,_circle.y 的一条线：
+            ctx.moveTo(this.x, this.y);   //起始点
+            ctx.lineTo(_circle.x, _circle.y);   //终点
+            ctx.closePath();
+            ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+            ctx.stroke();
+        }
+    }
+
+    // 圆圈移动
+    // 圆圈移动的距离必须在屏幕范围内
+    move(w, h) {
+        this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
+        this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
+        this.x += this._mx / 2;
+        this.y += this._my / 2;
+    }
+}
+//鼠标点画圆闪烁变动
+class currentCirle extends Circle {
+    constructor(x, y) {
+        super(x, y)
+    }
+
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //注释内容为鼠标焦点的地方圆圈半径变化
+        //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+        this.r = 8;
+        ctx.arc(this.x, this.y, this.r, 0, 360);
+        ctx.closePath();
+        //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+        ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'
+        ctx.fill();
+
+    }
+}
+//更新页面用requestAnimationFrame替代setTimeout
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let w = canvas.width = canvas.offsetWidth;
+let h = canvas.height = canvas.offsetHeight;
+let circles = [];
+let current_circle = new currentCirle(0, 0)
+
+let draw = function () {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].move(w, h);
+        circles[i].drawCircle(ctx);
+        for (j = i + 1; j < circles.length; j++) {
+            circles[i].drawLine(ctx, circles[j])
+        }
+    }
+    if (current_circle.x) {
+        current_circle.drawCircle(ctx);
+        for (var k = 1; k < circles.length; k++) {
+            current_circle.drawLine(ctx, circles[k])
+        }
+    }
+    requestAnimationFrame(draw)
+}
+
+let init = function (num) {
+    for (var i = 0; i < num; i++) {
+        circles.push(new Circle(Math.random() * w, Math.random() * h));
+    }
+    draw();
+}
+window.addEventListener('load', init(60));
+window.onmousemove = function (e) {
+    e = e || window.event;
+    current_circle.x = e.clientX;
+    current_circle.y = e.clientY;
+}
+window.onmouseout = function () {
+    current_circle.x = null;
+    current_circle.y = null;
+
+};
+</script>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/darryrzhong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">darryrzhong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">时光，不会辜负每一个平静努力的人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br>
+            
+            摄影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-music">
+          <a href="/music/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br>
+            
+            音乐
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-welfare">
+          <a href="/welfare/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>
+            
+            福利
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            书单
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/07/13/Android-RxJava系列三-与Retrofit2结合使用和封装处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android RxJava系列三:  与Retrofit2结合使用和封装处理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-13T14:51:58+08:00">
+                2019-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/07/13/Android-RxJava系列三-与Retrofit2结合使用和封装处理/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/07/13/Android-RxJava系列三-与Retrofit2结合使用和封装处理/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/07/13/Android-RxJava系列三-与Retrofit2结合使用和封装处理/" class="leancloud_visitors" data-flag-title="Android RxJava系列三:  与Retrofit2结合使用和封装处理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇文章主要介绍Rxjava与Retrofit结合使用,对Rxjava和Retrofit不熟悉的可以去看我之前的两篇介绍</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/9cb743b98b84" target="_blank" rel="noopener">Android RxJava：基础介绍与使用</a></li>
+<li><a href="https://www.jianshu.com/p/063a133ccdbf" target="_blank" rel="noopener">Android RxJava系列二: 常用拓展操作符</a></li>
+<li><a href="https://www.jianshu.com/p/a8cecb30be38" target="_blank" rel="noopener">Android Retrofit 2.5.0使用基础详解</a></li>
+</ul>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="定义请求接口"><a href="#定义请求接口" class="headerlink" title="定义请求接口"></a>定义请求接口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public interface GetRequest_Interface &#123;</span><br><span class="line"></span><br><span class="line">    @POST(&quot;/app/auth/school/list&quot;)</span><br><span class="line">    Observable&lt;School&gt; postSchool(@Body RequestBody route);//根据学校名获取学校</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="创建-Retrofit接口实例"><a href="#创建-Retrofit接口实例" class="headerlink" title="创建 Retrofit接口实例"></a>创建 Retrofit接口实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">GetRequest_Interface request = new Retrofit.Builder()</span><br><span class="line">                .baseUrl(API.BASE_URL)</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())</span><br><span class="line">                .build().create(GetRequest_Interface.class);</span><br></pre></td></tr></table></figure>
+<h3 id="构建请求参数"><a href="#构建请求参数" class="headerlink" title="构建请求参数"></a>构建请求参数</h3><p>这里以请求体为Json 字符串为准</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">        map.put(key, value);</span><br><span class="line">        Gson gson=new Gson();</span><br><span class="line">        String strEntity = gson.toJson(map);</span><br><span class="line">        KLog.d(&quot;22222222RequestBody&quot;+strEntity);</span><br><span class="line">        RequestBody body = RequestBody.create(okhttp3.MediaType.parse(&quot;application/json;charset=UTF-8&quot;),strEntity);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="开始网络请求"><a href="#开始网络请求" class="headerlink" title="开始网络请求"></a>开始网络请求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Observable&lt;School&gt; observable = request.postSchool(body);</span><br><span class="line"></span><br><span class="line">observable.subscribeOn(Schedulers.io())</span><br><span class="line">               .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">               .subscribe(new Observer&lt;School&gt;() &#123;</span><br><span class="line">                   @Override</span><br><span class="line">                   public void onSubscribe(Disposable d) &#123;</span><br><span class="line">                      //此处做一些请求开始时的初始化事件,例如弹出一个dialog</span><br><span class="line">                   &#125;</span><br><span class="line"></span><br><span class="line">                   @Override</span><br><span class="line">                   public void onNext(School school) &#123;</span><br><span class="line">                       //此处处理请求成功业务(code == 200 )</span><br><span class="line">                   &#125;</span><br><span class="line"></span><br><span class="line">                   @Override</span><br><span class="line">                   public void onError(Throwable e) &#123;</span><br><span class="line">                      //此处处理请求失败业务(code != 200 )</span><br><span class="line">                   &#125;</span><br><span class="line"></span><br><span class="line">                   @Override</span><br><span class="line">                   public void onComplete() &#123;</span><br><span class="line">                    //请求完成处理业务,关闭请求队列,关闭dialog等</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>至此,Rxjava 与 Retrofit 结合基本使用就结束了,基于以上就可以愉快的完成网络请求工作了,是不是很方便简洁.</p>
+</blockquote>
+<p>当然了,对于我们的业务来说,不可能只有一次网络请求,基本处处都需要进去网络请求,而且也不可能如上面一样,如此简单. 一般我们的业务中都需要配置一些其他的参数信息,如果每一次网络请求都像上面那样写的话,当然是可以的,但是你的代码就太low了,也不符合编程规范. </p>
+<p>所以基于你会熟练的使用了的前提下,我们就需要将以上代码进行简单封装.</p>
+<blockquote>
+<p>关于封装我想多说一句</p>
+</blockquote>
+<p>对于封装,很多人都认为封装就是使代码足够简洁,逻辑足够清晰,符合开闭原则等,的确是这样的,但是需要使情况而定,如果你写的代码是服务广大人群,也就是开源项目,那就要考虑很多因素,做到足够开放.</p>
+<p> 但如果只是用到自己的项目里,那我们必须要明确一点,那就是定制化的前提是符合自己业务的需求,而不要过于封装.所以也就有为什么我们常常需要对别人的开源框架做二次封装,就是这个道理,没有最好的封装,只有最合适的封装.</p>
+<h2 id="封装篇"><a href="#封装篇" class="headerlink" title="封装篇"></a>封装篇</h2><h3 id="Url统一存放"><a href="#Url统一存放" class="headerlink" title="Url统一存放"></a>Url统一存放</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public interface API &#123;</span><br><span class="line"></span><br><span class="line">   //此处存放所有的BaseUrl</span><br><span class="line">    String BASE_URL = &quot;http://xx.xxx.xx.225:8080&quot;; //核心后台API</span><br><span class="line">    String BASE_SCHOOL_URL = &quot;http://xx.xxx.xx.225:8081&quot;; //学校API</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="存放所有请求api"><a href="#存放所有请求api" class="headerlink" title="存放所有请求api"></a>存放所有请求api</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public interface GetRequest_Interface &#123;</span><br><span class="line"></span><br><span class="line">    /*-------------------------------------所有网络请求 API-------------------------------------------------------*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @POST(&quot;/app/auth/captcha&quot;)</span><br><span class="line">    Observable&lt;Phone&gt; postPhone(@Body RequestBody route);  //获取验证码</span><br><span class="line">    @POST(&quot;/app/auth/login&quot;)</span><br><span class="line">    Observable&lt;RegistLogin&gt; postRegist(@Body RequestBody route);//登录注册</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="封装处理网络请求所需的参数信息"><a href="#封装处理网络请求所需的参数信息" class="headerlink" title="封装处理网络请求所需的参数信息"></a>封装处理网络请求所需的参数信息</h3><ul>
+<li>初始化 配置 OkHttpClient</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">根据自己业务需求初始化OkHttpClient</span><br><span class="line"></span><br><span class="line"> OkHttpClient client = new OkHttpClient.Builder()</span><br><span class="line">                .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)  //l 连接超时时间</span><br><span class="line">                .writeTimeout(DEFAULT_READ_TIME_OUT,TimeUnit.SECONDS)  //读写超时</span><br><span class="line">                .readTimeout(DEFAULT_READ_TIME_OUT,TimeUnit.SECONDS)   //读取超时</span><br><span class="line">                .retryOnConnectionFailure(true)  //失败重连</span><br><span class="line">                .addNetworkInterceptor(tokenInterceptor)  //添加网络拦截器</span><br><span class="line">                .addInterceptor(tokenRespInterceptor)</span><br><span class="line">                //.authenticator(authenticator)  //授权认证</span><br><span class="line">                .build();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里需要用到OkHttp3的拦截器相关内容,不熟悉的可以先去了解</p>
+</blockquote>
+<ul>
+<li>统一添加公共请求头</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Interceptor tokenInterceptor = new Interceptor() &#123;  //全局拦截器，</span><br><span class="line">           @Override</span><br><span class="line">           public okhttp3.Response intercept(Chain chain) throws IOException &#123;</span><br><span class="line">               Request originalRequest = chain.request();//获取原始请求</span><br><span class="line">               Request.Builder requestBuilder = originalRequest.newBuilder() //建立新的请求</span><br><span class="line">                       .addHeader(&quot;Accept&quot;, &quot;application/json&quot;)</span><br><span class="line">                       .addHeader(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)</span><br><span class="line">                       .removeHeader(&quot;User-Agent&quot;)</span><br><span class="line">                       .addHeader(&quot;User-Agent&quot;,BaseUtils.getUserAgent())</span><br><span class="line">                       .method(originalRequest.method(),originalRequest.body());</span><br><span class="line">               return chain.proceed(requestBuilder.build()); //重新请求</span><br></pre></td></tr></table></figure>
+<ul>
+<li>全局动态添加Token </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> Interceptor tokenInterceptor = new Interceptor() &#123;  //全局拦截器，往请求头部添加 token 字段，实现了全局添加 token</span><br><span class="line">            @Override</span><br><span class="line">            public okhttp3.Response intercept(Chain chain) throws IOException &#123;</span><br><span class="line">                Request originalRequest = chain.request();//获取原始请求</span><br><span class="line">                Request.Builder requestBuilder = originalRequest.newBuilder() //建立新的请求</span><br><span class="line">                        .addHeader(&quot;Accept&quot;, &quot;application/json&quot;)</span><br><span class="line">                        .addHeader(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)</span><br><span class="line">                        .removeHeader(&quot;User-Agent&quot;)</span><br><span class="line">                        .addHeader(&quot;User-Agent&quot;,BaseUtils.getUserAgent())</span><br><span class="line">                        .method(originalRequest.method(),originalRequest.body());</span><br><span class="line">//                Log.e(&quot;----------------&quot;,originalRequest.body().toString());</span><br><span class="line">                Request tokenRequest = null; //带有token的请求</span><br><span class="line">                if (StringUtils.isEmpty(App.mmkv.decodeString(BaseConfig.TOKEN,null)))&#123;</span><br><span class="line">                    return chain.proceed(requestBuilder.build());</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                tokenRequest = requestBuilder</span><br><span class="line">                        .header(&quot;Authorization&quot;,&quot;Bearer &quot;+App.mmkv.decodeString(BaseConfig.TOKEN,null))</span><br><span class="line">                        .build();</span><br><span class="line">                return chain.proceed(tokenRequest);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+<p>这里使用了腾讯的MMKV框架进去本地存储Token,因为我们一开始是没有拿到Token的,所以需要进行动态添加</p>
+<ul>
+<li>自动判断token是否过期,过期无感刷新</li>
+</ul>
+<p>在进行网络交互的时候,服务端签发的Token是有时效性的而且一般比较短,过了有效期就需要重新请求,而这个过程我们不能让用户察觉到,所以需要实现用户无感知的情况下刷新请求新的Token.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">  Interceptor tokenRespInterceptor = new Interceptor() &#123; //拦截返回体  判断token是否过期.过期重写拉取新的token</span><br><span class="line">            @Override</span><br><span class="line">            public Response intercept(Chain chain) throws IOException &#123;</span><br><span class="line">                Request request = chain.request();</span><br><span class="line">                Response response = chain.proceed(request);</span><br><span class="line">//                KLog.d( response.body().string());</span><br><span class="line">                if (isTokenExpired(response))&#123;</span><br><span class="line">                    KLog.d( &quot;自动刷新Token,然后重新请求数据&quot;);</span><br><span class="line">                    //同步请求方式，获取最新的Token</span><br><span class="line">                    String newToken = getNewToken();</span><br><span class="line">                   if (newToken != null)&#123;</span><br><span class="line">                        //使用新的Token，创建新的请求</span><br><span class="line">                        Request newRequest = chain.request()</span><br><span class="line">                                .newBuilder()</span><br><span class="line">                                .header(&quot;Authorization&quot;, &quot;Bearer &quot; + newToken)</span><br><span class="line">                                .build();</span><br><span class="line">                        //重新请求</span><br><span class="line">                        return chain.proceed(newRequest);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                return response.newBuilder().body(ResponseBody.create(MediaType.parse(&quot;UTF-8&quot;),body)).build();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+<p>这里需要根据服务端约定好的过期规则进去判断,这里简单示范一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 根据Response，判断Token是否失效</span><br><span class="line"> *</span><br><span class="line"> * @param response</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">private boolean isTokenExpired(Response response) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        body = response.body().string();</span><br><span class="line">        JSONObject object = new JSONObject(body);</span><br><span class="line">        message = object.getString(&quot;Message&quot;);</span><br><span class="line">        code = object.getInt(&quot;Code&quot;);</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; catch (JSONException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    if (&quot;Token is expired&quot;.equals(message)&amp;&amp; code == 1) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>获取新的Token</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">  /**</span><br><span class="line">     * 同步请求方式，获取最新的Token</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    private String getNewToken() &#123;</span><br><span class="line">        // 通过获取token的接口，同步请求接口</span><br><span class="line">        GetRequest_Interface request = new Retrofit.Builder()</span><br><span class="line">                .baseUrl(API.BASE_URL)</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())</span><br><span class="line">                .build().create(GetRequest_Interface.class);</span><br><span class="line">//        KLog.e(Remember.getString(&quot;refresh_token&quot;,null));</span><br><span class="line">        RequestBody body = BaseUtils.convertJson(BaseUtils.paramsMap(&quot;refresh_token&quot;,App.mmkv.decodeString(BaseConfig.REFRESH_TOKEN,null)));</span><br><span class="line">        Call&lt;RefreshToken&gt; call = request.postRefreshToken(body);</span><br><span class="line">        try &#123;</span><br><span class="line">            response = call.execute();</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        KLog.e(response.body().getCode()+response.body().getMessage());</span><br><span class="line"></span><br><span class="line">        if (response.code() == 200 &amp;&amp;response.body().getCode() ==0)&#123;</span><br><span class="line">            newToken = response.body().getData().getToken();</span><br><span class="line">            KLog.e(&quot;---------------&quot;+newToken);</span><br><span class="line">            App.mmkv.encode(BaseConfig.TOKEN,newToken);</span><br><span class="line">            App.mmkv.encode(BaseConfig.SCHOOL_TOKEN,response.body().getData().getSchool_token());</span><br><span class="line">            App.mmkv.encode(BaseConfig.EXPIRE_IN,response.body().getData().getExpire_in());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return newToken;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>初始化 配置 Retrofit</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">retrofit = new Retrofit.Builder()</span><br><span class="line">              .client(client)</span><br><span class="line">              .baseUrl(API.BASE_URL)</span><br><span class="line">              .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">              .addCallAdapterFactory(RxJava2CallAdapterFactory.create())</span><br><span class="line">              .build();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>至此,关于网络请求的相关参数信息就基本配置完成</p>
+</blockquote>
+<p>将上述配置步骤进行封装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created by darryrzhong</span><br><span class="line"> * </span><br><span class="line"> *</span><br><span class="line"> * 统一的Retrofit入口</span><br><span class="line"> */</span><br><span class="line">public class RetrofitHelper &#123;</span><br><span class="line"></span><br><span class="line">    private static final int DEFAULT_TIME_OUT = 5;//超时时间 5s</span><br><span class="line">    private static final int DEFAULT_READ_TIME_OUT = 10;</span><br><span class="line">    private final Retrofit retrofit;</span><br><span class="line">    private String body;</span><br><span class="line">    private retrofit2.Response&lt;RefreshToken&gt; response;</span><br><span class="line">    private String newToken;</span><br><span class="line">    private String message;</span><br><span class="line">    private int code;</span><br><span class="line"></span><br><span class="line">    private RetrofitHelper()&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Interceptor tokenInterceptor = new Interceptor() &#123;  //全局拦截器，往请求头部添加 token 字段，实现了全局添加 token</span><br><span class="line">            @Override</span><br><span class="line">            public okhttp3.Response intercept(Chain chain) throws IOException &#123;</span><br><span class="line">                Request originalRequest = chain.request();//获取原始请求</span><br><span class="line">                Request.Builder requestBuilder = originalRequest.newBuilder() //建立新的请求</span><br><span class="line">                        .addHeader(&quot;Accept&quot;, &quot;application/json&quot;)</span><br><span class="line">                        .addHeader(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)</span><br><span class="line">                        .removeHeader(&quot;User-Agent&quot;)</span><br><span class="line">                        .addHeader(&quot;User-Agent&quot;,BaseUtils.getUserAgent())</span><br><span class="line">                        .method(originalRequest.method(),originalRequest.body());</span><br><span class="line">//                Log.e(&quot;----------------&quot;,originalRequest.body().toString());</span><br><span class="line">                Request tokenRequest = null; //带有token的请求</span><br><span class="line">                if (StringUtils.isEmpty(App.mmkv.decodeString(BaseConfig.TOKEN,null)))&#123;</span><br><span class="line">                    return chain.proceed(requestBuilder.build());</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                tokenRequest = requestBuilder</span><br><span class="line">                        .header(&quot;Authorization&quot;,&quot;Bearer &quot;+App.mmkv.decodeString(BaseConfig.TOKEN,null))</span><br><span class="line">                        .build();</span><br><span class="line">                return chain.proceed(tokenRequest);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Interceptor tokenRespInterceptor = new Interceptor() &#123; //拦截返回体  判断token是否过期.过期重写拉取新的token</span><br><span class="line">            @Override</span><br><span class="line">            public Response intercept(Chain chain) throws IOException &#123;</span><br><span class="line">                Request request = chain.request();</span><br><span class="line">                Response response = chain.proceed(request);</span><br><span class="line">//                KLog.d( response.body().string());</span><br><span class="line">                if (isTokenExpired(response))&#123;</span><br><span class="line">                    KLog.d( &quot;自动刷新Token,然后重新请求数据&quot;);</span><br><span class="line">                    //同步请求方式，获取最新的Token</span><br><span class="line">                    String newToken = getNewToken();</span><br><span class="line">                    if (newToken != null)&#123;</span><br><span class="line">                        //使用新的Token，创建新的请求</span><br><span class="line">                        Request newRequest = chain.request()</span><br><span class="line">                                .newBuilder()</span><br><span class="line">                                .header(&quot;Authorization&quot;, &quot;Bearer &quot; + newToken)</span><br><span class="line">                                .build();</span><br><span class="line">                        //重新请求</span><br><span class="line">                        return chain.proceed(newRequest);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                return response.newBuilder().body(ResponseBody.create(MediaType.parse(&quot;UTF-8&quot;),body)).build();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        OkHttpClient client = new OkHttpClient.Builder()</span><br><span class="line">                .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)  //l 连接超时时间</span><br><span class="line">                .writeTimeout(DEFAULT_READ_TIME_OUT,TimeUnit.SECONDS)  //读写超时</span><br><span class="line">                .readTimeout(DEFAULT_READ_TIME_OUT,TimeUnit.SECONDS)   //读取超时</span><br><span class="line">                .retryOnConnectionFailure(true)  //失败重连</span><br><span class="line">                .addNetworkInterceptor(tokenInterceptor)  //添加网络拦截器</span><br><span class="line">                .addInterceptor(tokenRespInterceptor)</span><br><span class="line">                //.authenticator(authenticator)  //授权认证</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        retrofit = new Retrofit.Builder()</span><br><span class="line">                .client(client)</span><br><span class="line">                .baseUrl(API.BASE_URL)</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 同步请求方式，获取最新的Token</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    private String getNewToken() &#123;</span><br><span class="line">        // 通过获取token的接口，同步请求接口</span><br><span class="line">        GetRequest_Interface request = new Retrofit.Builder()</span><br><span class="line">                .baseUrl(API.BASE_URL)</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())</span><br><span class="line">                .build().create(GetRequest_Interface.class);</span><br><span class="line">        RequestBody body = BaseUtils.convertJson(BaseUtils.paramsMap(&quot;refresh_token&quot;,App.mmkv.decodeString(BaseConfig.REFRESH_TOKEN,null)));</span><br><span class="line">        Call&lt;RefreshToken&gt; call = request.postRefreshToken(body);</span><br><span class="line">        try &#123;</span><br><span class="line">            response = call.execute();</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        KLog.e(response.body().getCode()+response.body().getMessage());</span><br><span class="line"></span><br><span class="line">        if (response.code() == 200 &amp;&amp;response.body().getCode() ==0)&#123;</span><br><span class="line">            newToken = response.body().getData().getToken();</span><br><span class="line">            KLog.e(&quot;---------------&quot;+newToken);</span><br><span class="line">            App.mmkv.encode(BaseConfig.TOKEN,newToken);</span><br><span class="line">            App.mmkv.encode(BaseConfig.SCHOOL_TOKEN,response.body().getData().getSchool_token());</span><br><span class="line">            App.mmkv.encode(BaseConfig.EXPIRE_IN,response.body().getData().getExpire_in());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return newToken;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 根据Response，判断Token是否失效</span><br><span class="line">     *</span><br><span class="line">     * @param response</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    private boolean isTokenExpired(Response response) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            body = response.body().string();</span><br><span class="line">            JSONObject object = new JSONObject(body);</span><br><span class="line">            message = object.getString(&quot;Message&quot;);</span><br><span class="line">            code = object.getInt(&quot;Code&quot;);</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (JSONException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        if (&quot;Token is expired&quot;.equals(message)&amp;&amp; code == 1) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private static class SingletonHolder&#123;</span><br><span class="line">        private static final RetrofitHelper INSTANCE = new RetrofitHelper();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取RetrofitServiceManager</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    public static RetrofitHelper getInstance()&#123;</span><br><span class="line">        return SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">     * 获取对应的Service</span><br><span class="line">     * @param service Service 的 class</span><br><span class="line">     * @param &lt;T&gt;</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    public  &lt;T&gt; T create(Class&lt;T&gt; service)&#123;</span><br><span class="line">        return retrofit.create(service);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果业务中有多个BaseUrl的话,可以直接写个方法暴露出去就好了.</p>
+<h3 id="统一处理请求结果的BaseObserver"><a href="#统一处理请求结果的BaseObserver" class="headerlink" title="统一处理请求结果的BaseObserver"></a>统一处理请求结果的BaseObserver</h3><ul>
+<li>首先创建一个请求结果的回调 ResponseCallBack</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface ResponseCallBack&lt;T&gt; &#123;</span><br><span class="line">    void onSuccess(T t);</span><br><span class="line"></span><br><span class="line">    void onFault(String errorMsg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建一个请求开始时的初始化回调  ProgressListener</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface ProgressListener &#123;</span><br><span class="line">    void startProgress();</span><br><span class="line"></span><br><span class="line">    void cancelProgress();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建统一处理结果的BaseObserver</li>
+</ul>
+<p>创建BaseObserver,在回调中进行业务处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public  class BaseObserver&lt;T&gt; implements Observer&lt;T&gt; &#123;</span><br><span class="line">        private ResponseCallBack responseCallBack;</span><br><span class="line">        private ProgressListener progressListener;</span><br><span class="line">        private Disposable disposable;</span><br><span class="line"></span><br><span class="line">public BaseObserver(ResponseCallBack responseCallBack,ProgressListener progressListener)&#123;</span><br><span class="line">     this.responseCallBack = responseCallBack;</span><br><span class="line">     this.progressListener = progressListener;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在 onSubscribe () 方法中进行请求开始时的初始化操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">  public void onSubscribe(Disposable d) &#123;</span><br><span class="line">       this.disposable = d;</span><br><span class="line">       if (progressListener != null)&#123;</span><br><span class="line">           progressListener.startProgress();</span><br><span class="line">       &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>在 onNext () 方法中处理请求成功业务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">    public void onNext(T t) &#123;</span><br><span class="line">         responseCallBack.onSuccess(t);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>在onError () 方法中统一处理请求失败信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public void onError(Throwable e) &#123;</span><br><span class="line">       KLog.d(e.getMessage());</span><br><span class="line">       try &#123;</span><br><span class="line"></span><br><span class="line">           if (e instanceof SocketTimeoutException) &#123;//请求超时</span><br><span class="line">               responseCallBack.onFault(&quot;请求超时,请稍后再试&quot;);</span><br><span class="line">           &#125; else if (e instanceof ConnectException) &#123;//网络连接超时</span><br><span class="line">               responseCallBack.onFault(&quot;网络连接超时,请检查网络状态&quot;);</span><br><span class="line">           &#125; else if (e instanceof SSLHandshakeException) &#123;//安全证书异常</span><br><span class="line">               responseCallBack.onFault(&quot;安全证书异常&quot;);</span><br><span class="line">           &#125; else if (e instanceof HttpException) &#123;//请求的地址不存在</span><br><span class="line">               int code = ((HttpException) e).code();</span><br><span class="line">               if (code == 504) &#123;</span><br><span class="line">                   responseCallBack.onFault(&quot;网络异常，请检查您的网络状态&quot;);</span><br><span class="line">               &#125; else if (code == 404) &#123;</span><br><span class="line">                   responseCallBack.onFault(&quot;请求的地址不存在&quot;);</span><br><span class="line">               &#125; else &#123;</span><br><span class="line">                   responseCallBack.onFault(&quot;请求失败&quot;);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125; else if (e instanceof UnknownHostException) &#123;//域名解析失败</span><br><span class="line">               responseCallBack.onFault(&quot;域名解析失败&quot;);</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">               responseCallBack.onFault(&quot;error:&quot; + e.getMessage());</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; catch (Exception e2) &#123;</span><br><span class="line">           e2.printStackTrace();</span><br><span class="line">       &#125; finally &#123;</span><br><span class="line">           Log.e(&quot;OnSuccessAndFaultSub&quot;, &quot;error:&quot; + e.getMessage());</span><br><span class="line">           if (disposable !=null &amp;&amp; !disposable.isDisposed())&#123; //事件完成取消订阅</span><br><span class="line">               disposable.dispose();</span><br><span class="line">           &#125;</span><br><span class="line">           if (progressListener!=null)&#123;</span><br><span class="line">               progressListener.cancelProgress();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>在  onComplete () 中处理请求成功结束后的业务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public void onComplete() &#123;</span><br><span class="line">       if (disposable !=null &amp;&amp; !disposable.isDisposed())&#123; //事件完成取消订阅</span><br><span class="line">           disposable.dispose();</span><br><span class="line">       &#125;</span><br><span class="line">       if (progressListener!=null)&#123;</span><br><span class="line">           progressListener.cancelProgress();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by darryrzhong</span><br><span class="line"> * </span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public  class BaseObserver&lt;T&gt; implements Observer&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line"> private ResponseCallBack responseCallBack;</span><br><span class="line"> private ProgressListener progressListener;</span><br><span class="line"> private Disposable disposable;</span><br><span class="line"></span><br><span class="line"> public BaseObserver(ResponseCallBack responseCallBack,ProgressListener progressListener)&#123;</span><br><span class="line">     this.responseCallBack = responseCallBack;</span><br><span class="line">     this.progressListener = progressListener;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onSubscribe(Disposable d) &#123;</span><br><span class="line">         this.disposable = d;</span><br><span class="line">         if (progressListener != null)&#123;</span><br><span class="line">             progressListener.startProgress();</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onNext(T t) &#123;</span><br><span class="line">         responseCallBack.onSuccess(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onError(Throwable e) &#123;</span><br><span class="line">        KLog.d(e.getMessage());</span><br><span class="line">        try &#123;</span><br><span class="line"></span><br><span class="line">            if (e instanceof SocketTimeoutException) &#123;//请求超时</span><br><span class="line">                responseCallBack.onFault(&quot;请求超时,请稍后再试&quot;);</span><br><span class="line">            &#125; else if (e instanceof ConnectException) &#123;//网络连接超时</span><br><span class="line">                responseCallBack.onFault(&quot;网络连接超时,请检查网络状态&quot;);</span><br><span class="line">            &#125; else if (e instanceof SSLHandshakeException) &#123;//安全证书异常</span><br><span class="line">                responseCallBack.onFault(&quot;安全证书异常&quot;);</span><br><span class="line">            &#125; else if (e instanceof HttpException) &#123;//请求的地址不存在</span><br><span class="line">                int code = ((HttpException) e).code();</span><br><span class="line">                if (code == 504) &#123;</span><br><span class="line">                    responseCallBack.onFault(&quot;网络异常，请检查您的网络状态&quot;);</span><br><span class="line">                &#125; else if (code == 404) &#123;</span><br><span class="line">                    responseCallBack.onFault(&quot;请求的地址不存在&quot;);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    responseCallBack.onFault(&quot;请求失败&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else if (e instanceof UnknownHostException) &#123;//域名解析失败</span><br><span class="line">                responseCallBack.onFault(&quot;域名解析失败&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                responseCallBack.onFault(&quot;error:&quot; + e.getMessage());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e2) &#123;</span><br><span class="line">            e2.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            Log.e(&quot;OnSuccessAndFaultSub&quot;, &quot;error:&quot; + e.getMessage());</span><br><span class="line">            if (disposable !=null &amp;&amp; !disposable.isDisposed())&#123; //事件完成取消订阅</span><br><span class="line">                disposable.dispose();</span><br><span class="line">            &#125;</span><br><span class="line">            if (progressListener!=null)&#123;</span><br><span class="line">                progressListener.cancelProgress();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onComplete() &#123;</span><br><span class="line">        if (disposable !=null &amp;&amp; !disposable.isDisposed())&#123; //事件完成取消订阅</span><br><span class="line">            disposable.dispose();</span><br><span class="line">        &#125;</span><br><span class="line">        if (progressListener!=null)&#123;</span><br><span class="line">            progressListener.cancelProgress();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>至此,统一处理结果的BaseObserver封装完毕</p>
+</blockquote>
+<h2 id="其他-请求传参-返回JSON"><a href="#其他-请求传参-返回JSON" class="headerlink" title="其他 (请求传参,返回JSON)"></a>其他 (请求传参,返回JSON)</h2><p>这里根据服务端接收数据不同而有不同方式,想要了解更多传参方式,可以自行去了解Retrofit的注解,这里只介绍向服务端传递Json数据.</p>
+<ul>
+<li>Json 数据格式<br>首先我们看一下标准的Json数据格式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">返回体:</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;Code&quot;: 0,</span><br><span class="line">    &quot;Data&quot;: &#123;</span><br><span class="line">        &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVC*********&quot;,</span><br><span class="line">        &quot;refresh_token&quot;: &quot;c9ced011-***************************&quot;,</span><br><span class="line">        &quot;expire_in&quot;: 1560330991,</span><br><span class="line">        &quot;student_id&quot;: 33</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;Message&quot;: &quot;登录成功&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">请求体:</span><br><span class="line"></span><br><span class="line">&#123;&quot;phone&quot;:&quot;13145214436&quot;,&quot;id&quot;:&quot;12345&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>返回体的数据解析就不说了,说说请求体怎么传递</p>
+<p>首先我们把最外面的{ } json 对象当做是一个 map 对象,这样是不是一下子就知道怎么转化了,对的,就是你想的那样.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">       map.put(&quot;phone&quot;, &quot;13145214436&quot;);</span><br><span class="line">       map.put(&quot;id&quot;, &quot;12345&quot;);</span><br></pre></td></tr></table></figure>
+<p>然后把map对象转化成json字符串,传给服务端就行了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">        Gson gson=new Gson();</span><br><span class="line">        String strEntity = gson.toJson(map);</span><br><span class="line">RequestBody body = RequestBody.create(okhttp3.MediaType.parse(&quot;application/json;charset=UTF-8&quot;),strEntity);</span><br></pre></td></tr></table></figure>
+<p>至于更复杂的请求体也是一样的做法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;school_id&quot;:1,</span><br><span class="line">  &quot;student_id&quot;:23,</span><br><span class="line">  &quot;start_time&quot;:&quot;2019-05-10 15:04:05&quot;,</span><br><span class="line">  &quot;end_time&quot;:&quot;2019-06-10 15:04:05&quot;,</span><br><span class="line">  &quot;points&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;longitude&quot;: 0,</span><br><span class="line">                    &quot;latitude&quot;: 0</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;longitude&quot;: 0,</span><br><span class="line">                    &quot;latitude&quot;: 0</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;longitude&quot;: 0,</span><br><span class="line">                    &quot;latitude&quot;: 0</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;longitude&quot;: 0,</span><br><span class="line">                    &quot;latitude&quot;: 0</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的请求体中有个json数组,数组里面又嵌套了json对象,还是一样的做法<br>把json数组看成是一个list,对的,有和上面一样的套路了是不是很简单,</p>
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><p>这里以登录业务做个简单示范</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> GetRequest_Interface request = RetrofitHelper.getInstance().create(GetRequest_Interface.class);  //request请求入口</span><br><span class="line"></span><br><span class="line"> HashMap&lt;String,Object&gt; params = new HashMap();</span><br><span class="line">           params.put(&quot;phone&quot;,phone);</span><br><span class="line">           params.put(&quot;id&quot;,id);</span><br><span class="line"> RequestBody body = BaseUtils.convertJson(params);</span><br><span class="line"></span><br><span class="line"> Observable&lt;RegistLogin&gt; observable= request.postRegist(body);</span><br><span class="line"></span><br><span class="line">observable.subscribeOn(Schedulers.io())</span><br><span class="line">                     .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                     .subscribe(new BaseObserver&lt;RegistLogin&gt;(new ResponseCallBack&lt;RegistLogin&gt;() &#123;</span><br><span class="line">                         @Override</span><br><span class="line">                         public void onSuccess(RegistLogin registLogin) &#123;</span><br><span class="line">                         //此处处理 code == 200 </span><br><span class="line">                         &#125;</span><br><span class="line"></span><br><span class="line">                         @Override</span><br><span class="line">                         public void onFault(String errorMsg) &#123;</span><br><span class="line">                              BaseUtils.showToast(mContext,errorMsg);</span><br><span class="line">                         &#125;</span><br><span class="line">                     &#125;, new ProgressListener() &#123;</span><br><span class="line">                         @Override</span><br><span class="line">                         public void startProgress() &#123;</span><br><span class="line">                             dialog = BaseUtils.showSpotsDialog(mContext,&quot;登录中&quot;);</span><br><span class="line">                             dialog.show();</span><br><span class="line">                         &#125;</span><br><span class="line"></span><br><span class="line">                         @Override</span><br><span class="line">                         public void cancelProgress() &#123;</span><br><span class="line">                            dialog.dismiss();</span><br><span class="line">                         &#125;</span><br><span class="line">                     &#125;));</span><br></pre></td></tr></table></figure>
+<p>这样一来,是不是代码明了简洁,代码质量明显提高了一个层次</p>
+<blockquote>
+<p>至此,Rxjava 和 Retrofit 结合使用 与封装就基本完成了,再次说明一下,没有最完美的封装,只有最适合自己业务的封装,所以,如果需要请进行自己的业务定制,这里只提供思路.</p>
+</blockquote>
+<p>欢迎关注作者<a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p>
+<h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote>
+<p>更多精彩文章请关注</p>
+<ul>
+<li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li>
+<li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li>
+<li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li>
+<li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882/articles" target="_blank" rel="noopener">SegmentFault</a></li>
+<li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+    
+</div>
+</div>
+ 
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.png" alt="darryrzhong 微信打赏">
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="darryrzhong 支付宝打赏">
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Rxjava/" rel="tag"><i class="fa fa-tag"></i> Rxjava</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/13/Android-RxJava系列二-常用拓展操作符/" rel="next" title="Android RxJava系列二:  常用拓展操作符">
+                <i class="fa fa-chevron-left"></i> Android RxJava系列二:  常用拓展操作符
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/13/Android-性能优化系列一-APK极致优化/" rel="prev" title="Android 性能优化系列一 :APK极致优化">
+                Android 性能优化系列一 :APK极致优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="darryrzhong">
+            
+              <p class="site-author-name" itemprop="name">darryrzhong</p>
+              <p class="site-description motion-element" itemprop="description">人必有痴，而后有成</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/darryrzhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/darryrzhong" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/b7fdf53ec0b9" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-book"></i>Jianshu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-spinner"></i>Juejin</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本使用"><span class="nav-number">1.1.</span> <span class="nav-text">基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义请求接口"><span class="nav-number">1.1.1.</span> <span class="nav-text">定义请求接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Retrofit接口实例"><span class="nav-number">1.1.2.</span> <span class="nav-text">创建 Retrofit接口实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建请求参数"><span class="nav-number">1.1.3.</span> <span class="nav-text">构建请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始网络请求"><span class="nav-number">1.1.4.</span> <span class="nav-text">开始网络请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装篇"><span class="nav-number">1.2.</span> <span class="nav-text">封装篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Url统一存放"><span class="nav-number">1.2.1.</span> <span class="nav-text">Url统一存放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存放所有请求api"><span class="nav-number">1.2.2.</span> <span class="nav-text">存放所有请求api</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装处理网络请求所需的参数信息"><span class="nav-number">1.2.3.</span> <span class="nav-text">封装处理网络请求所需的参数信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统一处理请求结果的BaseObserver"><span class="nav-number">1.2.4.</span> <span class="nav-text">统一处理请求结果的BaseObserver</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他-请求传参-返回JSON"><span class="nav-number">1.3.</span> <span class="nav-text">其他 (请求传参,返回JSON)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用示例"><span class="nav-number">1.4.</span> <span class="nav-text">使用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请赏个小红心！因为你的鼓励是我写作的最大动力！"><span class="nav-number">1.4.1.</span> <span class="nav-text">请赏个小红心！因为你的鼓励是我写作的最大动力！</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">darryrzhong</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+
+ <!-- <span class="post-meta-divider">|</span>-->
+
+
+
+  <!--<div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytxCyGhU';
+      var conf = '90b283bdb7ccb472f325f3c891156b33';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("29xnQ1C2kcwORHYYn7xsWTnS-gzGzoHsz", "Rq1Gk75oRwH78BryWUL4oYzj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
