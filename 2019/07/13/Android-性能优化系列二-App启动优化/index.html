@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Retrofit,">
+  <meta name="keywords" content="性能优化,">
 
 
 
@@ -82,20 +82,24 @@
 
 
 
-<meta name="description" content="前言 在Andrroid开发中，网络请求必不可少 而在Android所有网络请求库中，Retrofit是最受开发者欢迎的一个网络请求库  retrofit:2.5.0 官方文档 retrofit:2.5.0 - github 简介 Retrofit是Square公司开发的一款针对Android网络请求的框架,遵循Restful设计风格,底层基于OkHttp.  功能 支持同步/异步网络请求 支持多">
-<meta name="keywords" content="Retrofit">
+<meta name="description" content="#前言本篇文章主要针对 Android性能优化 中App的启动优化 App启动,相信大家都是非常熟悉了,那为何我们需要对App启动做优化呢,这里就要先对我们Android 从开机到启动我们的App进入主页面这一流程做一个简单的阐述了. 一、Android启动流程我们先来看一张流程图  首先呢,我们Android手机开机时是先加载一个Boot程序,有点类似Windows开机时的开机引导程序,然后通过">
+<meta name="keywords" content="性能优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Retrofit 2.5.0使用基础详解">
-<meta property="og:url" content="http://darryrzhong.xyz/2019/03/28/Android-Retrofit-2-5-0使用基础详解/index.html">
+<meta property="og:title" content="Android 性能优化系列二 : App启动优化">
+<meta property="og:url" content="http://darryrzhong.xyz/2019/07/13/Android-性能优化系列二-App启动优化/index.html">
 <meta property="og:site_name" content="darryrzhong">
-<meta property="og:description" content="前言 在Andrroid开发中，网络请求必不可少 而在Android所有网络请求库中，Retrofit是最受开发者欢迎的一个网络请求库  retrofit:2.5.0 官方文档 retrofit:2.5.0 - github 简介 Retrofit是Square公司开发的一款针对Android网络请求的框架,遵循Restful设计风格,底层基于OkHttp.  功能 支持同步/异步网络请求 支持多">
+<meta property="og:description" content="#前言本篇文章主要针对 Android性能优化 中App的启动优化 App启动,相信大家都是非常熟悉了,那为何我们需要对App启动做优化呢,这里就要先对我们Android 从开机到启动我们的App进入主页面这一流程做一个简单的阐述了. 一、Android启动流程我们先来看一张流程图  首先呢,我们Android手机开机时是先加载一个Boot程序,有点类似Windows开机时的开机引导程序,然后通过">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-93219ec2c71748f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-28T11:38:33.776Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-33fc4dabf7839c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-2c04c3ec92759272.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-5feb833ca674709e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-8735fd4be8a1fd79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-8215ca9d6d469d44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/240">
+<meta property="og:updated_time" content="2019-07-13T09:36:48.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Retrofit 2.5.0使用基础详解">
-<meta name="twitter:description" content="前言 在Andrroid开发中，网络请求必不可少 而在Android所有网络请求库中，Retrofit是最受开发者欢迎的一个网络请求库  retrofit:2.5.0 官方文档 retrofit:2.5.0 - github 简介 Retrofit是Square公司开发的一款针对Android网络请求的框架,遵循Restful设计风格,底层基于OkHttp.  功能 支持同步/异步网络请求 支持多">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5549640-93219ec2c71748f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="Android 性能优化系列二 : App启动优化">
+<meta name="twitter:description" content="#前言本篇文章主要针对 Android性能优化 中App的启动优化 App启动,相信大家都是非常熟悉了,那为何我们需要对App启动做优化呢,这里就要先对我们Android 从开机到启动我们的App进入主页面这一流程做一个简单的阐述了. 一、Android启动流程我们先来看一张流程图  首先呢,我们Android手机开机时是先加载一个Boot程序,有点类似Windows开机时的开机引导程序,然后通过">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5549640-33fc4dabf7839c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -125,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://darryrzhong.xyz/2019/03/28/Android-Retrofit-2-5-0使用基础详解/">
+  <link rel="canonical" href="http://darryrzhong.xyz/2019/07/13/Android-性能优化系列二-App启动优化/">
 
 
 
 
 
-  <title>Android Retrofit 2.5.0使用基础详解 | darryrzhong</title>
+  <title>Android 性能优化系列二 : App启动优化 | darryrzhong</title>
   
 
 
@@ -438,7 +442,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/28/Android-Retrofit-2-5-0使用基础详解/">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/07/13/Android-性能优化系列二-App启动优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -455,7 +459,7 @@ window.onmouseout = function () {
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android Retrofit 2.5.0使用基础详解</h1>
+          <h1 class="post-title" itemprop="name headline">Android 性能优化系列二 : App启动优化</h1>
         
 
         <div class="post-meta">
@@ -467,8 +471,8 @@ window.onmouseout = function () {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-28T19:37:41+08:00">
-                2019-03-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-13T17:35:51+08:00">
+                2019-07-13
               </time>
             
 
@@ -509,8 +513,8 @@ window.onmouseout = function () {
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2019/03/28/Android-Retrofit-2-5-0使用基础详解/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/03/28/Android-Retrofit-2-5-0使用基础详解/" itemprop="commentsCount"></span>
+                <a href="/2019/07/13/Android-性能优化系列二-App启动优化/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/07/13/Android-性能优化系列二-App启动优化/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -518,7 +522,7 @@ window.onmouseout = function () {
 
           
           
-             <span id="/2019/03/28/Android-Retrofit-2-5-0使用基础详解/" class="leancloud_visitors" data-flag-title="Android Retrofit 2.5.0使用基础详解">
+             <span id="/2019/07/13/Android-性能优化系列二-App启动优化/" class="leancloud_visitors" data-flag-title="Android 性能优化系列二 : App启动优化">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -581,94 +585,55 @@ window.onmouseout = function () {
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
-<li>在Andrroid开发中，网络请求必不可少</li>
-<li>而在Android所有网络请求库中，<code>Retrofit</code>是最受开发者欢迎的一个网络请求库</li>
-</ul>
-<p><a href="https://square.github.io/retrofit/" target="_blank" rel="noopener">retrofit:2.5.0 官方文档</a></p>
-<p><a href="https://github.com/square/retrofit" target="_blank" rel="noopener">retrofit:2.5.0 - github</a></p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
-<li><code>Retrofit</code>是Square公司开发的一款针对Android网络请求的框架,遵循Restful设计风格,底层基于OkHttp.</li>
-</ul>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
-<li>支持同步/异步网络请求</li>
-<li>支持多种数据的解析&amp;序列化格式(Gson、json、XML等等)</li>
-<li>通过注解配置网络请求参数</li>
-<li>提供对Rxjava的支持</li>
-<li>高度解耦,使用方便</li>
-</ul>
-<h2 id="对比其他网络请求框架"><a href="#对比其他网络请求框架" class="headerlink" title="对比其他网络请求框架"></a>对比其他网络请求框架</h2><ul>
-<li>性能最好,速度最快</li>
-<li>高度封装导致扩展性差</li>
-<li>简洁易用,代码简化</li>
-<li>解耦彻底,职责细分</li>
-<li>易与其他框架联用(Rxjava)</li>
-</ul>
-<a id="more"></a> 
-<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
-<li>任何场景下建议优先使用</li>
-</ul>
-<h2 id="网络请求流程"><a href="#网络请求流程" class="headerlink" title="网络请求流程"></a>网络请求流程</h2><ul>
-<li>App应用程序通过 Retrofit 请求网络，实际上是使用 Retrofit 接口层封装请求参数、Header、Url 等信息，之后由 OkHttp 完成后续的请求操作</li>
-<li>在服务端返回数据之后，OkHttp 将原始的结果交给 Retrofit，Retrofit根据用户的需求对结果进行解析</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/5549640-93219ec2c71748f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="请求流程"></p>
-<h2 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h2><h3 id="1-添加Retrofit库的依赖"><a href="#1-添加Retrofit库的依赖" class="headerlink" title="1.添加Retrofit库的依赖"></a>1.添加Retrofit库的依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">      implementation &apos;com.squareup.retrofit2:retrofit:2.5.0&apos;</span><br><span class="line">     api &apos;com.squareup.retrofit2:converter-gson:2.0.2&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-添加-网络权限"><a href="#2-添加-网络权限" class="headerlink" title="2. 添加 网络权限"></a>2. 添加 网络权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="3-创建-装载服务器返回数据-的类"><a href="#3-创建-装载服务器返回数据-的类" class="headerlink" title="3. 创建 装载服务器返回数据 的类"></a>3. 创建 装载服务器返回数据 的类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class ResultData&#123;</span><br><span class="line">    ...</span><br><span class="line">    // 根据返回数据的格式和数据解析方式（Json、XML等）定义</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="4-创建-用于配置网络请求-的接口"><a href="#4-创建-用于配置网络请求-的接口" class="headerlink" title="4. 创建 用于配置网络请求 的接口"></a>4. 创建 用于配置网络请求 的接口</h3><ul>
-<li>Retrofit将 Http请求 抽象成 Java接口：采用 注解 描述网络请求参数 和配置网络请求参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public interface GetRequestInterface &#123;</span><br><span class="line"></span><br><span class="line">    @GET(&quot;openapi.do?keyfrom=Yanzhikai&amp;key=2032414398&amp;type=data&amp;doctype=json&amp;version=1.1&amp;q=car&quot;)</span><br><span class="line">    Call&lt;ResultData&gt;  getCall();</span><br><span class="line">    // @GET注解的作用:采用Get方法发送网络请求</span><br><span class="line"> </span><br><span class="line">    // getCall() = 接收网络请求数据的方法</span><br><span class="line">    // 其中返回类型为Call&lt;*&gt;，*是接收数据的类（即上面定义的Translation类）</span><br><span class="line">    // 如果想直接获得Responsebody中的内容，可以定义网络请求返回值为Call&lt;ResponseBody&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="注解说明"><a href="#注解说明" class="headerlink" title="注解说明"></a>注解说明</h4><ul>
-<li>网络请求方法:@GET、@POST、@PUT、@DELETE、@HEAD(常用)</li>
-<li>网络请求标记: @FormUrlEncoded、@Multipart、@Streaming</li>
-<li>网络请求参数:  @Header &amp;、@Headers、 @Body、@Field 、 @FieldMap、@Part 、 @PartMap、@Query、@QueryMap、@Path、@Url</li>
-</ul>
-<p>具体作用以及解释请自行前往官方文档查看,这里就不一一解释了</p>
-<h3 id="5-创建-Retrofit-实例"><a href="#5-创建-Retrofit-实例" class="headerlink" title="5. 创建 Retrofit 实例"></a>5. 创建 Retrofit 实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Retrofit retrofit = new Retrofit.Builder()</span><br><span class="line">                .baseUrl(&quot;http://fanyi.youdao.com/&quot;) // 设置网络请求的公共Url地址</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create()) // 设置数据解析器</span><br><span class="line">                .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 支持RxJava平台</span><br><span class="line">                .build();</span><br></pre></td></tr></table></figure>
-<ul>
-<li>数据解析器说明<br>Retrofit支持多种数据解析方式,使用时需要在Gradle添加依赖</li>
-</ul>
-<p>数据解析器<br>Gradle依赖</p>
-<p>Gson<br>com.squareup.retrofit2:converter-gson:2.0.2</p>
-<hr>
-<p>Jackson</p>
-<h2 id="com-squareup-retrofit2-converter-jackson-2-0-2"><a href="#com-squareup-retrofit2-converter-jackson-2-0-2" class="headerlink" title="com.squareup.retrofit2:converter-jackson:2.0.2"></a>com.squareup.retrofit2:converter-jackson:2.0.2</h2><p>Simple XML<br>com.squareup.retrofit2:converter-simplexml:2.0.2</p>
-<hr>
-<p>Protobuf<br>com.squareup.retrofit2:converter-protobuf:2.0.2</p>
-<hr>
-<p>Moshi</p>
-<h2 id="com-squareup-retrofit2-converter-moshi-2-0-2"><a href="#com-squareup-retrofit2-converter-moshi-2-0-2" class="headerlink" title="com.squareup.retrofit2:converter-moshi:2.0.2"></a>com.squareup.retrofit2:converter-moshi:2.0.2</h2><p>Wire<br>com.squareup.retrofit2:converter-wire:2.0.2</p>
-<hr>
-<p>Scalars</p>
-<h2 id="com-squareup-retrofit2-converter-scalars-2-0-2"><a href="#com-squareup-retrofit2-converter-scalars-2-0-2" class="headerlink" title="com.squareup.retrofit2:converter-scalars:2.0.2"></a>com.squareup.retrofit2:converter-scalars:2.0.2</h2><ul>
-<li>网络适配器说明<br>Retrofit支持多种网络请求适配器方式：guava、Java8和rxjava<br>Android 提供默认的 CallAdapter，不需要添加网络请求适配器的依赖，若要使用其他网络适配器,则需要按照需求在Gradle添加依赖</li>
-</ul>
-<p>网络请求适配器<br>Gradle依赖</p>
-<p>guava</p>
-<h2 id="com-squareup-retrofit2-adapter-guava-2-0-2"><a href="#com-squareup-retrofit2-adapter-guava-2-0-2" class="headerlink" title="com.squareup.retrofit2:adapter-guava:2.0.2"></a>com.squareup.retrofit2:adapter-guava:2.0.2</h2><p>Java8<br>com.squareup.retrofit2:adapter-java8:2.0.2</p>
-<hr>
-<p>rxjava</p>
-<h2 id="com-squareup-retrofit2-adapter-rxjava-2-0-2"><a href="#com-squareup-retrofit2-adapter-rxjava-2-0-2" class="headerlink" title="com.squareup.retrofit2:adapter-rxjava:2.0.2"></a>com.squareup.retrofit2:adapter-rxjava:2.0.2</h2><h3 id="6-创建-网络请求接口实例"><a href="#6-创建-网络请求接口实例" class="headerlink" title="6.创建 网络请求接口实例"></a>6.创建 网络请求接口实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 创建 网络请求接口 的实例</span><br><span class="line">        GetRequestInterface request = retrofit.create(GetRequestInterface.class);</span><br><span class="line"></span><br><span class="line">        //对 发送请求 进行封装</span><br><span class="line">        Call&lt;ResultData&gt; call = request.getCall();</span><br></pre></td></tr></table></figure>
-<h3 id="7-发起网络请求（异步-同步）"><a href="#7-发起网络请求（异步-同步）" class="headerlink" title="7.  发起网络请求（异步 / 同步）"></a>7.  发起网络请求（异步 / 同步）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/发送网络请求(异步)</span><br><span class="line">        call.enqueue(new Callback&lt;ResultData&gt;() &#123;</span><br><span class="line">            //请求成功时回调</span><br><span class="line">            @Override</span><br><span class="line">            public void onResponse(Call&lt;ResultData&gt; call, Response&lt;ResultData&gt; response) &#123;</span><br><span class="line">                //处理结果</span><br><span class="line">         </span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            //请求失败时候的回调</span><br><span class="line">            @Override</span><br><span class="line">            public void onFailure(Call&lt;ResultData&gt; call, Throwable throwable) &#123;</span><br><span class="line">             //提示失败</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">// 发送网络请求（同步）</span><br><span class="line">Response&lt;ResultData&gt; response = call.execute();</span><br></pre></td></tr></table></figure>
-<h3 id="8-处理返回数据"><a href="#8-处理返回数据" class="headerlink" title="8. 处理返回数据"></a>8. 处理返回数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//发送网络请求(异步)</span><br><span class="line">        call.enqueue(new Callback&lt;ResultData&gt;() &#123;</span><br><span class="line">            //请求成功时回调</span><br><span class="line">            @Override</span><br><span class="line">            public void onResponse(Call&lt;ResultData&gt; call, Response&lt;ResultData&gt; response) &#123;</span><br><span class="line">                // 对返回数据进行处理</span><br><span class="line">                response.body();//拿到ResultData对象进行数据操作</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            //请求失败时候的回调</span><br><span class="line">            @Override</span><br><span class="line">            public void onFailure(Call&lt;ResultData&gt; call, Throwable throwable) &#123;</span><br><span class="line">                System.out.println(&quot;连接失败&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">// 发送网络请求（同步）</span><br><span class="line">  Response&lt;ResultData&gt; response = call.execute();</span><br><span class="line">  // 对返回数据进行处理</span><br><span class="line">  response.body().blabla;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>Retrofit 是一个 restful 的 HTTP 网络请求框架的封装。</li>
-<li>网络请求的工作本质上是 OkHttp 完成，而 Retrofit 仅负责 网络请求接口的封装</li>
-<li>App应用程序通过 Retrofit 请求网络，实际上是使用 Retrofit 接口层封装请求参数、Header、Url 等信息，之后由 OkHttp 完成后续的请求操作</li>
-<li>在服务端返回数据之后，OkHttp 将原始的结果交给 Retrofit，Retrofit根据用户的需求对结果进行解析</li>
-<li>相对其他开源库而言代码简洁使用更加方便.</li>
-</ul>
+        <p>#前言<br>本篇文章主要针对 Android性能优化 中App的启动优化</p>
+<p>App启动,相信大家都是非常熟悉了,那为何我们需要对App启动做优化呢,这里就要先对我们Android 从开机到启动我们的App进入主页面这一流程做一个简单的阐述了.</p>
+<h2 id="一、Android启动流程"><a href="#一、Android启动流程" class="headerlink" title="一、Android启动流程"></a>一、Android启动流程</h2><p>我们先来看一张流程图</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-33fc4dabf7839c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Android启动流程.png"></p>
+<p>首先呢,我们Android手机开机时是先加载一个Boot程序,有点类似Windows开机时的开机引导程序,然后通过Boot程序加载Lux内核,随后是调用Native的init()方法做一些初始化加载操作(加载一些系统需要的驱动程序),然后就进入我们的java Framework层,也就是创建我们的java虚拟机,然后通过java虚拟机创建我们的系统程序,最后才是调用我们App的application启动我们的App.</p>
+<p>流程如下:</p>
 <blockquote>
-<p>关于Retrofit 2.5的简单介绍到这里就结束了,感谢阅读.</p>
+<p>Loader &gt; Kernel &gt; Native &gt; Framework &gt; Application</p>
 </blockquote>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章:"></a>参考文章:</h2><ul>
-<li><a href="https://www.jianshu.com/p/a3e162261ab6" target="_blank" rel="noopener">Android Retrofit 2.0 的详细 使用攻略（含实例讲解）</a></li>
-<li><a href="https://www.jianshu.com/p/0c055ad46b6c" target="_blank" rel="noopener">Android：手把手带你 深入读懂 Retrofit 2.0 源码</a></li>
-</ul>
-<p>欢迎关注作者<a href="http://www.darryrzhong.site" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p>
+<p>Android启动流程大致就是这样,我们不需要去深入,只需要大概知道是这么个流程就行了.</p>
+<a id="more"></a>
+<p>所以说,其实我们手机的操作系统就是一个App,开机启动时先加载各种驱动程序(类似App初始化各种第三方SDK),然后加载系统标识（黑白屏问题），然后启动开机欢迎动画(App欢迎页动画),最后进入到桌面(App主页面).</p>
+<h2 id="二、App启动时黑白屏问题"><a href="#二、App启动时黑白屏问题" class="headerlink" title="二、App启动时黑白屏问题"></a>二、App启动时黑白屏问题</h2><p>基于以上的启动流程 ，那么App启动优化的第一步就是从系统标识入手，我们手机开机时一般最先出现的是手机厂商的logo标识，而App启动时会先调用一个预显示窗口，这个窗口的样式一般是黑色或者白色，所以也就出现了App启动时出现短暂的黑白屏问题，</p>
+<p>流程如下：</p>
+<blockquote>
+<p> Application &gt; onCreate &gt; MainActivity &gt; onCreate &gt; windows &gt; setContentView&gt; layout</p>
+</blockquote>
+<p>在我们点击桌面App启动图标时，系统首先会给我们App分配一个进程，然后在调用我们的application入口，最后调用我们的mainActivity的setContentView方法加载布局文件，最后我们就能看到我们的主界面了。</p>
+<p>然后在application 到MainActivity 之间，还会有一个预显示窗口，就是出现的黑白屏。</p>
+<p>那我们怎么优化去除这个惹人厌的黑白屏呢？</p>
+<p>我们先看一下这个黑白屏从哪蹦出来的。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-2c04c3ec92759272.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="AppTheme.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-5feb833ca674709e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-8735fd4be8a1fd79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>看到了吧，最初我们可没有设置这么个东西，这是系统默认给我们App设置的，而且是白色的。</p>
+<p>知道源头了，那就开始处理吧</p>
+<h3 id="1-可以将背景设置为透明"><a href="#1-可以将背景设置为透明" class="headerlink" title="1.可以将背景设置为透明"></a>1.可以将背景设置为透明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;item name=&quot;android:windowBackground&quot;&gt;@null&lt;/item&gt;</span><br></pre></td></tr></table></figure>
+<p>So easy ,就是这么简单,你在运行下App,果然黑白屏没有了,But 是不是有哪不对劲了.<br>对的,被你发现了,虽然黑白屏没了,但是我们的App似乎是变迟钝了</p>
+<p>你在仔细观察一下,点击App启动图标后,App似乎是顿了一下,然后加载了我们的欢迎页面,有点像ANR,只不过很短暂 ,但是用户还是能够发现的,所以用户体验只是比起黑白屏好了那么一点点而已.</p>
+<p>那就,继续优化呗</p>
+<h3 id="2-给背景设置一张图片或者xml布局文件"><a href="#2-给背景设置一张图片或者xml布局文件" class="headerlink" title="2.给背景设置一张图片或者xml布局文件"></a>2.给背景设置一张图片或者xml布局文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;item name=&quot;android:windowBackground&quot;&gt;@layout/activity_main&lt;/item&gt;</span><br><span class="line">   </span><br><span class="line">  或者</span><br><span class="line"></span><br><span class="line"> &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/splash_bg&lt;/item&gt;</span><br></pre></td></tr></table></figure>
+<p>So easy,又是这么简单.对的,就是这么简单,这也是目前最认同的方案,稍微有点规模的公司都是采用这种方案来优化的.</p>
+<p>But,这里需要注意的是,放一张图片的话,需要注意图片的大小,如果有虚拟导航键的话可能会出线底部闪烁问题,解决办法就是压缩图片大小,将图片转化成.9.png格式,让其自适应拉伸.</p>
+<h2 id="三、onCreate-优化"><a href="#三、onCreate-优化" class="headerlink" title="三、onCreate()优化"></a>三、onCreate()优化</h2><p>一般我们都会重写自己的Application,然后在onCreate()方法内做一些初始化操作,<br>一般都是一些第三方SDK配置.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class App extends Application &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        </span><br><span class="line">        //......初始化第三方SDK</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这里我们可以将一些较大的第三方库放在异步线程中进行初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@Override</span><br><span class="line">   public void onCreate() &#123;</span><br><span class="line">       super.onCreate();</span><br><span class="line"></span><br><span class="line">       //懒加载</span><br><span class="line">       new Thread()&#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               super.run();</span><br><span class="line">               //初始化数据库</span><br><span class="line">               //初始化数据库 网络等操作</span><br><span class="line">               //......初始化第三方SDK</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;.start();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是,如果涉及到UI操作的话,就不要放在异步线程中去执行,否则可能出Null<br>那我们怎么判断哪些初始化能够放在异步线程中呢,这个就需要你自己去分辨了,实在不知道就直接丢异步里,报错了就再丢出来就行了.</p>
+<p>不止是Application中,我们的activity也可以用这种方式来进行优化.</p>
+<p>以上这种优化也称为真优化,对代码层的优化我们叫做真优化,而不对代码层直接操作的我们称为伪优化,一般我们的优化方案都是两种混合使用.</p>
+<h2 id="四、伪优化"><a href="#四、伪优化" class="headerlink" title="四、伪优化"></a>四、伪优化</h2><p>在我们做完上述的优化后,成功进入到主界面后,还没完.</p>
+<p>你可能会发现进入主界面也会出现部分显示加载问题,具体就需要看你布局层级的复杂度和界面业务的需求了.如果是复杂页面,可以先看看布局文件层级是否还可以进行优化,然后在看是否时请求网络数据太大,例如加载了大图等. 这时就可以进去一定的伪优化了.</p>
+<p>例如和产品协商在进入页面时加载一个dialog进行缓冲一下,很多App也是进去这样的优化,</p>
+<p>看看我们的简书App就是这样,我基本每次进去都会弹一个dialog</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-8215ca9d6d469d44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="image.png"></p>
+<blockquote>
+<p>至此,App启动优化方案就介绍完了.当然还有更多优化方案,具体的就要根据业务需求而定了</p>
+</blockquote>
+<p>欢迎关注作者<a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p>
 <h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote>
 <p>更多精彩文章请关注</p>
 <ul>
@@ -737,7 +702,7 @@ window.onmouseout = function () {
       
         <div class="post-tags">
           
-            <a href="/tags/Retrofit/" rel="tag"><i class="fa fa-tag"></i> Retrofit</a>
+            <a href="/tags/性能优化/" rel="tag"><i class="fa fa-tag"></i> 性能优化</a>
           
         </div>
       
@@ -750,8 +715,8 @@ window.onmouseout = function () {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/28/Android自定义View-快递时间轴实现/" rel="next" title="Android自定义View:快递时间轴实现">
-                <i class="fa fa-chevron-left"></i> Android自定义View:快递时间轴实现
+              <a href="/2019/07/13/Android-性能优化系列一-APK极致优化/" rel="next" title="Android 性能优化系列一 :APK极致优化">
+                <i class="fa fa-chevron-left"></i> Android 性能优化系列一 :APK极致优化
               </a>
             
           </div>
@@ -759,10 +724,6 @@ window.onmouseout = function () {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/29/Android-进阶学习思维大纲/" rel="prev" title="Android  进阶学习思维大纲">
-                Android  进阶学习思维大纲 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -936,7 +897,7 @@ window.onmouseout = function () {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能"><span class="nav-number">1.2.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对比其他网络请求框架"><span class="nav-number">1.3.</span> <span class="nav-text">对比其他网络请求框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景"><span class="nav-number">1.4.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络请求流程"><span class="nav-number">1.5.</span> <span class="nav-text">网络请求流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体使用"><span class="nav-number">1.6.</span> <span class="nav-text">具体使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-添加Retrofit库的依赖"><span class="nav-number">1.6.1.</span> <span class="nav-text">1.添加Retrofit库的依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-添加-网络权限"><span class="nav-number">1.6.2.</span> <span class="nav-text">2. 添加 网络权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-创建-装载服务器返回数据-的类"><span class="nav-number">1.6.3.</span> <span class="nav-text">3. 创建 装载服务器返回数据 的类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-创建-用于配置网络请求-的接口"><span class="nav-number">1.6.4.</span> <span class="nav-text">4. 创建 用于配置网络请求 的接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注解说明"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">注解说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-创建-Retrofit-实例"><span class="nav-number">1.6.5.</span> <span class="nav-text">5. 创建 Retrofit 实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#com-squareup-retrofit2-converter-jackson-2-0-2"><span class="nav-number">1.7.</span> <span class="nav-text">com.squareup.retrofit2:converter-jackson:2.0.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#com-squareup-retrofit2-converter-moshi-2-0-2"><span class="nav-number">1.8.</span> <span class="nav-text">com.squareup.retrofit2:converter-moshi:2.0.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#com-squareup-retrofit2-converter-scalars-2-0-2"><span class="nav-number">1.9.</span> <span class="nav-text">com.squareup.retrofit2:converter-scalars:2.0.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#com-squareup-retrofit2-adapter-guava-2-0-2"><span class="nav-number">1.10.</span> <span class="nav-text">com.squareup.retrofit2:adapter-guava:2.0.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#com-squareup-retrofit2-adapter-rxjava-2-0-2"><span class="nav-number">1.11.</span> <span class="nav-text">com.squareup.retrofit2:adapter-rxjava:2.0.2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-创建-网络请求接口实例"><span class="nav-number">1.11.1.</span> <span class="nav-text">6.创建 网络请求接口实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-发起网络请求（异步-同步）"><span class="nav-number">1.11.2.</span> <span class="nav-text">7.  发起网络请求（异步 / 同步）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-处理返回数据"><span class="nav-number">1.11.3.</span> <span class="nav-text">8. 处理返回数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.12.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文章"><span class="nav-number">1.13.</span> <span class="nav-text">参考文章:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请赏个小红心！因为你的鼓励是我写作的最大动力！"><span class="nav-number">1.13.1.</span> <span class="nav-text">请赏个小红心！因为你的鼓励是我写作的最大动力！</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Android启动流程"><span class="nav-number">1.</span> <span class="nav-text">一、Android启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、App启动时黑白屏问题"><span class="nav-number">2.</span> <span class="nav-text">二、App启动时黑白屏问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-可以将背景设置为透明"><span class="nav-number">2.1.</span> <span class="nav-text">1.可以将背景设置为透明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-给背景设置一张图片或者xml布局文件"><span class="nav-number">2.2.</span> <span class="nav-text">2.给背景设置一张图片或者xml布局文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、onCreate-优化"><span class="nav-number">3.</span> <span class="nav-text">三、onCreate()优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、伪优化"><span class="nav-number">4.</span> <span class="nav-text">四、伪优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请赏个小红心！因为你的鼓励是我写作的最大动力！"><span class="nav-number">4.1.</span> <span class="nav-text">请赏个小红心！因为你的鼓励是我写作的最大动力！</span></a></li></ol></li></ol></div>
             
 
           </div>

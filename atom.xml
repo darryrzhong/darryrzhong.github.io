@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://darryrzhong.xyz/"/>
-  <updated>2019-07-13T06:54:25.004Z</updated>
+  <updated>2019-07-13T09:36:48.340Z</updated>
   <id>http://darryrzhong.xyz/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 性能优化系列二 : App启动优化</title>
+    <link href="http://darryrzhong.xyz/2019/07/13/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%B3%BB%E5%88%97%E4%BA%8C-App%E5%90%AF%E5%8A%A8%E4%BC%98%E5%8C%96/"/>
+    <id>http://darryrzhong.xyz/2019/07/13/Android-性能优化系列二-App启动优化/</id>
+    <published>2019-07-13T09:35:51.000Z</published>
+    <updated>2019-07-13T09:36:48.340Z</updated>
+    
+    <content type="html"><![CDATA[<p>#前言<br>本篇文章主要针对 Android性能优化 中App的启动优化</p><p>App启动,相信大家都是非常熟悉了,那为何我们需要对App启动做优化呢,这里就要先对我们Android 从开机到启动我们的App进入主页面这一流程做一个简单的阐述了.</p><h2 id="一、Android启动流程"><a href="#一、Android启动流程" class="headerlink" title="一、Android启动流程"></a>一、Android启动流程</h2><p>我们先来看一张流程图</p><p><img src="https://upload-images.jianshu.io/upload_images/5549640-33fc4dabf7839c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Android启动流程.png"></p><p>首先呢,我们Android手机开机时是先加载一个Boot程序,有点类似Windows开机时的开机引导程序,然后通过Boot程序加载Lux内核,随后是调用Native的init()方法做一些初始化加载操作(加载一些系统需要的驱动程序),然后就进入我们的java Framework层,也就是创建我们的java虚拟机,然后通过java虚拟机创建我们的系统程序,最后才是调用我们App的application启动我们的App.</p><p>流程如下:</p><blockquote><p>Loader &gt; Kernel &gt; Native &gt; Framework &gt; Application</p></blockquote><p>Android启动流程大致就是这样,我们不需要去深入,只需要大概知道是这么个流程就行了.</p><a id="more"></a><p>所以说,其实我们手机的操作系统就是一个App,开机启动时先加载各种驱动程序(类似App初始化各种第三方SDK),然后加载系统标识（黑白屏问题），然后启动开机欢迎动画(App欢迎页动画),最后进入到桌面(App主页面).</p><h2 id="二、App启动时黑白屏问题"><a href="#二、App启动时黑白屏问题" class="headerlink" title="二、App启动时黑白屏问题"></a>二、App启动时黑白屏问题</h2><p>基于以上的启动流程 ，那么App启动优化的第一步就是从系统标识入手，我们手机开机时一般最先出现的是手机厂商的logo标识，而App启动时会先调用一个预显示窗口，这个窗口的样式一般是黑色或者白色，所以也就出现了App启动时出现短暂的黑白屏问题，</p><p>流程如下：</p><blockquote><p> Application &gt; onCreate &gt; MainActivity &gt; onCreate &gt; windows &gt; setContentView&gt; layout</p></blockquote><p>在我们点击桌面App启动图标时，系统首先会给我们App分配一个进程，然后在调用我们的application入口，最后调用我们的mainActivity的setContentView方法加载布局文件，最后我们就能看到我们的主界面了。</p><p>然后在application 到MainActivity 之间，还会有一个预显示窗口，就是出现的黑白屏。</p><p>那我们怎么优化去除这个惹人厌的黑白屏呢？</p><p>我们先看一下这个黑白屏从哪蹦出来的。</p><p><img src="https://upload-images.jianshu.io/upload_images/5549640-2c04c3ec92759272.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="AppTheme.png"></p><p><img src="https://upload-images.jianshu.io/upload_images/5549640-5feb833ca674709e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><p><img src="https://upload-images.jianshu.io/upload_images/5549640-8735fd4be8a1fd79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><p>看到了吧，最初我们可没有设置这么个东西，这是系统默认给我们App设置的，而且是白色的。</p><p>知道源头了，那就开始处理吧</p><h3 id="1-可以将背景设置为透明"><a href="#1-可以将背景设置为透明" class="headerlink" title="1.可以将背景设置为透明"></a>1.可以将背景设置为透明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;item name=&quot;android:windowBackground&quot;&gt;@null&lt;/item&gt;</span><br></pre></td></tr></table></figure><p>So easy ,就是这么简单,你在运行下App,果然黑白屏没有了,But 是不是有哪不对劲了.<br>对的,被你发现了,虽然黑白屏没了,但是我们的App似乎是变迟钝了</p><p>你在仔细观察一下,点击App启动图标后,App似乎是顿了一下,然后加载了我们的欢迎页面,有点像ANR,只不过很短暂 ,但是用户还是能够发现的,所以用户体验只是比起黑白屏好了那么一点点而已.</p><p>那就,继续优化呗</p><h3 id="2-给背景设置一张图片或者xml布局文件"><a href="#2-给背景设置一张图片或者xml布局文件" class="headerlink" title="2.给背景设置一张图片或者xml布局文件"></a>2.给背景设置一张图片或者xml布局文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;item name=&quot;android:windowBackground&quot;&gt;@layout/activity_main&lt;/item&gt;</span><br><span class="line">   </span><br><span class="line">  或者</span><br><span class="line"></span><br><span class="line"> &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/splash_bg&lt;/item&gt;</span><br></pre></td></tr></table></figure><p>So easy,又是这么简单.对的,就是这么简单,这也是目前最认同的方案,稍微有点规模的公司都是采用这种方案来优化的.</p><p>But,这里需要注意的是,放一张图片的话,需要注意图片的大小,如果有虚拟导航键的话可能会出线底部闪烁问题,解决办法就是压缩图片大小,将图片转化成.9.png格式,让其自适应拉伸.</p><h2 id="三、onCreate-优化"><a href="#三、onCreate-优化" class="headerlink" title="三、onCreate()优化"></a>三、onCreate()优化</h2><p>一般我们都会重写自己的Application,然后在onCreate()方法内做一些初始化操作,<br>一般都是一些第三方SDK配置.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class App extends Application &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        </span><br><span class="line">        //......初始化第三方SDK</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在这里我们可以将一些较大的第三方库放在异步线程中进行初始化</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@Override</span><br><span class="line">   public void onCreate() &#123;</span><br><span class="line">       super.onCreate();</span><br><span class="line"></span><br><span class="line">       //懒加载</span><br><span class="line">       new Thread()&#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               super.run();</span><br><span class="line">               //初始化数据库</span><br><span class="line">               //初始化数据库 网络等操作</span><br><span class="line">               //......初始化第三方SDK</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;.start();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><p>需要注意的是,如果涉及到UI操作的话,就不要放在异步线程中去执行,否则可能出Null<br>那我们怎么判断哪些初始化能够放在异步线程中呢,这个就需要你自己去分辨了,实在不知道就直接丢异步里,报错了就再丢出来就行了.</p><p>不止是Application中,我们的activity也可以用这种方式来进行优化.</p><p>以上这种优化也称为真优化,对代码层的优化我们叫做真优化,而不对代码层直接操作的我们称为伪优化,一般我们的优化方案都是两种混合使用.</p><h2 id="四、伪优化"><a href="#四、伪优化" class="headerlink" title="四、伪优化"></a>四、伪优化</h2><p>在我们做完上述的优化后,成功进入到主界面后,还没完.</p><p>你可能会发现进入主界面也会出现部分显示加载问题,具体就需要看你布局层级的复杂度和界面业务的需求了.如果是复杂页面,可以先看看布局文件层级是否还可以进行优化,然后在看是否时请求网络数据太大,例如加载了大图等. 这时就可以进去一定的伪优化了.</p><p>例如和产品协商在进入页面时加载一个dialog进行缓冲一下,很多App也是进去这样的优化,</p><p>看看我们的简书App就是这样,我基本每次进去都会弹一个dialog</p><p><img src="https://upload-images.jianshu.io/upload_images/5549640-8215ca9d6d469d44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="image.png"></p><blockquote><p>至此,App启动优化方案就介绍完了.当然还有更多优化方案,具体的就要根据业务需求而定了</p></blockquote><p>欢迎关注作者<a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p><h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote><p>更多精彩文章请关注</p><ul><li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li><li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li><li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li><li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882/articles" target="_blank" rel="noopener">SegmentFault</a></li><li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li></ul></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#前言&lt;br&gt;本篇文章主要针对 Android性能优化 中App的启动优化&lt;/p&gt;
+&lt;p&gt;App启动,相信大家都是非常熟悉了,那为何我们需要对App启动做优化呢,这里就要先对我们Android 从开机到启动我们的App进入主页面这一流程做一个简单的阐述了.&lt;/p&gt;
+&lt;h2 id=&quot;一、Android启动流程&quot;&gt;&lt;a href=&quot;#一、Android启动流程&quot; class=&quot;headerlink&quot; title=&quot;一、Android启动流程&quot;&gt;&lt;/a&gt;一、Android启动流程&lt;/h2&gt;&lt;p&gt;我们先来看一张流程图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/5549640-33fc4dabf7839c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Android启动流程.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;首先呢,我们Android手机开机时是先加载一个Boot程序,有点类似Windows开机时的开机引导程序,然后通过Boot程序加载Lux内核,随后是调用Native的init()方法做一些初始化加载操作(加载一些系统需要的驱动程序),然后就进入我们的java Framework层,也就是创建我们的java虚拟机,然后通过java虚拟机创建我们的系统程序,最后才是调用我们App的application启动我们的App.&lt;/p&gt;
+&lt;p&gt;流程如下:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Loader &amp;gt; Kernel &amp;gt; Native &amp;gt; Framework &amp;gt; Application&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Android启动流程大致就是这样,我们不需要去深入,只需要大概知道是这么个流程就行了.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://darryrzhong.xyz/categories/Android/"/>
+    
+    
+      <category term="性能优化" scheme="http://darryrzhong.xyz/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>Android 性能优化系列一 :APK极致优化</title>
@@ -636,45 +667,6 @@
     
     
       <category term="activity" scheme="http://darryrzhong.xyz/tags/activity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>1024程序员节最新福利之2018最全大数据资料集合</title>
-    <link href="http://darryrzhong.xyz/2019/03/27/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82%E6%9C%80%E6%96%B0%E7%A6%8F%E5%88%A9%E4%B9%8B2018%E6%9C%80%E5%85%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%B5%84%E6%96%99%E9%9B%86%E5%90%88/"/>
-    <id>http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全大数据资料集合/</id>
-    <published>2019-03-27T03:18:57.000Z</published>
-    <updated>2019-03-27T03:19:32.380Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有好久没有写博客了,主要这段时间都沉迷学习无法自拔了,哈哈.自吹一波.</p><blockquote><p>前两天不是1024节吗,所以就有很多福利出现了,当然每个人能都获得的信息都有所不同,这就是所谓的信息差.秉着好东西需要分享和开源的好习惯,所以来给你们送福利了.</p></blockquote><blockquote><p>其他福利</p></blockquote><p>一、<a href="https://www.imooc.com/article/256997" target="_blank" rel="noopener">1024程序员节最新福利之2018最全java资料集合</a></p><p>二、<a href="https://www.imooc.com/article/256998" target="_blank" rel="noopener">1024程序员节最新福利之2018最全H5前端资料集</a></p><p>三、<a href="https://www.imooc.com/article/256999" target="_blank" rel="noopener">1024程序员节最新福利之2018最全Android资料集合</a></p><h1 id="Python核心基础"><a href="#Python核心基础" class="headerlink" title="Python核心基础"></a>Python核心基础</h1><p>一、尚硅谷Python核心基础视频：</p><p> <a href="https://pan.baidu.com/s/1LVvNP5NPgE-IxyhW6KgDqA" target="_blank" rel="noopener">https://pan.baidu.com/s/1LVvNP5NPgE-IxyhW6KgDqA</a></p><p> 密码：b2ma</p><p>二、Python核心语法实战：学生管理系统</p><p> <a href="https://pan.baidu.com/s/14tDNHX6rpsWUlQtFAGUq5w" target="_blank" rel="noopener">https://pan.baidu.com/s/14tDNHX6rpsWUlQtFAGUq5w</a></p><p>三、Python作品之《雷电战机》</p><p>  <a href="https://pan.baidu.com/s/1o7Ha6eA" target="_blank" rel="noopener">https://pan.baidu.com/s/1o7Ha6eA</a></p><h1 id="大数据阶段"><a href="#大数据阶段" class="headerlink" title="大数据阶段"></a>大数据阶段</h1><a id="more"></a><p>尚硅谷大数据之JavaWEB视频：<br><a href="https://pan.baidu.com/s/1DMJmY8isPW4hFLqIEF0TJA" target="_blank" rel="noopener">https://pan.baidu.com/s/1DMJmY8isPW4hFLqIEF0TJA</a></p><p>尚硅谷大数据之Spring视频：<br><a href="https://pan.baidu.com/s/1Q26Cixpv2fGGluUGzKi7Eg" target="_blank" rel="noopener">https://pan.baidu.com/s/1Q26Cixpv2fGGluUGzKi7Eg</a></p><p>尚硅谷大数据之SpringMVC视频：<br><a href="https://pan.baidu.com/s/1ktvzMfwY3C9Cxyv_Ftdhuw" target="_blank" rel="noopener">https://pan.baidu.com/s/1ktvzMfwY3C9Cxyv_Ftdhuw</a></p><p>尚硅谷大数据之MyBtis视频：<br><a href="https://pan.baidu.com/s/1rZXNajX8NM7ojx3_iTWDfA" target="_blank" rel="noopener">https://pan.baidu.com/s/1rZXNajX8NM7ojx3_iTWDfA</a></p><p>尚硅谷大数据之SSM：<br><a href="https://pan.baidu.com/s/1CKwlGsJjJd9kZvWk0GI-xw" target="_blank" rel="noopener">https://pan.baidu.com/s/1CKwlGsJjJd9kZvWk0GI-xw</a></p><p>尚硅谷大数据之Linux视频：</p><p><a href="https://pan.baidu.com/s/1wMTp4_Fh9Yl1CPjUNOydaw" target="_blank" rel="noopener">https://pan.baidu.com/s/1wMTp4_Fh9Yl1CPjUNOydaw</a></p><p>  密码：6q4k</p><p>  尚硅谷大数据之Shell视频：</p><p><a href="https://pan.baidu.com/s/1DecEi7Dq5R9Mghl6F_Csvw" target="_blank" rel="noopener">https://pan.baidu.com/s/1DecEi7Dq5R9Mghl6F_Csvw</a></p><p>密码：ucrr</p><p>  尚硅谷大数据之Hadoop视频：</p><p><a href="https://pan.baidu.com/s/1jMfkd2GV9oBq2gvtiyUBwQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1jMfkd2GV9oBq2gvtiyUBwQ</a></p><p>密码：zu8f</p><p>  尚硅谷大数据之Hive视频：</p><p><a href="https://pan.baidu.com/s/1KOlNIMiJJvKIRHiBV7NQbw" target="_blank" rel="noopener">https://pan.baidu.com/s/1KOlNIMiJJvKIRHiBV7NQbw</a></p><p>密码：331u</p><p>  尚硅谷大数据之Zookeeper视频</p><p><a href="https://pan.baidu.com/s/1AmXksBIzKOUTd_YKRfsPOw" target="_blank" rel="noopener">https://pan.baidu.com/s/1AmXksBIzKOUTd_YKRfsPOw</a></p><p>密码：xjmx</p><p>公开课：大数据架构师课程：高薪实战课程</p><p><a href="https://pan.baidu.com/s/1QvkUkEvtMA29bLBFIZ-hJw" target="_blank" rel="noopener">https://pan.baidu.com/s/1QvkUkEvtMA29bLBFIZ-hJw</a></p><p>公开课：大数据项目实战–智慧出行</p><p>  <a href="https://pan.baidu.com/s/1y-RefkxcEHo7ZjRgL1Jq1A" target="_blank" rel="noopener">https://pan.baidu.com/s/1y-RefkxcEHo7ZjRgL1Jq1A</a></p><p>大数据项目实战–仿天猫用户行为分析</p><p>  <a href="https://pan.baidu.com/s/1dEKGHQL" target="_blank" rel="noopener">https://pan.baidu.com/s/1dEKGHQL</a></p><blockquote><p>大数据资料集合都在这了,赶快收藏吧.最后记得给我小心心哟!</p></blockquote><p>欢迎关注作者<a href="http://www.darryrzhong.site" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p><h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote><p>更多精彩文章请关注</p><ul><li><a href="http://www.darryrzhong.site" target="_blank" rel="noopener">个人博客:darryrzhong</a></li><li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li><li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li><li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882/articles" target="_blank" rel="noopener">SegmentFault</a></li><li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li></ul></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;有好久没有写博客了,主要这段时间都沉迷学习无法自拔了,哈哈.自吹一波.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;前两天不是1024节吗,所以就有很多福利出现了,当然每个人能都获得的信息都有所不同,这就是所谓的信息差.秉着好东西需要分享和开源的好习惯,所以来给你们送福利了.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;其他福利&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;一、&lt;a href=&quot;https://www.imooc.com/article/256997&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;1024程序员节最新福利之2018最全java资料集合&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;二、&lt;a href=&quot;https://www.imooc.com/article/256998&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;1024程序员节最新福利之2018最全H5前端资料集&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;三、&lt;a href=&quot;https://www.imooc.com/article/256999&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;1024程序员节最新福利之2018最全Android资料集合&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;Python核心基础&quot;&gt;&lt;a href=&quot;#Python核心基础&quot; class=&quot;headerlink&quot; title=&quot;Python核心基础&quot;&gt;&lt;/a&gt;Python核心基础&lt;/h1&gt;&lt;p&gt;一、尚硅谷Python核心基础视频：&lt;/p&gt;
-&lt;p&gt; &lt;a href=&quot;https://pan.baidu.com/s/1LVvNP5NPgE-IxyhW6KgDqA&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://pan.baidu.com/s/1LVvNP5NPgE-IxyhW6KgDqA&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt; 密码：b2ma&lt;/p&gt;
-&lt;p&gt;二、Python核心语法实战：学生管理系统&lt;/p&gt;
-&lt;p&gt; &lt;a href=&quot;https://pan.baidu.com/s/14tDNHX6rpsWUlQtFAGUq5w&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://pan.baidu.com/s/14tDNHX6rpsWUlQtFAGUq5w&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;三、Python作品之《雷电战机》&lt;/p&gt;
-&lt;p&gt;  &lt;a href=&quot;https://pan.baidu.com/s/1o7Ha6eA&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://pan.baidu.com/s/1o7Ha6eA&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;大数据阶段&quot;&gt;&lt;a href=&quot;#大数据阶段&quot; class=&quot;headerlink&quot; title=&quot;大数据阶段&quot;&gt;&lt;/a&gt;大数据阶段&lt;/h1&gt;
-    
-    </summary>
-    
-      <category term="编程资料" scheme="http://darryrzhong.xyz/categories/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%96%99/"/>
-    
-    
-      <category term="大数据学习" scheme="http://darryrzhong.xyz/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
