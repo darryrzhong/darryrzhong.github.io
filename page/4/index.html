@@ -435,7 +435,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/Android之xUtils-3-0数据库框架详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -454,7 +454,7 @@ window.onmouseout = function () {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/" itemprop="url">关于Hexo6.0搭建个人博客(主题优化进阶篇)</a></h1>
+                <a class="post-title-link" href="/2019/03/27/Android之xUtils-3-0数据库框架详解/" itemprop="url">Android之xUtils-3.0数据库框架详解</a></h1>
         
 
         <div class="post-meta">
@@ -466,7 +466,7 @@ window.onmouseout = function () {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:00:57+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:45:54+08:00">
                 2019-03-27
               </time>
             
@@ -489,8 +489,8 @@ window.onmouseout = function () {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -508,8 +508,8 @@ window.onmouseout = function () {
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/" class="cy_cmt_count" data-xid="2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/" itemprop="commentsCount"></span>
+                <a href="/2019/03/27/Android之xUtils-3-0数据库框架详解/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/03/27/Android之xUtils-3-0数据库框架详解/" class="cy_cmt_count" data-xid="2019/03/27/Android之xUtils-3-0数据库框架详解/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -517,7 +517,7 @@ window.onmouseout = function () {
 
           
           
-             <span id="/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/" class="leancloud_visitors" data-flag-title="关于Hexo6.0搭建个人博客(主题优化进阶篇)">
+             <span id="/2019/03/27/Android之xUtils-3-0数据库框架详解/" class="leancloud_visitors" data-flag-title="Android之xUtils-3.0数据库框架详解">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -582,43 +582,20 @@ window.onmouseout = function () {
       
         
           <blockquote>
-<p>本篇博文将带大家发现新大陆,教你打造炫酷的个人博客站点.</p>
+<p>在Android 开发中,数据库模块是必不可少的.现在也有许多非常好用流行的数据库快速开发框架.今天主要介绍下xUtils下封装的数据库模块.</p>
 </blockquote>
-<p>阅读本文前建议先行阅读本人另外一遍基础博文<a href="https://www.jianshu.com/p/d574962baa16" target="_blank" rel="noopener">关于Hexo搭建个人博客(基础篇)</a></p>
-<p>#目录</p>
-<ul>
-<li>配置博客基本信息</li>
-<li>配置主题</li>
-<li>优化主题<ul>
-<li>上传头像,并设置头像旋转效果</li>
-<li>设置个人社交图标链接</li>
-<li>设置RSS<ul>
-<li>设置酷炫动态背景</li>
-<li>设置主题语言</li>
-<li>设置网站logo</li>
-<li>设置左上角或者右上角的fork me on github效果</li>
-<li>设置顶部滚动加载条</li>
-<li>自定义博客底部显示效果</li>
-<li>为首页文章添加阴影边框效果</li>
-<li>为首页添加自定义菜单栏标签</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="配置博客基本信息"><a href="#配置博客基本信息" class="headerlink" title="配置博客基本信息"></a>配置博客基本信息</h1><blockquote>
-<p>在站点根目录下<code>_config.yml</code>中进行基础配置<br>建议下载个文本编辑器打开,这里推荐<code>Sublime Text</code>,</p>
-</blockquote>
-<p><img src="https://upload-images.jianshu.io/upload_images/5549640-482e1976e130e564.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="set1.png"></p>
-<p>对应显示效果(显示效果因主题不同而不同,只做描述)<br><img src="https://upload-images.jianshu.io/upload_images/5549640-bd3bc18775a42712.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="show.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5549640-e5ba02014b1ffbcf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="show1.png"></p>
-<p>当然了,你们的主题和我的肯定是不一样的,所以下面就开始教大家挑选自己喜欢的主题<br>并自定义个人喜好.</p>
-<h1 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h1><blockquote>
-<p>挑选主题</p>
-</blockquote>
+<h1 id="Android-常用数据库开发框架"><a href="#Android-常用数据库开发框架" class="headerlink" title="Android 常用数据库开发框架"></a>Android 常用数据库开发框架</h1><p>在这里列一下Android开发中常用的数据库框架,有情趣的可以自行了解下,顺便储备点知识.</p>
+<p>1.<a href="http://ormlite.com/" target="_blank" rel="noopener">OrmLite</a><br>对象关系映射Lite（ORM Lite）提供了一些简单，轻量级的功能，用于将Java对象持久保存到SQL数据库，同时避免了更多标准ORM包的复杂性和开销。</p>
+<p>2.<a href="https://github.com/LitePalFramework/LitePal" target="_blank" rel="noopener">LitePal</a><br>LitePal是一个开源的Android库，允许开发人员非常容易地使用SQLite数据库。您可以完成大部分数据库操作，而无需编写SQL语句，包括创建或升级表，crud操作，聚合函数等.LitePal的设置也非常简单，您可以在不到5分钟中将其集成到项目中。</p>
+<p>3.<a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="noopener">GreenDao</a><br>greenDAO是一款轻巧快捷的Android版ORM，可将对象映射到SQLite数据库。greenDAO针对Android进行了高度优化，性能卓越，占用内存极少。</p>
+<p>4.<a href="https://github.com/Raizlabs/DBFlow" target="_blank" rel="noopener">DBFlow</a><br>一个功能强大，功能强大且非常简单的ORM android数据库库，带有注释处理功能。<br>该库建立在速度，性能和可接近性的基础之上。它不仅消除了大多数用于处理数据库的样板代码，而且还提供了一个强大而简单的API来管理交互。</p>
+<p>5.<a href="https://github.com/realm/realm-java" target="_blank" rel="noopener">Realm</a><br>Realm是一个直接在手机，平板电脑或可穿戴设备中运行的移动数据库。此存储库包含Realm的Java版本的源代码，该版本目前仅在Android上运行。</p>
+<hr>
+<h1 id="xutils3-0数据库模块详解"><a href="#xutils3-0数据库模块详解" class="headerlink" title="xutils3.0数据库模块详解"></a>xutils3.0数据库模块详解</h1><h2 id="项目加载"><a href="#项目加载" class="headerlink" title="项目加载"></a>项目加载</h2><p>1.添加依赖<br>在app的build.gradle下添加以下依赖:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile &apos;org.xutils:xutils:3.5.0&apos;</span><br></pre></td></tr></table></figure></p>
+<p><code>对于gradle3.0以上,compile已经被废弃了,需要使用api</code><br>如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api &apos;org.xutils:xutils:3.5.0&apos;</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/27/关于Hexo6-0搭建个人博客-主题优化进阶篇/#more" rel="contents">
+            <a class="btn" href="/2019/03/27/Android之xUtils-3-0数据库框架详解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -673,7 +650,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/关于Hexo6-0搭建个人博客-基础编/">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/Android常用之Butterknife使用详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -692,7 +669,7 @@ window.onmouseout = function () {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/27/关于Hexo6-0搭建个人博客-基础编/" itemprop="url">关于Hexo6.0搭建个人博客(基础编)</a></h1>
+                <a class="post-title-link" href="/2019/03/27/Android常用之Butterknife使用详解/" itemprop="url">Android常用之Butterknife使用详解</a></h1>
         
 
         <div class="post-meta">
@@ -704,7 +681,7 @@ window.onmouseout = function () {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T10:56:07+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:44:19+08:00">
                 2019-03-27
               </time>
             
@@ -727,8 +704,8 @@ window.onmouseout = function () {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -746,8 +723,8 @@ window.onmouseout = function () {
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2019/03/27/关于Hexo6-0搭建个人博客-基础编/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/03/27/关于Hexo6-0搭建个人博客-基础编/" class="cy_cmt_count" data-xid="2019/03/27/关于Hexo6-0搭建个人博客-基础编/" itemprop="commentsCount"></span>
+                <a href="/2019/03/27/Android常用之Butterknife使用详解/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/03/27/Android常用之Butterknife使用详解/" class="cy_cmt_count" data-xid="2019/03/27/Android常用之Butterknife使用详解/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -755,7 +732,1546 @@ window.onmouseout = function () {
 
           
           
-             <span id="/2019/03/27/关于Hexo6-0搭建个人博客-基础编/" class="leancloud_visitors" data-flag-title="关于Hexo6.0搭建个人博客(基础编)">
+             <span id="/2019/03/27/Android常用之Butterknife使用详解/" class="leancloud_visitors" data-flag-title="Android常用之Butterknife使用详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        
+          <h1 id="Butterknife简介"><a href="#Butterknife简介" class="headerlink" title="Butterknife简介"></a>Butterknife简介</h1><p><a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="noopener">Butterknife</a>中文又名黄油刀,是 <a href="https://github.com/JakeWharton" target="_blank" rel="noopener">JakeWharton</a>大神开源的一款<code>Android视图的字段和方法绑定</code>快速注解框架.也是Android开发中比较常用的一款快速注解框架了,可以不用不断的重复<code>findViewById</code>,在各种场合下快速绑定view的多种事件,大大提高了开发的效率.</p>
+<blockquote>
+<p>为什么开发用Butterknife?</p>
+</blockquote>
+<p>1、强大的View绑定和Click事件处理功能，简化代码，提升开发效率<br>2、方便的处理Adapter里的ViewHolder绑定问题<br>3、运行时不会影响APP效率，使用配置方便<br>4、代码清晰，可读性强<br>5、…………</p>
+<blockquote>
+<p> 使用配置</p>
+</blockquote>
+<h2 id="在-Android-studio-项目中配置-Butterknife"><a href="#在-Android-studio-项目中配置-Butterknife" class="headerlink" title="在 Android studio 项目中配置:Butterknife:"></a>在 Android studio 项目中配置:Butterknife:</h2><h2 id="一-在主Moduel中的build-gradle中添加如下配置"><a href="#一-在主Moduel中的build-gradle中添加如下配置" class="headerlink" title="一.在主Moduel中的build.gradle中添加如下配置:"></a>一.在主Moduel中的<code>build.gradle</code>中添加如下配置:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    </span><br><span class="line">    implementation &apos;com.jakewharton:butterknife:8.8.1&apos;</span><br><span class="line">    annotationProcessor &apos;com.jakewharton:butterknife-compiler:8.8.1&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单使用如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class ExampleActivity extends Activity &#123;</span><br><span class="line">  @BindView(R.id.user) EditText username;</span><br><span class="line">  @BindView(R.id.pass) EditText password;</span><br><span class="line"></span><br><span class="line">  @BindString(R.string.login_error) String loginErrorMessage;</span><br><span class="line"></span><br><span class="line">  @OnClick(R.id.submit) void submit() &#123;</span><br><span class="line">    // TODO call server...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override public void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.simple_activity);</span><br><span class="line">    ButterKnife.bind(this);</span><br><span class="line">    // TODO Use fields...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/27/Android常用之Butterknife使用详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/Android之Handler消息传递机制详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/27/Android之Handler消息传递机制详解/" itemprop="url">Android之Handler消息传递机制详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:42:29+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/03/27/Android之Handler消息传递机制详解/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/03/27/Android之Handler消息传递机制详解/" class="cy_cmt_count" data-xid="2019/03/27/Android之Handler消息传递机制详解/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/03/27/Android之Handler消息传递机制详解/" class="leancloud_visitors" data-flag-title="Android之Handler消息传递机制详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li>在Android开发中,多线程应用是非常频繁的,其中<code>Handler</code>机制随处可见.</li>
+<li>下面就本人对Handle的一些理解与大家一起分享，共同回顾下<code>Handle异步消息传递机制</code>。</li>
+</ul>
+<hr>
+<h2 id="1-Handler是什么？"><a href="#1-Handler是什么？" class="headerlink" title="1.Handler是什么？"></a>1.Handler是什么？</h2><ul>
+<li>Handler是一套在 Android开发中 进行异步消息传递的机制。</li>
+</ul>
+<hr>
+<h2 id="2-Handler在Android中的作用"><a href="#2-Handler在Android中的作用" class="headerlink" title="2.Handler在Android中的作用"></a>2.Handler在Android中的作用</h2><ul>
+<li>在Android开发中多线程的应用中，将工作线程中需更新UI的操作信息 传递到 UI主线程，从而实现 工作线程对UI的更新处理，最终实现异步消息的处理。</li>
+</ul>
+<hr>
+<h2 id="3-我们为什么要使用Handler去处理更新UI操作呢？"><a href="#3-我们为什么要使用Handler去处理更新UI操作呢？" class="headerlink" title="3. 我们为什么要使用Handler去处理更新UI操作呢？"></a>3. 我们为什么要使用Handler去处理更新UI操作呢？</h2><ul>
+<li>在多个线程并发更新UI的同时 保证线程安全。</li>
+</ul>
+<hr>
+<h2 id="4-Handler异步消息传递所涉及的相关概念"><a href="#4-Handler异步消息传递所涉及的相关概念" class="headerlink" title="4.Handler异步消息传递所涉及的相关概念"></a>4.Handler异步消息传递所涉及的相关概念</h2><ul>
+<li>MainThread （主线程）<code>UI线程，程序启动时自动创建。</code></li>
+<li>工作线程，<code>开发者自己开启的线程，执行耗时操作等。</code></li>
+<li>Handler（处理者） <code>UI线程与子线程通信的媒介，添加消息到消息队列（Message Queue）处理循环器分发过来的消息（Looper）。</code></li>
+<li>Message （消息） <code>Handler接受&amp;处理的对象，存储需要操作的消息。</code></li>
+<li>Message Queue（消息队列） <code>数据存储结构，采用先进先出方式，存储Handler发过来的消息。</code></li>
+<li>Looper（循坏器）<code>消息队列与处理者的媒介，从消息队列中循环取出消息并发送给Handler处理。</code></li>
+</ul>
+<hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/27/Android之Handler消息传递机制详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/Android之Activity全面解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/27/Android之Activity全面解析/" itemprop="url">Android之Activity全面解析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:40:43+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/03/27/Android之Activity全面解析/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/03/27/Android之Activity全面解析/" class="cy_cmt_count" data-xid="2019/03/27/Android之Activity全面解析/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/03/27/Android之Activity全面解析/" class="leancloud_visitors" data-flag-title="Android之Activity全面解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>基于最近要准备去面试,特意系统的复习了下Android基础,看到Activity这块时,发现很多都忘了,而且之前也没有系统的学习和写笔记记录,所以,特此写下这篇关于Activity的一些理解,旨在帮助大家更好的理解Activity.</p>
+</blockquote>
+<h1 id="Activity是什么"><a href="#Activity是什么" class="headerlink" title="Activity是什么?"></a>Activity是什么?</h1><p><code>Activity</code>是一个Android应用程序组件(也称为Android四大组件之一)，它提供了一个屏幕，用户可以通过该屏幕进行交互以执行某些操作，例如拨打电话，拍照，发送电子邮件或查看地图。每个活动都有一个窗口，用于绘制其用户界面。窗口通常填满屏幕，但可能比屏幕小，并漂浮在其他窗口的顶部.</p>
+<p>Android应用程序通常由多个彼此松散绑定的<code>Activity</code>组成。通常，应用程序中的一个<code>Activity</code>被指定为“主要”<code>Activity</code>，该<code>Activity</code>在首次启动应用程序时呈现给用户。然后，每个<code>Activity</code>可以启动另一个<code>Activity</code>以执行不同的操作。每次新<code>Activity</code>开始时，前一个<code>Activity</code>都会停止，但系统会将<code>Activity</code>保留在<code>后台堆栈中</code>（“后堆栈”）。当一个新的<code>Activity</code>开始时，它会被推到后面的堆栈上，并引起用户的注意。后栈遵循基本的“ <code>后进先出</code>”堆栈机制，因此，当用户完成当前活动并按下”后退按钮”时，它从堆栈弹出（并销毁），之前的活动恢复。（后台堆栈将在后面为大家详细介绍。）</p>
+<h1 id="如何创建Activity"><a href="#如何创建Activity" class="headerlink" title="如何创建Activity"></a>如何创建Activity</h1><p>要创建Activity，您必须创建<code>Activity</code>（或其现有子类）的子类。在子类中，您需要实现当Activity在其生命周期的各个状态之间转换时系统调用的回调方法，例如在创建，停止，恢复或销毁活动时。两个最重要的回调方法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class ExampleActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line">    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState, persistentState);</span><br><span class="line">//您必须实现此方法。系统在创建Activity时调用此方法。在您的实施中，您应该初始化Activity的基本组成部分。最重要的是，您必须在此处调用以定义Activity用户界面的布局。</span><br><span class="line">        setContentView();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//系统将此方法称为用户离开您的Activity的第一个指示（尽管并不总是意味着Activity正在被销毁）。这通常是您应该提交应该在当前用户会话之外保留的任何更改的地方（因为用户可能不会回来）。</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">    protected void onPause() &#123;</span><br><span class="line">        super.onPause();</span><br><span class="line">        //在此处应该提交应该在当前用户会话之外保留的任何更改的地方</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/27/Android之Activity全面解析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全大数据资料集合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/27/1024程序员节最新福利之2018最全大数据资料集合/" itemprop="url">1024程序员节最新福利之2018最全大数据资料集合</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:18:57+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程资料/" itemprop="url" rel="index">
+                    <span itemprop="name">编程资料</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/03/27/1024程序员节最新福利之2018最全大数据资料集合/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全大数据资料集合/" class="cy_cmt_count" data-xid="2019/03/27/1024程序员节最新福利之2018最全大数据资料集合/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/03/27/1024程序员节最新福利之2018最全大数据资料集合/" class="leancloud_visitors" data-flag-title="1024程序员节最新福利之2018最全大数据资料集合">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有好久没有写博客了,主要这段时间都沉迷学习无法自拔了,哈哈.自吹一波.</p>
+<blockquote>
+<p>前两天不是1024节吗,所以就有很多福利出现了,当然每个人能都获得的信息都有所不同,这就是所谓的信息差.秉着好东西需要分享和开源的好习惯,所以来给你们送福利了.</p>
+</blockquote>
+<blockquote>
+<p>其他福利</p>
+</blockquote>
+<p>一、<a href="https://www.imooc.com/article/256997" target="_blank" rel="noopener">1024程序员节最新福利之2018最全java资料集合</a></p>
+<p>二、<a href="https://www.imooc.com/article/256998" target="_blank" rel="noopener">1024程序员节最新福利之2018最全H5前端资料集</a></p>
+<p>三、<a href="https://www.imooc.com/article/256999" target="_blank" rel="noopener">1024程序员节最新福利之2018最全Android资料集合</a></p>
+<h1 id="Python核心基础"><a href="#Python核心基础" class="headerlink" title="Python核心基础"></a>Python核心基础</h1><p>一、尚硅谷Python核心基础视频：</p>
+<p> <a href="https://pan.baidu.com/s/1LVvNP5NPgE-IxyhW6KgDqA" target="_blank" rel="noopener">https://pan.baidu.com/s/1LVvNP5NPgE-IxyhW6KgDqA</a></p>
+<p> 密码：b2ma</p>
+<p>二、Python核心语法实战：学生管理系统</p>
+<p> <a href="https://pan.baidu.com/s/14tDNHX6rpsWUlQtFAGUq5w" target="_blank" rel="noopener">https://pan.baidu.com/s/14tDNHX6rpsWUlQtFAGUq5w</a></p>
+<p>三、Python作品之《雷电战机》</p>
+<p>  <a href="https://pan.baidu.com/s/1o7Ha6eA" target="_blank" rel="noopener">https://pan.baidu.com/s/1o7Ha6eA</a></p>
+<h1 id="大数据阶段"><a href="#大数据阶段" class="headerlink" title="大数据阶段"></a>大数据阶段</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/27/1024程序员节最新福利之2018最全大数据资料集合/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全Android资料集合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/27/1024程序员节最新福利之2018最全Android资料集合/" itemprop="url">1024程序员节最新福利之2018最全Android资料集合</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:17:47+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程资料/" itemprop="url" rel="index">
+                    <span itemprop="name">编程资料</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/03/27/1024程序员节最新福利之2018最全Android资料集合/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全Android资料集合/" class="cy_cmt_count" data-xid="2019/03/27/1024程序员节最新福利之2018最全Android资料集合/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/03/27/1024程序员节最新福利之2018最全Android资料集合/" class="leancloud_visitors" data-flag-title="1024程序员节最新福利之2018最全Android资料集合">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有好久没有写博客了,主要这段时间都沉迷学习无法自拔了,哈哈.自吹一波.</p>
+<blockquote>
+<p>前两天不是1024节吗,所以就有很多福利出现了,当然每个人能都获得的信息都有所不同,这就是所谓的信息差.秉着好东西需要分享和开源的好习惯,所以来给你们送福利了.</p>
+</blockquote>
+<blockquote>
+<p>其他福利</p>
+</blockquote>
+<p>一、<a href="https://www.imooc.com/article/256997" target="_blank" rel="noopener">1024程序员节最新福利之2018最全java资料集合</a></p>
+<p>二、<a href="https://www.imooc.com/article/257028" target="_blank" rel="noopener">1024程序员节最新福利之2018最全H5前端资料集</a></p>
+<p>三、<a href="https://www.imooc.com/article/257000" target="_blank" rel="noopener">1024程序员节最新福利之2018最全大数据资料集合</a></p>
+<h2 id="Android核心技术"><a href="#Android核心技术" class="headerlink" title="Android核心技术"></a>Android核心技术</h2><p>一、Android核心基础_15天精讲精练</p>
+<p>   <a href="https://pan.baidu.com/s/1b86u2E" target="_blank" rel="noopener">https://pan.baidu.com/s/1b86u2E</a></p>
+<p>二、Android自定义控件视频</p>
+<p><a href="https://pan.baidu.com/s/1hrOVZd6" target="_blank" rel="noopener">https://pan.baidu.com/s/1hrOVZd6</a></p>
+<p>三、Android—JNI视频</p>
+<p><a href="http://pan.baidu.com/s/1kVqBCmr" target="_blank" rel="noopener">http://pan.baidu.com/s/1kVqBCmr</a></p>
+<p>四、Android与H5互调</p>
+<p><a href="https://pan.baidu.com/s/1miHaDbM" target="_blank" rel="noopener">https://pan.baidu.com/s/1miHaDbM</a></p>
+<p>五、Android常用第三方框架源码分析</p>
+<p><a href="http://pan.baidu.com/s/1o789Vjc" target="_blank" rel="noopener">http://pan.baidu.com/s/1o789Vjc</a></p>
+<p>六、尚硅谷Android视频《多渠道打包》</p>
+<p><a href="http://pan.baidu.com/s/1dEVpQyX" target="_blank" rel="noopener">http://pan.baidu.com/s/1dEVpQyX</a></p>
+<h2 id="Android项目实战"><a href="#Android项目实战" class="headerlink" title="Android项目实战"></a>Android项目实战</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/27/1024程序员节最新福利之2018最全Android资料集合/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全java资料集合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/27/1024程序员节最新福利之2018最全java资料集合/" itemprop="url">1024程序员节最新福利之2018最全java资料集合</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:16:43+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程资料/" itemprop="url" rel="index">
+                    <span itemprop="name">编程资料</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/03/27/1024程序员节最新福利之2018最全java资料集合/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全java资料集合/" class="cy_cmt_count" data-xid="2019/03/27/1024程序员节最新福利之2018最全java资料集合/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/03/27/1024程序员节最新福利之2018最全java资料集合/" class="leancloud_visitors" data-flag-title="1024程序员节最新福利之2018最全java资料集合">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有好久没有写博客了,主要这段时间都沉迷学习无法自拔了,哈哈.自吹一波.</p>
+<blockquote>
+<p>前两天不是1024节吗,所以就有很多福利出现了,当然每个人能都获得的信息都有所不同,这就是所谓的信息差.秉着好东西需要分享和开源的好习惯,所以来给你们送福利了.</p>
+</blockquote>
+<blockquote>
+<p>其他福利</p>
+</blockquote>
+<p>一、<a href="https://www.imooc.com/article/256999" target="_blank" rel="noopener">1024程序员节最新福利之2018最全Android资料集合</a></p>
+<p>二、<a href="https://www.imooc.com/article/256998" target="_blank" rel="noopener">1024程序员节最新福利之2018最全H5前端资料集</a></p>
+<p>三、<a href="https://www.imooc.com/article/257000" target="_blank" rel="noopener">1024程序员节最新福利之2018最全大数据资料集合</a></p>
+<h3 id="Java基础阶段"><a href="#Java基础阶段" class="headerlink" title="Java基础阶段"></a>Java基础阶段</h3><p>一、20天横扫Java基础（课堂实录）</p>
+<p><a href="https://pan.baidu.com/s/1htTzZRQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1htTzZRQ</a></p>
+<p>二、尚硅谷Java基础实战——Bank项目</p>
+<p><a href="http://pan.baidu.com/share/link?shareid=3690978764&amp;uk=573533038" target="_blank" rel="noopener">http://pan.baidu.com/share/link?shareid=3690978764&amp;uk=573533038</a></p>
+<p>三、尚硅谷_ORACLE、SQL、PLSQL 视频教程</p>
+<p><a href="https://pan.baidu.com/s/1ghb9ENL" target="_blank" rel="noopener">https://pan.baidu.com/s/1ghb9ENL</a></p>
+<p>四、尚硅谷JDBC视频教程</p>
+<p> <a href="https://pan.baidu.com/s/1c3XBTk8" target="_blank" rel="noopener">https://pan.baidu.com/s/1c3XBTk8</a></p>
+<p>五、Java8新特性</p>
+<p> <a href="http://pan.baidu.com/s/1cgWOH4" target="_blank" rel="noopener">http://pan.baidu.com/s/1cgWOH4</a></p>
+<p>六、Java——JUC</p>
+<p> <a href="http://pan.baidu.com/s/1hsoh76k" target="_blank" rel="noopener">http://pan.baidu.com/s/1hsoh76k</a></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/27/1024程序员节最新福利之2018最全java资料集合/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全H5前端资料集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/27/1024程序员节最新福利之2018最全H5前端资料集/" itemprop="url">1024程序员节最新福利之2018最全H5前端资料集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:15:09+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程资料/" itemprop="url" rel="index">
+                    <span itemprop="name">编程资料</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/03/27/1024程序员节最新福利之2018最全H5前端资料集/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/03/27/1024程序员节最新福利之2018最全H5前端资料集/" class="cy_cmt_count" data-xid="2019/03/27/1024程序员节最新福利之2018最全H5前端资料集/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/03/27/1024程序员节最新福利之2018最全H5前端资料集/" class="leancloud_visitors" data-flag-title="1024程序员节最新福利之2018最全H5前端资料集">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有好久没有写博客了,主要这段时间都沉迷学习无法自拔了,哈哈.自吹一波.</p>
+<blockquote>
+<p>前两天不是1024节吗,所以就有很多福利出现了,当然每个人能都获得的信息都有所不同,这就是所谓的信息差.秉着好东西需要分享和开源的好习惯,所以来给你们送福利了.</p>
+</blockquote>
+<blockquote>
+<p>其他福利</p>
+</blockquote>
+<p>一、<a href="https://www.imooc.com/article/256997" target="_blank" rel="noopener">1024程序员节最新福利之2018最全java资料集合</a></p>
+<p>二、<a href="https://www.imooc.com/article/257000" target="_blank" rel="noopener">1024程序员节最新福利之2018最全大数据资料集合</a></p>
+<p>三、<a href="https://www.imooc.com/article/256999" target="_blank" rel="noopener">1024程序员节最新福利之2018最全Android资料集合</a></p>
+<h1 id="2018最全H5前端资料集合"><a href="#2018最全H5前端资料集合" class="headerlink" title="2018最全H5前端资料集合"></a>2018最全H5前端资料集合</h1><p>一、HTML &amp; CSS 核心教程：（103集实战教学，从入门到精通）</p>
+<p><a href="http://pan.baidu.com/s/1pLwKZN1" target="_blank" rel="noopener">http://pan.baidu.com/s/1pLwKZN1</a></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/27/1024程序员节最新福利之2018最全H5前端资料集/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/史上最全2018最新前端学习资料/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/27/史上最全2018最新前端学习资料/" itemprop="url">史上最全2018最新前端学习资料</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:13:49+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程资料/" itemprop="url" rel="index">
+                    <span itemprop="name">编程资料</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/03/27/史上最全2018最新前端学习资料/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/03/27/史上最全2018最新前端学习资料/" class="cy_cmt_count" data-xid="2019/03/27/史上最全2018最新前端学习资料/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/03/27/史上最全2018最新前端学习资料/" class="leancloud_visitors" data-flag-title="史上最全2018最新前端学习资料">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -820,27 +2336,319 @@ window.onmouseout = function () {
       
         
           <blockquote>
-<p>初识Hexo</p>
-</blockquote>
-<h1 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo?"></a><code>什么是Hexo?</code></h1><p><code>Hexo</code>是一个快速，简单而强大的博客框架。您可以使用<a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他语言）编写文章，Hexo可以在几秒钟内生成具有美丽主题的静态文件。<br>对的,就是这么简单明了,其实就是一个搭建博客的工具而已,也不是什么高深莫测的东西,接下来我将带着大家一步步徒手搭建属于自己的博客.<code>说明:(这里说的搭建属于自己的博客,并不是指搭建属于自己的独一无二的博客,那是前端的本事了,我们这里只说最基本的)</code></p>
-<h1 id="1-安装Hexo"><a href="#1-安装Hexo" class="headerlink" title="1.安装Hexo"></a>1.安装Hexo</h1><p>建立Hexo只需要几分钟,安装Hexo非常简单。但是，您首先需要安装其他一些东西.</p>
-<ul>
-<li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a></li>
-<li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a></li>
-</ul>
-<p>如果你的电脑已经有这些，祝贺！只需使用npm安装Hexo：</p>
+<p>你想要的干货，都在这里哟！</p>
 <blockquote>
-<p>$ npm install -g hexo-cli</p>
+<p>史上最全2018最新前端学习资料</p>
 </blockquote>
-<p>如果没有,那就一起来看下面吧(<code>这里只说windows的安装,因为本人太穷,买不起mac啊o(╥﹏╥)o</code>)</p>
-<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p><img src="https://upload-images.jianshu.io/upload_images/5549640-6357f7847468f282.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装git.png"></p>
+</blockquote>
+<h1 id="写在最前的话"><a href="#写在最前的话" class="headerlink" title="写在最前的话"></a>写在最前的话</h1><p>本博文所列全部前端学习资料均整理自网络开放资源,由于某种原因资源链接在此暂不给出,建议先行浏览目录,若所整理的资料符合你的需求,请前往个人站点<a href="http://darryrzhong.site/" target="_blank" rel="noopener">darryrzhong</a>送给你的<code>福利</code>获取你所需的学习资源!</p>
+<blockquote>
+<p>旨在分享优质干货、让我们携手共同进步吧!</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-5d71d6eeff2b51f7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="web前端.jpg"></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><hr>
 <ul>
-<li>Windows：下载并安装<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git</a>。<br>一切按照默认走就行了,没什么特殊的地方.</li>
+<li>前端学习之PS基础</li>
+<li>HTML5+CSS3从入门到精通</li>
+<li>JavaScript视频教程</li>
+<li>jQuery视频教程</li>
+<li>前端开发常用的库—Bootstrap</li>
+<li>Vue.js</li>
+<li>Smarty模板引擎视频教程</li>
+<li>NodeJS</li>
+<li>Mysql视频教程</li>
+<li>PHP视频教程</li>
+<li>oracle视频教程</li>
+<li>nginx视频教程</li>
+<li>ajax</li>
+<li>mongodb视频教程</li>
+<li>Angularjs系列视频</li>
+<li>React</li>
+<li>dedeCMS织梦视频</li>
+<li>ThinkPHP视频教程</li>
+<li>案例和总结</li>
+<li>天猫商城购物车实战</li>
+<li>java学科</li>
+<li>Python</li>
+<li>node.js微信开发</li>
+<li>提升自己的10个PDF文档</li>
 </ul>
-<h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p><img src="https://upload-images.jianshu.io/upload_images/5549640-affa652a4cf53b61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Nodejs安装.png"></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/27/关于Hexo6-0搭建个人博客-基础编/#more" rel="contents">
+            <a class="btn" href="/2019/03/27/史上最全2018最新前端学习资料/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/27/史上最全计算机类编程资料大集合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/27/史上最全计算机类编程资料大集合/" itemprop="url">史上最全计算机类编程资料大集合</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T11:11:04+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程资料/" itemprop="url" rel="index">
+                    <span itemprop="name">编程资料</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/03/27/史上最全计算机类编程资料大集合/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/03/27/史上最全计算机类编程资料大集合/" class="cy_cmt_count" data-xid="2019/03/27/史上最全计算机类编程资料大集合/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/03/27/史上最全计算机类编程资料大集合/" class="leancloud_visitors" data-flag-title="史上最全计算机类编程资料大集合">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>你想要的干货，都在这里哟！</p>
+<blockquote>
+<p>免费的计算机编程类中文书籍</p>
+</blockquote>
+</blockquote>
+<p>###<code>摘自:github上由justjavac整理的free-programming-books-zh_CN(免费的计算机编程类中文书籍)觉得不错的可以去star和fork一下哟!</code></p>
+<h1 id="写在最前面的话"><a href="#写在最前面的话" class="headerlink" title="写在最前面的话"></a>写在最前面的话</h1><p>首先声明,本篇博文并非本人原创,而是摘自github上大神<code>justjavac</code>发起并整理的<code>free-programming-books-zh_CN</code>(免费的计算机编程类中文书籍)开源项目,旨在帮助不经常逛github的童鞋发掘优质的学习干货,节省学习时间成本.最后再次感谢<code>justjavac</code>的整理与分享.</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><hr>
+<ul>
+<li>语言无关类<ul>
+<li>操作系统</li>
+<li>智能系统</li>
+<li>分布式系统</li>
+<li>编译原理</li>
+<li>函数式概念</li>
+<li>计算机图形学</li>
+<li>WEB服务器</li>
+<li>版本控制</li>
+<li>编辑器</li>
+<li>NoSQL</li>
+<li>PostgreSQL</li>
+<li>MySQL</li>
+<li>管理和监控</li>
+<li>项目相关</li>
+<li>设计模式</li>
+<li>Web</li>
+<li>大数据</li>
+<li>编程艺术</li>
+<li>其他</li>
+</ul>
+</li>
+<li><p>语言相关类</p>
+<ul>
+<li>Android</li>
+<li>App</li>
+<li>AWK</li>
+<li>C/C++</li>
+<li>C#</li>
+<li>Clojure</li>
+<li>CSS/HTML</li>
+<li>Dart</li>
+<li>Elixir</li>
+<li>Erlang</li>
+<li>Fortran</li>
+<li>Go</li>
+<li>Groovy</li>
+<li>Haskell</li>
+<li>IOS</li>
+<li>Java</li>
+<li>JavaScript<ul>
+<li>LaTeX</li>
+<li>LISP</li>
+<li>Lua</li>
+<li>OCaml</li>
+<li>Perl</li>
+<li>PHP</li>
+<li>Prolog</li>
+<li>Python</li>
+<li>R</li>
+<li>Ruby</li>
+<li>Rust</li>
+<li>Scala</li>
+<li>Shell</li>
+<li>Swift</li>
+</ul>
+</li>
+<li>读书笔记及其他</li>
+<li>测试相关</li>
+</ul></li></ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/27/史上最全计算机类编程资料大集合/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -886,7 +2694,7 @@ window.onmouseout = function () {
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -934,7 +2742,7 @@ window.onmouseout = function () {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -956,7 +2764,7 @@ window.onmouseout = function () {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

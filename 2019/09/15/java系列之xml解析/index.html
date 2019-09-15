@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="xml,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="darryrzhong" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="XML定义XML，即 extensible Markup Language ，是一种数据标记语言 &amp;amp; 传输格式 作用对数据进行标记（结构化数据）、存储 &amp;amp; 传输 特性 灵活性: 可自定义标签，文档结构 自我描叙性 XML文档即 一个纯文本文件，代码结构清晰，适合人类阅读 有文本处理能力的软件都可以处理XML   可扩展性: 可在不中断解析，应用程序的情况下进行扩展 可跨平台数据传输">
+<meta name="keywords" content="xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java系列之xml解析">
+<meta property="og:url" content="http://darryrzhong.xyz/2019/09/15/java系列之xml解析/index.html">
+<meta property="og:site_name" content="darryrzhong">
+<meta property="og:description" content="XML定义XML，即 extensible Markup Language ，是一种数据标记语言 &amp;amp; 传输格式 作用对数据进行标记（结构化数据）、存储 &amp;amp; 传输 特性 灵活性: 可自定义标签，文档结构 自我描叙性 XML文档即 一个纯文本文件，代码结构清晰，适合人类阅读 有文本处理能力的软件都可以处理XML   可扩展性: 可在不中断解析，应用程序的情况下进行扩展 可跨平台数据传输">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-2019a7929704f000.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-09-15T09:23:27.433Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java系列之xml解析">
+<meta name="twitter:description" content="XML定义XML，即 extensible Markup Language ，是一种数据标记语言 &amp;amp; 传输格式 作用对数据进行标记（结构化数据）、存储 &amp;amp; 传输 特性 灵活性: 可自定义标签，文档结构 自我描叙性 XML文档即 一个纯文本文件，代码结构清晰，适合人类阅读 有文本处理能力的软件都可以处理XML   可扩展性: 可在不中断解析，应用程序的情况下进行扩展 可跨平台数据传输">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5549640-2019a7929704f000.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://darryrzhong.xyz/2019/09/15/java系列之xml解析/">
+
+
+
+
+
+  <title>java系列之xml解析 | darryrzhong</title>
+  
+
+
+
+
+
+
+
+
+
+  <script>
+class Circle {
+    //创建对象
+    //以一个圆为对象
+    //设置随机的 x，y坐标，r半径，_mx，_my移动的距离
+    //this.r是创建圆的半径，参数越大半径越大
+    //this._mx,this._my是移动的距离，参数越大移动
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.r = Math.random() * 10 ;
+        this._mx = Math.random() ;
+        this._my = Math.random() ;
+
+    }
+
+    //canvas 画圆和画直线
+    //画圆就是正常的用canvas画一个圆
+    //画直线是两个圆连线，为了避免直线过多，给圆圈距离设置了一个值，距离很远的圆圈，就不做连线处理
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+        ctx.arc(this.x, this.y, this.r, 0, 360)
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+        ctx.fill();
+    }
+
+    drawLine(ctx, _circle) {
+        let dx = this.x - _circle.x;
+        let dy = this.y - _circle.y;
+        let d = Math.sqrt(dx * dx + dy * dy)
+        if (d < 150) {
+            ctx.beginPath();
+            //开始一条路径，移动到位置 this.x,this.y。创建到达位置 _circle.x,_circle.y 的一条线：
+            ctx.moveTo(this.x, this.y);   //起始点
+            ctx.lineTo(_circle.x, _circle.y);   //终点
+            ctx.closePath();
+            ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+            ctx.stroke();
+        }
+    }
+
+    // 圆圈移动
+    // 圆圈移动的距离必须在屏幕范围内
+    move(w, h) {
+        this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
+        this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
+        this.x += this._mx / 2;
+        this.y += this._my / 2;
+    }
+}
+//鼠标点画圆闪烁变动
+class currentCirle extends Circle {
+    constructor(x, y) {
+        super(x, y)
+    }
+
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //注释内容为鼠标焦点的地方圆圈半径变化
+        //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+        this.r = 8;
+        ctx.arc(this.x, this.y, this.r, 0, 360);
+        ctx.closePath();
+        //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+        ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'
+        ctx.fill();
+
+    }
+}
+//更新页面用requestAnimationFrame替代setTimeout
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let w = canvas.width = canvas.offsetWidth;
+let h = canvas.height = canvas.offsetHeight;
+let circles = [];
+let current_circle = new currentCirle(0, 0)
+
+let draw = function () {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].move(w, h);
+        circles[i].drawCircle(ctx);
+        for (j = i + 1; j < circles.length; j++) {
+            circles[i].drawLine(ctx, circles[j])
+        }
+    }
+    if (current_circle.x) {
+        current_circle.drawCircle(ctx);
+        for (var k = 1; k < circles.length; k++) {
+            current_circle.drawLine(ctx, circles[k])
+        }
+    }
+    requestAnimationFrame(draw)
+}
+
+let init = function (num) {
+    for (var i = 0; i < num; i++) {
+        circles.push(new Circle(Math.random() * w, Math.random() * h));
+    }
+    draw();
+}
+window.addEventListener('load', init(60));
+window.onmousemove = function (e) {
+    e = e || window.event;
+    current_circle.x = e.clientX;
+    current_circle.y = e.clientY;
+}
+window.onmouseout = function () {
+    current_circle.x = null;
+    current_circle.y = null;
+
+};
+</script>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/darryrzhong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">darryrzhong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">时光，不会辜负每一个平静努力的人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br>
+            
+            摄影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-music">
+          <a href="/music/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br>
+            
+            音乐
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-welfare">
+          <a href="/welfare/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>
+            
+            福利
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            书单
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之xml解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java系列之xml解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-15T17:22:23+08:00">
+                2019-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/09/15/java系列之xml解析/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/09/15/java系列之xml解析/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/09/15/java系列之xml解析/" class="leancloud_visitors" data-flag-title="java系列之xml解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        <h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>XML，即 extensible Markup Language ，是一种数据标记语言 &amp; 传输格式</p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>对数据进行标记（结构化数据）、存储 &amp; 传输</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ol>
+<li>灵活性: 可自定义标签，文档结构</li>
+<li>自我描叙性<ul>
+<li>XML文档即 一个纯文本文件，代码结构清晰，适合人类阅读</li>
+<li>有文本处理能力的软件都可以处理XML</li>
+</ul>
+</li>
+<li>可扩展性: 可在不中断解析，应用程序的情况下进行扩展</li>
+<li>可跨平台数据传输: 可以不兼容的系统间交换数据，降低了复杂性</li>
+<li>数据共享: XML 以纯文本进行存储，独立于软硬件和应用程序的数据存储方式，使得不同的系统都能访问XML</li>
+</ol>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ul>
+<li>元素要关闭标签</li>
+<li>对大小写敏感</li>
+<li>必须要有根元素(父元素）</li>
+<li>属性值必须加引号</li>
+<li>XML元素命名规则<ul>
+<li>不能以数字或标点符号开头</li>
+<li>不能包含空格</li>
+<li>不能以xml开头    </li>
+</ul>
+</li>
+<li>CDATA<br>不被解析器解析的文本数据，所有xml文档都会被解析器解析（cdata区段除外）<br>&lt;![CDATA[“传输的文本 “]]&gt;     </li>
+<li>PCDATA<br>被解析的字符数据</li>
+</ul>
+<h2 id="XML树形结构"><a href="#XML树形结构" class="headerlink" title="XML树形结构"></a>XML树形结构</h2><p>XML文档中的元素会形成一种树结构，从根部开始，然后拓展到每个树叶（节点）,下面将以实例说明XML的树结构。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">classes</span>&gt;</span><span class="comment">&lt;!--根节点 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">student</span> <span class="attr">id</span>=<span class="string">"0"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>Av<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">age</span>&gt;</span>23<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">sax</span>&gt;</span>男<span class="tag">&lt;/<span class="name">sax</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Courses</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">course</span> <span class="attr">name</span>=<span class="string">"语文"</span> <span class="attr">score</span>=<span class="string">"90"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">course</span> <span class="attr">name</span>=<span class="string">"数学"</span> <span class="attr">score</span>=<span class="string">"78"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Courses</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">student</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">student</span> <span class="attr">id</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>Lance<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">age</span>&gt;</span>22<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">sax</span>&gt;</span>男<span class="tag">&lt;/<span class="name">sax</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Courses</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">course</span> <span class="attr">name</span>=<span class="string">"语文"</span> <span class="attr">score</span>=<span class="string">"59"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">course</span> <span class="attr">name</span>=<span class="string">"数学"</span> <span class="attr">score</span>=<span class="string">"38"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Courses</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">student</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">classes</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>树形结构</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-2019a7929704f000.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="xml.png"></p>
+<p>XML节点解释</p>
+<p>XML文件是由节点构成的。它的第一个节点为“根节点”。一个XML文件必须有且只能有一个根节点，其他节点都必须是它的子节点,每个子节点又可以有自己的子节点。</p>
+<a id="more"></a>
+<h2 id="解析方式"><a href="#解析方式" class="headerlink" title="解析方式"></a>解析方式</h2><p>解析XML，即从XML中提取有用的信息<br>XML的解析方式主要分为2大类：</p>
+<table>
+<thead>
+<tr>
+<th>解析方式</th>
+<th style="text-align:center">原理</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基于文档驱动</td>
+<td style="text-align:center">在解析XML文档前，需先将整个XML文档加载到内存中</td>
+<td>DOM方式</td>
+</tr>
+<tr>
+<td>基于事件驱动</td>
+<td style="text-align:center">根据不同需求事件(检索，修改，删除等)去执行不同解析操作(不需要把整个XML 文档加载到内存中)</td>
+<td>SAX方式，PULL方式</td>
+</tr>
+</tbody>
+</table>
+<h3 id="DOM方式"><a href="#DOM方式" class="headerlink" title="DOM方式"></a>DOM方式</h3><p>Document Object Model，即 文件对象模型，是 一种 基于树形结构节点 &amp; 文档驱动 的XML解析方法，它定义了访问 &amp; 操作xml文档元素的方法和接口</p>
+<h3 id="DOM解析原理"><a href="#DOM解析原理" class="headerlink" title="DOM解析原理"></a>DOM解析原理</h3><ul>
+<li>核心思想<br>基于文档驱动，在解析XML文档前，先将整个XML文档存储到内存中，然后再解析</li>
+<li>解析过程<ol>
+<li>解析器读入整个XML文档到内存中</li>
+<li>解析全部文件，并将文件分为独立的元素，属性等，以树结构的形式在内存中表示XML文件</li>
+<li>然后通过DOM API去遍历XML树，根据需要搜索数据/修改文档</li>
+</ol>
+</li>
+<li>具体解析步骤<ol>
+<li>获取DOM解析器工厂实例(DocumentBuilderFactory.newInstance())     </li>
+<li>获取DOM解析器对象,调用解析器工厂实例类的newDocumentBuilder()</li>
+<li>最后获取代表整个文档的Document对象</li>
+</ol>
+</li>
+</ul>
+<h3 id="具体解析实例"><a href="#具体解析实例" class="headerlink" title="具体解析实例"></a>具体解析实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">domTest</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</span><br><span class="line">            DocumentBuilder db = dbf.newDocumentBuilder();</span><br><span class="line">            Document document = db.parse(context.getResources().openRawResource(R.raw.students));</span><br><span class="line">            <span class="comment">//通过Document对象的getElementsByTagName()返根节点的一个list集合</span></span><br><span class="line">            NodeList studentList = document.getElementsByTagName(<span class="string">"student"</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; studentList.getLength(); i++) &#123;</span><br><span class="line">                Student student = <span class="keyword">new</span> Student();</span><br><span class="line">                <span class="comment">//循环遍历获取每一个student</span></span><br><span class="line">                Node studentNode = studentList.item(i);</span><br><span class="line">                <span class="keyword">if</span> (((Element) studentNode).hasAttribute(<span class="string">"id"</span>)) &#123;</span><br><span class="line">                    student.setId(Integer.parseInt(((Element) studentNode).getAttribute(<span class="string">"id"</span>)));</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//解析student节点的子节点</span></span><br><span class="line">                NodeList childList = studentNode.getChildNodes();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">0</span>; t &lt; childList.getLength(); t++) &#123;</span><br><span class="line">                    <span class="comment">//区分出text类型的node以及element类型的node</span></span><br><span class="line">                    <span class="keyword">if</span> (childList.item(t).getNodeType() == Node.ELEMENT_NODE) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (childList.item(t).getNodeName().equalsIgnoreCase(<span class="string">"Courses"</span>)) &#123;</span><br><span class="line">                            NodeList courses = childList.item(t).getChildNodes();</span><br><span class="line">                            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; courses.getLength(); j++) &#123;</span><br><span class="line">                                Node courseNode = courses.item(j);</span><br><span class="line">                                <span class="keyword">if</span> (courseNode.getNodeType() != Node.ELEMENT_NODE) &#123;</span><br><span class="line">                                    <span class="keyword">continue</span>;</span><br><span class="line">                                &#125;</span><br><span class="line">                                NamedNodeMap namedNodeMap = courseNode.getAttributes();</span><br><span class="line">                                Course course = <span class="keyword">new</span> Course();</span><br><span class="line">                                student.addCourse(course);</span><br><span class="line">                                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; namedNodeMap.getLength(); k++) &#123;</span><br><span class="line">                                    Node courseAttr = namedNodeMap.item(k);</span><br><span class="line">                                    <span class="keyword">if</span> (courseAttr.getNodeName().equals(<span class="string">"name"</span>)) &#123;</span><br><span class="line">                                        course.setName(courseAttr.getNodeValue());</span><br><span class="line">                                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (courseAttr.getNodeName().equals(<span class="string">"score"</span>)) &#123;</span><br><span class="line">                                        course.setScore(Float.parseFloat(courseAttr.getNodeValue()));</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            Node child = childList.item(t);</span><br><span class="line">                            <span class="keyword">if</span> (child.getNodeName().equals(<span class="string">"name"</span>)) &#123;</span><br><span class="line">                                student.setName(child.getTextContent());</span><br><span class="line">                            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (child.getNodeName().equals(<span class="string">"age"</span>)) &#123;</span><br><span class="line">                                student.setAge(Integer.parseInt(child.getTextContent()));</span><br><span class="line">                            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (child.getNodeName().equals(<span class="string">"sax"</span>)) &#123;</span><br><span class="line">                                student.setSax(child.getTextContent());</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                Log.i(<span class="string">"Zero"</span>, <span class="string">"解析完毕: "</span> + student);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ParserConfigurationException | SAXException | IOException e) &#123;</span><br><span class="line">            Log.e(<span class="string">"Zero"</span>, e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="特点及应用场景"><a href="#特点及应用场景" class="headerlink" title="特点及应用场景"></a>特点及应用场景</h3><ul>
+<li>优点<ul>
+<li>操作整个XML文档的效率高</li>
+<li>可随时，多次访问已解析的文档          </li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>耗内存，时间<br>应用场景</li>
+<li>适合XML文档较小，需频繁操作 解析文档，多次访问文档的情况</li>
+<li>对于移动端，内存资源非常宝贵，使用时需权衡利弊</li>
+</ul>
+</li>
+</ul>
+<h3 id="SAX方式"><a href="#SAX方式" class="headerlink" title="SAX方式"></a>SAX方式</h3><p>即 Simple API for XML，一种 基于事件流驱动、通过接口方法解析 的XML解析方法</p>
+<h3 id="SAX解析原理"><a href="#SAX解析原理" class="headerlink" title="SAX解析原理"></a>SAX解析原理</h3><ul>
+<li><p>核心思想<br>基于事件流驱动，根据不同需求事件(检索，修改，删除等)去执行不同解析操作，不需要把整个XML 文档加载到内存中</p>
+</li>
+<li><p>解析过程</p>
+<ol>
+<li>按顺序扫描XML文档</li>
+<li>当扫描到(Document)文档的开始/结束标签，(Element)节点元素的开始/结束标签时，直接调用对应的方法，将状态信息以参数的方式传递到方法中</li>
+<li>然后根据状态信息去执行相关的自定义操作<br>具体的操作</li>
+<li>自定义Handler处理类，继承自DefaultHandler类</li>
+<li>重写5个核心回调方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">startDocument()</span><br><span class="line">startElement()</span><br><span class="line">characters()</span><br><span class="line">endElement()</span><br><span class="line">endDocument()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="具体解析实例-1"><a href="#具体解析实例-1" class="headerlink" title="具体解析实例"></a>具体解析实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saxTest</span><span class="params">(Context context)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      SAXParserFactory spf = SAXParserFactory.newInstance();</span><br><span class="line">      SAXParser sp = spf.newSAXParser();</span><br><span class="line">      sp.parse(context.getResources().openRawResource(R.raw.students), <span class="keyword">new</span> DefaultHandler() &#123;</span><br><span class="line"></span><br><span class="line">          String currentTag = <span class="keyword">null</span>;</span><br><span class="line">          Student student = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">          <span class="comment">/**</span></span><br><span class="line"><span class="comment">           * 文档解析开始时被调用</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@throws</span> SAXException</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startDocument</span><span class="params">()</span> <span class="keyword">throws</span> SAXException </span>&#123;</span><br><span class="line">              <span class="keyword">super</span>.startDocument();</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="comment">/**</span></span><br><span class="line"><span class="comment">           * 文档解析结束时被调用</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@throws</span> SAXException</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">endDocument</span><span class="params">()</span> <span class="keyword">throws</span> SAXException </span>&#123;</span><br><span class="line">              <span class="keyword">super</span>.endDocument();</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="comment">/**</span></span><br><span class="line"><span class="comment">           *</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> uri 命名空间</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> localName 不带命名空间前缀的标签名</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> qName 带命名空间的标签名</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> attributes 标签的属性集合 &lt;student id="0"&gt;&lt;/student&gt;</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@throws</span> SAXException</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startElement</span><span class="params">(String uri, String localName, String qName, Attributes attributes)</span> <span class="keyword">throws</span> SAXException </span>&#123;</span><br><span class="line">              <span class="keyword">super</span>.startElement(uri, localName, qName, attributes);</span><br><span class="line">              currentTag = localName;</span><br><span class="line">              <span class="keyword">if</span> (<span class="string">"student"</span>.equals(currentTag)) &#123;</span><br><span class="line">                  student = <span class="keyword">new</span> Student();</span><br><span class="line">                  student.setId(Integer.parseInt(attributes.getValue(<span class="string">"id"</span>)));</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span> (<span class="string">"course"</span>.equals(currentTag)) &#123;</span><br><span class="line">                  <span class="keyword">if</span> (student != <span class="keyword">null</span>) &#123;</span><br><span class="line">                      Course course = <span class="keyword">new</span> Course();</span><br><span class="line">                      course.setName(attributes.getValue(<span class="string">"name"</span>));</span><br><span class="line">                      course.setScore(Float.parseFloat(attributes.getValue(<span class="string">"score"</span>)));</span><br><span class="line">                      student.addCourse(course);</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="comment">/**</span></span><br><span class="line"><span class="comment">           *  解析到结束标签时被调用 '/&gt;'</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> uri</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> localName</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> qName</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@throws</span> SAXException</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">endElement</span><span class="params">(String uri, String localName, String qName)</span> <span class="keyword">throws</span> SAXException </span>&#123;</span><br><span class="line">              <span class="keyword">super</span>.endElement(uri, localName, qName);</span><br><span class="line">              <span class="keyword">if</span> (<span class="string">"student"</span>.equals(localName)) &#123;</span><br><span class="line">                  Log.i(TAG, <span class="string">"endElement: student: "</span> + student);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="comment">/**</span></span><br><span class="line"><span class="comment">           *</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> ch 内容</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> start 起始位置</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> length 长度</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@throws</span> SAXException</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">characters</span><span class="params">(<span class="keyword">char</span>[] ch, <span class="keyword">int</span> start, <span class="keyword">int</span> length)</span> <span class="keyword">throws</span> SAXException </span>&#123;</span><br><span class="line">              <span class="keyword">super</span>.characters(ch, start, length);</span><br><span class="line">              String str =  <span class="keyword">new</span> String(ch, start, length).trim();</span><br><span class="line">              <span class="keyword">if</span> (TextUtils.isEmpty(str))</span><br><span class="line">                  <span class="keyword">return</span>;</span><br><span class="line">              <span class="keyword">if</span> (<span class="string">"name"</span>.equals(currentTag) &amp;&amp; student != <span class="keyword">null</span>) &#123;</span><br><span class="line">                  student.setName(str);</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span> (<span class="string">"age"</span>.equals(currentTag)&amp;&amp;  student != <span class="keyword">null</span>) &#123;</span><br><span class="line">                  student.setAge(Integer.parseInt(str));</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span> (<span class="string">"sax"</span>.equals(currentTag) &amp;&amp; student != <span class="keyword">null</span>) &#123;</span><br><span class="line">                  student.setSax(str);</span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="特点及应用场景-1"><a href="#特点及应用场景-1" class="headerlink" title="特点及应用场景"></a>特点及应用场景</h3><ul>
+<li>优点<ul>
+<li>解析效率高</li>
+<li>内存占用少     </li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>解析方法复杂，API接口方法复杂，代码量大</li>
+<li>可扩展性差，无法修改XML树内容结构<br>应用场景</li>
+<li>适合XML文档大，解析性能要求高，不需修改 多次访问解析的情况</li>
+</ul>
+</li>
+</ul>
+<h3 id="PULL方式"><a href="#PULL方式" class="headerlink" title="PULL方式"></a>PULL方式</h3><p>一种 基于事件流驱动 的XML解析方法，是Android系统特有的解析方式</p>
+<h3 id="PULL解析原理"><a href="#PULL解析原理" class="headerlink" title="PULL解析原理"></a>PULL解析原理</h3><p>基于事件流驱动，根据不同需求事件(检索，修改，删除等)去执行不同解析操作，不需要把整个XML 文档加载到内存中</p>
+<ul>
+<li>解析过程<ol>
+<li>首先按顺序扫描XML文档</li>
+<li>解析器提供文档的开始/结束(START_DOCUMENT,END_DOCUMENT)，元素的开始/结束(START_TAG,END_TAG)</li>
+<li>当某个元素开始时，通过调用parser.nextText()从XML文档中提取所有字符数据</li>
+</ol>
+</li>
+</ul>
+<h3 id="具体解析实例-2"><a href="#具体解析实例-2" class="headerlink" title="具体解析实例"></a>具体解析实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pullTest</span><span class="params">(Context context)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();</span><br><span class="line">       parser.setInput(context.getResources().openRawResource(R.raw.students), <span class="string">"utf-8"</span>);<span class="comment">//设置数据源编码</span></span><br><span class="line">       <span class="keyword">int</span> eventCode = parser.getEventType();<span class="comment">//获取事件类型</span></span><br><span class="line">       Student student = <span class="keyword">null</span>;</span><br><span class="line">       <span class="keyword">while</span> (eventCode != XmlPullParser.END_DOCUMENT) &#123;</span><br><span class="line">           <span class="keyword">switch</span> (eventCode) &#123;</span><br><span class="line">               <span class="keyword">case</span> XmlPullParser.START_DOCUMENT:<span class="comment">//开始读取XML文档</span></span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> XmlPullParser.START_TAG:<span class="comment">//开始读取标签</span></span><br><span class="line">                   String name = parser.getName();</span><br><span class="line">                   <span class="keyword">if</span> (<span class="string">"student"</span>.equals(name)) &#123;</span><br><span class="line">                       student = <span class="keyword">new</span> Student();</span><br><span class="line">                       student.setId(Integer.parseInt(parser.getAttributeValue(<span class="keyword">null</span>, <span class="string">"id"</span>)));</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="keyword">if</span> (<span class="string">"name"</span>.equals(name) &amp;&amp; student != <span class="keyword">null</span>) &#123;</span><br><span class="line">                       student.setName(parser.nextText());</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="keyword">if</span> (<span class="string">"age"</span>.equals(name) &amp;&amp; student != <span class="keyword">null</span>) &#123;</span><br><span class="line">                       student.setAge(Integer.parseInt(parser.nextText().trim()));</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="keyword">if</span> (<span class="string">"sax"</span>.equals(name) &amp;&amp; student != <span class="keyword">null</span>) &#123;</span><br><span class="line">                       student.setSax(parser.nextText());</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="keyword">if</span> (<span class="string">"course"</span>.equals(name) &amp;&amp; student != <span class="keyword">null</span>) &#123;</span><br><span class="line">                       Course course = <span class="keyword">new</span> Course();</span><br><span class="line">                       course.setName(parser.getAttributeValue(<span class="keyword">null</span>, <span class="string">"name"</span>));</span><br><span class="line">                       course.setScore(Float.parseFloat(parser.getAttributeValue(<span class="keyword">null</span>, <span class="string">"score"</span>)));</span><br><span class="line">                       student.addCourse(course);</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> XmlPullParser.END_TAG:<span class="comment">//结束原始事件</span></span><br><span class="line">                   <span class="keyword">if</span> (<span class="string">"student"</span>.equals(parser.getName())) &#123;</span><br><span class="line">                       Log.i(TAG, <span class="string">"pullTest: student: "</span> + student);</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">           eventCode = parser.next();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="特点及应用场景-2"><a href="#特点及应用场景-2" class="headerlink" title="特点及应用场景"></a>特点及应用场景</h3><ul>
+<li>优点<ul>
+<li>解析效率高</li>
+<li>内存占用少 </li>
+<li>灵活性高 可控制事件处理结束的时机(与SAX最大的区别)</li>
+<li>使用比SAX方式简单    </li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>可扩展性差，无法修改XML树内容结构<br>应用场景</li>
+<li>适合XML文档大，解析性能要求高，不需修改 多次访问解析的情况</li>
+<li>Pull使用比SAX更加简单，在Android中推荐使用Pull方式</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+    
+</div>
+</div>
+ 
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.png" alt="darryrzhong 微信打赏">
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="darryrzhong 支付宝打赏">
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/xml/" rel="tag"><i class="fa fa-tag"></i> xml</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/15/Android之序列化详解/" rel="next" title="Android之序列化详解">
+                <i class="fa fa-chevron-left"></i> Android之序列化详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/15/java系列之json解析/" rel="prev" title="java系列之json解析">
+                java系列之json解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="darryrzhong">
+            
+              <p class="site-author-name" itemprop="name">darryrzhong</p>
+              <p class="site-description motion-element" itemprop="description">人必有痴，而后有成</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/darryrzhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/darryrzhong" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/b7fdf53ec0b9" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-book"></i>Jianshu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-spinner"></i>Juejin</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#XML"><span class="nav-number">1.</span> <span class="nav-text">XML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">1.3.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">1.4.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML树形结构"><span class="nav-number">1.5.</span> <span class="nav-text">XML树形结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析方式"><span class="nav-number">1.6.</span> <span class="nav-text">解析方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM方式"><span class="nav-number">1.6.1.</span> <span class="nav-text">DOM方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM解析原理"><span class="nav-number">1.6.2.</span> <span class="nav-text">DOM解析原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体解析实例"><span class="nav-number">1.6.3.</span> <span class="nav-text">具体解析实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点及应用场景"><span class="nav-number">1.6.4.</span> <span class="nav-text">特点及应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SAX方式"><span class="nav-number">1.6.5.</span> <span class="nav-text">SAX方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SAX解析原理"><span class="nav-number">1.6.6.</span> <span class="nav-text">SAX解析原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体解析实例-1"><span class="nav-number">1.6.7.</span> <span class="nav-text">具体解析实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点及应用场景-1"><span class="nav-number">1.6.8.</span> <span class="nav-text">特点及应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PULL方式"><span class="nav-number">1.6.9.</span> <span class="nav-text">PULL方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PULL解析原理"><span class="nav-number">1.6.10.</span> <span class="nav-text">PULL解析原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体解析实例-2"><span class="nav-number">1.6.11.</span> <span class="nav-text">具体解析实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点及应用场景-2"><span class="nav-number">1.6.12.</span> <span class="nav-text">特点及应用场景</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">darryrzhong</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+
+ <!-- <span class="post-meta-divider">|</span>-->
+
+
+
+  <!--<div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytxCyGhU';
+      var conf = '90b283bdb7ccb472f325f3c891156b33';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("29xnQ1C2kcwORHYYn7xsWTnS-gzGzoHsz", "Rq1Gk75oRwH78BryWUL4oYzj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>

@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="json,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="darryrzhong" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="JSON定义JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式 作用数据标记，存储，传输 特点 读写速度快 解析简单 轻量级 独立于语言，平台 具有自我描叙性  JSON解析 语法JSON建构于两种结构：  “名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（reco">
+<meta name="keywords" content="json">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java系列之json解析">
+<meta property="og:url" content="http://darryrzhong.xyz/2019/09/15/java系列之json解析/index.html">
+<meta property="og:site_name" content="darryrzhong">
+<meta property="og:description" content="JSON定义JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式 作用数据标记，存储，传输 特点 读写速度快 解析简单 轻量级 独立于语言，平台 具有自我描叙性  JSON解析 语法JSON建构于两种结构：  “名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（reco">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-b2af3c88a0caf883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-a8ee686a5a83f8cb.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-07160a3d27f16fa2.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-89139782b6d50e32.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-950d9e0274b71665.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-a056821868917b0c.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-6b018ac861b1deb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-c4067d7374e7f76d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-b71e1841e8d68543.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-bc3840d7c4b0d5bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-84b9ee1efefffa63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-5d4a49d8f74ba605.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-c94a8193d38b08bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-ef118ce785178a73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-a474c70a3e4c0dc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-070ddb0495bc1989.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-09-15T09:32:46.584Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java系列之json解析">
+<meta name="twitter:description" content="JSON定义JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式 作用数据标记，存储，传输 特点 读写速度快 解析简单 轻量级 独立于语言，平台 具有自我描叙性  JSON解析 语法JSON建构于两种结构：  “名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（reco">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5549640-b2af3c88a0caf883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://darryrzhong.xyz/2019/09/15/java系列之json解析/">
+
+
+
+
+
+  <title>java系列之json解析 | darryrzhong</title>
+  
+
+
+
+
+
+
+
+
+
+  <script>
+class Circle {
+    //创建对象
+    //以一个圆为对象
+    //设置随机的 x，y坐标，r半径，_mx，_my移动的距离
+    //this.r是创建圆的半径，参数越大半径越大
+    //this._mx,this._my是移动的距离，参数越大移动
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.r = Math.random() * 10 ;
+        this._mx = Math.random() ;
+        this._my = Math.random() ;
+
+    }
+
+    //canvas 画圆和画直线
+    //画圆就是正常的用canvas画一个圆
+    //画直线是两个圆连线，为了避免直线过多，给圆圈距离设置了一个值，距离很远的圆圈，就不做连线处理
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+        ctx.arc(this.x, this.y, this.r, 0, 360)
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+        ctx.fill();
+    }
+
+    drawLine(ctx, _circle) {
+        let dx = this.x - _circle.x;
+        let dy = this.y - _circle.y;
+        let d = Math.sqrt(dx * dx + dy * dy)
+        if (d < 150) {
+            ctx.beginPath();
+            //开始一条路径，移动到位置 this.x,this.y。创建到达位置 _circle.x,_circle.y 的一条线：
+            ctx.moveTo(this.x, this.y);   //起始点
+            ctx.lineTo(_circle.x, _circle.y);   //终点
+            ctx.closePath();
+            ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+            ctx.stroke();
+        }
+    }
+
+    // 圆圈移动
+    // 圆圈移动的距离必须在屏幕范围内
+    move(w, h) {
+        this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
+        this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
+        this.x += this._mx / 2;
+        this.y += this._my / 2;
+    }
+}
+//鼠标点画圆闪烁变动
+class currentCirle extends Circle {
+    constructor(x, y) {
+        super(x, y)
+    }
+
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //注释内容为鼠标焦点的地方圆圈半径变化
+        //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+        this.r = 8;
+        ctx.arc(this.x, this.y, this.r, 0, 360);
+        ctx.closePath();
+        //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+        ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'
+        ctx.fill();
+
+    }
+}
+//更新页面用requestAnimationFrame替代setTimeout
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let w = canvas.width = canvas.offsetWidth;
+let h = canvas.height = canvas.offsetHeight;
+let circles = [];
+let current_circle = new currentCirle(0, 0)
+
+let draw = function () {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].move(w, h);
+        circles[i].drawCircle(ctx);
+        for (j = i + 1; j < circles.length; j++) {
+            circles[i].drawLine(ctx, circles[j])
+        }
+    }
+    if (current_circle.x) {
+        current_circle.drawCircle(ctx);
+        for (var k = 1; k < circles.length; k++) {
+            current_circle.drawLine(ctx, circles[k])
+        }
+    }
+    requestAnimationFrame(draw)
+}
+
+let init = function (num) {
+    for (var i = 0; i < num; i++) {
+        circles.push(new Circle(Math.random() * w, Math.random() * h));
+    }
+    draw();
+}
+window.addEventListener('load', init(60));
+window.onmousemove = function (e) {
+    e = e || window.event;
+    current_circle.x = e.clientX;
+    current_circle.y = e.clientY;
+}
+window.onmouseout = function () {
+    current_circle.x = null;
+    current_circle.y = null;
+
+};
+</script>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/darryrzhong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">darryrzhong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">时光，不会辜负每一个平静努力的人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br>
+            
+            摄影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-music">
+          <a href="/music/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br>
+            
+            音乐
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-welfare">
+          <a href="/welfare/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>
+            
+            福利
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            书单
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之json解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java系列之json解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-15T17:24:09+08:00">
+                2019-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/09/15/java系列之json解析/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/09/15/java系列之json解析/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/09/15/java系列之json解析/" class="leancloud_visitors" data-flag-title="java系列之json解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        <h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式</p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>数据标记，存储，传输</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<li>读写速度快</li>
+<li>解析简单</li>
+<li>轻量级</li>
+<li>独立于语言，平台</li>
+<li>具有自我描叙性</li>
+</ol>
+<h2 id="JSON解析"><a href="#JSON解析" class="headerlink" title="JSON解析"></a>JSON解析</h2><p><img src="https://upload-images.jianshu.io/upload_images/5549640-b2af3c88a0caf883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="jsonjiexiqi.png"></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>JSON建构于两种结构：</p>
+<ul>
+<li>“名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（record），结构（struct），字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。</li>
+<li>值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。</li>
+</ul>
+<p>这些都是常见的数据结构。事实上大部分现代计算机语言都以某种形式支持它们。这使得一种数据格式在同样基于这些结构的编程语言之间交换成为可能。</p>
+<p>JSON具有以下这些形式：</p>
+<p>对象是一个无序的“‘名称/值’对”集合。一个对象以“{”（左括号）开始，“}”（右括号）结束。每个“名称”后跟一个“:”（冒号）；“‘名称/值’ 对”之间使用“,”（逗号）分隔。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-a8ee686a5a83f8cb.gif?imageMogr2/auto-orient/strip" alt="object.gif"></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">     <span class="attr">"name"</span>: <span class="string">"英语"</span>,</span><br><span class="line">     <span class="attr">"score"</span>: <span class="number">78.3</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>数组是值（value）的有序集合。一个数组以“[”（左中括号）开始，“]”（右中括号）结束。值之间使用“,”（逗号）分隔。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-07160a3d27f16fa2.gif?imageMogr2/auto-orient/strip" alt="array.gif"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"courses": [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"英语"</span>,</span><br><span class="line">      <span class="attr">"score"</span>: <span class="number">78.3</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+<p>值（<em>value</em>）可以是双引号括起来的字符串（<em>string</em>）、数值(number)、<code>true</code>、<code>false</code>、 <code>null</code>、对象（object）或者数组（array）。这些结构可以嵌套。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-89139782b6d50e32.gif?imageMogr2/auto-orient/strip" alt="value.gif"></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"url"</span>: <span class="string">"https://qqe2.com"</span>,</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"欢迎使用JSON在线解析编辑器"</span>,</span><br><span class="line">  <span class="attr">"array"</span>: &#123;</span><br><span class="line">    <span class="attr">"JSON校验"</span>: <span class="string">"http://jsonlint.qqe2.com/"</span>,</span><br><span class="line">    <span class="attr">"Cron生成"</span>: <span class="string">"http://cron.qqe2.com/"</span>,</span><br><span class="line">    <span class="attr">"JS加密解密"</span>: <span class="string">"http://edit.qqe2.com/"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"boolean"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"null"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"number"</span>: <span class="number">123</span>,</span><br><span class="line">  <span class="attr">"object"</span>: &#123;</span><br><span class="line">    <span class="attr">"a"</span>: <span class="string">"b"</span>,</span><br><span class="line">    <span class="attr">"c"</span>: <span class="string">"d"</span>,</span><br><span class="line">    <span class="attr">"e"</span>: <span class="string">"f"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>字符串（<em>string</em>）是由双引号包围的任意数量Unicode字符的集合，使用反斜线转义。一个字符（character）即一个单独的字符串（character string）。</p>
+<p>字符串（<strong>string</strong>）与C或者Java的字符串非常相似。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-950d9e0274b71665.gif?imageMogr2/auto-orient/strip" alt="string.gif"></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"Zero"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>数值（<em>number</em>）也与C或者Java的数值非常相似。除去未曾使用的八进制与十六进制格式。除去一些编码细节。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-a056821868917b0c.gif?imageMogr2/auto-orient/strip" alt="number.gif"></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"age"</span>: <span class="number">28</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="JSON解析方式"><a href="#JSON解析方式" class="headerlink" title="JSON解析方式"></a>JSON解析方式</h2><h3 id="Android-Studio自带org-json解析"><a href="#Android-Studio自带org-json解析" class="headerlink" title="Android Studio自带org.json解析"></a>Android Studio自带org.json解析</h3><ul>
+<li>解析原理：基于文档驱动，需要把全部文件读入到内存中，然后遍历所有数据，根据需要检索想要的数据</li>
+<li>具体使用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成JSON</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">createJson</span><span class="params">(Context context)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(getFilesDir(), <span class="string">"orgjson.json"</span>);<span class="comment">//获取到应用在内部的私有文件夹下对应的orgjson.json文件</span></span><br><span class="line">        JSONObject student = <span class="keyword">new</span> JSONObject();<span class="comment">//实例化一个JSONObject对象</span></span><br><span class="line">        student.put(<span class="string">"name"</span>, <span class="string">"OrgJson"</span>);<span class="comment">//对其添加一个数据</span></span><br><span class="line">        student.put(<span class="string">"sax"</span>, <span class="string">"男"</span>);</span><br><span class="line">        student.put(<span class="string">"age"</span>, <span class="number">23</span>);</span><br><span class="line">        JSONObject course1 = <span class="keyword">new</span> JSONObject();</span><br><span class="line">        course1.put(<span class="string">"name"</span>, <span class="string">"语文"</span>);</span><br><span class="line">        course1.put(<span class="string">"score"</span>, <span class="number">98.2f</span>);</span><br><span class="line">        JSONObject course2 = <span class="keyword">new</span> JSONObject();</span><br><span class="line">        course2.put(<span class="string">"name"</span>, <span class="string">"数学"</span>);</span><br><span class="line">        course2.put(<span class="string">"score"</span>, <span class="number">93.2f</span>);</span><br><span class="line">        JSONArray coures = <span class="keyword">new</span> JSONArray();<span class="comment">//实例化一个JSON数组</span></span><br><span class="line">        coures.put(<span class="number">0</span>, course1);<span class="comment">//将course1添加到JSONArray，下标为0</span></span><br><span class="line">        coures.put(<span class="number">1</span>, course2);</span><br><span class="line">        <span class="comment">//然后将JSONArray添加到名为student的JSONObject</span></span><br><span class="line">        student.put(<span class="string">"courses"</span>, coures);</span><br><span class="line">        FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">        fos.write(student.toString().getBytes());</span><br><span class="line">        fos.close();</span><br><span class="line">        Log.i(TAG, <span class="string">"createJson: "</span> + student.toString());</span><br><span class="line">        Toast.makeText(context, <span class="string">"创建成功"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//解析JSON</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">parseJson</span><span class="params">(Context context)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(getFilesDir(), <span class="string">"orgjson.json"</span>);</span><br><span class="line">        FileInputStream fis = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">        InputStreamReader isr = <span class="keyword">new</span> InputStreamReader(fis);</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(isr);</span><br><span class="line">        String line;</span><br><span class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">null</span> != (line = br.readLine())) &#123;</span><br><span class="line">            sb.append(line);</span><br><span class="line">        &#125;</span><br><span class="line">        fis.close();</span><br><span class="line">        isr.close();</span><br><span class="line">        br.close();</span><br><span class="line"></span><br><span class="line">        Student student = <span class="keyword">new</span> Student();</span><br><span class="line">        <span class="comment">//利用JSONObject进行解析</span></span><br><span class="line">        JSONObject stuJsonObject = <span class="keyword">new</span> JSONObject(sb.toString());</span><br><span class="line">        <span class="comment">//为什么不用getString?</span></span><br><span class="line">        <span class="comment">//optString会在得不到你想要的值时候返回空字符串""，而getString会抛出异常</span></span><br><span class="line">        String name = stuJsonObject.optString(<span class="string">"name"</span>, <span class="string">""</span>);</span><br><span class="line">        student.setName(name);</span><br><span class="line">        student.setSax(stuJsonObject.optString(<span class="string">"sax"</span>, <span class="string">"男"</span>));</span><br><span class="line">        student.setAge(stuJsonObject.optInt(<span class="string">"age"</span>, <span class="number">18</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取数组数据</span></span><br><span class="line">        JSONArray couresJson = stuJsonObject.optJSONArray(<span class="string">"courses"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; couresJson.length(); i++) &#123;</span><br><span class="line">            JSONObject courseJsonObject = couresJson.getJSONObject(i);</span><br><span class="line">            Course course = <span class="keyword">new</span> Course();</span><br><span class="line">            course.setName(courseJsonObject.optString(<span class="string">"name"</span>, <span class="string">""</span>));</span><br><span class="line">            course.setScore((<span class="keyword">float</span>) courseJsonObject.optDouble(<span class="string">"score"</span>, <span class="number">0</span>));</span><br><span class="line">            student.addCourse(course);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Log.i(TAG, <span class="string">"parseJson: "</span> + student);</span><br><span class="line">        Toast.makeText(context, <span class="string">"解析成功"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Gson-解析"><a href="#Gson-解析" class="headerlink" title="Gson 解析"></a>Gson 解析</h3><ul>
+<li>解析原理：基于事件驱动</li>
+<li>解析流程：根据所需取的数据 建立1个对应于JSON数据的JavaBean类，即可通过简单操作解析出所需数据</li>
+<li>Gson 不要求JavaBean类里面的属性一定全部和JSON数据里的所有key相同，可以按需取数据</li>
+<li>具体实现</li>
+</ul>
+<ol>
+<li>创建一个与JSON数据对应的JavaBean类（用作存储需要解析的数据）<ul>
+<li>JSON的大括号对应一个对象<ul>
+<li>对象里面有key,value</li>
+<li>JavaBean的类属性名 = key</li>
+</ul>
+</li>
+<li>JSON的方括号对应一个数组</li>
+<li>JavaBean里面对应的也是数组</li>
+<li>对象里 可以有值/对象</li>
+<li>若对象里面只有值，没有key,则说明是纯数组，对应JavaBean里的数组类型</li>
+<li>若对象里面有值和key,则说明是对象数组，对应JavaBean里的内部类     </li>
+<li>对象嵌套 <ul>
+<li>建立内部类 该内部类对象的名字 = 父对象的key ,类似对象数组</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"key"</span>: <span class="string">"value"</span>,</span><br><span class="line">  <span class="attr">"simpleArray"</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">  <span class="attr">"arrays"</span>: [</span><br><span class="line">    [&#123;</span><br><span class="line">      <span class="attr">"arrInnerClsKey"</span>: <span class="string">"arrInnerClsValue"</span>,</span><br><span class="line">      <span class="attr">"arrInnerClsKeyNub"</span>: <span class="number">1</span></span><br><span class="line">    &#125;]</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"innerclass"</span>: &#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"zero"</span>,</span><br><span class="line">    <span class="attr">"age"</span>: <span class="number">25</span>,</span><br><span class="line">    <span class="attr">"sax"</span>: <span class="string">"男"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>转化成JavaBean</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GsonBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String key;</span><br><span class="line">    <span class="keyword">private</span> InnerclassBean innerclass;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; simpleArray;</span><br><span class="line">    <span class="keyword">private</span> List&lt;List&lt;ArraysBean&gt;&gt; arrays;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKey</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> InnerclassBean <span class="title">getInnerclass</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> innerclass;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setInnerclass</span><span class="params">(InnerclassBean innerclass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.innerclass = innerclass;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getSimpleArray</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> simpleArray;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSimpleArray</span><span class="params">(List&lt;Integer&gt; simpleArray)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.simpleArray = simpleArray;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;ArraysBean&gt;&gt; getArrays() &#123;</span><br><span class="line">        <span class="keyword">return</span> arrays;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setArrays</span><span class="params">(List&lt;List&lt;ArraysBean&gt;&gt; arrays)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.arrays = arrays;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerclassBean</span> </span>&#123;</span><br><span class="line">      </span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">        <span class="keyword">private</span> String sax;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> age;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.age = age;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getSax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> sax;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSax</span><span class="params">(String sax)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.sax = sax;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ArraysBean</span> </span>&#123;</span><br><span class="line">      </span><br><span class="line">        <span class="keyword">private</span> String arrInnerClsKey;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> arrInnerClsKeyNub;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getArrInnerClsKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> arrInnerClsKey;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setArrInnerClsKey</span><span class="params">(String arrInnerClsKey)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.arrInnerClsKey = arrInnerClsKey;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getArrInnerClsKeyNub</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> arrInnerClsKeyNub;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setArrInnerClsKeyNub</span><span class="params">(<span class="keyword">int</span> arrInnerClsKeyNub)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.arrInnerClsKeyNub = arrInnerClsKeyNub;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用例子</li>
+<li></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span></span></span><br><span class="line">        Student student = <span class="keyword">new</span> Student();</span><br><span class="line">        student.setName(<span class="string">"Zero"</span>);</span><br><span class="line">        student.setSax(<span class="string">"男"</span>);</span><br><span class="line">        student.setAge(<span class="number">28</span>);</span><br><span class="line">        student.addCourse(<span class="keyword">new</span> Course(<span class="string">"英语"</span>, <span class="number">78.3f</span>));</span><br><span class="line">        Gson gson = <span class="keyword">new</span> Gson();</span><br><span class="line">        <span class="comment">//1. 生成json文件</span></span><br><span class="line">        File file = <span class="keyword">new</span> File(CurPath + <span class="string">"/gsonjsontest.json"</span>);</span><br><span class="line">        OutputStream oot = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">        JsonWriter jw = <span class="keyword">new</span> JsonWriter(<span class="keyword">new</span> OutputStreamWriter(oot, <span class="string">"utf-8"</span>));</span><br><span class="line">        gson.toJson(student, <span class="keyword">new</span> TypeToken&lt;Student&gt;() &#123;</span><br><span class="line">        &#125;.getType(), jw);</span><br><span class="line">        jw.flush();</span><br><span class="line">        jw.close();</span><br><span class="line">        <span class="comment">//反序列化</span></span><br><span class="line">        Student student1 = gson.fromJson(<span class="keyword">new</span> JsonReader(<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(file)))</span><br><span class="line">                , <span class="keyword">new</span> TypeToken&lt;Student&gt;() &#123;</span><br><span class="line">                &#125;.getType());</span><br><span class="line">        System.out.println(student1);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Jackson解析"><a href="#Jackson解析" class="headerlink" title="Jackson解析"></a>Jackson解析</h3><ul>
+<li>解析原理：基于事件驱动</li>
+<li>解析过程：<ol>
+<li>类似 GSON，先创建1个对应于JSON数据的JavaBean类，再通过简单操作即可解析</li>
+<li>与 Gson解析不同的是：GSON可按需解析，即创建的JavaBean类不一定完全涵盖所要解析的JSON数据，按需创建属性；但Jackson解析对应的JavaBean必须把Json数据里面的所有key都有所对应，即必须把JSON内的数据所有解析出来，无法按需解析</li>
+</ol>
+</li>
+<li>导入Jackson依赖</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如何配置jackson https://mvnrepository.com/search?q=jackson</span></span><br><span class="line">    implementation <span class="string">'com.fasterxml.jackson.core:jackson-databind:2.9.8'</span></span><br><span class="line">    implementation <span class="string">'com.fasterxml.jackson.core:jackson-core:2.9.8'</span></span><br><span class="line">    implementation <span class="string">'com.fasterxml.jackson.core:jackson-annotations:2.9.8'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用Jackson解析</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span></span></span><br><span class="line">        Student student = <span class="keyword">new</span> Student();</span><br><span class="line">        student.setName(<span class="string">"杰克逊"</span>);</span><br><span class="line">        student.setSax(<span class="string">"男"</span>);</span><br><span class="line">        student.setAge(<span class="number">28</span>);</span><br><span class="line">        student.addCourse(<span class="keyword">new</span> Course(<span class="string">"英语"</span>, <span class="number">78.3f</span>));</span><br><span class="line">        student.addCourse(<span class="keyword">new</span> Course(<span class="string">"语文"</span>, <span class="number">88.9f</span>));</span><br><span class="line">        student.addCourse(<span class="keyword">new</span> Course(<span class="string">"数学"</span>, <span class="number">48.2f</span>));</span><br><span class="line"></span><br><span class="line">        ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        <span class="comment">//jackson序列化</span></span><br><span class="line">        File file = <span class="keyword">new</span> File(CurPath + <span class="string">"/jacksontest.json"</span>);</span><br><span class="line">        FileOutputStream fileOutputStream = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">        objectMapper.writeValue(fileOutputStream, student);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//反序列化</span></span><br><span class="line">        Student student1 = objectMapper.readValue(file, Student.class);</span><br><span class="line">        System.out.println(student1);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        HashMap&lt;String, Student&gt; studentHashMap = new HashMap&lt;&gt;();</span></span><br><span class="line"><span class="comment">//        Student stu1 = new Student("King", "男", 32);</span></span><br><span class="line"><span class="comment">//        stu1.addCourse(new Course("物理", 68.9f));</span></span><br><span class="line"><span class="comment">//        Student stu2 = new Student("Mark", "男", 33);</span></span><br><span class="line"><span class="comment">//        studentHashMap.put("key1", stu1);</span></span><br><span class="line"><span class="comment">//        studentHashMap.put("key2", stu2);</span></span><br><span class="line"><span class="comment">//        System.out.println("studentHashMap:\n" + studentHashMap);</span></span><br><span class="line"><span class="comment">//        JacksonUtil.encode2File(studentHashMap,CurPath + "/jacksontest1.json");</span></span><br><span class="line"><span class="comment">//        String jsonStr = JacksonUtil.encode(studentHashMap);</span></span><br><span class="line"><span class="comment">//        System.out.println(jsonStr);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//反序列化 TypeReference用法</span></span><br><span class="line"><span class="comment">//        HashMap&lt;String,Student&gt; studentHashMap1 = objectMapper.readValue(jsonStr,HashMap.class);//错误做法</span></span><br><span class="line">        <span class="comment">//正确的方式</span></span><br><span class="line"><span class="comment">//        HashMap&lt;String,Student&gt; studentHashMap1 = objectMapper.readValue(jsonStr, new TypeReference&lt;HashMap&lt;String,Student&gt;&gt;()&#123;&#125;);</span></span><br><span class="line"><span class="comment">//        System.out.println("studentHashMap1:\n" + studentHashMap1);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//List</span></span><br><span class="line"><span class="comment">//        List&lt;Student&gt; studentList = new ArrayList&lt;&gt;();</span></span><br><span class="line"><span class="comment">//        studentList.add(stu1);</span></span><br><span class="line"><span class="comment">//        studentList.add(stu2);</span></span><br><span class="line"><span class="comment">//        JacksonUtil.encode2File(studentList, CurPath + "/jacksontest2.json");</span></span><br><span class="line"><span class="comment">//        String jsonStr2 = JacksonUtil.encode(studentList);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        List&lt;Student&gt; studentList1 = objectMapper.readValue(jsonStr2, objectMapper.getTypeFactory().constructParametricType(ArrayList.class, Student.class));</span></span><br><span class="line"><span class="comment">//        System.out.println("studentList1:\n" + studentList1);</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Fastjson解析"><a href="#Fastjson解析" class="headerlink" title="Fastjson解析"></a>Fastjson解析</h3><ul>
+<li>导入Fastjson依赖</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'com.alibaba:fastjson:1.2.57'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用Fastjson解析</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String ... args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">           <span class="comment">//<span class="doctag">TODO:</span></span></span><br><span class="line">       Student student = <span class="keyword">new</span> Student();</span><br><span class="line">       student.setName(<span class="string">"FastJson"</span>);</span><br><span class="line">       student.setSax(<span class="string">"男"</span>);</span><br><span class="line">       student.setAge(<span class="number">28</span>);</span><br><span class="line">       student.addCourse(<span class="keyword">new</span> Course(<span class="string">"英语"</span>, <span class="number">78.3f</span>));</span><br><span class="line">       student.addCourse(<span class="keyword">new</span> Course(<span class="string">"语文"</span>, <span class="number">88.9f</span>));</span><br><span class="line">       student.addCourse(<span class="keyword">new</span> Course(<span class="string">"数学"</span>, <span class="number">48.2f</span>));</span><br><span class="line"></span><br><span class="line">       <span class="comment">//1. 生成json文件</span></span><br><span class="line">       File file = <span class="keyword">new</span> File(CurPath + <span class="string">"/fastjsontest.json"</span>);</span><br><span class="line">       FileOutputStream fileOutputStream = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">       JSONObject.writeJSONString(fileOutputStream,student);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//2. 反序列化</span></span><br><span class="line">       Student student1 = JSONObject.parseObject(<span class="keyword">new</span> FileInputStream(file),Student.class);</span><br><span class="line">       System.out.println(student1);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义一个JSON解析库"><a href="#自定义一个JSON解析库" class="headerlink" title="自定义一个JSON解析库"></a>自定义一个JSON解析库</h2><p>编写一个JSON解析器实际上就是一个方法，它的输入是一个表示JSON的字符串，输出是结构化的对应到语言本身的数据结构<br>一般来说，解析过程包括词法分析和语法分析两个阶段。词法分析阶段的目标是按照构词规则将 JSON 字符串解析成 Token 流，比如有如下的 JSON 字符串：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"key"</span> : <span class="string">"value"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果词法分析后，得到一组 Token，如下：<br>{key : value, }</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-6b018ac861b1deb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="cifafenxi.png"><br>词法分析解析出 Token 序列后，接下来要进行语法分析。语法分析的目的是根据 JSON 文法检查上面 Token 序列所构成的 JSON 结构是否合法。比如 JSON 文法要求非空 JSON 对象以键值对的形式出现，形如 object = {string : value}。如果传入了一个格式错误的字符串，比如</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "key", "value"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么在语法分析阶段，语法分析器分析完 Token name后，认为它是一个符合规则的 Token，并且认为它是一个键。接下来，语法分析器读取下一个 Token，期望这个 Token 是 :。但当它读取了这个 Token，发现这个 Token 是 ,，并非其期望的:，于是文法分析器就会报错误。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-c4067d7374e7f76d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="yufafenxi.png"></p>
+<h3 id="JSON解析分析小结"><a href="#JSON解析分析小结" class="headerlink" title="JSON解析分析小结"></a>JSON解析分析小结</h3><ol>
+<li>通过词法分析是将字符串解析成一组 Token 序列</li>
+<li>然后通过语法分析检查输入的 Token 序列所构成的 JSON 格式是否合法</li>
+</ol>
+<h3 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h3><p>按照“构词规则”将 JSON 字符串解析成 Token 流。请注意双引号引起来词–构词规则，所谓构词规则是指词法分析模块在将字符串解析成 Token 时所参考的规则。在 JSON 中，构词规则对应于几种数据类型，当词法解析器读入某个词，且这个词类型符合 JSON 所规定的数据类型时，词法分析器认为这个词符合构词规则，就会生成相应的 Token。这里我们可以参考<a href="http://www.json.org/对" target="_blank" rel="noopener">http://www.json.org/对</a> JSON 的定义，罗列一下 JSON 所规定的数据类型：</p>
+<ul>
+<li>BEGIN_OBJECT（{）</li>
+<li>END_OBJECT（}）</li>
+<li>BEGIN_ARRAY（[）</li>
+<li>END_ARRAY（]）</li>
+<li>NULL（null）</li>
+<li>NUMBER（数字）</li>
+<li>STRING（字符串）</li>
+<li>BOOLEAN（true/false）</li>
+<li>SEP_COLON（:）</li>
+<li>SEP_COMMA（,）</li>
+</ul>
+<p>当词法分析器读取的词是上面类型中的一种时，即可将其解析成一个 Token。我们可以定义一个枚举类来表示上面的数据类型，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> TokenType &#123;</span><br><span class="line">    BEGIN_OBJECT(<span class="number">1</span>),</span><br><span class="line">    END_OBJECT(<span class="number">2</span>),</span><br><span class="line">    BEGIN_ARRAY(<span class="number">4</span>),</span><br><span class="line">    END_ARRAY(<span class="number">8</span>),</span><br><span class="line">    NULL(<span class="number">16</span>),</span><br><span class="line">    NUMBER(<span class="number">32</span>),</span><br><span class="line">    STRING(<span class="number">64</span>),</span><br><span class="line">    BOOLEAN(<span class="number">128</span>),</span><br><span class="line">    SEP_COLON(<span class="number">256</span>),</span><br><span class="line">    SEP_COMMA(<span class="number">512</span>),</span><br><span class="line">    END_DOCUMENT(<span class="number">1024</span>);</span><br><span class="line"></span><br><span class="line">    TokenType(<span class="keyword">int</span> code) &#123;</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> code;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTokenCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在解析过程中，仅有 TokenType 类型还不行。我们除了要将某个词的类型保存起来，还需要保存这个词的字面量。所以，所以这里还需要定义一个 Token 类。用于封装词类型和字面量，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Token</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> TokenType tokenType;</span><br><span class="line">    <span class="keyword">private</span> String value;</span><br><span class="line">    <span class="comment">// 省略不重要的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义好了 Token 类，接下来再来定义一个读取字符串的类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">back</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        pos = Math.max(<span class="number">0</span>, --pos);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasMore</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (pos &lt; size) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        fillBuffer();</span><br><span class="line">        <span class="keyword">return</span> pos &lt; size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fillBuffer</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = reader.read(buffer);</span><br><span class="line">        <span class="keyword">if</span> (n == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        pos = <span class="number">0</span>;</span><br><span class="line">        size = n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了 TokenType、Token 和 CharReader 这三个辅助类，接下来我们就可以实现词法解析器了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tokenizer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> CharReader charReader;</span><br><span class="line">    <span class="keyword">private</span> TokenList tokens;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TokenList <span class="title">tokenize</span><span class="params">(CharReader charReader)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.charReader = charReader;</span><br><span class="line">        tokens = <span class="keyword">new</span> TokenList();</span><br><span class="line">        tokenize();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> tokens;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">tokenize</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 使用do-while处理空文件</span></span><br><span class="line">        Token token;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            token = start();</span><br><span class="line">            tokens.add(token);</span><br><span class="line">        &#125; <span class="keyword">while</span> (token.getTokenType() != TokenType.END_DOCUMENT);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> Token <span class="title">start</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">char</span> ch;</span><br><span class="line">        <span class="keyword">for</span>(;;) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!charReader.hasMore()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Token(TokenType.END_DOCUMENT, <span class="keyword">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            ch = charReader.next();</span><br><span class="line">            <span class="keyword">if</span> (!isWhiteSpace(ch)) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (ch) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'&#123;'</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Token(TokenType.BEGIN_OBJECT, String.valueOf(ch));</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'&#125;'</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Token(TokenType.END_OBJECT, String.valueOf(ch));</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'['</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Token(TokenType.BEGIN_ARRAY, String.valueOf(ch));</span><br><span class="line">            <span class="keyword">case</span> <span class="string">']'</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Token(TokenType.END_ARRAY, String.valueOf(ch));</span><br><span class="line">            <span class="keyword">case</span> <span class="string">','</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Token(TokenType.SEP_COMMA, String.valueOf(ch));</span><br><span class="line">            <span class="keyword">case</span> <span class="string">':'</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Token(TokenType.SEP_COLON, String.valueOf(ch));</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'n'</span>:</span><br><span class="line">                <span class="keyword">return</span> readNull();</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'t'</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'f'</span>:</span><br><span class="line">                <span class="keyword">return</span> readBoolean();</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'"'</span>:</span><br><span class="line">                <span class="keyword">return</span> readString();</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'-'</span>:</span><br><span class="line">                <span class="keyword">return</span> readNumber();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isDigit(ch)) &#123;</span><br><span class="line">            <span class="keyword">return</span> readNumber();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> JsonParseException(<span class="string">"Illegal character"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> Token <span class="title">readNull</span><span class="params">()</span> </span>&#123;...&#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> Token <span class="title">readBoolean</span><span class="params">()</span> </span>&#123;...&#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> Token <span class="title">readString</span><span class="params">()</span> </span>&#123;...&#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> Token <span class="title">readNumber</span><span class="params">()</span> </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码是词法分析器的实现，部分代码这里没有贴出来，后面具体分析的时候再贴。先来看看词法分析器的核心方法 start，这个方法代码量不多，并不复杂。其通过一个死循环不停的读取字符，然后再根据字符的类型，执行不同的解析逻辑。上面说过，JSON 的解析过程比较简单。原因在于，在解析时，只需通过每个词第一个字符即可判断出这个词的 Token Type。比如：</p>
+<ul>
+<li>第一个字符是{、}、[、]、,、:，直接封装成相应的 Token 返回即可</li>
+<li>第一个字符是n，期望这个词是null，Token 类型是NULL</li>
+<li>第一个字符是t或f，期望这个词是true或者false，Token 类型是 BOOLEAN</li>
+<li>第一个字符是”，期望这个词是字符串，Token 类型为String</li>
+<li>第一个字符是0~9或-，期望这个词是数字，类型为NUMBER<br>正如上面所说，词法分析器只需要根据每个词的第一个字符，即可知道接下来它所期望读取的到的内容是什么样的。如果满足期望了，则返回 Token，否则返回错误。下面就来看看词法解析器在碰到第一个字符是n和”时的处理过程。先看碰到字符n的处理过程：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Token <span class="title">readNull</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!(charReader.next() == <span class="string">'u'</span> &amp;&amp; charReader.next() == <span class="string">'l'</span> &amp;&amp; charReader.next() == <span class="string">'l'</span>)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> JsonParseException(<span class="string">"Invalid json string"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Token(TokenType.NULL, <span class="string">"null"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码很简单，词法分析器在读取字符n后，期望后面的三个字符分别是u,l,l，与 n 组成词 null。如果满足期望，则返回类型为 NULL 的 Token，否则报异常。readNull 方法逻辑很简单，不多说了。接下来看看 string 类型的数据处理过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">private Token readString() throws IOException &#123;</span><br><span class="line">    StringBuilder sb = new StringBuilder();</span><br><span class="line">    for (;;) &#123;</span><br><span class="line">        char ch = charReader.next();</span><br><span class="line">        // 处理转义字符</span><br><span class="line">        if (ch == &apos;\\&apos;) &#123;</span><br><span class="line">            if (!isEscape()) &#123;</span><br><span class="line">                throw new JsonParseException(&quot;Invalid escape character&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            sb.append(&apos;\\&apos;);</span><br><span class="line">            ch = charReader.peek();</span><br><span class="line">            sb.append(ch);</span><br><span class="line">            // 处理 Unicode 编码，形如 \u4e2d。且只支持 \u0000 ~ \uFFFF 范围内的编码</span><br><span class="line">            if (ch == &apos;u&apos;) &#123;</span><br><span class="line">                for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">                    ch = charReader.next();</span><br><span class="line">                    if (isHex(ch)) &#123;</span><br><span class="line">                        sb.append(ch);</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        throw new JsonParseException(&quot;Invalid character&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else if (ch == &apos;&quot;&apos;) &#123;    // 碰到另一个双引号，则认为字符串解析结束，返回 Token</span><br><span class="line">            return new Token(TokenType.STRING, sb.toString());</span><br><span class="line">        &#125; else if (ch == &apos;\r&apos; || ch == &apos;\n&apos;) &#123;    // 传入的 JSON 字符串不允许换行</span><br><span class="line">            throw new JsonParseException(&quot;Invalid character&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            sb.append(ch);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private boolean isEscape() throws IOException &#123;</span><br><span class="line">    char ch = charReader.next();</span><br><span class="line">    return (ch == &apos;&quot;&apos; || ch == &apos;\\&apos; || ch == &apos;u&apos; || ch == &apos;r&apos;</span><br><span class="line">                || ch == &apos;n&apos; || ch == &apos;b&apos; || ch == &apos;t&apos; || ch == &apos;f&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private boolean isHex(char ch) &#123;</span><br><span class="line">    return ((ch &gt;= &apos;0&apos; &amp;&amp; ch &lt;= &apos;9&apos;) || (&apos;a&apos; &lt;= ch &amp;&amp; ch &lt;= &apos;f&apos;)</span><br><span class="line">            || (&apos;A&apos; &lt;= ch &amp;&amp; ch &lt;= &apos;F&apos;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>string 类型的数据解析起来要稍微复杂一些，主要是需要处理一些特殊类型的字符。JSON 所允许的特殊类型的字符如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">\&quot;</span><br><span class="line">\\</span><br><span class="line">\b</span><br><span class="line">\f</span><br><span class="line">\n</span><br><span class="line">\r</span><br><span class="line">\t</span><br><span class="line">\u four-hex-digits</span><br><span class="line">\/</span><br></pre></td></tr></table></figure>
+<p>最后一种特殊字符\/代码中未做处理，其他字符均做了判断，判断逻辑在 isEscape 方法中。在传入 JSON 字符串中，仅允许字符串包含上面所列的转义字符。如果乱传转义字符，解析时会报错。对于 STRING 类型的词，解析过程始于字符”，也终于”。所以在解析的过程中，当再次遇到字符”，readString 方法会认为本次的字符串解析过程结束，并返回相应类型的 Token。</p>
+<p>上面说了 null 类型和 string 类型的数据解析过程，过程并不复杂，理解起来应该不难。至于 boolean 和 number 类型的数据解析过程，大家有兴趣的话可以自己看源码，这里就不在说了。</p>
+<h3 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h3><p>当词法分析结束后，且分析过程中没有抛出错误，那么接下来就可以进行语法分析了。语法分析过程以词法分析阶段解析出的 Token 序列作为输入，输出 JSON Object 或 JSON Array。语法分析器的实现的文法如下：<br>当词法分析结束后，且分析过程中没有抛出错误，那么接下来就可以进行语法分析了。语法分析过程以词法分析阶段解析出的 Token 序列作为输入，输出 JSON Object 或 JSON Array。语法分析器的实现的文法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">object = &#123;&#125;</span><br><span class="line">       | &#123; members &#125;</span><br><span class="line"></span><br><span class="line">members = pair</span><br><span class="line">        | pair , members</span><br><span class="line"></span><br><span class="line">pair = string : value</span><br><span class="line"></span><br><span class="line">array = []</span><br><span class="line">      | [ elements ]</span><br><span class="line"></span><br><span class="line">elements = value </span><br><span class="line">         | value , elements</span><br><span class="line"></span><br><span class="line">value = string</span><br><span class="line">      | number</span><br><span class="line">      | object</span><br><span class="line">      | array</span><br><span class="line">      | true</span><br><span class="line">      | false</span><br><span class="line">      | null</span><br><span class="line"></span><br><span class="line">string = &quot;&quot;</span><br><span class="line">       | &quot; chars &quot;</span><br><span class="line"></span><br><span class="line">chars = char</span><br><span class="line">      | char chars</span><br><span class="line"></span><br><span class="line">char = any-Unicode-character-except-&quot;-or-\-or- control-character</span><br><span class="line">     | \&quot;</span><br><span class="line">     | \\</span><br><span class="line">     | \/</span><br><span class="line">     | \b</span><br><span class="line">     | \f</span><br><span class="line">     | \n</span><br><span class="line">     | \r</span><br><span class="line">     | \t</span><br><span class="line">     | \u four-hex-digits</span><br><span class="line"></span><br><span class="line">number = int</span><br><span class="line">       | int frac</span><br><span class="line">       | int exp</span><br><span class="line">       | int frac exp</span><br><span class="line"></span><br><span class="line">int = digit</span><br><span class="line">    | digit1-9 digits </span><br><span class="line">    | - digit</span><br><span class="line">    | - digit1-9 digits</span><br><span class="line"></span><br><span class="line">frac = . digits</span><br><span class="line"></span><br><span class="line">exp = e digits</span><br><span class="line"></span><br><span class="line">digits = digit</span><br><span class="line">       | digit digits</span><br><span class="line"></span><br><span class="line">e = e</span><br><span class="line">  | e+</span><br><span class="line">  | e-</span><br><span class="line">  | E</span><br><span class="line">  | E+</span><br><span class="line">  | E-</span><br></pre></td></tr></table></figure>
+<p>语法分析器的实现需要借助两个辅助类，也就是语法分析器的输出类，分别是 JsonObject 和 JsonArray。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsonObject</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(String key, Object value)</span> </span>&#123;</span><br><span class="line">        map.put(key, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> map.get(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;Map.Entry&lt;String, Object&gt;&gt; getAllKeyValue() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;(map.entrySet());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> JsonObject <span class="title">getJsonObject</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!map.containsKey(key)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Invalid key"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Object obj = map.get(key);</span><br><span class="line">        <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> JsonObject)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> JsonTypeException(<span class="string">"Type of value is not JsonObject"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (JsonObject) obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> JsonArray <span class="title">getJsonArray</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!map.containsKey(key)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Invalid key"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Object obj = map.get(key);</span><br><span class="line">        <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> JsonArray)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> JsonTypeException(<span class="string">"Type of value is not JsonArray"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (JsonArray) obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BeautifyJsonUtils.beautify(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsonArray</span> <span class="keyword">implements</span> <span class="title">Iterable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        list.add(obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> list.get(index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> list.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> JsonObject <span class="title">getJsonObject</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        Object obj = list.get(index);</span><br><span class="line">        <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> JsonObject)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> JsonTypeException(<span class="string">"Type of value is not JsonObject"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (JsonObject) obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> JsonArray <span class="title">getJsonArray</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        Object obj = list.get(index);</span><br><span class="line">        <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> JsonArray)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> JsonTypeException(<span class="string">"Type of value is not JsonArray"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (JsonArray) obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BeautifyJsonUtils.beautify(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Iterator <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> list.iterator();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>语法解析器的核心逻辑封装在了 parseJsonObject 和 parseJsonArray 两个方法中，接下来我会详细分析 parseJsonObject 方法，parseJsonArray 方法大家自己分析吧。parseJsonObject 方法实现如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> JsonObject <span class="title">parseJsonObject</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    JsonObject jsonObject = <span class="keyword">new</span> JsonObject();</span><br><span class="line">    <span class="keyword">int</span> expectToken = STRING_TOKEN | END_OBJECT_TOKEN;</span><br><span class="line">    String key = <span class="keyword">null</span>;</span><br><span class="line">    Object value = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">while</span> (tokens.hasMore()) &#123;</span><br><span class="line">        Token token = tokens.next();</span><br><span class="line">        TokenType tokenType = token.getTokenType();</span><br><span class="line">        String tokenValue = token.getValue();</span><br><span class="line">        <span class="keyword">switch</span> (tokenType) &#123;</span><br><span class="line">        <span class="keyword">case</span> BEGIN_OBJECT:</span><br><span class="line">            checkExpectToken(tokenType, expectToken);</span><br><span class="line">            jsonObject.put(key, parseJsonObject());    <span class="comment">// 递归解析 json object</span></span><br><span class="line">            expectToken = SEP_COMMA_TOKEN | END_OBJECT_TOKEN;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> END_OBJECT:</span><br><span class="line">            checkExpectToken(tokenType, expectToken);</span><br><span class="line">            <span class="keyword">return</span> jsonObject;</span><br><span class="line">        <span class="keyword">case</span> BEGIN_ARRAY:    <span class="comment">// 解析 json array</span></span><br><span class="line">            checkExpectToken(tokenType, expectToken);</span><br><span class="line">            jsonObject.put(key, parseJsonArray());</span><br><span class="line">            expectToken = SEP_COMMA_TOKEN | END_OBJECT_TOKEN;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> NULL:</span><br><span class="line">            checkExpectToken(tokenType, expectToken);</span><br><span class="line">            jsonObject.put(key, <span class="keyword">null</span>);</span><br><span class="line">            expectToken = SEP_COMMA_TOKEN | END_OBJECT_TOKEN;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> NUMBER:</span><br><span class="line">            checkExpectToken(tokenType, expectToken);</span><br><span class="line">            <span class="keyword">if</span> (tokenValue.contains(<span class="string">"."</span>) || tokenValue.contains(<span class="string">"e"</span>) || tokenValue.contains(<span class="string">"E"</span>)) &#123;</span><br><span class="line">                jsonObject.put(key, Double.valueOf(tokenValue));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                Long num = Long.valueOf(tokenValue);</span><br><span class="line">                <span class="keyword">if</span> (num &gt; Integer.MAX_VALUE || num &lt; Integer.MIN_VALUE) &#123;</span><br><span class="line">                    jsonObject.put(key, num);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    jsonObject.put(key, num.intValue());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            expectToken = SEP_COMMA_TOKEN | END_OBJECT_TOKEN;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> BOOLEAN:</span><br><span class="line">            checkExpectToken(tokenType, expectToken);</span><br><span class="line">            jsonObject.put(key, Boolean.valueOf(token.getValue()));</span><br><span class="line">            expectToken = SEP_COMMA_TOKEN | END_OBJECT_TOKEN;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> STRING:</span><br><span class="line">            checkExpectToken(tokenType, expectToken);</span><br><span class="line">            Token preToken = tokens.peekPrevious();</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             * 在 JSON 中，字符串既可以作为键，也可作为值。</span></span><br><span class="line"><span class="comment">             * 作为键时，只期待下一个 Token 类型为 SEP_COLON。</span></span><br><span class="line"><span class="comment">             * 作为值时，期待下一个 Token 类型为 SEP_COMMA 或 END_OBJECT</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="keyword">if</span> (preToken.getTokenType() == TokenType.SEP_COLON) &#123;</span><br><span class="line">                value = token.getValue();</span><br><span class="line">                jsonObject.put(key, value);</span><br><span class="line">                expectToken = SEP_COMMA_TOKEN | END_OBJECT_TOKEN;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                key = token.getValue();</span><br><span class="line">                expectToken = SEP_COLON_TOKEN;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> SEP_COLON:</span><br><span class="line">            checkExpectToken(tokenType, expectToken);</span><br><span class="line">            expectToken = NULL_TOKEN | NUMBER_TOKEN | BOOLEAN_TOKEN | STRING_TOKEN</span><br><span class="line">                    | BEGIN_OBJECT_TOKEN | BEGIN_ARRAY_TOKEN;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> SEP_COMMA:</span><br><span class="line">            checkExpectToken(tokenType, expectToken);</span><br><span class="line">            expectToken = STRING_TOKEN;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> END_DOCUMENT:</span><br><span class="line">            checkExpectToken(tokenType, expectToken);</span><br><span class="line">            <span class="keyword">return</span> jsonObject;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> JsonParseException(<span class="string">"Unexpected Token."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> JsonParseException(<span class="string">"Parse error, invalid Token."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">checkExpectToken</span><span class="params">(TokenType tokenType, <span class="keyword">int</span> expectToken)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((tokenType.getTokenCode() &amp; expectToken) == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> JsonParseException(<span class="string">"Parse error, invalid Token."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>parseJsonObject 方法解析流程大致如下：</p>
+<ol>
+<li>读取一个 Token，检查这个 Token 是否是其所期望的类型</li>
+<li>如果是，更新期望的 Token 类型。否则，抛出异常，并退出</li>
+<li>重复步骤1和2，直至所有的 Token 都解析完，或出现异常<br>上面的步骤并不复杂，但有可能不好理解。这里举个例子说明一下，有如下的 Token 序列：</li>
+</ol>
+<p>{、 id、 :、 1、 }</p>
+<p>parseJsonObject 解析完 { Token 后，接下来它将期待 STRING 类型的 Token 或者 END_OBJECT 类型的 Token 出现。于是 parseJsonObject 读取了一个新的 Token，发现这个 Token 的类型是 STRING 类型，满足期望。于是 parseJsonObject 更新期望Token 类型为 SEL_COLON，即:。如此循环下去，直至 Token 序列解析结束或者抛出异常退出。</p>
+<p>上面的解析流程虽然不是很复杂，但在具体实现的过程中，还是需要注意一些细节问题。比如：</p>
+<ol>
+<li>在 JSON 中，字符串既可以作为键，也可以作为值。作为键时，语法分析器期待下一个 Token 类型为 SEP_COLON。而作为值时，则期待下一个 Token 类型为 SEP_COMMA 或 END_OBJECT。所以这里要判断该字符串是作为键还是作为值，判断方法也比较简单，即判断上一个 Token 的类型即可。如果上一个 Token 是 SEP_COLON，即:，那么此处的字符串只能作为值了。否则，则只能做为键。</li>
+<li>对于整数类型的 Token 进行解析时，简单点处理，可以直接将该整数解析成 Long 类型。但考虑到空间占用问题，对于 [Integer.MIN_VALUE, Integer.MAX_VALUE] 范围内的整数来说，解析成 Integer 更为合适，所以解析的过程中也需要注意一下。</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://segmentfault.com/a/1190000010998941#articleHeader1" target="_blank" rel="noopener">https://segmentfault.com/a/1190000010998941#articleHeader1</a></p>
+</blockquote>
+<h2 id="Gson原理解析"><a href="#Gson原理解析" class="headerlink" title="Gson原理解析"></a>Gson原理解析</h2><p>在这个序列化和反序列化的过程中，</p>
+<p>充当的了一个解析器的角色</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-b71e1841e8d68543.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="gson.png"></p>
+<h3 id="JsonElement"><a href="#JsonElement" class="headerlink" title="JsonElement"></a>JsonElement</h3><p>该类是一个抽象类，代表着json串的某一个元素。这个元素可以是一个Json(JsonObject)、可以是一个数组(JsonArray)、可以是一个Java的基本类型(JsonPrimitive)、当然也可以为null(JsonNull);JsonObject,JsonArray,JsonPrimitive，JsonNull都是JsonElement这个抽象类的子类。JsonElement提供了一系列的方法来判断当前的JsonElement</p>
+<p>各个JsonElement的关系可以用如下图表示：<br><img src="https://upload-images.jianshu.io/upload_images/5549640-bc3840d7c4b0d5bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="jsonelement.png"></p>
+<p>JsonObject对象可以看成 name/values的集合，而这写values就是一个个JsonElement,他们的结构可以用如下图表示：<br><img src="https://upload-images.jianshu.io/upload_images/5549640-84b9ee1efefffa63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="jsonelement1.png"></p>
+<h3 id="JsonDeserializer的工作原理"><a href="#JsonDeserializer的工作原理" class="headerlink" title="JsonDeserializer的工作原理"></a>JsonDeserializer的工作原理</h3><p><img src="https://upload-images.jianshu.io/upload_images/5549640-5d4a49d8f74ba605.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="deserize.png"></p>
+<h3 id="TypeAdapter的工作原理"><a href="#TypeAdapter的工作原理" class="headerlink" title="TypeAdapter的工作原理"></a>TypeAdapter的工作原理</h3><p><img src="https://upload-images.jianshu.io/upload_images/5549640-c94a8193d38b08bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="typeadapter.png"></p>
+<h3 id="Gson的整体解析原理"><a href="#Gson的整体解析原理" class="headerlink" title="Gson的整体解析原理"></a>Gson的整体解析原理</h3><p><img src="https://upload-images.jianshu.io/upload_images/5549640-ef118ce785178a73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="gson1.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-a474c70a3e4c0dc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="gsonwork.png"></p>
+<h3 id="Gson的反射解析机制"><a href="#Gson的反射解析机制" class="headerlink" title="Gson的反射解析机制"></a>Gson的反射解析机制</h3><p><img src="https://upload-images.jianshu.io/upload_images/5549640-070ddb0495bc1989.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="json_refect.png"></p>
+<h2 id="Gson解析常见的错误"><a href="#Gson解析常见的错误" class="headerlink" title="Gson解析常见的错误"></a>Gson解析常见的错误</h2><ul>
+<li>Expected BEGIN_ARRAY but was STRING at line 1 column 27<br>这种错误一般都是原来是一个字段需要是数组类型，但是事实上给的是””,导致的</li>
+</ul>
+<p>-解决办法</p>
+<ol>
+<li>让返回null即可解决问题</li>
+<li>用Gson自带的解决方案</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">GsonError1Deserializer</span> <span class="keyword">implements</span> <span class="title">JsonDeserializer</span>&lt;<span class="title">GsonError1</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> GsonError1 <span class="title">deserialize</span><span class="params">(JsonElement json, Type typeOfT, JsonDeserializationContext context)</span> <span class="keyword">throws</span> JsonParseException </span>&#123;</span><br><span class="line">            <span class="keyword">final</span> JsonObject jsonObject = json.getAsJsonObject();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">final</span> JsonElement jsonTitle = jsonObject.get(<span class="string">"name"</span>);</span><br><span class="line">            <span class="keyword">final</span> String name = jsonTitle.getAsString();</span><br><span class="line"></span><br><span class="line">            JsonElement jsonAuthors = jsonObject.get(<span class="string">"authors"</span>);</span><br><span class="line"></span><br><span class="line">            GsonError1 gsonError1 = <span class="keyword">new</span> GsonError1();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (jsonAuthors.isJsonArray()) &#123;<span class="comment">//如果数组类型，此种情况是我们需要的</span></span><br><span class="line">                <span class="comment">//关于context在文章最后有简单说明</span></span><br><span class="line">                GsonError1.AuthorsBean[] authors = context.deserialize(jsonAuthors, GsonError1.AuthorsBean[].class);</span><br><span class="line">                gsonError1.setAuthors(Arrays.asList(authors));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;<span class="comment">//此种情况为无效情况</span></span><br><span class="line">                gsonError1.setAuthors(<span class="keyword">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            gsonError1.setName(name);</span><br><span class="line">            <span class="keyword">return</span> gsonError1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AuthorDeserializer</span> <span class="keyword">implements</span> <span class="title">JsonDeserializer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Object <span class="title">deserialize</span><span class="params">(JsonElement json, Type typeOfT, JsonDeserializationContext context)</span> <span class="keyword">throws</span> JsonParseException </span>&#123;</span><br><span class="line">            <span class="keyword">final</span> JsonObject jsonObject = json.getAsJsonObject();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">final</span> GsonError1.AuthorsBean author = <span class="keyword">new</span> GsonError1.AuthorsBean();</span><br><span class="line">            author.setId(jsonObject.get(<span class="string">"id"</span>).getAsString());</span><br><span class="line">            author.setName(jsonObject.get(<span class="string">"name"</span>).getAsString());</span><br><span class="line">            <span class="keyword">return</span> author;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span></span></span><br><span class="line"><span class="comment">//        test1();</span></span><br><span class="line"><span class="comment">//        test2();</span></span><br><span class="line">        test3();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span></span></span><br><span class="line">        String json = <span class="string">"&#123;\n"</span> +</span><br><span class="line">                <span class="string">"    \"name\": \"java\",\n"</span> +</span><br><span class="line">                <span class="string">"    \"authors\": [\n"</span> +</span><br><span class="line">                <span class="string">"        &#123;\n"</span> +</span><br><span class="line">                <span class="string">"            \"id\": \"1'\",\n"</span> +</span><br><span class="line">                <span class="string">"            \"name\": \"Joshua Bloch'\"\n"</span> +</span><br><span class="line">                <span class="string">"        &#125;,\n"</span> +</span><br><span class="line">                <span class="string">"        &#123;\n"</span> +</span><br><span class="line">                <span class="string">"            \"id\": \"2'\",\n"</span> +</span><br><span class="line">                <span class="string">"            \"name\": \"Tom\"\n"</span> +</span><br><span class="line">                <span class="string">"        &#125;\n"</span> +</span><br><span class="line">                <span class="string">"    ]\n"</span> +</span><br><span class="line">                <span class="string">"&#125;"</span>;</span><br><span class="line">        Gson gson = <span class="keyword">new</span> Gson();</span><br><span class="line">        GsonError1 gsonError1 = gson.fromJson(json, GsonError1.class);</span><br><span class="line"></span><br><span class="line">        System.out.println(gsonError1);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span></span></span><br><span class="line">        String json = <span class="string">"&#123;\n"</span> +</span><br><span class="line">                <span class="string">"    \"name\": \"java\",\n"</span> +</span><br><span class="line">                <span class="string">"    \"authors\": \"\"\n"</span> +</span><br><span class="line">                <span class="string">"&#125;"</span>;</span><br><span class="line">        Gson gson = <span class="keyword">new</span> Gson();</span><br><span class="line">        GsonError1 gsonError1 = gson.fromJson(json, GsonError1.class);</span><br><span class="line"></span><br><span class="line">        System.out.println(gsonError1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span></span></span><br><span class="line">        String json = <span class="string">"&#123;\n"</span> +</span><br><span class="line">                <span class="string">"    \"name\": \"java\",\n"</span> +</span><br><span class="line">                <span class="string">"    \"authors\": \"\"\n"</span> +</span><br><span class="line">                <span class="string">"&#125;"</span>;</span><br><span class="line"></span><br><span class="line">        GsonBuilder gsonBuilder = <span class="keyword">new</span> GsonBuilder();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//注册TypeAdapter</span></span><br><span class="line">        gsonBuilder.registerTypeAdapter(GsonError1.class, <span class="keyword">new</span> GsonError1Deserializer());</span><br><span class="line">        gsonBuilder.registerTypeAdapter(GsonError1.AuthorsBean.class, <span class="keyword">new</span> AuthorDeserializer());</span><br><span class="line"></span><br><span class="line">        Gson gson = gsonBuilder.create();</span><br><span class="line">        GsonError1 gsonError1 = gson.fromJson(json, GsonError1.class);</span><br><span class="line"></span><br><span class="line">        System.out.println(gsonError1);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+    
+</div>
+</div>
+ 
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.png" alt="darryrzhong 微信打赏">
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="darryrzhong 支付宝打赏">
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/json/" rel="tag"><i class="fa fa-tag"></i> json</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/15/java系列之xml解析/" rel="next" title="java系列之xml解析">
+                <i class="fa fa-chevron-left"></i> java系列之xml解析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/15/java系列之io框架/" rel="prev" title="java系列之io框架">
+                java系列之io框架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="darryrzhong">
+            
+              <p class="site-author-name" itemprop="name">darryrzhong</p>
+              <p class="site-description motion-element" itemprop="description">人必有痴，而后有成</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/darryrzhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/darryrzhong" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/b7fdf53ec0b9" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-book"></i>Jianshu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-spinner"></i>Juejin</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON"><span class="nav-number">1.</span> <span class="nav-text">JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.3.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON解析"><span class="nav-number">1.4.</span> <span class="nav-text">JSON解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">1.5.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON解析方式"><span class="nav-number">1.6.</span> <span class="nav-text">JSON解析方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Studio自带org-json解析"><span class="nav-number">1.6.1.</span> <span class="nav-text">Android Studio自带org.json解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gson-解析"><span class="nav-number">1.6.2.</span> <span class="nav-text">Gson 解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jackson解析"><span class="nav-number">1.6.3.</span> <span class="nav-text">Jackson解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fastjson解析"><span class="nav-number">1.6.4.</span> <span class="nav-text">Fastjson解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义一个JSON解析库"><span class="nav-number">1.7.</span> <span class="nav-text">自定义一个JSON解析库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON解析分析小结"><span class="nav-number">1.7.1.</span> <span class="nav-text">JSON解析分析小结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#词法分析"><span class="nav-number">1.7.2.</span> <span class="nav-text">词法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法分析"><span class="nav-number">1.7.3.</span> <span class="nav-text">语法分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.8.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gson原理解析"><span class="nav-number">1.9.</span> <span class="nav-text">Gson原理解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JsonElement"><span class="nav-number">1.9.1.</span> <span class="nav-text">JsonElement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JsonDeserializer的工作原理"><span class="nav-number">1.9.2.</span> <span class="nav-text">JsonDeserializer的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TypeAdapter的工作原理"><span class="nav-number">1.9.3.</span> <span class="nav-text">TypeAdapter的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gson的整体解析原理"><span class="nav-number">1.9.4.</span> <span class="nav-text">Gson的整体解析原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gson的反射解析机制"><span class="nav-number">1.9.5.</span> <span class="nav-text">Gson的反射解析机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gson解析常见的错误"><span class="nav-number">1.10.</span> <span class="nav-text">Gson解析常见的错误</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">darryrzhong</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+
+ <!-- <span class="post-meta-divider">|</span>-->
+
+
+
+  <!--<div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytxCyGhU';
+      var conf = '90b283bdb7ccb472f325f3c891156b33';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("29xnQ1C2kcwORHYYn7xsWTnS-gzGzoHsz", "Rq1Gk75oRwH78BryWUL4oYzj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
