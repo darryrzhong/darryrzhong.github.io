@@ -435,6 +435,328 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/16/Android-Activity生命周期-启动模式详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/16/Android-Activity生命周期-启动模式详解/" itemprop="url">Android Activity生命周期&启动模式详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T21:33:49+08:00">
+                2019-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/09/16/Android-Activity生命周期-启动模式详解/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/09/16/Android-Activity生命周期-启动模式详解/" class="cy_cmt_count" data-xid="2019/09/16/Android-Activity生命周期-启动模式详解/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/09/16/Android-Activity生命周期-启动模式详解/" class="leancloud_visitors" data-flag-title="Android Activity生命周期&启动模式详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        
+          
+            <h1 id="Android-Activity生命周期-amp-启动模式详解"><a href="#Android-Activity生命周期-amp-启动模式详解" class="headerlink" title="Android Activity生命周期&amp;启动模式详解"></a>Android Activity生命周期&amp;启动模式详解</h1><h2 id="从四个视角理解Android-Activity启动模式"><a href="#从四个视角理解Android-Activity启动模式" class="headerlink" title="从四个视角理解Android Activity启动模式"></a>从四个视角理解Android Activity启动模式</h2><ul>
+<li>从Android软件体系架构的角度来看</li>
+<li>从Android系统Task来看</li>
+<li>从Activity生命周期来看</li>
+<li>从Activity启动方式来看</li>
+</ul>
+<h2 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h2><ul>
+<li>Task是属于Android系统的任务栈,一个Task中可以包含有多个application的Activity</li>
+<li>Activity代码属于Application，但是Task属于Android操作系统</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-bcbfabfa2139ab08.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片2.jpg"></p>
+<ul>
+<li>Android中如何查看Task</li>
+</ul>
+<p>1.可以在Android studio 中的terminal中输入命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys activity activitys</span><br></pre></td></tr></table></figure>
+<p>2.通过手机navigation方式查看</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-2c03a1019a87bd30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片4.png"></p>
+<h2 id="Task启动方式"><a href="#Task启动方式" class="headerlink" title="Task启动方式"></a>Task启动方式</h2><ul>
+<li>恢复模式</li>
+</ul>
+<p>此种方式属于Activity生命周期由不可见到获得焦点的范畴</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-33c6cbf9aeee057b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片5.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-e7beb78bb50b3431.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片7.jpg"></p>
+<ul>
+<li>新建模式</li>
+</ul>
+<p>此种方式如下:</p>
+<p>1.通过通知栏打开</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-eea70b768d632d47.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片8.jpg"></p>
+<p>2.通过其他第三方App唤醒</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-267e4c877c438d9f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片9.jpg"></p>
+<p>这种启动方式都是由 startActivity()新建的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, DisplayMessageActivity.class);     </span><br><span class="line">EditText editText = (EditText) findViewById(R.id.editText);</span><br><span class="line">String message = editText.getText().toString();</span><br><span class="line">intent.putExtra(EXTRA_MESSAGE, message);</span><br><span class="line">intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>luncher启动模式</li>
+</ul>
+<p>luncher启动方式分为两种情况</p>
+<p>1.Task不存在</p>
+<p>2.Task已经存在</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-0eaabbb644d518a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片10.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-4334d627cb8abca1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片11.png"></p>
+<h2 id="Activity生命周期"><a href="#Activity生命周期" class="headerlink" title="Activity生命周期"></a>Activity生命周期</h2><ul>
+<li>activity生命周期</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-882f212097ddd4e7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片12.jpg"></p>
+<ul>
+<li>对于activity生命周期中各个方法,需要记住他们是成对出现的</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-e6e2539a9c4ecc93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片13.jpg"></p>
+<ul>
+<li>activity相邻状态之间的区别(面试重点)</li>
+</ul>
+<p>在讲解相邻状态之间区别之前,首先我们需要知道当两个activity交互时的生命周期,如图所示:</p>
+<p>1.从启动ActivityA 进入到ActivityB的生命周期走向</p>
+<p>2.从ActivityB 返回到ActivityA时的生命周期走向</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-70829b4560ab3f18.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片14.jpg"></p>
+<p>从上图我们可以看到,当ActivityA启动ActivityB时,执行到onPause()时,并没有立即执行onStop();</p>
+<p>而是先执行ActivityB 的相应方法,知道ActivityB 的onResume()执行完毕,也就是ActivityB启动成功后,才调用自身的onStop();反之亦是如此</p>
+<blockquote>
+<p>这里有一个小技巧</p>
+<p>我们日常开发中,启动App时都会先加载一个splash页面,而关于这个splash页面何时关闭呢?</p>
+<p>2s? 3s? 肯是我们的MainActivity加载完成后再关闭,所以时间是不确定的</p>
+<p>那看了上面的生命周期介绍,我就知道了,放在splashActivity的onStop()方法中执行finish()就ok了</p>
+</blockquote>
+<p>下面我们详细介绍activity生命周期中各个相邻状态之间的区别吧,敲黑板了!!!</p>
+<p>1.onCreate和onStart之间有什么区别？</p>
+<p>（1）可见与不可见的区别。前者不可见，后者可见。<br> （2）执行次数的区别。onCreate方法只在Activity创建时执行一次，而onStart方法在Activity的切换以及按Home键返回桌面再切回应用的过程中被多次调用。因此Bundle数据的恢复在onStart中进行比onCreate中执行更合适。<br> （3）onCreate能做的事onStart其实都能做，但是onstart能做的事onCreate却未必适合做。如前文所说的，setContentView和资源初始化在两者都能做，然而想动画的初始化在onStart中做比较好。</p>
+<p>2.onStart方法和onResume方法有什么区别？</p>
+<p>（1）是否在前台。onStart方法中Activity可见但不在前台，不可交互，而在onResume中在前台。<br> （2）职责不同，onStart方法中主要还是进行初始化工作，而onResume方法，根据官方的建议，可以做开启动画和独占设备的操作。</p>
+<p>这里解释下,这里所谓的前台并不是我们日常所说的前台任务的那个前台,这里的前台指的是能否与用户产生交互</p>
+<p>3.onPause方法和onStop方法有什么区别？</p>
+<p>（1）是否可见。onPause时Activity可见，onStop时Activity不可见，但Activity对象还在内存中。<br> （2）在系统内存不足的时候可能不会执行onStop方法，因此程序状态的保存、独占设备和动画的关闭、以及一些数据的保存最好在onPause中进行，但要注意不能太耗时。</p>
+<p>4.onStop方法和onDestroy方法有什么区别？</p>
+<p>onStop阶段Activity还没有被销毁，对象还在内存中，此时可以通过切换Activity再次回到该Activity，而onDestroy阶段Acivity被销毁</p>
+<ul>
+<li>onNewIntent的生命周期</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-907ef8cd9fa74b7e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片15.jpg"></p>
+<p>1、只对singleTop，singleTask，singleInstance有效，因为standard每次都是新建，所以不存在onNewIntent；</p>
+<p>2、只对startActivity有效，对于从Navigation切换回来的恢复无效；</p>
+<h2 id="Activity的四种启动模式"><a href="#Activity的四种启动模式" class="headerlink" title="Activity的四种启动模式"></a>Activity的四种启动模式</h2><p>介绍如图:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-e1c3f5132bfeff7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li>standard 模式</li>
+</ul>
+<p>1.standard 默认模式</p>
+<p>系统在启动Activity的任务中创建Activity的新实例并向其传送Intent。Activity可以多次实例化，不管这个实例是否已经存在，而每个实例均可属于不同的任务，并且一个任务可以拥有多个实例。这种模式的Activity被创建时它的onCreate、onStart 都会被调用。这是一种典型的多实例实现，一个任务栈中可以有多个实例，每个实例也可以属于不同的任务栈在这种模式下，谁启动了这个Activity，那么这个Activity就运行在启动它的那个Activity所在的栈中</p>
+<p>以下三种情况:</p>
+<p>a、当从非Activity的context启动activity时，需要带new_task的flag；</p>
+<p>b、当启动一个带有affinity的activity，如果这个activity已经有实例存在该task，则不会重新创建；</p>
+<p>c、如果从应用内启动的standard activity的Affinity就是App默认的Affinity，则会每次新建一个实例；</p>
+<blockquote>
+<p>小提示:affinity是指Task的标识,而我们一般不指定的话默认就是App的包名,而一旦指定一个affinity,</p>
+<p>那么启动的activity将会在另一个Task中执行,在后台任务切换栏里,你就可以看到两个任务窗口</p>
+</blockquote>
+<ul>
+<li>singleTop 模式</li>
+</ul>
+<p>一个singleTop Activity 的实例可以无限多，唯一的区别是如果在栈顶已经有一个相同类型的Activity实例，Intent不会再创建一个Activity，而是通过onNewIntent()被发送到现有的Activity。</p>
+<p>分析图如下:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-78a8a9b24ee89609.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片16.jpg"></p>
+<ul>
+<li>singleTask</li>
+</ul>
+<p>这是一种单实例模式，在这种模式下，只要 Activity 在一个栈中存在，那么多次启动此 Activity 都不会重新创建实例，和 singleTop一样，系统也会回调其 onNewIntent。当一个具有 singleTask 模式的Activity请求启动后，比如 Activity A，系统首先会寻找是否存在 A 想要的任务栈，如果不存在，就重新创建一个任务栈，然后创建 A 的实例后把 A 放到栈中。如果存在 A 所需的任务栈，这时要看 A 是否在栈中有实例存在，如果有实例存在，那么系统就会把 A 调到栈顶并调用它的 onNewIntent 方法，如果实例不存在，就创建 A 的实例并把 A 压入栈中 。</p>
+<p>分析如下:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-6ebb78e67a786e8c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片17.jpg"></p>
+<blockquote>
+<p>小提示: 此种启动模式和singleTop有点像,但是值得注意的是,下面这句话</p>
+<p>如果存在实例则重用实例,移到栈顶,并清空所有在它上面的Activity,一般用作程序的主入口</p>
+</blockquote>
+<ul>
+<li>singleInstance</li>
+</ul>
+<p>与 singleTask 相同，只是系统不会将任何其他 Activity 启动到包含实例的任务中。该 Activity 始终是其任务唯一仅有的成员；由此 Activity 启动的任何 Activity 均在单独的任务中打开。也就是有此种模式的 Activity 只能单独地位于一个任务栈中</p>
+<h2 id="Intent-Activity-Flag-的使用"><a href="#Intent-Activity-Flag-的使用" class="headerlink" title="Intent Activity Flag 的使用"></a>Intent Activity Flag 的使用</h2><p>使用流程如下:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-1a40fb934a926df2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>对于Intent Flag 种类太多了,这里就不一一解释了,</p>
+<p>我们只需要知道要使用Flag的流程即可,需要用到的时候自己查一下文档</p>
+<p>另外需要注意的是,Intent Flag的设置只对standard和singleTop这两种启动模式有效</p>
+<h2 id="Activity四种启动模式的应用场景"><a href="#Activity四种启动模式的应用场景" class="headerlink" title="Activity四种启动模式的应用场景"></a>Activity四种启动模式的应用场景</h2><p><img src="https://upload-images.jianshu.io/upload_images/5549640-e277d4d6fe8df598.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>至此,anctivity的四种启动模式和生命周期分析完毕</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之io框架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2564,238 +2886,6 @@ window.onmouseout = function () {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="darryrzhong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="darryrzhong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/15/java系列之虚拟机的内存分配与回收机制/" itemprop="url">java系列之虚拟机的内存分配与回收机制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-15T16:49:34+08:00">
-                2019-09-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2019/09/15/java系列之虚拟机的内存分配与回收机制/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/" class="cy_cmt_count" data-xid="2019/09/15/java系列之虚拟机的内存分配与回收机制/" itemprop="commentsCount"></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/2019/09/15/java系列之虚拟机的内存分配与回收机制/" class="leancloud_visitors" data-flag-title="java系列之虚拟机的内存分配与回收机制">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </span></div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-
-      
-      
-
-      
-        
-          <h1 id="学习垃圾回收的意义"><a href="#学习垃圾回收的意义" class="headerlink" title="学习垃圾回收的意义"></a>学习垃圾回收的意义</h1><p>Java与C++等语言最大的技术区别：自动化的垃圾回收机制（GC）</p>
-<p>为什么要了解GC和内存分配策略</p>
-<p>1、面试需要</p>
-<p>2、GC对应用的性能是有影响的；</p>
-<p>3、写代码有好处</p>
-<p>栈：栈中的生命周期是跟随线程，所以一般不需要关注</p>
-<p>堆：堆中的对象是垃圾回收的重点</p>
-<p>方法区/元空间：这一块也会发生垃圾回收，不过这块的效率比较低，一般不是我们关注的重点</p>
-<h1 id="GC案例"><a href="#GC案例" class="headerlink" title="GC案例"></a>GC案例</h1><p>自动回收机制也有失败的时候（Oom类）</p>
-<p>-Xms  堆区内存初始内存分配的大小 </p>
-<p>-Xmx  堆区内存可被分配的最大上限 </p>
-<p>-XX:+PrintGCDetails </p>
-<p>打印GC详情 </p>
-<p>-XX:+HeapDumpOnOutOfMemoryError </p>
-<p>当堆内存空间溢出时输出堆的内存快照 </p>
-<h1 id="新生代配置"><a href="#新生代配置" class="headerlink" title="新生代配置"></a>新生代配置</h1><p>新生代大小配置参数的优先级：</p>
-<p>中间 -Xmn  限定大小</p>
-<p>-XX:SurvivorRatio </p>
-<p>2个Survivor区和Eden区的比值</p>
-<p>8 表示 两个Survivor ： Eden = 2： 8 ，每个Survivor占 1/10</p>
-<p>可以修改为2</p>
-<p>8 表示 两个Survivor ： Eden = 2： 2  ，各占一半</p>
-<p>GC overhead limit exceeded 超过98%的时间用来做GC并且回收了不到2%的堆内存时会抛出此异常</p>
-<p>1.垃圾回收会占据资源</p>
-<p>2.回收效率过低也会有限制</p>
-<p>为什么new出的对象不会被回收了，我们来看看GC是如何判断对象的存活</p>
-<h1 id="判断对象的存活"><a href="#判断对象的存活" class="headerlink" title="判断对象的存活"></a>判断对象的存活</h1><p>引用计数法：快，方便，实现简单，缺点：对象相互引用时，很难判断对象是否该回收。（PHP语言在用）</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5549640-6dde7d73d1bbeddd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="clip_image002.jpg"></p>
-<h2 id="可达性分析"><a href="#可达性分析" class="headerlink" title="可达性分析"></a>可达性分析</h2><p>（<strong>面试时重要的知识点，牢记</strong>）</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/15/java系列之虚拟机的内存分配与回收机制/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-
-
-    
-
-    
-
-    
-
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2848,7 +2938,7 @@ window.onmouseout = function () {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2870,7 +2960,7 @@ window.onmouseout = function () {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

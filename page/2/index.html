@@ -435,6 +435,238 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/15/java系列之虚拟机的内存分配与回收机制/" itemprop="url">java系列之虚拟机的内存分配与回收机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-15T16:49:34+08:00">
+                2019-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/09/15/java系列之虚拟机的内存分配与回收机制/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/" class="cy_cmt_count" data-xid="2019/09/15/java系列之虚拟机的内存分配与回收机制/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2019/09/15/java系列之虚拟机的内存分配与回收机制/" class="leancloud_visitors" data-flag-title="java系列之虚拟机的内存分配与回收机制">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        
+          <h1 id="学习垃圾回收的意义"><a href="#学习垃圾回收的意义" class="headerlink" title="学习垃圾回收的意义"></a>学习垃圾回收的意义</h1><p>Java与C++等语言最大的技术区别：自动化的垃圾回收机制（GC）</p>
+<p>为什么要了解GC和内存分配策略</p>
+<p>1、面试需要</p>
+<p>2、GC对应用的性能是有影响的；</p>
+<p>3、写代码有好处</p>
+<p>栈：栈中的生命周期是跟随线程，所以一般不需要关注</p>
+<p>堆：堆中的对象是垃圾回收的重点</p>
+<p>方法区/元空间：这一块也会发生垃圾回收，不过这块的效率比较低，一般不是我们关注的重点</p>
+<h1 id="GC案例"><a href="#GC案例" class="headerlink" title="GC案例"></a>GC案例</h1><p>自动回收机制也有失败的时候（Oom类）</p>
+<p>-Xms  堆区内存初始内存分配的大小 </p>
+<p>-Xmx  堆区内存可被分配的最大上限 </p>
+<p>-XX:+PrintGCDetails </p>
+<p>打印GC详情 </p>
+<p>-XX:+HeapDumpOnOutOfMemoryError </p>
+<p>当堆内存空间溢出时输出堆的内存快照 </p>
+<h1 id="新生代配置"><a href="#新生代配置" class="headerlink" title="新生代配置"></a>新生代配置</h1><p>新生代大小配置参数的优先级：</p>
+<p>中间 -Xmn  限定大小</p>
+<p>-XX:SurvivorRatio </p>
+<p>2个Survivor区和Eden区的比值</p>
+<p>8 表示 两个Survivor ： Eden = 2： 8 ，每个Survivor占 1/10</p>
+<p>可以修改为2</p>
+<p>8 表示 两个Survivor ： Eden = 2： 2  ，各占一半</p>
+<p>GC overhead limit exceeded 超过98%的时间用来做GC并且回收了不到2%的堆内存时会抛出此异常</p>
+<p>1.垃圾回收会占据资源</p>
+<p>2.回收效率过低也会有限制</p>
+<p>为什么new出的对象不会被回收了，我们来看看GC是如何判断对象的存活</p>
+<h1 id="判断对象的存活"><a href="#判断对象的存活" class="headerlink" title="判断对象的存活"></a>判断对象的存活</h1><p>引用计数法：快，方便，实现简单，缺点：对象相互引用时，很难判断对象是否该回收。（PHP语言在用）</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5549640-6dde7d73d1bbeddd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="clip_image002.jpg"></p>
+<h2 id="可达性分析"><a href="#可达性分析" class="headerlink" title="可达性分析"></a>可达性分析</h2><p>（<strong>面试时重要的知识点，牢记</strong>）</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/15/java系列之虚拟机的内存分配与回收机制/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之初识虚拟机/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2504,223 +2736,6 @@ window.onmouseout = function () {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/07/13/Android-RxJava系列一-基础常用详解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="darryrzhong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="darryrzhong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/13/Android-RxJava系列一-基础常用详解/" itemprop="url">Android RxJava系列一:  基础常用详解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-13T14:48:01+08:00">
-                2019-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2019/07/13/Android-RxJava系列一-基础常用详解/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/07/13/Android-RxJava系列一-基础常用详解/" class="cy_cmt_count" data-xid="2019/07/13/Android-RxJava系列一-基础常用详解/" itemprop="commentsCount"></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/2019/07/13/Android-RxJava系列一-基础常用详解/" class="leancloud_visitors" data-flag-title="Android RxJava系列一:  基础常用详解">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </span></div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-
-      
-      
-
-      
-        
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇主要介绍Rxjava在 Android 项目中的基础使用和常用方法,旨在给对 RxJava 感兴趣的人一些入门的指引.对Rxjava不熟悉的朋友可以去看我之前写的一篇简单介绍 <a href="https://www.jianshu.com/p/9cb743b98b84" target="_blank" rel="noopener">Android RxJava：基础介绍与使用</a>,下面就来我们一起来看看在项目中如何使用 Rxjava 吧!</p>
-<h1 id="Rxjava是什么-为什么要用Rxjava"><a href="#Rxjava是什么-为什么要用Rxjava" class="headerlink" title="Rxjava是什么?为什么要用Rxjava?"></a>Rxjava是什么?为什么要用Rxjava?</h1><blockquote>
-<p> 首先我们要知道Rxjava到底是什么东西?为什么这么多人用它以及它在Android项目中所占的比重.</p>
-</blockquote>
-<ul>
-<li>Rxjava到底是什么呢?<br>RxJava 在 GitHub 主页上的自我介绍是 : <code>a library for composing asynchronous and event-based programs using observable sequences for the Java VM</code>（一个在 Java VM 上使用可观测的序列来组成异步的、基于事件的程序的库）。这就是 RxJava ，概括得非常精准。然而对于初学者来说,两个字,不懂.其实说白了,Rxjava就是一个用来实现异步操作的第三方库,而至于其他的拓展功能也只是在实现异步过程中提供了一些辅助功能罢了.所以总结一下就一句话:</li>
-</ul>
-<blockquote>
-<p>Rxjava是一个用来实现异步的、基于事件的第三方库(就把它理解成Android Handler 的升级版就行了)</p>
-</blockquote>
-<ul>
-<li>为什么要用Rxjava?<br>这就到我们今天的重头戏了.相信很多初学者都是在以下场景初识Rxjava的</li>
-</ul>
-<p><code>1.201x年你必须知道的几个Android开源库: .......、Rxjava</code><br><code>这是一个基于 Rxjava+Retrofit+mvp+........的demo</code><br><code>Android 工作必回 Rxjava+Retrofit+.......几件套</code></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/13/Android-RxJava系列一-基础常用详解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-
-
-    
-
-    
-
-    
-
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2773,7 +2788,7 @@ window.onmouseout = function () {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2795,7 +2810,7 @@ window.onmouseout = function () {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
