@@ -87,33 +87,33 @@
 <meta name="keywords" content="mat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 内存优化篇 - 使用profile 和 MAT 工具进行内存泄漏检测">
-<meta property="og:url" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/index.html">
 <meta property="og:site_name" content="darryrzhong">
 <meta property="og:description" content="前言 在 Android 开发中，内存泄漏这个名词我想大家都不陌生，但是真正注意到这个问题并去解决的估计很少，因为内存泄漏表面上并不会表现出对app的任何影响，加之现在的手机配置与内存都挺高的，所以对于中小型app来说，可能不怎么去处理也几乎看不出来，但是作为一名android 开发者，你肯定和我一样不能忍受这种瑕疵吧，那 就撸起袖子干它就完事了  内存抖动 &amp;amp; 内存泄漏 &amp;amp; 内存">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506380.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506297.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506298.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506219.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506714.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506368.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506241.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506297-3729106.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506340.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506336.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506348.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506414-3729106.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506406.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506437.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506407.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506414.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506474.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506425.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506380.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506297.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506298.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506219.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506714.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506368.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506241.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506297-3729106.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506340.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506336.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506348.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506414-3729106.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506406.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506437.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506407.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506414.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506474.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506425.png">
 <meta property="og:updated_time" content="2020-03-09T04:45:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 内存优化篇 - 使用profile 和 MAT 工具进行内存泄漏检测">
 <meta name="twitter:description" content="前言 在 Android 开发中，内存泄漏这个名词我想大家都不陌生，但是真正注意到这个问题并去解决的估计很少，因为内存泄漏表面上并不会表现出对app的任何影响，加之现在的手机配置与内存都挺高的，所以对于中小型app来说，可能不怎么去处理也几乎看不出来，但是作为一名android 开发者，你肯定和我一样不能忍受这种瑕疵吧，那 就撸起袖子干它就完事了  内存抖动 &amp;amp; 内存泄漏 &amp;amp; 内存">
-<meta name="twitter:image" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506380.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506380.png">
 
 
 
@@ -143,7 +143,7 @@
 
 
 
-  <link rel="canonical" href="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/">
 
 
 
@@ -456,7 +456,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -611,7 +611,7 @@ window.onmouseout = function () {
 <li><p>现象：在profile中的内存图像就像是心电图一样，忽上忽下，如下图所示：</p>
 </li>
 </ol>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506380.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506380.png" alt="image"></p>
 <ol start="3">
 <li><p>常见场景：循环使用字符串拼接，比如我们项目的日志打印等</p>
 </li>
@@ -633,7 +633,7 @@ window.onmouseout = function () {
 <li><p>现象：反复进入A，然后退出A ，执行三次，可以看到A 的实例存在两个。如下图，VideoPlayerActivity：</p>
 </li>
 </ol>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506297.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506297.png" alt="image"></p>
 <p>这就说明我们的activity并没有被销毁，至少目前是这样的。至于究竟会不会内存泄漏，就需要接下来使用另一款工具配合使用了。</p>
 <a id="more"></a>
 <ol start="3">
@@ -645,7 +645,7 @@ window.onmouseout = function () {
 <blockquote>
 <p>通过一系列称为“GC Roots”的对象作为起始点，从这些节点向下搜索，搜索所有的引用链，当一个对象到GC Roots没有任何引用链（即GC Roots到对象不可达）时，则证明此对象是不可用的。也就会被回收。</p>
 </blockquote>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506298.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506298.png" alt="image"></p>
 <ol start="4">
 <li><p>何为GC Roots 对象，一般静态变量就是gc root对象，可以理解成生命周期很长的对象。</p>
 </li>
@@ -661,14 +661,14 @@ window.onmouseout = function () {
 <blockquote>
 <p>定义一些还有用但并非必须的对象。对于软引用关联的对象，GC不会直接回收，而是在系统将要内存溢出之前才会触发GC将这些对象进行回收。</p>
 </blockquote>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506219.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506219.png" alt="image"></p>
 <ul>
 <li>弱引用 ：</li>
 </ul>
 <blockquote>
 <p>同样定义非必须对象。被弱引用关联的对象在GC执行时会被直接回收。</p>
 </blockquote>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506714.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506714.png" alt="image"></p>
 <ol start="6">
 <li>造成内存泄漏的常见场景：</li>
 </ol>
@@ -704,7 +704,7 @@ window.onmouseout = function () {
 <li><a href="https://www.eclipse.org/mat/" target="_blank" rel="noopener">下载地址点我</a></li>
 </ul>
 <p>选择相应版本进行下载安装。</p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506368.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506368.png" alt="image"></p>
 <ul>
 <li>配置mat 环境，因为从 android profile直接获取到的hprof文件格式与mat的格式不兼容，所以需要使用工具转换一下</li>
 </ul>
@@ -719,8 +719,8 @@ window.onmouseout = function () {
 <li>最后输入： source .bash_profile</li>
 <li>没有6了，已经成功配置了。</li>
 </ol>
-<h3 id="使用profile获取内存分析文件"><a href="#使用profile获取内存分析文件" class="headerlink" title="使用profile获取内存分析文件"></a>使用profile获取内存分析文件</h3><p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506241.png" alt="image"></p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506297-3729106.png" alt="image"></p>
+<h3 id="使用profile获取内存分析文件"><a href="#使用profile获取内存分析文件" class="headerlink" title="使用profile获取内存分析文件"></a>使用profile获取内存分析文件</h3><p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506241.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506297-3729106.png" alt="image"></p>
 <p>名字随便了，怎么方便怎么来</p>
 <p>打开终端，进行文件转换 </p>
 <p>转换格式 ： hprof-conv before.hprof after.hprof  </p>
@@ -729,20 +729,20 @@ window.onmouseout = function () {
 <p>注意了 ： 需要进入-99 所在的文件目录，要不然会报错找不到文件</p>
 </blockquote>
 <p>打开mat工具，导入我们的-66 文件</p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506340.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506340.png" alt="image"></p>
 <p>打开后可以看到这样的界面</p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506336.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506336.png" alt="image"></p>
 <p>点击红框的选项，这个是进行内存泄漏分析的</p>
 <p>下面就是这段时间所产生的对象，点击红框 可以直接搜索你要分析的对象</p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506348.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506348.png" alt="image"></p>
 <p>这里找到了我们的VideoPlayerActivity</p>
 <p>鼠标右键选择</p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506414-3729106.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506414-3729106.png" alt="image"></p>
 <p>可以看到，意思就是我们排除掉软、弱、虚引用，因为这几种是不会造成内存泄漏的，可以不用管它，我们只需要看排除后还有没引用存在，有的话 那就是强引用了，也就发生了内存泄漏了。</p>
 <p>继续看我们的结果：</p>
 <p>点击后，发现里面存在数据，那就说明我们有内存泄漏发生了，也就是为什么上面我们已经退出了，profile里面还有三个activity的存在，刚刚上面那张图右侧也有显示有3个activity对象存在。</p>
 <p>我们一一展开，看看到底哪里内存泄漏了</p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506406.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506406.png" alt="image"></p>
 <p>可以看到，我们的Avtivity 作为mContext 变量被我们的自定义CoverVideoPlayerView 持有了，那也就是说，因为我们的自定义View不能被gc回收，所以activity也无法被回收。</p>
 <p>那就继续看，为什么自定义view无法被回收，可以看到，this$0，这表示在自定义view的内部有一个非静态内部类，而非静态内部类是默认持有外部类的引用的，也就是我们的，mNetChangeListener对象，这个就熟悉了吧，肯定是new 一个匿名内部类啊，</p>
 <p>继续看，这个内部类又被NetInfoModeule引用了，我丢，然后继续往上看，我就不看了，你自己看吧</p>
@@ -760,20 +760,20 @@ window.onmouseout = function () {
 <p>嗯，一切都入想象的那般甜美，but，残酷的事实摆在眼前，这特么是第三方库的代码，你咋改？<br>下源码改? 得 ，可行是可行，那要是很多个库呢？ 你还下不？还改不？</p>
 <p>算了，不改了，嗯也行，反正也好像没啥影响，而且我们的VideoPlayerActivity用的SingleTop 启动模式，<br>但是你如果用户不是在播放页面点击跳转的呢，退出再进来，退出再进来，最后十几个activity的实例，<br>连带着我们的model 、viewmodel 、统统都是十几份，你确定你不会被老大拿出去祭天？</p>
 <p>界面如下：</p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506437.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506437.png" alt="image"></p>
 <p>那要怎么改呢? 你说说呗，</p>
 <p>改当然能改了，那就是用java反射，通过反射去拿到对象，进行修改，</p>
 <p>直接上代码吧</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * 利用反射 解决gsy库中导致的内存泄漏</span><br><span class="line">   */</span><br><span class="line">  public void cancel()</span><br><span class="line">  &#123;</span><br><span class="line">      mAudioManager.abandonAudioFocus(onAudioFocusChangeListener);</span><br><span class="line">      try</span><br><span class="line">      &#123;</span><br><span class="line">          // 拿到NetInfoModule对象中 mConnectivityBroadcastReceiver字段.</span><br><span class="line">          Field mConnectivityBroadcastReceiver = NetInfoModule.class</span><br><span class="line">              .getDeclaredField(&quot;mConnectivityBroadcastReceiver&quot;);</span><br><span class="line">          // 由于是私有字段,所以需要调用setAccessible(true),否则会报错</span><br><span class="line">          mConnectivityBroadcastReceiver.setAccessible(true);</span><br><span class="line">          // 根据当前mNetInfoModule对象的 mConnectivityBroadcastReceiver字段值为null</span><br><span class="line">          mConnectivityBroadcastReceiver.set(mNetInfoModule, null);</span><br><span class="line">          Field mNetChangeListener =</span><br><span class="line">              NetInfoModule.class.getDeclaredField(&quot;mNetChangeListener&quot;);</span><br><span class="line">          mNetChangeListener.setAccessible(true);</span><br><span class="line">          mNetChangeListener.set(mNetInfoModule, null);</span><br><span class="line">          </span><br><span class="line">      &#125;</span><br><span class="line">      catch (NoSuchFieldException e)</span><br><span class="line">      &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">      catch (IllegalAccessException e)</span><br><span class="line">      &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">      mAudioManager = null;</span><br><span class="line">      mContext = null;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>好了，改完了，我们在来抓一下内存情况</p>
 <p>直接上图：</p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506407.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506407.png" alt="image"></p>
 <p>看见没有，啥也没有了，说明我们的activiy再没有被其他对象引用了，说的不对，纠正一下，是没有被其他对象强引用了，而只要没有强引用关系，gc肯定能够回收的，自然你就也不需要担心内存泄漏了，</p>
 <p>但是为什么还是会显示有3个activity对象存在呢？</p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506414.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506414.png" alt="image"></p>
 <p>那我们排除一下弱应用，看一看</p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506474.png" alt="image"></p>
-<p><img src="//darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506425.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506474.png" alt="image"></p>
+<p><img src="//yoursite.com/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/1240-20200309124506425.png" alt="image"></p>
 <p>看见没有，这里有一个FinalizeRefernce对象，说明我们的activity被FinalizeRefernce对象所引用，而我们知道，只要一个对象将要被gc回收了，那么他就会被这个FinalizeRefernce所引用，这是为了让gc知道我们不需要这个对象了，你可以回收了，</p>
 <p>所以我们的activity 虽然显示有两个，但是只是gc还没来的及回收而已，并没有内存泄漏的风险。</p>
 <p>上面的例子是我的开源项目里的真实实例，感兴趣的可以前往支持 start 一下，</p>

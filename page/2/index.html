@@ -86,7 +86,7 @@
 <meta name="description" content="人必有痴，而后有成">
 <meta property="og:type" content="website">
 <meta property="og:title" content="darryrzhong">
-<meta property="og:url" content="http://darryrzhong.xyz/page/2/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="darryrzhong">
 <meta property="og:description" content="人必有痴，而后有成">
 <meta property="og:locale" content="zh-Hans">
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://darryrzhong.xyz/page/2/">
+  <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
@@ -436,7 +436,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/Android之Rxjava总结指南/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/Android之Rxjava总结指南/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -510,7 +510,7 @@ window.onmouseout = function () {
               </span>
               
                 <a href="/2019/09/15/Android之Rxjava总结指南/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/09/15/Android之Rxjava总结指南/" class="cy_cmt_count" data-xid="2019/09/15/Android之Rxjava总结指南/" itemprop="commentsCount"></span>
+                  <span id="url::http://yoursite.com/2019/09/15/Android之Rxjava总结指南/" class="cy_cmt_count" data-xid="2019/09/15/Android之Rxjava总结指南/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -679,7 +679,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/Android之热修复核心原理-ClassLoader类加载/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/Android之热修复核心原理-ClassLoader类加载/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -753,7 +753,7 @@ window.onmouseout = function () {
               </span>
               
                 <a href="/2019/09/15/Android之热修复核心原理-ClassLoader类加载/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/09/15/Android之热修复核心原理-ClassLoader类加载/" class="cy_cmt_count" data-xid="2019/09/15/Android之热修复核心原理-ClassLoader类加载/" itemprop="commentsCount"></span>
+                  <span id="url::http://yoursite.com/2019/09/15/Android之热修复核心原理-ClassLoader类加载/" class="cy_cmt_count" data-xid="2019/09/15/Android之热修复核心原理-ClassLoader类加载/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -845,7 +845,7 @@ window.onmouseout = function () {
 <p><strong>ART 预先编译机制</strong>，在安装时对 dex 文件执行dexopt优化之后再将odex进行 AOT 提前编译操作，编译为OAT（实际上是ELF文件）可执行文件（机器码）。（相比做过ODEX优化，未做过优化的DEX转换成OAT要花费更长的时间）</p>
 </li>
 </ul>
-<p><img src="//darryrzhong.xyz/2019/09/15/Android之热修复核心原理-ClassLoader类加载/1240-20200309133141482.png" alt="dex.png"></p>
+<p><img src="//yoursite.com/2019/09/15/Android之热修复核心原理-ClassLoader类加载/1240-20200309133141482.png" alt="dex.png"></p>
 <h2 id="ClassLoader介绍"><a href="#ClassLoader介绍" class="headerlink" title="ClassLoader介绍"></a>ClassLoader介绍</h2><p>​    任何一个 Java 程序都是由一个或多个 class 文件组成，在程序运行时，需要将 class 文件加载到 JVM 中才可以使用，负责加载这些 class 文件的就是 Java 的类加载机制。ClassLoader 的作用简单来说就是加载 class 文件，提供给程序运行时使用。每个 Class 对象的内部都有一个 classLoader 字段来标识自己是由哪个 ClassLoader 加载的。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Class</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">transient</span> ClassLoader classLoader;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    ClassLoader是一个抽象类，而它的具体实现类主要有：</p>
@@ -866,7 +866,7 @@ window.onmouseout = function () {
 </blockquote>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Log.e(TAG, <span class="string">"Activity.class 由："</span> + Activity.class.getClassLoader() +<span class="string">" 加载"</span>);</span><br><span class="line">Log.e(TAG, <span class="string">"MainActivity.class 由："</span> + getClassLoader() +<span class="string">" 加载"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出：</span></span><br><span class="line">Activity.class 由：java.lang.BootClassLoader<span class="meta">@d</span>3052a9 加载</span><br><span class="line"></span><br><span class="line">MainActivity.class 由：dalvik.system.PathClassLoader[DexPathList[[zip file <span class="string">"/data/app/com.enjoy.enjoyfix-1/base.apk"</span>],nativeLibraryDirectories=[/data/app/com.enjoy.enjoyfix-<span class="number">1</span>/lib/x86, /system/lib, /vendor/lib]]] 加载</span><br></pre></td></tr></table></figure>
 <p>  它们之间的关系如下：</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/Android之热修复核心原理-ClassLoader类加载/1240-20200309133151676.png" alt="ClassLoader.png"></p>
+<p><img src="//yoursite.com/2019/09/15/Android之热修复核心原理-ClassLoader类加载/1240-20200309133151676.png" alt="ClassLoader.png"></p>
 <p><code>PathClassLoader</code>与<code>DexClassLoader</code>的共同父类是<code>BaseDexClassLoader</code>。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DexClassLoader</span> <span class="keyword">extends</span> <span class="title">BaseDexClassLoader</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DexClassLoader</span><span class="params">(String dexPath, String optimizedDirectory,</span></span></span><br><span class="line"><span class="function"><span class="params">		String librarySearchPath, ClassLoader parent)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(dexPath, <span class="keyword">new</span> File(optimizedDirectory), librarySearchPath, parent);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PathClassLoader</span> <span class="keyword">extends</span> <span class="title">BaseDexClassLoader</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PathClassLoader</span><span class="params">(String dexPath, ClassLoader parent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(dexPath, <span class="keyword">null</span>, <span class="keyword">null</span>, parent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">PathClassLoader</span><span class="params">(String dexPath, String librarySearchPath, ClassLoader parent)</span></span>&#123;</span><br><span class="line">		 <span class="keyword">super</span>(dexPath, <span class="keyword">null</span>, librarySearchPath, parent);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看到两者唯一的区别在于：创建<code>DexClassLoader</code>需要传递一个<code>optimizedDirectory</code>参数，并且会将其创建为<code>File</code>对象传给<code>super</code>，而<code>PathClassLoader</code>则直接给到null。因此两者都可以加载<strong>指定的dex，以及jar、zip、apk中的classes.dex</strong></p>
@@ -900,7 +900,7 @@ window.onmouseout = function () {
 <p>​    实现非常简单，从<code>pathList</code>中查找class。继续查看<code>DexPathList</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">DexPathList</span><span class="params">(ClassLoader definingContext, String dexPath,</span></span></span><br><span class="line"><span class="function"><span class="params">            String librarySearchPath, File optimizedDirectory)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//.........</span></span><br><span class="line">    <span class="comment">// splitDexPath 实现为返回 List&lt;File&gt;.add(dexPath)</span></span><br><span class="line">    <span class="comment">// makeDexElements 会去 List&lt;File&gt;.add(dexPath) 中使用DexFile加载dex文件返回 Element数组</span></span><br><span class="line">    <span class="keyword">this</span>.dexElements = makeDexElements(splitDexPath(dexPath), optimizedDirectory,</span><br><span class="line">                                           suppressedExceptions, definingContext);</span><br><span class="line">	<span class="comment">//.........</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Class <span class="title">findClass</span><span class="params">(String name, List&lt;Throwable&gt; suppressed)</span> </span>&#123;</span><br><span class="line">     <span class="comment">//从element中获得代表Dex的 DexFile</span></span><br><span class="line">	<span class="keyword">for</span> (Element element : dexElements) &#123;</span><br><span class="line">		DexFile dex = element.dexFile;</span><br><span class="line">		<span class="keyword">if</span> (dex != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//查找class</span></span><br><span class="line">        	Class clazz = dex.loadClassBinaryName(name, definingContext, suppressed);</span><br><span class="line">            <span class="keyword">if</span> (clazz != <span class="keyword">null</span>) &#123;</span><br><span class="line">            	<span class="keyword">return</span> clazz;</span><br><span class="line">        	&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dexElementsSuppressedExceptions != <span class="keyword">null</span>) &#123;</span><br><span class="line">    	suppressed.addAll(Arrays.asList(dexElementsSuppressedExceptions));</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="热修复"><a href="#热修复" class="headerlink" title="热修复"></a>热修复</h2><p>​    <code>PathClassLoader</code>中存在一个Element数组，Element类中存在一个dexFile成员表示dex文件，即：APK中有X个dex，则Element数组就有X个元素。</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/Android之热修复核心原理-ClassLoader类加载/1240-20200309133157869.png" alt="类查找.png"></p>
+<p><img src="//yoursite.com/2019/09/15/Android之热修复核心原理-ClassLoader类加载/1240-20200309133157869.png" alt="类查找.png"></p>
 <p>​    在<code>PathClassLoader</code>中的Element数组为：[patch.dex , classes.dex , classes2.dex]。如果存在<strong>Key.class</strong>位于patch.dex与classes2.dex中都存在一份，当进行类查找时，循环获得<code>dexElements</code>中的DexFile，查找到了<strong>Key.class</strong>则立即返回，不会再管后续的element中的DexFile是否能加载到<strong>Key.class</strong>了。    </p>
 <p>​    因此实际上，一种热修复实现可以将出现Bug的class单独的制作一份fix.dex文件(补丁包)，然后在程序启动时，从服务器下载fix.dex保存到某个路径，再通过fix.dex的文件路径，用其创建<code>Element</code>对象，然后将这个<code>Element</code>对象插入到我们程序的类加载器<code>PathClassLoader</code>的<code>pathList</code>中的<code>dexElements</code>数组头部。这样在加载出现Bug的class时会优先加载fix.dex中的修复类，从而解决Bug。</p>
 <blockquote>
@@ -958,7 +958,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -1032,7 +1032,7 @@ window.onmouseout = function () {
               </span>
               
                 <a href="/2019/09/15/java系列之虚拟机的内存分配与回收机制/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/" class="cy_cmt_count" data-xid="2019/09/15/java系列之虚拟机的内存分配与回收机制/" itemprop="commentsCount"></span>
+                  <span id="url::http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/" class="cy_cmt_count" data-xid="2019/09/15/java系列之虚拟机的内存分配与回收机制/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -1131,7 +1131,7 @@ window.onmouseout = function () {
 <p>2.回收效率过低也会有限制</p>
 <p>为什么new出的对象不会被回收了，我们来看看GC是如何判断对象的存活</p>
 <h1 id="判断对象的存活"><a href="#判断对象的存活" class="headerlink" title="判断对象的存活"></a>判断对象的存活</h1><p>引用计数法：快，方便，实现简单，缺点：对象相互引用时，很难判断对象是否该回收。（PHP语言在用）</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131912847.jpeg" alt="clip_image002.jpg"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131912847.jpeg" alt="clip_image002.jpg"></p>
 <h2 id="可达性分析"><a href="#可达性分析" class="headerlink" title="可达性分析"></a>可达性分析</h2><p>（<strong>面试时重要的知识点，牢记</strong>）</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1190,7 +1190,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之初识虚拟机/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/java系列之初识虚拟机/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -1264,7 +1264,7 @@ window.onmouseout = function () {
               </span>
               
                 <a href="/2019/09/15/java系列之初识虚拟机/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/09/15/java系列之初识虚拟机/" class="cy_cmt_count" data-xid="2019/09/15/java系列之初识虚拟机/" itemprop="commentsCount"></span>
+                  <span id="url::http://yoursite.com/2019/09/15/java系列之初识虚拟机/" class="cy_cmt_count" data-xid="2019/09/15/java系列之初识虚拟机/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -1409,7 +1409,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/java系列之线程池原理与Android中AsyncTask/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -1483,7 +1483,7 @@ window.onmouseout = function () {
               </span>
               
                 <a href="/2019/09/15/java系列之线程池原理与Android中AsyncTask/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/" class="cy_cmt_count" data-xid="2019/09/15/java系列之线程池原理与Android中AsyncTask/" itemprop="commentsCount"></span>
+                  <span id="url::http://yoursite.com/2019/09/15/java系列之线程池原理与Android中AsyncTask/" class="cy_cmt_count" data-xid="2019/09/15/java系列之线程池原理与Android中AsyncTask/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -1574,7 +1574,7 @@ window.onmouseout = function () {
 <p><strong>阻塞队列：</strong></p>
 <p>1）支持阻塞的插入方法：意思是当队列满时，队列会阻塞插入元素的线程，直到队列不满。</p>
 <p>2）支持阻塞的移除方法：意思是在队列为空时，获取元素的线程会等待队列变为非空。</p>
-<p>阻塞队列常用于生产者和消费者的场景，生产者是向队列里添加元素的线程，消费者是从队列里取元素的线程。阻塞队列就是生产者用来存放元素、消费者用来获取元素的容器。 <img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image002.jpg" alt="img"></p>
+<p>阻塞队列常用于生产者和消费者的场景，生产者是向队列里添加元素的线程，消费者是从队列里取元素的线程。阻塞队列就是生产者用来存放元素、消费者用来获取元素的容器。 <img src="//yoursite.com/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image002.jpg" alt="img"></p>
 <p>•抛出异常：当队列满时，如果再往队列里插入元素，会抛出IllegalStateException（”Queuefull”）异常。当队列空时，从队列里获取元素会抛出NoSuchElementException异常。</p>
 <p>•返回特殊值：当往队列插入元素时，会返回元素是否插入成功，成功返回true。如果是移除方法，则是从队列里取出一个元素，如果没有则返回null。</p>
 <p>•一直阻塞：当阻塞队列满时，如果生产者线程往队列里put元素，队列会一直阻塞生产者线程，直到队列可用或者响应中断退出。当队列空时，如果消费者线程从队列里take元素，队列会阻塞住消费者线程，直到队列不为空。</p>
@@ -1650,7 +1650,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之多线程与Android多线程性能优化/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/java系列之多线程与Android多线程性能优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -1724,7 +1724,7 @@ window.onmouseout = function () {
               </span>
               
                 <a href="/2019/09/15/java系列之多线程与Android多线程性能优化/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/09/15/java系列之多线程与Android多线程性能优化/" class="cy_cmt_count" data-xid="2019/09/15/java系列之多线程与Android多线程性能优化/" itemprop="commentsCount"></span>
+                  <span id="url::http://yoursite.com/2019/09/15/java系列之多线程与Android多线程性能优化/" class="cy_cmt_count" data-xid="2019/09/15/java系列之多线程与Android多线程性能优化/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -1858,14 +1858,14 @@ window.onmouseout = function () {
 <h5 id="Callable、Future和FutureTask"><a href="#Callable、Future和FutureTask" class="headerlink" title="Callable、Future和FutureTask"></a>Callable、Future和FutureTask</h5><p>Runnable是一个接口，在它里面只声明了一个run()方法，由于run()方法返回值为void类型，所以在执行完任务之后无法返回任何结果。</p>
 <p>Callable位于java.util.concurrent包下，它也是一个接口，在它里面也只声明了一个方法，只不过这个方法叫做call()，这是一个泛型接口，call()函数返回的类型就是传递进来的V类型。</p>
 <p>Future就是对于具体的Runnable或者Callable任务的执行结果进行取消、查询是否完成、获取结果。必要时可以通过get方法获取执行结果，该方法会阻塞直到任务返回结果。</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image002.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image002.jpg" alt="img"></p>
 <p>因为Future只是一个接口，所以是无法直接用来创建对象使用的，因此就有了下面的FutureTask。</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image004.jpg" alt="img"></p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image006.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image004.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image006.jpg" alt="img"></p>
 <p>FutureTask类实现了RunnableFuture接口，RunnableFuture继承了Runnable接口和Future接口，而FutureTask实现了RunnableFuture接口。所以它既可以作为Runnable被线程执行，又可以作为Future得到Callable的返回值。</p>
 <p>事实上，FutureTask是Future接口的一个唯一实现类。</p>
 <p>要new一个FutureTask的实例，有两种方法</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image008.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image008.jpg" alt="img"></p>
 <h4 id="中止"><a href="#中止" class="headerlink" title="中止"></a>中止</h4><p>线程自然终止：要么是run执行完成了，要么是抛出了一个未处理的异常导致线程提前结束。</p>
 <p>手动中止</p>
 <p>暂停、恢复和停止操作对应在线程Thread的API就是<strong>suspend()**</strong>、<strong><strong>resume()</strong></strong>和<strong>**stop()</strong>。但是这些API是过期的，也就是不建议使用的。不建议使用的原因主要有：以suspend()方法为例，在调用后，线程不会释放已经占有的资源（比如锁），而是占有着资源进入睡眠状态，这样容易引发死锁问题。同样，stop()方法在终结一个线程时不会保证线程的资源正常释放，通常是没有给予线程完成资源释放工作的机会，因此会导致程序可能工作在不确定状态下。正因为suspend()、resume()和stop()方法带来的副作用，这些方法才被标注为不建议使用的过期方法。</p>
@@ -1944,7 +1944,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -2018,7 +2018,7 @@ window.onmouseout = function () {
               </span>
               
                 <a href="/2019/09/15/java系列之反射原理及动态代理模式/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/" class="cy_cmt_count" data-xid="2019/09/15/java系列之反射原理及动态代理模式/" itemprop="commentsCount"></span>
+                  <span id="url::http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/" class="cy_cmt_count" data-xid="2019/09/15/java系列之反射原理及动态代理模式/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -2109,9 +2109,9 @@ window.onmouseout = function () {
 <p>　　2.通过对象获取      对象名.getClass()</p>
 <p>　　3.通过全类名获取    Class.forName(全类名)</p>
 <p>Class类的常用方法</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image002.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image002.jpg" alt="img"></p>
 <h3 id="类加载器、构造器、Method、Field"><a href="#类加载器、构造器、Method、Field" class="headerlink" title="类加载器、构造器、Method、Field"></a>类加载器、构造器、Method、Field</h3><p>参见包cn.enjoyedu.refle.more下对应的类</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image004.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image004.jpg" alt="img"></p>
 <h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><h3 id="代理模式和静态代理"><a href="#代理模式和静态代理" class="headerlink" title="代理模式和静态代理"></a>代理模式和静态代理</h3>
           <!--noindex-->
           <div class="post-button text-center">
@@ -2170,7 +2170,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之泛型/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/java系列之泛型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -2244,7 +2244,7 @@ window.onmouseout = function () {
               </span>
               
                 <a href="/2019/09/15/java系列之泛型/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/09/15/java系列之泛型/" class="cy_cmt_count" data-xid="2019/09/15/java系列之泛型/" itemprop="commentsCount"></span>
+                  <span id="url::http://yoursite.com/2019/09/15/java系列之泛型/" class="cy_cmt_count" data-xid="2019/09/15/java系列之泛型/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -2317,9 +2317,9 @@ window.onmouseout = function () {
       
         
           <h1 id="Java中的泛型"><a href="#Java中的泛型" class="headerlink" title="Java中的泛型"></a>Java中的泛型</h1><h2 id="为什么我们需要泛型？"><a href="#为什么我们需要泛型？" class="headerlink" title="为什么我们需要泛型？"></a>为什么我们需要泛型？</h2><p>通过两段代码我们就可以知道为何我们需要泛型</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image002.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image002.jpg" alt="img"></p>
 <p>实际开发中，经常有数值类型求和的需求，例如实现int类型的加法, 有时候还需要实现long类型的求和, 如果还需要double类型的求和，需要重新在重载一个输入是double类型的add方法。</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image004.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image004.jpg" alt="img"></p>
 <p>定义了一个List类型的集合，先向其中加入了两个字符串类型的值，随后加入一个Integer类型的值。这是完全允许的，因为此时list默认的类型为Object类型。在之后的循环中，由于忘记了之前在list中也加入了Integer类型的值或其他编码原因，很容易出现类似于//1中的错误。因为编译阶段正常，而运行时会出现“java.lang.ClassCastException”异常。因此，导致此类错误编码过程中不易发现。</p>
 <p> 在如上的编码过程中，我们发现主要存在两个问题：</p>
 <p>1.当我们将一个对象放入集合中，集合不会记住此对象的类型，当再次从集合中取出此对象时，改对象的编译类型变成了Object类型，但其运行时类型任然为其本身类型。</p>
@@ -2331,31 +2331,31 @@ window.onmouseout = function () {
 <p>顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）。</p>
 <p>泛型的本质是为了参数化类型（在不创建新的类型的情况下，通过泛型指定的不同类型来控制形参具体限制的类型）。也就是说在泛型使用过程中，操作的数据类型被指定为一个参数，这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法。</p>
 <p>引入一个类型变量T（其他大写字母都可以，不过常用的就是T，E，K，V等等），并且用&lt;&gt;括起来，并放在类名的后面。泛型类是允许有多个类型变量的。</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image006.jpg" alt="img"><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image008.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image006.jpg" alt="img"><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image008.jpg" alt="img"></p>
 <p>泛型接口与泛型类的定义基本相同。</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image010.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image010.jpg" alt="img"></p>
 <p>而实现泛型接口的类，有两种实现方法：</p>
 <p>1、未传入泛型实参时：</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image012.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image012.jpg" alt="img"></p>
 <p>在new出类的实例时，需要指定具体类型：</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image014.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image014.jpg" alt="img"></p>
 <p>2、传入泛型实参</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image016.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image016.jpg" alt="img"></p>
 <p>在new出类的实例时，和普通的类没区别。</p>
-<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><p><strong><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image018.jpg" alt="img"></strong></p>
+<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><p><strong><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image018.jpg" alt="img"></strong></p>
 <p>泛型方法，是在调用方法的时候指明泛型的具体类型 ，泛型方法可以在任何地方和任何场景中使用，包括普通类和泛型类。注意泛型类中定义的普通方法和泛型方法的区别。</p>
 <p>普通方法：</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image020.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image020.jpg" alt="img"></p>
 <p>泛型方法</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image022.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image022.jpg" alt="img"></p>
 <h2 id="限定类型变量"><a href="#限定类型变量" class="headerlink" title="限定类型变量"></a>限定类型变量</h2><p>有时候，我们需要对类型变量加以约束，比如计算两个变量的最小，最大值。</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image024.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image024.jpg" alt="img"></p>
 <p>请问，如果确保传入的两个变量一定有compareTo方法？那么解决这个问题的方案就是将T限制为实现了接口Comparable的类</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image026.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image026.jpg" alt="img"></p>
 <p>T <strong>extends</strong> Comparable中</p>
 <p>T表示应该绑定类型的子类型，Comparable表示绑定类型，子类型和绑定类型可以是类也可以是接口。</p>
 <p>如果这个时候，我们试图传入一个没有实现接口Comparable的类的实例，将会发生编译错误。</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image028.jpg" alt="img"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之泛型/clip_image028.jpg" alt="img"></p>
 <p>同时extends左右都允许有多个，如 T,V <strong>extends</strong> Comparable &amp; Serializable</p>
 <p>注意限定类型中，只允许有一个类，而且如果有类，这个类必须是限定列表的第一个。</p>
 <p>这种类的限定既可以用在泛型方法上也可以用在泛型类上。</p>
@@ -2416,7 +2416,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/07/13/Android-性能优化系列二-App启动优化/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/Android-性能优化系列二-App启动优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -2490,7 +2490,7 @@ window.onmouseout = function () {
               </span>
               
                 <a href="/2019/07/13/Android-性能优化系列二-App启动优化/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/07/13/Android-性能优化系列二-App启动优化/" class="cy_cmt_count" data-xid="2019/07/13/Android-性能优化系列二-App启动优化/" itemprop="commentsCount"></span>
+                  <span id="url::http://yoursite.com/2019/07/13/Android-性能优化系列二-App启动优化/" class="cy_cmt_count" data-xid="2019/07/13/Android-性能优化系列二-App启动优化/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -2565,7 +2565,7 @@ window.onmouseout = function () {
           <p>#前言<br>本篇文章主要针对 Android性能优化 中App的启动优化</p>
 <p>App启动,相信大家都是非常熟悉了,那为何我们需要对App启动做优化呢,这里就要先对我们Android 从开机到启动我们的App进入主页面这一流程做一个简单的阐述了.</p>
 <h2 id="一、Android启动流程"><a href="#一、Android启动流程" class="headerlink" title="一、Android启动流程"></a>一、Android启动流程</h2><p>我们先来看一张流程图</p>
-<p><img src="//darryrzhong.xyz/2019/07/13/Android-性能优化系列二-App启动优化/1240-20200309132256657.png" alt="Android启动流程.png"></p>
+<p><img src="//yoursite.com/2019/07/13/Android-性能优化系列二-App启动优化/1240-20200309132256657.png" alt="Android启动流程.png"></p>
 <p>首先呢,我们Android手机开机时是先加载一个Boot程序,有点类似Windows开机时的开机引导程序,然后通过Boot程序加载Lux内核,随后是调用Native的init()方法做一些初始化加载操作(加载一些系统需要的驱动程序),然后就进入我们的java Framework层,也就是创建我们的java虚拟机,然后通过java虚拟机创建我们的系统程序,最后才是调用我们App的application启动我们的App.</p>
 <p>流程如下:</p>
 <blockquote>
@@ -2629,7 +2629,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/07/13/Android-性能优化系列一-APK极致优化/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/Android-性能优化系列一-APK极致优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -2703,7 +2703,7 @@ window.onmouseout = function () {
               </span>
               
                 <a href="/2019/07/13/Android-性能优化系列一-APK极致优化/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://darryrzhong.xyz/2019/07/13/Android-性能优化系列一-APK极致优化/" class="cy_cmt_count" data-xid="2019/07/13/Android-性能优化系列一-APK极致优化/" itemprop="commentsCount"></span>
+                  <span id="url::http://yoursite.com/2019/07/13/Android-性能优化系列一-APK极致优化/" class="cy_cmt_count" data-xid="2019/07/13/Android-性能优化系列一-APK极致优化/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -2785,8 +2785,8 @@ window.onmouseout = function () {
 <p>首先 svg 文件是以xml文件的方式存在的,占用空间小,而且能够根据设备屏幕自动伸缩不会失真.</p>
 </blockquote>
 <p>Android 本身是不支持直接导入svg文件的,所以我们需要将svg 文件进行转换一下.如下:</p>
-<p><img src="//darryrzhong.xyz/2019/07/13/Android-性能优化系列一-APK极致优化/1240-20200309132333631.png" alt="image.png"></p>
-<p><img src="//darryrzhong.xyz/2019/07/13/Android-性能优化系列一-APK极致优化/1240-20200309132337297.png" alt="image.png"></p>
+<p><img src="//yoursite.com/2019/07/13/Android-性能优化系列一-APK极致优化/1240-20200309132333631.png" alt="image.png"></p>
+<p><img src="//yoursite.com/2019/07/13/Android-性能优化系列一-APK极致优化/1240-20200309132337297.png" alt="image.png"></p>
 <p>使用如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> &lt;ImageView</span><br><span class="line">        android:layout_marginTop=&quot;100dp&quot;</span><br><span class="line">        android:layout_gravity=&quot;center_horizontal&quot;</span><br><span class="line">        android:layout_centerInParent=&quot;true&quot;</span><br><span class="line">        android:src=&quot;@drawable/ic_icon_name&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line"> &lt;ImageView</span><br><span class="line">        android:layout_marginTop=&quot;100dp&quot;</span><br><span class="line">        android:layout_gravity=&quot;center_horizontal&quot;</span><br><span class="line">        android:layout_centerInParent=&quot;true&quot;</span><br><span class="line">        app:srcCompat=&quot;@drawable/ic_icon_name&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        /&gt;</span><br></pre></td></tr></table></figure>
           <!--noindex-->

@@ -87,16 +87,16 @@
 <meta name="keywords" content="xml">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java系列之xml解析">
-<meta property="og:url" content="http://darryrzhong.xyz/2019/09/15/java系列之xml解析/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/09/15/java系列之xml解析/index.html">
 <meta property="og:site_name" content="darryrzhong">
 <meta property="og:description" content="XML定义XML，即 extensible Markup Language ，是一种数据标记语言 &amp;amp; 传输格式 作用对数据进行标记（结构化数据）、存储 &amp;amp; 传输 特性 灵活性: 可自定义标签，文档结构 自我描叙性 XML文档即 一个纯文本文件，代码结构清晰，适合人类阅读 有文本处理能力的软件都可以处理XML   可扩展性: 可在不中断解析，应用程序的情况下进行扩展 可跨平台数据传输">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之xml解析/1240-20200309133514278.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之xml解析/1240-20200309133514278.png">
 <meta property="og:updated_time" content="2020-03-09T05:35:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java系列之xml解析">
 <meta name="twitter:description" content="XML定义XML，即 extensible Markup Language ，是一种数据标记语言 &amp;amp; 传输格式 作用对数据进行标记（结构化数据）、存储 &amp;amp; 传输 特性 灵活性: 可自定义标签，文档结构 自我描叙性 XML文档即 一个纯文本文件，代码结构清晰，适合人类阅读 有文本处理能力的软件都可以处理XML   可扩展性: 可在不中断解析，应用程序的情况下进行扩展 可跨平台数据传输">
-<meta name="twitter:image" content="http://darryrzhong.xyz/2019/09/15/java系列之xml解析/1240-20200309133514278.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/15/java系列之xml解析/1240-20200309133514278.png">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="http://darryrzhong.xyz/2019/09/15/java系列之xml解析/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/15/java系列之xml解析/">
 
 
 
@@ -439,7 +439,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之xml解析/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/java系列之xml解析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -612,7 +612,7 @@ window.onmouseout = function () {
 <h2 id="XML树形结构"><a href="#XML树形结构" class="headerlink" title="XML树形结构"></a>XML树形结构</h2><p>XML文档中的元素会形成一种树结构，从根部开始，然后拓展到每个树叶（节点）,下面将以实例说明XML的树结构。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">classes</span>&gt;</span><span class="comment">&lt;!--根节点 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">student</span> <span class="attr">id</span>=<span class="string">"0"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>Av<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">age</span>&gt;</span>23<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">sax</span>&gt;</span>男<span class="tag">&lt;/<span class="name">sax</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Courses</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">course</span> <span class="attr">name</span>=<span class="string">"语文"</span> <span class="attr">score</span>=<span class="string">"90"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">course</span> <span class="attr">name</span>=<span class="string">"数学"</span> <span class="attr">score</span>=<span class="string">"78"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Courses</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">student</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">student</span> <span class="attr">id</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>Lance<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">age</span>&gt;</span>22<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">sax</span>&gt;</span>男<span class="tag">&lt;/<span class="name">sax</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Courses</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">course</span> <span class="attr">name</span>=<span class="string">"语文"</span> <span class="attr">score</span>=<span class="string">"59"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">course</span> <span class="attr">name</span>=<span class="string">"数学"</span> <span class="attr">score</span>=<span class="string">"38"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Courses</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">student</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">classes</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>树形结构</p>
-<p><img src="//darryrzhong.xyz/2019/09/15/java系列之xml解析/1240-20200309133514278.png" alt="xml.png"></p>
+<p><img src="//yoursite.com/2019/09/15/java系列之xml解析/1240-20200309133514278.png" alt="xml.png"></p>
 <p>XML节点解释</p>
 <p>XML文件是由节点构成的。它的第一个节点为“根节点”。一个XML文件必须有且只能有一个根节点，其他节点都必须是它的子节点,每个子节点又可以有自己的子节点。</p>
 <a id="more"></a>

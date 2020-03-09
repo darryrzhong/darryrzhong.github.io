@@ -87,20 +87,20 @@
 <meta name="keywords" content="自定义view">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android自定义View:快递时间轴实现">
-<meta property="og:url" content="http://darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/index.html">
 <meta property="og:site_name" content="darryrzhong">
 <meta property="og:description" content="前言 在Android开发中，时间轴的 UI非常常见，如下图：  储备知识:1.自定义view基础2.RecyclerView的使用3.自定义RecyclerView.ItemDecoration   具体实现1.最终效果如下:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133249394.jpeg">
-<meta property="og:image" content="http://darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133252872.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133255053.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133257058.png">
-<meta property="og:image" content="http://darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133303526.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133249394.jpeg">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133252872.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133255053.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133257058.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133303526.png">
 <meta property="og:updated_time" content="2020-03-09T05:33:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android自定义View:快递时间轴实现">
 <meta name="twitter:description" content="前言 在Android开发中，时间轴的 UI非常常见，如下图：  储备知识:1.自定义view基础2.RecyclerView的使用3.自定义RecyclerView.ItemDecoration   具体实现1.最终效果如下:">
-<meta name="twitter:image" content="http://darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133249394.jpeg">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133249394.jpeg">
 
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="http://darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/">
 
 
 
@@ -443,7 +443,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -587,12 +587,12 @@ window.onmouseout = function () {
 
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
-<li><p>在Android开发中，时间轴的 UI非常常见，如下图：<br><img src="//darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133249394.jpeg" alt="TIM图片20190327232833.jpg"></p>
+<li><p>在Android开发中，时间轴的 UI非常常见，如下图：<br><img src="//yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133249394.jpeg" alt="TIM图片20190327232833.jpg"></p>
 </li>
 <li><p>储备知识:<br>1.自定义view基础<br>2.RecyclerView的使用<br>3.自定义RecyclerView.ItemDecoration</p>
 </li>
 </ul>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>1.最终效果如下:<br><img src="//darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133252872.png" alt="TIM截图20190327231820.png"></p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>1.最终效果如下:<br><img src="//yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133252872.png" alt="TIM截图20190327231820.png"></p>
 <a id="more"></a>
 <p>2.实现思路</p>
 <ul>
@@ -601,8 +601,8 @@ window.onmouseout = function () {
 <li>实现RecyclerView.Adapter,绑定数据</li>
 </ul>
 <p>3.详细设计</p>
-<p><img src="//darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133255053.png" alt="TIM截图20190327235039.png"></p>
-<p><img src="//darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133257058.png" alt="TIM截图20190327235010.png"></p>
+<p><img src="//yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133255053.png" alt="TIM截图20190327235039.png"></p>
+<p><img src="//yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133257058.png" alt="TIM截图20190327235010.png"></p>
 <p>4.具体实现</p>
 <ul>
 <li><p>引入RecyclerView依赖包</p>
@@ -624,7 +624,7 @@ window.onmouseout = function () {
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private ArrayList&lt;HashMap&lt;String, Object&gt;&gt; itemlist;</span><br><span class="line">    private RecyclerView rl;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        initData();</span><br><span class="line">        initView();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initData() &#123;</span><br><span class="line">        itemlist = new ArrayList&lt;HashMap&lt;String, Object&gt;&gt;();</span><br><span class="line">        HashMap&lt;String, Object&gt; map1 = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        HashMap&lt;String, Object&gt; map2 = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        HashMap&lt;String, Object&gt; map3 = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        HashMap&lt;String, Object&gt; map4 = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        HashMap&lt;String, Object&gt; map5 = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        HashMap&lt;String, Object&gt; map6 = new HashMap&lt;String, Object&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        map1.put(&quot;ItemTitle&quot;, &quot;中国广州公司已发出&quot;);</span><br><span class="line">        map1.put(&quot;ItemText&quot;, &quot;发件人:妙卡迪文化公司&quot;);</span><br><span class="line">        itemlist.add(map1);</span><br><span class="line"></span><br><span class="line">        map2.put(&quot;ItemTitle&quot;, &quot;国际顺丰已收入&quot;);</span><br><span class="line">        map2.put(&quot;ItemText&quot;, &quot;等待中转&quot;);</span><br><span class="line">        itemlist.add(map2);</span><br><span class="line"></span><br><span class="line">        map3.put(&quot;ItemTitle&quot;, &quot;国际顺丰转件中&quot;);</span><br><span class="line">        map3.put(&quot;ItemText&quot;, &quot;下一站中国&quot;);</span><br><span class="line">        itemlist.add(map3);</span><br><span class="line"></span><br><span class="line">        map4.put(&quot;ItemTitle&quot;, &quot;中国顺丰已收入&quot;);</span><br><span class="line">        map4.put(&quot;ItemText&quot;, &quot;下一站江苏理工大学&quot;);</span><br><span class="line">        itemlist.add(map4);</span><br><span class="line"></span><br><span class="line">        map5.put(&quot;ItemTitle&quot;, &quot;中国顺丰派件中&quot;);</span><br><span class="line">        map5.put(&quot;ItemText&quot;, &quot;等待派件&quot;);</span><br><span class="line">        itemlist.add(map5);</span><br><span class="line"></span><br><span class="line">        map6.put(&quot;ItemTitle&quot;, &quot;江苏理工大学已签收&quot;);</span><br><span class="line">        map6.put(&quot;ItemText&quot;, &quot;收件人:darryrzhong&quot;);</span><br><span class="line">        itemlist.add(map6);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initView() &#123;</span><br><span class="line">        rl = findViewById(R.id.my_recycler_view);</span><br><span class="line">        LinearLayoutManager manager = new LinearLayoutManager(this);</span><br><span class="line">        rl.setLayoutManager(manager);</span><br><span class="line">        //当知道Adapter内Item的改变不会影响RecyclerView宽高的时候，可以设置为true让RecyclerView避免重新计算大小。</span><br><span class="line">        rl.setHasFixedSize(true);</span><br><span class="line">        rl.addItemDecoration(new DividerItemDecoration(this));//设置自定义分割线</span><br><span class="line">        MyAdapter adapter =  new MyAdapter(this,itemlist);</span><br><span class="line">        rl.setAdapter(adapter);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>至此,自定义RecyclerView就实现完成了.<br><img src="//darryrzhong.xyz/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133303526.png" alt="TIM截图20190327231820.png"></p>
+<p>至此,自定义RecyclerView就实现完成了.<br><img src="//yoursite.com/2019/03/28/Android自定义View-快递时间轴实现/1240-20200309133303526.png" alt="TIM截图20190327231820.png"></p>
 <h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章:"></a>参考文章:</h2><p><a href="https://www.jianshu.com/p/655ea359e3db" target="_blank" rel="noopener">Android 自定义View实战系列 ：时间轴</a></p>
 <p>欢迎关注作者<a href="http://www.darryrzhong.site" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p>
 <h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote>
