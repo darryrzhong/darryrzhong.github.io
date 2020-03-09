@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mat,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="darryrzhong" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前言 在 Android 开发中，内存泄漏这个名词我想大家都不陌生，但是真正注意到这个问题并去解决的估计很少，因为内存泄漏表面上并不会表现出对app的任何影响，加之现在的手机配置与内存都挺高的，所以对于中小型app来说，可能不怎么去处理也几乎看不出来，但是作为一名android 开发者，你肯定和我一样不能忍受这种瑕疵吧，那 就撸起袖子干它就完事了  内存抖动 &amp;amp; 内存泄漏 &amp;amp; 内存">
+<meta name="keywords" content="mat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 内存优化篇 - 使用profile 和 MAT 工具进行内存泄漏检测">
+<meta property="og:url" content="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/index.html">
+<meta property="og:site_name" content="darryrzhong">
+<meta property="og:description" content="前言 在 Android 开发中，内存泄漏这个名词我想大家都不陌生，但是真正注意到这个问题并去解决的估计很少，因为内存泄漏表面上并不会表现出对app的任何影响，加之现在的手机配置与内存都挺高的，所以对于中小型app来说，可能不怎么去处理也几乎看不出来，但是作为一名android 开发者，你肯定和我一样不能忍受这种瑕疵吧，那 就撸起袖子干它就完事了  内存抖动 &amp;amp; 内存泄漏 &amp;amp; 内存">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506380.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506297.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506298.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506219.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506714.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506368.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506241.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506297-3729106.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506340.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506336.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506348.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506414-3729106.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506406.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506437.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506407.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506414.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506474.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506425.png">
+<meta property="og:updated_time" content="2020-03-09T04:45:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 内存优化篇 - 使用profile 和 MAT 工具进行内存泄漏检测">
+<meta name="twitter:description" content="前言 在 Android 开发中，内存泄漏这个名词我想大家都不陌生，但是真正注意到这个问题并去解决的估计很少，因为内存泄漏表面上并不会表现出对app的任何影响，加之现在的手机配置与内存都挺高的，所以对于中小型app来说，可能不怎么去处理也几乎看不出来，但是作为一名android 开发者，你肯定和我一样不能忍受这种瑕疵吧，那 就撸起袖子干它就完事了  内存抖动 &amp;amp; 内存泄漏 &amp;amp; 内存">
+<meta name="twitter:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124506380.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/">
+
+
+
+
+
+  <title>Android 内存优化篇 - 使用profile 和 MAT 工具进行内存泄漏检测 | darryrzhong</title>
+  
+
+
+
+
+
+
+
+
+
+  <script>
+class Circle {
+    //创建对象
+    //以一个圆为对象
+    //设置随机的 x，y坐标，r半径，_mx，_my移动的距离
+    //this.r是创建圆的半径，参数越大半径越大
+    //this._mx,this._my是移动的距离，参数越大移动
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.r = Math.random() * 10 ;
+        this._mx = Math.random() ;
+        this._my = Math.random() ;
+
+    }
+
+    //canvas 画圆和画直线
+    //画圆就是正常的用canvas画一个圆
+    //画直线是两个圆连线，为了避免直线过多，给圆圈距离设置了一个值，距离很远的圆圈，就不做连线处理
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+        ctx.arc(this.x, this.y, this.r, 0, 360)
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+        ctx.fill();
+    }
+
+    drawLine(ctx, _circle) {
+        let dx = this.x - _circle.x;
+        let dy = this.y - _circle.y;
+        let d = Math.sqrt(dx * dx + dy * dy)
+        if (d < 150) {
+            ctx.beginPath();
+            //开始一条路径，移动到位置 this.x,this.y。创建到达位置 _circle.x,_circle.y 的一条线：
+            ctx.moveTo(this.x, this.y);   //起始点
+            ctx.lineTo(_circle.x, _circle.y);   //终点
+            ctx.closePath();
+            ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+            ctx.stroke();
+        }
+    }
+
+    // 圆圈移动
+    // 圆圈移动的距离必须在屏幕范围内
+    move(w, h) {
+        this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
+        this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
+        this.x += this._mx / 2;
+        this.y += this._my / 2;
+    }
+}
+//鼠标点画圆闪烁变动
+class currentCirle extends Circle {
+    constructor(x, y) {
+        super(x, y)
+    }
+
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //注释内容为鼠标焦点的地方圆圈半径变化
+        //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+        this.r = 8;
+        ctx.arc(this.x, this.y, this.r, 0, 360);
+        ctx.closePath();
+        //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+        ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'
+        ctx.fill();
+
+    }
+}
+//更新页面用requestAnimationFrame替代setTimeout
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let w = canvas.width = canvas.offsetWidth;
+let h = canvas.height = canvas.offsetHeight;
+let circles = [];
+let current_circle = new currentCirle(0, 0)
+
+let draw = function () {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].move(w, h);
+        circles[i].drawCircle(ctx);
+        for (j = i + 1; j < circles.length; j++) {
+            circles[i].drawLine(ctx, circles[j])
+        }
+    }
+    if (current_circle.x) {
+        current_circle.drawCircle(ctx);
+        for (var k = 1; k < circles.length; k++) {
+            current_circle.drawLine(ctx, circles[k])
+        }
+    }
+    requestAnimationFrame(draw)
+}
+
+let init = function (num) {
+    for (var i = 0; i < num; i++) {
+        circles.push(new Circle(Math.random() * w, Math.random() * h));
+    }
+    draw();
+}
+window.addEventListener('load', init(60));
+window.onmousemove = function (e) {
+    e = e || window.event;
+    current_circle.x = e.clientX;
+    current_circle.y = e.clientY;
+}
+window.onmouseout = function () {
+    current_circle.x = null;
+    current_circle.y = null;
+
+};
+</script>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/darryrzhong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">darryrzhong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">时光，不会辜负每一个平静努力的人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br>
+            
+            摄影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-music">
+          <a href="/music/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br>
+            
+            音乐
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-welfare">
+          <a href="/welfare/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>
+            
+            福利
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            书单
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android 内存优化篇 - 使用profile 和 MAT 工具进行内存泄漏检测</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-09T12:44:28+08:00">
+                2020-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/" class="leancloud_visitors" data-flag-title="Android 内存优化篇 - 使用profile 和 MAT 工具进行内存泄漏检测">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>在 Android 开发中，内存泄漏这个名词我想大家都不陌生，但是真正注意到这个问题并去解决的估计很少，因为内存泄漏表面上并不会表现出对app的任何影响，加之现在的手机配置与内存都挺高的，所以对于中小型app来说，可能不怎么去处理也几乎看不出来，但是作为一名android 开发者，你肯定和我一样不能忍受这种瑕疵吧，那 就撸起袖子干它就完事了</p>
+</blockquote>
+<h2 id="内存抖动-amp-内存泄漏-amp-内存溢出（OOM）"><a href="#内存抖动-amp-内存泄漏-amp-内存溢出（OOM）" class="headerlink" title="内存抖动 &amp; 内存泄漏 &amp; 内存溢出（OOM）"></a>内存抖动 &amp; 内存泄漏 &amp; 内存溢出（OOM）</h2><h3 id="内存抖动"><a href="#内存抖动" class="headerlink" title="内存抖动"></a>内存抖动</h3><blockquote>
+<p>含义：短时间内有大量对象创建销毁，它伴随着频繁的GC。</p>
+</blockquote>
+<ol>
+<li><p>查看：可以使用android studio自带的profile工具检测。</p>
+</li>
+<li><p>现象：在profile中的内存图像就像是心电图一样，忽上忽下，如下图所示：</p>
+</li>
+</ol>
+<p><img src="/.xyz//1240-20200309124506380.png" alt="image"></p>
+<ol start="3">
+<li><p>常见场景：循环使用字符串拼接，比如我们项目的日志打印等</p>
+</li>
+<li><p>预防内存抖动方法：</p>
+</li>
+</ol>
+<ul>
+<li>避免在循环中创建对象，能复用的尽量复用。</li>
+<li>避免在频繁调用的方法中创建对象，如自定义view中的onDraw（）等方法中创建画笔。</li>
+<li>获取对象尽量从对象池中获取，如Handler获取Message对象应使用obtain（）方法获取了。</li>
+<li></li>
+</ul>
+<h3 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h3><blockquote>
+<p>程序中己动态分配的堆内存由于某种原因程序未释放或无法释放，造成系统内存的浪费。<br>长生命周期对象持有短生命周期对象强引用，从而导致短生命周期对象无法被回收！</p>
+</blockquote>
+<ol>
+<li><p>查看：使用profile工具检测内存情况，重复执行进入然后退出一个activity，看activity实例是否还存在。如果activity实例还存在，很可能就出现了内存泄漏。</p>
+</li>
+<li><p>现象：反复进入A，然后退出A ，执行三次，可以看到A 的实例存在两个。如下图，VideoPlayerActivity：</p>
+</li>
+</ol>
+<p><img src="/.xyz//1240-20200309124506297.png" alt="image"></p>
+<p>这就说明我们的activity并没有被销毁，至少目前是这样的。至于究竟会不会内存泄漏，就需要接下来使用另一款工具配合使用了。</p>
+<a id="more"></a>
+<ol start="3">
+<li>如何判断内存泄漏:</li>
+</ol>
+<ul>
+<li>使用可达性分析法</li>
+</ul>
+<blockquote>
+<p>通过一系列称为“GC Roots”的对象作为起始点，从这些节点向下搜索，搜索所有的引用链，当一个对象到GC Roots没有任何引用链（即GC Roots到对象不可达）时，则证明此对象是不可用的。也就会被回收。</p>
+</blockquote>
+<p><img src="/.xyz//1240-20200309124506298.png" alt="image"></p>
+<ol start="4">
+<li><p>何为GC Roots 对象，一般静态变量就是gc root对象，可以理解成生命周期很长的对象。</p>
+</li>
+<li><p>如何预防内存泄漏：</p>
+</li>
+</ol>
+<ul>
+<li><p>使用 软引用、弱引用间接的持有对象的引用。</p>
+</li>
+<li><p>软引用：</p>
+</li>
+</ul>
+<blockquote>
+<p>定义一些还有用但并非必须的对象。对于软引用关联的对象，GC不会直接回收，而是在系统将要内存溢出之前才会触发GC将这些对象进行回收。</p>
+</blockquote>
+<p><img src="/.xyz//1240-20200309124506219.png" alt="image"></p>
+<ul>
+<li>弱引用 ：</li>
+</ul>
+<blockquote>
+<p>同样定义非必须对象。被弱引用关联的对象在GC执行时会被直接回收。</p>
+</blockquote>
+<p><img src="/.xyz//1240-20200309124506714.png" alt="image"></p>
+<ol start="6">
+<li>造成内存泄漏的常见场景：</li>
+</ol>
+<ul>
+<li>使用集合时，例如add一个监听器，我们必须要手动remove掉。</li>
+<li>使用静态成员变量/单利对象时，如果持有短生命周期对象的引用（Activity）将导致短生命周期对象无法被释放。</li>
+<li>进行文件io操作时，没有close（）。最好写在finally{ }里面；</li>
+<li>android 系统bug、第三方类库造成的内存泄漏。</li>
+</ul>
+<h3 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h3><blockquote>
+<p>内存溢出(Out Of Memory，简称OOM)是指应用系统中存在无法回收的内存或使用的内存过多，最终使得程序运行要用到的内存大于能提供的最大内存。此时程序就运行不了，系统会提示内存溢出，有时候会自动关闭软件，重启电脑或者软件后释放掉一部分内存又可以正常运行该软件</p>
+</blockquote>
+<ul>
+<li>频繁的出现内存抖动或者大量内存泄漏很有可能就会导致内存溢出（OOM）。</li>
+</ul>
+<h2 id="Android-中的垃圾回收器-CMS"><a href="#Android-中的垃圾回收器-CMS" class="headerlink" title="Android 中的垃圾回收器 CMS"></a>Android 中的垃圾回收器 CMS</h2><blockquote>
+<p> android 中使用的垃圾回收器 叫做CMS ,下面简单介绍下他的垃圾回收算法。</p>
+</blockquote>
+<ul>
+<li>新生代对象</li>
+</ul>
+<p>新生代对象采用的是复制算法，当大对象也可能直接进入老年代。</p>
+<ul>
+<li>老年代对象 </li>
+</ul>
+<p>老年代对象采用的是标记-清除算法，所以频繁的内存抖动，会造成内存碎片化，最后可能我们需要加载一个大对象的时候，就OOM 了。</p>
+<p>简单介绍下CMS垃圾回收算法，如果不熟悉的建议请先百度jvm 垃圾回收机制相关知识。</p>
+<h2 id="实战-内存泄漏"><a href="#实战-内存泄漏" class="headerlink" title="实战 内存泄漏"></a>实战 内存泄漏</h2><h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><ul>
+<li>android studio </li>
+<li>eclipse memory analyzer (mat)</li>
+</ul>
+<h4 id="下载mat"><a href="#下载mat" class="headerlink" title="下载mat"></a>下载mat</h4><ul>
+<li><a href="https://www.eclipse.org/mat/" target="_blank" rel="noopener">下载地址点我</a></li>
+</ul>
+<p>选择相应版本进行下载安装。</p>
+<p><img src="/.xyz//1240-20200309124506368.png" alt="image"></p>
+<ul>
+<li>配置mat 环境，因为从 android profile直接获取到的hprof文件格式与mat的格式不兼容，所以需要使用工具转换一下</li>
+</ul>
+<blockquote>
+<p>win 环境配置，请自行百度，由于本人用的Mac 所以这里只写Mac的配置</p>
+</blockquote>
+<ol>
+<li>打开终端输入：echo $HOME</li>
+<li>继续输入：touch .bash_profile</li>
+<li>继续输入： open -e .bash_profile</li>
+<li>在打开的bash文件中输入： export PATH=${PATH}:/Users/用户名/你的sdk路径/platform-tools</li>
+<li>最后输入： source .bash_profile</li>
+<li>没有6了，已经成功配置了。</li>
+</ol>
+<h3 id="使用profile获取内存分析文件"><a href="#使用profile获取内存分析文件" class="headerlink" title="使用profile获取内存分析文件"></a>使用profile获取内存分析文件</h3><p><img src="/.xyz//1240-20200309124506241.png" alt="image"></p>
+<p><img src="/.xyz//1240-20200309124506297-3729106.png" alt="image"></p>
+<p>名字随便了，怎么方便怎么来</p>
+<p>打开终端，进行文件转换 </p>
+<p>转换格式 ： hprof-conv before.hprof after.hprof  </p>
+<p>我们这里输入 ： hprof-conv memory-99.hprof 66.hprof<br>能看懂吧，吧我们的源文件 -99 转换成 -66文件，</p>
+<blockquote>
+<p>注意了 ： 需要进入-99 所在的文件目录，要不然会报错找不到文件</p>
+</blockquote>
+<p>打开mat工具，导入我们的-66 文件</p>
+<p><img src="/.xyz//1240-20200309124506340.png" alt="image"></p>
+<p>打开后可以看到这样的界面</p>
+<p><img src="/.xyz//1240-20200309124506336.png" alt="image"></p>
+<p>点击红框的选项，这个是进行内存泄漏分析的</p>
+<p>下面就是这段时间所产生的对象，点击红框 可以直接搜索你要分析的对象</p>
+<p><img src="/.xyz//1240-20200309124506348.png" alt="image"></p>
+<p>这里找到了我们的VideoPlayerActivity</p>
+<p>鼠标右键选择</p>
+<p><img src="/.xyz//1240-20200309124506414-3729106.png" alt="image"></p>
+<p>可以看到，意思就是我们排除掉软、弱、虚引用，因为这几种是不会造成内存泄漏的，可以不用管它，我们只需要看排除后还有没引用存在，有的话 那就是强引用了，也就发生了内存泄漏了。</p>
+<p>继续看我们的结果：</p>
+<p>点击后，发现里面存在数据，那就说明我们有内存泄漏发生了，也就是为什么上面我们已经退出了，profile里面还有三个activity的存在，刚刚上面那张图右侧也有显示有3个activity对象存在。</p>
+<p>我们一一展开，看看到底哪里内存泄漏了</p>
+<p><img src="/.xyz//1240-20200309124506406.png" alt="image"></p>
+<p>可以看到，我们的Avtivity 作为mContext 变量被我们的自定义CoverVideoPlayerView 持有了，那也就是说，因为我们的自定义View不能被gc回收，所以activity也无法被回收。</p>
+<p>那就继续看，为什么自定义view无法被回收，可以看到，this$0，这表示在自定义view的内部有一个非静态内部类，而非静态内部类是默认持有外部类的引用的，也就是我们的，mNetChangeListener对象，这个就熟悉了吧，肯定是new 一个匿名内部类啊，</p>
+<p>继续看，这个内部类又被NetInfoModeule引用了，我丢，然后继续往上看，我就不看了，你自己看吧</p>
+<p>我去喝杯水，你慢慢看吧</p>
+<p>啥？ 我喝完回来了，你还没看完呢？ 那还是我们一起看吧，</p>
+<p>继续往上的话，可以看到 NetInfoModeule又被什么xxxxxBroadcastReceiver 引用了，那不就是广播吗? 猜想，肯定又是一个非静态内部类了，在往上看</p>
+<p>咳咳，别看了，上面和我们没啥关系了，全是系统在搞事情了，</p>
+<p>通过上面一波分析，我们应该清楚了，泄漏的原因了，</p>
+<p>然后梳理一下：</p>
+<p>VideoPlayerActivity -&gt; mContext -&gt; CoverVideoPlayerView -&gt; mNetChangeListener -&gt;  NetInfoModeule -&gt; xxxxxBroadcastReceiver;</p>
+<p>引用链找到了，所以，我们把链条给整段了，就不会内存泄漏了啊</p>
+<p>怎么段呢？</p>
+<p>最简单的方式： 假如啊 ，这些个不靠谱的代码都是你自己写的，那好办</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">在activity 的onDestory（）方法中加上，</span><br><span class="line"></span><br><span class="line">1.CoverVideoPlayerView.;</span><br><span class="line"></span><br><span class="line">2.在CoverVideoPlayerView方法中，添加个cancel（）方法，</span><br><span class="line">加上  </span><br><span class="line">  mContext = null</span><br><span class="line">  mNetChangeListener = null；</span><br><span class="line">  NetInfoModeule = null；</span><br><span class="line">  然后广播记得unregister（）一下，这样不就完事了。</span><br></pre></td></tr></table></figure>
+<p>嗯，一切都入想象的那般甜美，but，残酷的事实摆在眼前，这特么是第三方库的代码，你咋改？<br>下源码改? 得 ，可行是可行，那要是很多个库呢？ 你还下不？还改不？</p>
+<p>算了，不改了，嗯也行，反正也好像没啥影响，而且我们的VideoPlayerActivity用的SingleTop 启动模式，<br>但是你如果用户不是在播放页面点击跳转的呢，退出再进来，退出再进来，最后十几个activity的实例，<br>连带着我们的model 、viewmodel 、统统都是十几份，你确定你不会被老大拿出去祭天？</p>
+<p>界面如下：</p>
+<p><img src="/.xyz//1240-20200309124506437.png" alt="image"></p>
+<p>那要怎么改呢? 你说说呗，</p>
+<p>改当然能改了，那就是用java反射，通过反射去拿到对象，进行修改，</p>
+<p>直接上代码吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * 利用反射 解决gsy库中导致的内存泄漏</span><br><span class="line">   */</span><br><span class="line">  public void cancel()</span><br><span class="line">  &#123;</span><br><span class="line">      mAudioManager.abandonAudioFocus(onAudioFocusChangeListener);</span><br><span class="line">      try</span><br><span class="line">      &#123;</span><br><span class="line">          // 拿到NetInfoModule对象中 mConnectivityBroadcastReceiver字段.</span><br><span class="line">          Field mConnectivityBroadcastReceiver = NetInfoModule.class</span><br><span class="line">              .getDeclaredField(&quot;mConnectivityBroadcastReceiver&quot;);</span><br><span class="line">          // 由于是私有字段,所以需要调用setAccessible(true),否则会报错</span><br><span class="line">          mConnectivityBroadcastReceiver.setAccessible(true);</span><br><span class="line">          // 根据当前mNetInfoModule对象的 mConnectivityBroadcastReceiver字段值为null</span><br><span class="line">          mConnectivityBroadcastReceiver.set(mNetInfoModule, null);</span><br><span class="line">          Field mNetChangeListener =</span><br><span class="line">              NetInfoModule.class.getDeclaredField(&quot;mNetChangeListener&quot;);</span><br><span class="line">          mNetChangeListener.setAccessible(true);</span><br><span class="line">          mNetChangeListener.set(mNetInfoModule, null);</span><br><span class="line">          </span><br><span class="line">      &#125;</span><br><span class="line">      catch (NoSuchFieldException e)</span><br><span class="line">      &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">      catch (IllegalAccessException e)</span><br><span class="line">      &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">      mAudioManager = null;</span><br><span class="line">      mContext = null;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>好了，改完了，我们在来抓一下内存情况</p>
+<p>直接上图：</p>
+<p><img src="/.xyz//1240-20200309124506407.png" alt="image"></p>
+<p>看见没有，啥也没有了，说明我们的activiy再没有被其他对象引用了，说的不对，纠正一下，是没有被其他对象强引用了，而只要没有强引用关系，gc肯定能够回收的，自然你就也不需要担心内存泄漏了，</p>
+<p>但是为什么还是会显示有3个activity对象存在呢？</p>
+<p><img src="/.xyz//1240-20200309124506414.png" alt="image"></p>
+<p>那我们排除一下弱应用，看一看</p>
+<p><img src="/.xyz//1240-20200309124506474.png" alt="image"></p>
+<p><img src="/.xyz//1240-20200309124506425.png" alt="image"></p>
+<p>看见没有，这里有一个FinalizeRefernce对象，说明我们的activity被FinalizeRefernce对象所引用，而我们知道，只要一个对象将要被gc回收了，那么他就会被这个FinalizeRefernce所引用，这是为了让gc知道我们不需要这个对象了，你可以回收了，</p>
+<p>所以我们的activity 虽然显示有两个，但是只是gc还没来的及回收而已，并没有内存泄漏的风险。</p>
+<p>上面的例子是我的开源项目里的真实实例，感兴趣的可以前往支持 start 一下，</p>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><ul>
+<li><h1 id="Android-MvvmComponent-App"><a href="#Android-MvvmComponent-App" class="headerlink" title="Android-MvvmComponent-App"></a><strong><a href="https://github.com/darryrzhong/Android-MvvmComponent-App" target="_blank" rel="noopener">Android-MvvmComponent-App</a></strong></h1></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>内存抖动的分析用profile工具完全就够用了，当然我们这里没有详讲怎么用profile分析解决内存抖动，之后有时间在补上吧。而我们的内存泄漏通过profile是不能看出他到底有没有发生内存泄漏的，所以我们还需要借助mat工具进一步分析。</p>
+</blockquote>
+<p>当然还有一些第三方的检测库，比较知名的比如leakCannary工具，腾讯的xxxdog，但是个人还是推荐使用mat来分析，mat操作起来也很方便，好了，今天就到这吧，感谢！</p>
+<blockquote>
+<p>欢迎关注作者<a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p>
+</blockquote>
+<h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote>
+<p>更多精彩文章请关注</p>
+<ul>
+<li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li>
+<li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li>
+<li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li>
+<li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882/articles" target="_blank" rel="noopener">SegmentFault</a></li>
+<li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+    
+</div>
+</div>
+ 
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.png" alt="darryrzhong 微信打赏">
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="darryrzhong 支付宝打赏">
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mat/" rel="tag"><i class="fa fa-tag"></i> mat</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/09/组件化开源app/" rel="next" title="Android 组件化开源app -开眼短视频(OpenEyes)">
+                <i class="fa fa-chevron-left"></i> Android 组件化开源app -开眼短视频(OpenEyes)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="darryrzhong">
+            
+              <p class="site-author-name" itemprop="name">darryrzhong</p>
+              <p class="site-description motion-element" itemprop="description">人必有痴，而后有成</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/darryrzhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/darryrzhong" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/b7fdf53ec0b9" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-book"></i>Jianshu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-spinner"></i>Juejin</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存抖动-amp-内存泄漏-amp-内存溢出（OOM）"><span class="nav-number">1.1.</span> <span class="nav-text">内存抖动 &amp; 内存泄漏 &amp; 内存溢出（OOM）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内存抖动"><span class="nav-number">1.1.1.</span> <span class="nav-text">内存抖动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存泄漏"><span class="nav-number">1.1.2.</span> <span class="nav-text">内存泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存溢出"><span class="nav-number">1.1.3.</span> <span class="nav-text">内存溢出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-中的垃圾回收器-CMS"><span class="nav-number">1.2.</span> <span class="nav-text">Android 中的垃圾回收器 CMS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战-内存泄漏"><span class="nav-number">1.3.</span> <span class="nav-text">实战 内存泄漏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境"><span class="nav-number">1.3.1.</span> <span class="nav-text">配置环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载mat"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">下载mat</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用profile获取内存分析文件"><span class="nav-number">1.3.2.</span> <span class="nav-text">使用profile获取内存分析文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目地址"><span class="nav-number">1.4.</span> <span class="nav-text">项目地址</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-MvvmComponent-App"><span class="nav-number">2.</span> <span class="nav-text">Android-MvvmComponent-App</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.1.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请赏个小红心！因为你的鼓励是我写作的最大动力！"><span class="nav-number">2.1.1.</span> <span class="nav-text">请赏个小红心！因为你的鼓励是我写作的最大动力！</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">darryrzhong</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+
+ <!-- <span class="post-meta-divider">|</span>-->
+
+
+
+  <!--<div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytxCyGhU';
+      var conf = '90b283bdb7ccb472f325f3c891156b33';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("29xnQ1C2kcwORHYYn7xsWTnS-gzGzoHsz", "Rq1Gk75oRwH78BryWUL4oYzj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>

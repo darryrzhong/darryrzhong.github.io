@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="组件化,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="darryrzhong" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一款模仿 Eyepetizer | 开眼视频的 开源app   这是一个完全模仿 开眼视频的开源Demo，个人非常喜欢这款app 的UI 风格，由此第二次模仿该app进行相关技术的学习与整合，  废话不多说，直接上图 ，不论是商业项目还是开源app，首先肯定是看眼缘   效果图：                     项目结构该开源项目采用组件化的方式开发，使用MVVM + AndroidX">
+<meta name="keywords" content="组件化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 组件化开源app -开眼短视频(OpenEyes)">
+<meta property="og:url" content="http://darryrzhong.xyz/2020/03/09/组件化开源app/index.html">
+<meta property="og:site_name" content="darryrzhong">
+<meta property="og:description" content="一款模仿 Eyepetizer | 开眼视频的 开源app   这是一个完全模仿 开眼视频的开源Demo，个人非常喜欢这款app 的UI 风格，由此第二次模仿该app进行相关技术的学习与整合，  废话不多说，直接上图 ，不论是商业项目还是开源app，首先肯定是看眼缘   效果图：                     项目结构该开源项目采用组件化的方式开发，使用MVVM + AndroidX">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//260-20200309124204444.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//260-20200309124204541.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//260-20200309124204537.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//260-20200309124204579.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//260-20200309124204546.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//260-20200309124204558.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//260-20200309124204489.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//260-20200309124204466.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//260-20200309124204524.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124204560.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//720-20200309124204564.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124204581.png">
+<meta property="og:image" content="http://darryrzhong.xyz/.xyz//1240-20200309124204582.png">
+<meta property="og:updated_time" content="2020-03-09T04:42:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 组件化开源app -开眼短视频(OpenEyes)">
+<meta name="twitter:description" content="一款模仿 Eyepetizer | 开眼视频的 开源app   这是一个完全模仿 开眼视频的开源Demo，个人非常喜欢这款app 的UI 风格，由此第二次模仿该app进行相关技术的学习与整合，  废话不多说，直接上图 ，不论是商业项目还是开源app，首先肯定是看眼缘   效果图：                     项目结构该开源项目采用组件化的方式开发，使用MVVM + AndroidX">
+<meta name="twitter:image" content="http://darryrzhong.xyz/.xyz//260-20200309124204444.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://darryrzhong.xyz/2020/03/09/组件化开源app/">
+
+
+
+
+
+  <title>Android 组件化开源app -开眼短视频(OpenEyes) | darryrzhong</title>
+  
+
+
+
+
+
+
+
+
+
+  <script>
+class Circle {
+    //创建对象
+    //以一个圆为对象
+    //设置随机的 x，y坐标，r半径，_mx，_my移动的距离
+    //this.r是创建圆的半径，参数越大半径越大
+    //this._mx,this._my是移动的距离，参数越大移动
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.r = Math.random() * 10 ;
+        this._mx = Math.random() ;
+        this._my = Math.random() ;
+
+    }
+
+    //canvas 画圆和画直线
+    //画圆就是正常的用canvas画一个圆
+    //画直线是两个圆连线，为了避免直线过多，给圆圈距离设置了一个值，距离很远的圆圈，就不做连线处理
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+        ctx.arc(this.x, this.y, this.r, 0, 360)
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+        ctx.fill();
+    }
+
+    drawLine(ctx, _circle) {
+        let dx = this.x - _circle.x;
+        let dy = this.y - _circle.y;
+        let d = Math.sqrt(dx * dx + dy * dy)
+        if (d < 150) {
+            ctx.beginPath();
+            //开始一条路径，移动到位置 this.x,this.y。创建到达位置 _circle.x,_circle.y 的一条线：
+            ctx.moveTo(this.x, this.y);   //起始点
+            ctx.lineTo(_circle.x, _circle.y);   //终点
+            ctx.closePath();
+            ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+            ctx.stroke();
+        }
+    }
+
+    // 圆圈移动
+    // 圆圈移动的距离必须在屏幕范围内
+    move(w, h) {
+        this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
+        this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
+        this.x += this._mx / 2;
+        this.y += this._my / 2;
+    }
+}
+//鼠标点画圆闪烁变动
+class currentCirle extends Circle {
+    constructor(x, y) {
+        super(x, y)
+    }
+
+    drawCircle(ctx) {
+        ctx.beginPath();
+        //注释内容为鼠标焦点的地方圆圈半径变化
+        //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+        this.r = 8;
+        ctx.arc(this.x, this.y, this.r, 0, 360);
+        ctx.closePath();
+        //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+        ctx.fillStyle = 'rgba(255, 77, 54, 0.3)'
+        ctx.fill();
+
+    }
+}
+//更新页面用requestAnimationFrame替代setTimeout
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let w = canvas.width = canvas.offsetWidth;
+let h = canvas.height = canvas.offsetHeight;
+let circles = [];
+let current_circle = new currentCirle(0, 0)
+
+let draw = function () {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].move(w, h);
+        circles[i].drawCircle(ctx);
+        for (j = i + 1; j < circles.length; j++) {
+            circles[i].drawLine(ctx, circles[j])
+        }
+    }
+    if (current_circle.x) {
+        current_circle.drawCircle(ctx);
+        for (var k = 1; k < circles.length; k++) {
+            current_circle.drawLine(ctx, circles[k])
+        }
+    }
+    requestAnimationFrame(draw)
+}
+
+let init = function (num) {
+    for (var i = 0; i < num; i++) {
+        circles.push(new Circle(Math.random() * w, Math.random() * h));
+    }
+    draw();
+}
+window.addEventListener('load', init(60));
+window.onmousemove = function (e) {
+    e = e || window.event;
+    current_circle.x = e.clientX;
+    current_circle.y = e.clientY;
+}
+window.onmouseout = function () {
+    current_circle.x = null;
+    current_circle.y = null;
+
+};
+</script>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/darryrzhong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">darryrzhong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">时光，不会辜负每一个平静努力的人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br>
+            
+            摄影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-music">
+          <a href="/music/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br>
+            
+            音乐
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-welfare">
+          <a href="/welfare/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>
+            
+            福利
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            书单
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2020/03/09/组件化开源app/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="darryrzhong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darryrzhong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android 组件化开源app -开眼短视频(OpenEyes)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-09T12:24:33+08:00">
+                2020-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2020/03/09/组件化开源app/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2020/03/09/组件化开源app/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2020/03/09/组件化开源app/" class="leancloud_visitors" data-flag-title="Android 组件化开源app -开眼短视频(OpenEyes)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        <blockquote>
+<p> 一款模仿 Eyepetizer | 开眼视频的 开源app</p>
+</blockquote>
+<ul>
+<li><p>这是一个完全模仿 <code>开眼视频</code>的开源Demo，个人非常喜欢这款app 的UI 风格，由此第二次模仿该app进行相关技术的学习与整合，</p>
+</li>
+<li><p>废话不多说，直接上图 ，不论是商业项目还是开源app，首先肯定是看眼缘</p>
+</li>
+</ul>
+<h2 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h2><table>
+<thead>
+<tr>
+<th><img src="/.xyz//260-20200309124204444.png" alt="app_02.png"></th>
+<th><img src="/.xyz//260-20200309124204541.png" alt="app_03.png"></th>
+<th><img src="/.xyz//260-20200309124204537.png" alt="app_04.png"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/.xyz//260-20200309124204579.png" alt="app_05.png"></td>
+<td><img src="/.xyz//260-20200309124204546.png" alt="app_06.png"></td>
+<td><img src="/.xyz//260-20200309124204558.png" alt="app_07.png"></td>
+</tr>
+<tr>
+<td><img src="/.xyz//260-20200309124204489.png" alt="app_08.png"></td>
+<td><img src="/.xyz//260-20200309124204466.png" alt="app_09.png"></td>
+<td><img src="/.xyz//260-20200309124204524.png" alt="app_10.png"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>该开源项目采用组件化的方式开发，使用MVVM + AndroidX + jetpack 组件为基本架构进行开发。</p>
+<ul>
+<li>项目结构图</li>
+</ul>
+<p><img src="/.xyz//1240-20200309124204560.png" alt="app_12.png"></p>
+<ul>
+<li>app 架构图</li>
+</ul>
+<p><img src="/.xyz//720-20200309124204564.png" alt="app_os.png"></p>
+<a id="more"></a>
+<h2 id="app-功能介绍"><a href="#app-功能介绍" class="headerlink" title="app 功能介绍"></a>app 功能介绍</h2><blockquote>
+<p> 当然由于是个人闲暇时间基于兴趣开发的，没有UI 小姐姐 和测试小姐姐的陪伴，自然存在许些缺陷，当然写这个项目更多的是为了学习和锻炼app架构搭建的思维，希望能够帮到刷到这个博文的小伙伴，一起学习一起进步。</p>
+</blockquote>
+<p>功能方面，想了想觉得还是没啥好说的，就是UI 上显示的那样，相信在座的各位看官都是熟的不能再熟了，</p>
+<h2 id="app-使用技术介绍"><a href="#app-使用技术介绍" class="headerlink" title="app 使用技术介绍"></a>app 使用技术介绍</h2><ul>
+<li><p>Mvvm 架构设计<br>关于各种mvx 的区别，我就不一一介绍了，上Google 搜一下就好，关于项目中使用的mvvm设计封装，请移步 <a href="https://developer.android.google.cn/jetpack/androidx" target="_blank" rel="noopener">这里</a> ；代码是最好的老师，直接看源码吧。</p>
+</li>
+<li><p>Android X<br>这个也没啥好说的，就是android Support 库的升级迁移版而已，现在新项目肯定都是直接androidX了，对Android X 不熟悉的小伙伴，请移步 <a href="https://developer.android.google.cn/jetpack/androidx" target="_blank" rel="noopener">官方介绍</a> ；</p>
+</li>
+<li><p>jetpack<br>这个也没啥好说的，jetpack就是Google推出的一套组件开发库，直接上图可能更好， <a href="https://developer.android.google.cn/jetpack" target="_blank" rel="noopener">官方介绍</a></p>
+</li>
+</ul>
+<p>基本最主要使用的就是这些了<br> <img src="/.xyz//1240-20200309124204581.png" alt="jetpack"></p>
+<h2 id="app-第三方的依赖"><a href="#app-第三方的依赖" class="headerlink" title="app 第三方的依赖"></a>app 第三方的依赖</h2><ul>
+<li><p>RxEasyHttp<br>RxEasyHttp是一款github上开源的RxJava2+Retrofit2实现简单易用的网络请求框架，在本人发现并观摩其源码和设计原理后，发现着实写的不错，各种业务场景基本都设计到了，api 设计的也不错，当然也存在一些瑕疵，所以实际项目中还需根据自己的业务需求进行二次开发，推荐给各位看官<a href="https://github.com/darryrzhong/RxEasyHttp" target="_blank" rel="noopener">RxEasyHttp</a></p>
+</li>
+<li><p>Loadsir<br>loadsir是一个app 页面状态管理的第三方库，也非常得实用，用来控制app 内的加载页面 、加载错误页面、空页面显示，点击重试等，从此告别自己控制网络加载失败等页面 show 、 hint 操作 和ViewStub等的控制，<br>可以基于自己的业务进行基类封装，具体请看项目base库中activity 和fragment 基类的封装。推荐给各位看官<br><a href="https://github.com/darryrzhong/LoadSir/blob/master/README-cn.md" target="_blank" rel="noopener">Loadsir</a></p>
+</li>
+<li><p>mmkv<br>mmkv 是腾讯开源的一个轻量级的存储库，用来代替SharedPreferences 再好不过了，具体使用请看官方介绍</p>
+</li>
+<li><p>BaseRecyclerViewAdapterHelper<br>相信对于这个库大家应该是非常熟悉了吧，基本做android 开发的都用过吧，不多说了</p>
+</li>
+<li><p>SmartRefreshLayout<br>这个库和上面那个库一样，用的非常多，</p>
+</li>
+<li><p>immersionbar<br>实现沉浸式状态栏的一个第三方库，也是非常常用</p>
+</li>
+<li><p>glide<br>图片加载库</p>
+</li>
+<li><p>rxpermissions<br>权限加载库</p>
+</li>
+<li><p>logger<br>日志打印库，打出来的日志格式看得比较舒服</p>
+</li>
+<li><p>utilcodex<br>一个android 工具库，里面有非常多的工具类，当然实际项目用不到这么多，所以可以根据需求copy代码就好，不用集成</p>
+</li>
+<li><p>BannerViewPager<br>一个第三方轮播图的库，这个库比较新，所以start数比较少，但是挺好用，推荐</p>
+</li>
+<li><p>PagerBottomTabStrip<br>一个第三方导航库，app中的底部导航就是基于这个库，挺好用，自带小红点管理</p>
+</li>
+<li><p>gsyVideoPlayer<br>一个第三方视频播放库，基于bilibili 开源的 ijkplayer，可自定义性也还不错，<br>主要使用这个库实现类似微博等视频列表根据滚动判断自动播放，</p>
+</li>
+</ul>
+<h2 id="项目Api"><a href="#项目Api" class="headerlink" title="项目Api"></a>项目Api</h2><blockquote>
+<p>声明 ，项目中所有api接口都是抓取自开眼app，所有版权均归属开眼app所有，仅供学习借鉴使用，请勿用做商业用途，若有侵权，请联系作者删除。</p>
+</blockquote>
+<h3 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h3><p>1.发现更多</p>
+<ul>
+<li>请求地址： <a href="http://baobab.kaiyanapp.com/api/v7/index/tab/discovery" target="_blank" rel="noopener">http://baobab.kaiyanapp.com/api/v7/index/tab/discovery</a></li>
+</ul>
+<p>2.每日推荐</p>
+<ul>
+<li>请求地址： <a href="http://baobab.kaiyanapp.com/api/v5/index/tab/allRec" target="_blank" rel="noopener">http://baobab.kaiyanapp.com/api/v5/index/tab/allRec</a></li>
+</ul>
+<p>3.日报精选</p>
+<ul>
+<li>请求地址 ： <a href="http://baobab.kaiyanapp.com/api/v5/index/tab/feed" target="_blank" rel="noopener">http://baobab.kaiyanapp.com/api/v5/index/tab/feed</a></li>
+</ul>
+<h3 id="社区"><a href="#社区" class="headerlink" title="社区"></a>社区</h3><p>1.推荐</p>
+<ul>
+<li>请求地址： <a href="http://baobab.kaiyanapp.com/api/v7/community/tab/rec" target="_blank" rel="noopener">http://baobab.kaiyanapp.com/api/v7/community/tab/rec</a></li>
+</ul>
+<p>2.关注</p>
+<ul>
+<li>请求地址： <a href="http://baobab.kaiyanapp.com/api/v6/community/tab/follow" target="_blank" rel="noopener">http://baobab.kaiyanapp.com/api/v6/community/tab/follow</a></li>
+</ul>
+<h3 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h3><p>1.主题 </p>
+<ul>
+<li>请求地址： <a href="http://baobab.kaiyanapp.com/api/v7/tag/tabList" target="_blank" rel="noopener">http://baobab.kaiyanapp.com/api/v7/tag/tabList</a></li>
+</ul>
+<p>2.通知 </p>
+<ul>
+<li>请求地址 ：  <a href="http://baobab.kaiyanapp.com/api/v3/messages" target="_blank" rel="noopener">http://baobab.kaiyanapp.com/api/v3/messages</a></li>
+</ul>
+<p>3.互动</p>
+<ul>
+<li>请求地址 ：  <a href="http://baobab.kaiyanapp.com/api/v7/topic/list" target="_blank" rel="noopener">http://baobab.kaiyanapp.com/api/v7/topic/list</a></li>
+</ul>
+<h3 id="视频详情页"><a href="#视频详情页" class="headerlink" title="视频详情页"></a>视频详情页</h3><p>1.相关推荐 </p>
+<ul>
+<li>请求地址 ：<a href="http://baobab.kaiyanapp.com/api/v4/video/related?id=186856" target="_blank" rel="noopener">http://baobab.kaiyanapp.com/api/v4/video/related?id=186856</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数说明</th>
+<th>说明</th>
+<th>是否必须</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>当前播放视频的id，从跳转页面视频item中获取</td>
+<td>是</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>评论</li>
+</ol>
+<ul>
+<li>请求地址 ：<a href="http://baobab.kaiyanapp.com/api/v2/replies/video?videoId=186856" target="_blank" rel="noopener">http://baobab.kaiyanapp.com/api/v2/replies/video?videoId=186856</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数说明</th>
+<th>说明</th>
+<th>是否必须</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>videoId</td>
+<td>当前播放视频的id，从跳转页面视频item中获取</td>
+<td>是</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<h2 id="aok下载"><a href="#aok下载" class="headerlink" title="aok下载"></a>aok下载</h2><p><img src="/.xyz//1240-20200309124204582.png" alt="安装密码：darryrzhong"></p>
+<ul>
+<li><a href="https://www.pgyer.com/Pedw" target="_blank" rel="noopener">安装密码 ： darryrzhong </a></li>
+</ul>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><ul>
+<li><h1 id="Android-MvvmComponent-App"><a href="#Android-MvvmComponent-App" class="headerlink" title="Android-MvvmComponent-App"></a><strong><a href="https://github.com/darryrzhong/Android-MvvmComponent-App" target="_blank" rel="noopener">Android-MvvmComponent-App</a></strong></h1></li>
+</ul>
+<p>欢迎关注作者<a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">darryrzhong</a>,更多干货等你来拿哟.</p>
+<h3 id="请赏个小红心！因为你的鼓励是我写作的最大动力！"><a href="#请赏个小红心！因为你的鼓励是我写作的最大动力！" class="headerlink" title="请赏个小红心！因为你的鼓励是我写作的最大动力！"></a>请赏个小红心！因为你的鼓励是我写作的最大动力！</h3><blockquote>
+<p>更多精彩文章请关注</p>
+<ul>
+<li><a href="http://www.darryrzhong.xyz" target="_blank" rel="noopener">个人博客:darryrzhong</a></li>
+<li><a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" rel="noopener">掘金</a></li>
+<li><a href="https://www.jianshu.com/users/b7fdf53ec0b9/timeline" target="_blank" rel="noopener">简书</a></li>
+<li><a href="https://segmentfault.com/u/darryrzhong_5ac59892a5882/articles" target="_blank" rel="noopener">SegmentFault</a></li>
+<li><a href="https://www.imooc.com/u/6733207" target="_blank" rel="noopener">慕课网手记</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+    
+</div>
+</div>
+ 
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.png" alt="darryrzhong 微信打赏">
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.jpg" alt="darryrzhong 支付宝打赏">
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/组件化/" rel="tag"><i class="fa fa-tag"></i> 组件化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/16/Android-Activity生命周期-启动模式详解/" rel="next" title="Android Activity生命周期&启动模式详解">
+                <i class="fa fa-chevron-left"></i> Android Activity生命周期&启动模式详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/09/Android-内存优化篇-使用profile-和-MAT-工具进行内存泄漏检测/" rel="prev" title="Android 内存优化篇 - 使用profile 和 MAT 工具进行内存泄漏检测">
+                Android 内存优化篇 - 使用profile 和 MAT 工具进行内存泄漏检测 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="darryrzhong">
+            
+              <p class="site-author-name" itemprop="name">darryrzhong</p>
+              <p class="site-description motion-element" itemprop="description">人必有痴，而后有成</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/darryrzhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/darryrzhong" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/b7fdf53ec0b9" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-book"></i>Jianshu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5a6c3b19f265da3e49804988" target="_blank" title="Juejin">
+                      
+                        <i class="fa fa-fw fa-spinner"></i>Juejin</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#效果图："><span class="nav-number">1.</span> <span class="nav-text">效果图：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结构"><span class="nav-number">2.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-功能介绍"><span class="nav-number">3.</span> <span class="nav-text">app 功能介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-使用技术介绍"><span class="nav-number">4.</span> <span class="nav-text">app 使用技术介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-第三方的依赖"><span class="nav-number">5.</span> <span class="nav-text">app 第三方的依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目Api"><span class="nav-number">6.</span> <span class="nav-text">项目Api</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#首页"><span class="nav-number">6.1.</span> <span class="nav-text">首页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#社区"><span class="nav-number">6.2.</span> <span class="nav-text">社区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通知"><span class="nav-number">6.3.</span> <span class="nav-text">通知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频详情页"><span class="nav-number">6.4.</span> <span class="nav-text">视频详情页</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aok下载"><span class="nav-number">7.</span> <span class="nav-text">aok下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目地址"><span class="nav-number">8.</span> <span class="nav-text">项目地址</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-MvvmComponent-App"><span class="nav-number"></span> <span class="nav-text">Android-MvvmComponent-App</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请赏个小红心！因为你的鼓励是我写作的最大动力！"><span class="nav-number">0.1.</span> <span class="nav-text">请赏个小红心！因为你的鼓励是我写作的最大动力！</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">darryrzhong</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+
+ <!-- <span class="post-meta-divider">|</span>-->
+
+
+
+  <!--<div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytxCyGhU';
+      var conf = '90b283bdb7ccb472f325f3c891156b33';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("29xnQ1C2kcwORHYYn7xsWTnS-gzGzoHsz", "Rq1Gk75oRwH78BryWUL4oYzj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
