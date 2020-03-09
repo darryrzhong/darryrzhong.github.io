@@ -90,24 +90,24 @@
 <meta property="og:site_name" content="darryrzhong">
 <meta property="og:description" content="线程池原理与AsyncTask什么是线程池？为什么要用线程池？Java中的线程池是运用场景最多的并发框架，几乎所有需要异步或并发执行任务的程序都可以使用线程池。线程池就是将线程进行池化，需要运行任务时从池中拿一个线程来执行，执行完毕，线程放回池中。 在开发过程中，合理地使用线程池能够带来3个好处。 第一：降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。 第二：提高响应速度。当任">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image002.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image004.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image006.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image008.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image010.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image012.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image014.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image016.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image018.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image020.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image022.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image024.jpg">
-<meta property="og:image" content="http://darryrzhong.xyz/.xyz//clip_image026.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image002.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image004.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image006.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image008.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image010.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image012.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image014.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image016.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image018.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image020.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image022.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image024.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image026.jpg">
 <meta property="og:updated_time" content="2019-09-15T08:33:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java系列之线程池原理与Android中AsyncTask">
 <meta name="twitter:description" content="线程池原理与AsyncTask什么是线程池？为什么要用线程池？Java中的线程池是运用场景最多的并发框架，几乎所有需要异步或并发执行任务的程序都可以使用线程池。线程池就是将线程进行池化，需要运行任务时从池中拿一个线程来执行，执行完毕，线程放回池中。 在开发过程中，合理地使用线程池能够带来3个好处。 第一：降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。 第二：提高响应速度。当任">
-<meta name="twitter:image" content="http://darryrzhong.xyz/.xyz//clip_image002.jpg">
+<meta name="twitter:image" content="http://darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image002.jpg">
 
 
 
@@ -612,7 +612,7 @@ window.onmouseout = function () {
 <p><strong>阻塞队列：</strong></p>
 <p>1）支持阻塞的插入方法：意思是当队列满时，队列会阻塞插入元素的线程，直到队列不满。</p>
 <p>2）支持阻塞的移除方法：意思是在队列为空时，获取元素的线程会等待队列变为非空。</p>
-<p>阻塞队列常用于生产者和消费者的场景，生产者是向队列里添加元素的线程，消费者是从队列里取元素的线程。阻塞队列就是生产者用来存放元素、消费者用来获取元素的容器。 <img src="/.xyz//clip_image002.jpg" alt="img"></p>
+<p>阻塞队列常用于生产者和消费者的场景，生产者是向队列里添加元素的线程，消费者是从队列里取元素的线程。阻塞队列就是生产者用来存放元素、消费者用来获取元素的容器。 <img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image002.jpg" alt="img"></p>
 <p>•抛出异常：当队列满时，如果再往队列里插入元素，会抛出IllegalStateException（”Queuefull”）异常。当队列空时，从队列里获取元素会抛出NoSuchElementException异常。</p>
 <p>•返回特殊值：当往队列插入元素时，会返回元素是否插入成功，成功返回true。如果是移除方法，则是从队列里取出一个元素，如果没有则返回null。</p>
 <p>•一直阻塞：当阻塞队列满时，如果生产者线程往队列里put元素，队列会一直阻塞生产者线程，直到队列可用或者响应中断退出。当队列空时，如果消费者线程从队列里take元素，队列会阻塞住消费者线程，直到队列不为空。</p>
@@ -657,32 +657,32 @@ window.onmouseout = function () {
 <p>（3）onProgressUpdate()：在下载操作doInBackground()中调用publishProgress()时的回调方法，用于更新下载进度，运行在主线程中；</p>
 <p>（4）onPostExecute()：后台下载操作完成后调用，将下载等待动画进行隐藏，并更新UI，运行在主线程中；</p>
 <p>然后在主线程中</p>
-<p><img src="/.xyz//clip_image004.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image004.jpg" alt="img"></p>
 <p>通过上面的分析，我们可以知道，AsyncTask的构造方法和execute方法是我们分析AsyncTask的重点。</p>
-<h4 id="1）构造方法"><a href="#1）构造方法" class="headerlink" title="1）构造方法"></a>1）构造方法</h4><p>AsyncTask的构造方法中<img src="/.xyz//clip_image006.jpg" alt="img"></p>
+<h4 id="1）构造方法"><a href="#1）构造方法" class="headerlink" title="1）构造方法"></a>1）构造方法</h4><p>AsyncTask的构造方法中<img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image006.jpg" alt="img"></p>
 <p>mWorker代表了AsyncTask要执行的任务，是对Callable接口的封装，意味着这个任务是有返回值的</p>
-<p><img src="/.xyz//clip_image008.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image008.jpg" alt="img"></p>
 <p>mFuture代表了AsyncTask要执行的任务的返回结果，其实就是个FutureTask，安装FutureTask标准用法，mWorker作为Callable被传给了mFuture，那么mFuture的结果就从mWorker执行的任务中取得。仔细看mWorker，return语句返回的结果就是我们前面所说的doInBackground()的执行结果：</p>
-<p><img src="/.xyz//clip_image010.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image010.jpg" alt="img"></p>
 <h4 id="2）再看执行流程"><a href="#2）再看执行流程" class="headerlink" title="2）再看执行流程"></a>2）再看执行流程</h4><p>查看源码execute()àexecuteOnExecutor(sDefaultExecutor, params)àexec.execute(mFuture)</p>
 <p>到了这一步，将mFuture传递给了AsyncTask的执行器进行执行。AsyncTask的执行器缺省是sDefaultExecutor。</p>
 <p>找到成员变量sDefaultExecutor，最终定位到</p>
-<p><img src="/.xyz//clip_image012.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image012.jpg" alt="img"></p>
 <p>SerialExecutor是对JDK里Executor的一个实现，被声明为一个静态变量，我们仔细看SerialExecutor的实现，</p>
-<p><img src="/.xyz//clip_image014.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image014.jpg" alt="img"></p>
 <p>内部声明了一个双端队列ArrayDeque类型的mTasks（双端队列中offer方法表示从队列尾插入，poll()表示从队列头获取元素）。</p>
 <p>每次调用execute，就创建一个Runnable匿名内部类对象，这个对象存入mTasks，在匿名内部类的run函数里面调用传入参数r.run()。然后通过一个scheduleNext函数把mTasks里面的所有对象通过THREAD_POOL_EXECUTOR.execute(mActive)执行一遍。说穿了，也就是说SerialExecutor类会把所有的任务丢入一个容器，之后把容器里面的所有对象<strong>一个一个的排队（串行化）</strong>执行THREAD_POOL_EXECUTOR.execute(mActive);</p>
 <p>至于这个THREAD_POOL_EXECUTOR，是这样定义的：</p>
-<p><img src="/.xyz//clip_image016.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image016.jpg" alt="img"></p>
 <p>我们可以看到这个线程池，被声明为一个静态变量，同时初始化的参数是：</p>
 <p>核心线程数量，这里取得是CPU个数 + 1， 第二个参数是最大线程数量，这里是CPU个数 * 2 + 1，第五个参数是缓冲区的队列，这里是个LinkedBlockingQueue，这个队列的最大容量是128。</p>
 <h4 id="3-结果和进度的通知"><a href="#3-结果和进度的通知" class="headerlink" title="3)结果和进度的通知"></a>3)结果和进度的通知</h4><p>AsyncTask的执行结果和进度是怎么通知给UI线程的呢？检视mFuture</p>
-<p><img src="/.xyz//clip_image018.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image018.jpg" alt="img"></p>
 <p>和更新进度时我们会调用的publishProgress方法</p>
-<p><img src="/.xyz//clip_image020.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image020.jpg" alt="img"></p>
 <p>我们可以看到都调用了sHandler</p>
-<p><img src="/.xyz//clip_image022.jpg" alt="img"></p>
-<p><img src="/.xyz//clip_image024.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image022.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image024.jpg" alt="img"></p>
 <p>说明当子线程需要和UI线程进行通信时，其实就是通过这个handler，往UI线程发送消息。</p>
 <h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>1）、线程池的创建：</p>
 <p>在创建了AsyncTask的时候，会默认创建两个线程池SerialExecutor和ThreadPoolExecutor，SerialExecutor负责将任务串行化，ThreadPoolExecutor是真正执行任务的地方，且无论有多少个AsyncTask实例，两个线程池都会只有一份。</p>
@@ -692,7 +692,7 @@ window.onmouseout = function () {
 <p>在执行完onPreExecute()方法之后，执行了doInBackground()方法，然后就不断的发送请求获取数据；在这个AsyncTask中维护了一个InternalHandler的类，这个类是继承Handler的，获取的数据是通过handler进行处理和发送的。在其handleMessage方法中，将消息传递给onProgressUpdate()进行进度的更新，也就可以将结果发送到主线程中，进行界面的更新了。</p>
 <p>4）、使用AsyncTask的注意点</p>
 <p>通过观察代码我们可以发现，每一个new出的AsyncTask只能执行一次execute()方法，多次运行将会报错，如需多次，需要新new一个AsyncTask。</p>
-<p><img src="/.xyz//clip_image026.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image026.jpg" alt="img"></p>
 <h3 id="AsyncTask优缺点"><a href="#AsyncTask优缺点" class="headerlink" title="AsyncTask优缺点"></a>AsyncTask优缺点</h3><p><strong>AsyncTask**</strong>：**</p>
 <p>优点：AsyncTask是一个轻量级的异步任务处理类，轻量级体现在，使用方便、代码简洁上，而且整个异步任务的过程可以通过cancel()进行控制；</p>
 <p>缺点：不适用于处理长时间的异步任务，一般这个异步任务的过程最好控制在几秒以内，如果是长时间的异步任务就需要考虑多线程的控制问题；当处理多个异步任务时，UI更新变得困难。</p>

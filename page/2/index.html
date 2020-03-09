@@ -1573,7 +1573,7 @@ window.onmouseout = function () {
 <p><strong>阻塞队列：</strong></p>
 <p>1）支持阻塞的插入方法：意思是当队列满时，队列会阻塞插入元素的线程，直到队列不满。</p>
 <p>2）支持阻塞的移除方法：意思是在队列为空时，获取元素的线程会等待队列变为非空。</p>
-<p>阻塞队列常用于生产者和消费者的场景，生产者是向队列里添加元素的线程，消费者是从队列里取元素的线程。阻塞队列就是生产者用来存放元素、消费者用来获取元素的容器。 <img src="/.xyz//clip_image002.jpg" alt="img"></p>
+<p>阻塞队列常用于生产者和消费者的场景，生产者是向队列里添加元素的线程，消费者是从队列里取元素的线程。阻塞队列就是生产者用来存放元素、消费者用来获取元素的容器。 <img src="//darryrzhong.xyz/2019/09/15/java系列之线程池原理与Android中AsyncTask/clip_image002.jpg" alt="img"></p>
 <p>•抛出异常：当队列满时，如果再往队列里插入元素，会抛出IllegalStateException（”Queuefull”）异常。当队列空时，从队列里获取元素会抛出NoSuchElementException异常。</p>
 <p>•返回特殊值：当往队列插入元素时，会返回元素是否插入成功，成功返回true。如果是移除方法，则是从队列里取出一个元素，如果没有则返回null。</p>
 <p>•一直阻塞：当阻塞队列满时，如果生产者线程往队列里put元素，队列会一直阻塞生产者线程，直到队列可用或者响应中断退出。当队列空时，如果消费者线程从队列里take元素，队列会阻塞住消费者线程，直到队列不为空。</p>
@@ -1857,14 +1857,14 @@ window.onmouseout = function () {
 <h5 id="Callable、Future和FutureTask"><a href="#Callable、Future和FutureTask" class="headerlink" title="Callable、Future和FutureTask"></a>Callable、Future和FutureTask</h5><p>Runnable是一个接口，在它里面只声明了一个run()方法，由于run()方法返回值为void类型，所以在执行完任务之后无法返回任何结果。</p>
 <p>Callable位于java.util.concurrent包下，它也是一个接口，在它里面也只声明了一个方法，只不过这个方法叫做call()，这是一个泛型接口，call()函数返回的类型就是传递进来的V类型。</p>
 <p>Future就是对于具体的Runnable或者Callable任务的执行结果进行取消、查询是否完成、获取结果。必要时可以通过get方法获取执行结果，该方法会阻塞直到任务返回结果。</p>
-<p><img src="/.xyz//clip_image002.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image002.jpg" alt="img"></p>
 <p>因为Future只是一个接口，所以是无法直接用来创建对象使用的，因此就有了下面的FutureTask。</p>
-<p><img src="/.xyz//clip_image004.jpg" alt="img"></p>
-<p><img src="/.xyz//clip_image006.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image004.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image006.jpg" alt="img"></p>
 <p>FutureTask类实现了RunnableFuture接口，RunnableFuture继承了Runnable接口和Future接口，而FutureTask实现了RunnableFuture接口。所以它既可以作为Runnable被线程执行，又可以作为Future得到Callable的返回值。</p>
 <p>事实上，FutureTask是Future接口的一个唯一实现类。</p>
 <p>要new一个FutureTask的实例，有两种方法</p>
-<p><img src="/.xyz//clip_image008.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之多线程与Android多线程性能优化/clip_image008.jpg" alt="img"></p>
 <h4 id="中止"><a href="#中止" class="headerlink" title="中止"></a>中止</h4><p>线程自然终止：要么是run执行完成了，要么是抛出了一个未处理的异常导致线程提前结束。</p>
 <p>手动中止</p>
 <p>暂停、恢复和停止操作对应在线程Thread的API就是<strong>suspend()**</strong>、<strong><strong>resume()</strong></strong>和<strong>**stop()</strong>。但是这些API是过期的，也就是不建议使用的。不建议使用的原因主要有：以suspend()方法为例，在调用后，线程不会释放已经占有的资源（比如锁），而是占有着资源进入睡眠状态，这样容易引发死锁问题。同样，stop()方法在终结一个线程时不会保证线程的资源正常释放，通常是没有给予线程完成资源释放工作的机会，因此会导致程序可能工作在不确定状态下。正因为suspend()、resume()和stop()方法带来的副作用，这些方法才被标注为不建议使用的过期方法。</p>
@@ -2108,9 +2108,9 @@ window.onmouseout = function () {
 <p>　　2.通过对象获取      对象名.getClass()</p>
 <p>　　3.通过全类名获取    Class.forName(全类名)</p>
 <p>Class类的常用方法</p>
-<p><img src="/.xyz//clip_image002.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image002.jpg" alt="img"></p>
 <h3 id="类加载器、构造器、Method、Field"><a href="#类加载器、构造器、Method、Field" class="headerlink" title="类加载器、构造器、Method、Field"></a>类加载器、构造器、Method、Field</h3><p>参见包cn.enjoyedu.refle.more下对应的类</p>
-<p><img src="/.xyz//clip_image004.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image004.jpg" alt="img"></p>
 <h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><h3 id="代理模式和静态代理"><a href="#代理模式和静态代理" class="headerlink" title="代理模式和静态代理"></a>代理模式和静态代理</h3>
           <!--noindex-->
           <div class="post-button text-center">
@@ -2316,9 +2316,9 @@ window.onmouseout = function () {
       
         
           <h1 id="Java中的泛型"><a href="#Java中的泛型" class="headerlink" title="Java中的泛型"></a>Java中的泛型</h1><h2 id="为什么我们需要泛型？"><a href="#为什么我们需要泛型？" class="headerlink" title="为什么我们需要泛型？"></a>为什么我们需要泛型？</h2><p>通过两段代码我们就可以知道为何我们需要泛型</p>
-<p><img src="/.xyz//clip_image002.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image002.jpg" alt="img"></p>
 <p>实际开发中，经常有数值类型求和的需求，例如实现int类型的加法, 有时候还需要实现long类型的求和, 如果还需要double类型的求和，需要重新在重载一个输入是double类型的add方法。</p>
-<p><img src="/.xyz//clip_image004.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image004.jpg" alt="img"></p>
 <p>定义了一个List类型的集合，先向其中加入了两个字符串类型的值，随后加入一个Integer类型的值。这是完全允许的，因为此时list默认的类型为Object类型。在之后的循环中，由于忘记了之前在list中也加入了Integer类型的值或其他编码原因，很容易出现类似于//1中的错误。因为编译阶段正常，而运行时会出现“java.lang.ClassCastException”异常。因此，导致此类错误编码过程中不易发现。</p>
 <p> 在如上的编码过程中，我们发现主要存在两个问题：</p>
 <p>1.当我们将一个对象放入集合中，集合不会记住此对象的类型，当再次从集合中取出此对象时，改对象的编译类型变成了Object类型，但其运行时类型任然为其本身类型。</p>
@@ -2330,31 +2330,31 @@ window.onmouseout = function () {
 <p>顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）。</p>
 <p>泛型的本质是为了参数化类型（在不创建新的类型的情况下，通过泛型指定的不同类型来控制形参具体限制的类型）。也就是说在泛型使用过程中，操作的数据类型被指定为一个参数，这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法。</p>
 <p>引入一个类型变量T（其他大写字母都可以，不过常用的就是T，E，K，V等等），并且用&lt;&gt;括起来，并放在类名的后面。泛型类是允许有多个类型变量的。</p>
-<p><img src="/.xyz//clip_image006.jpg" alt="img"><img src="/.xyz//clip_image008.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image006.jpg" alt="img"><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image008.jpg" alt="img"></p>
 <p>泛型接口与泛型类的定义基本相同。</p>
-<p><img src="/.xyz//clip_image010.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image010.jpg" alt="img"></p>
 <p>而实现泛型接口的类，有两种实现方法：</p>
 <p>1、未传入泛型实参时：</p>
-<p><img src="/.xyz//clip_image012.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image012.jpg" alt="img"></p>
 <p>在new出类的实例时，需要指定具体类型：</p>
-<p><img src="/.xyz//clip_image014.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image014.jpg" alt="img"></p>
 <p>2、传入泛型实参</p>
-<p><img src="/.xyz//clip_image016.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image016.jpg" alt="img"></p>
 <p>在new出类的实例时，和普通的类没区别。</p>
-<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><p><strong><img src="/.xyz//clip_image018.jpg" alt="img"></strong></p>
+<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><p><strong><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image018.jpg" alt="img"></strong></p>
 <p>泛型方法，是在调用方法的时候指明泛型的具体类型 ，泛型方法可以在任何地方和任何场景中使用，包括普通类和泛型类。注意泛型类中定义的普通方法和泛型方法的区别。</p>
 <p>普通方法：</p>
-<p><img src="/.xyz//clip_image020.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image020.jpg" alt="img"></p>
 <p>泛型方法</p>
-<p><img src="/.xyz//clip_image022.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image022.jpg" alt="img"></p>
 <h2 id="限定类型变量"><a href="#限定类型变量" class="headerlink" title="限定类型变量"></a>限定类型变量</h2><p>有时候，我们需要对类型变量加以约束，比如计算两个变量的最小，最大值。</p>
-<p><img src="/.xyz//clip_image024.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image024.jpg" alt="img"></p>
 <p>请问，如果确保传入的两个变量一定有compareTo方法？那么解决这个问题的方案就是将T限制为实现了接口Comparable的类</p>
-<p><img src="/.xyz//clip_image026.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image026.jpg" alt="img"></p>
 <p>T <strong>extends</strong> Comparable中</p>
 <p>T表示应该绑定类型的子类型，Comparable表示绑定类型，子类型和绑定类型可以是类也可以是接口。</p>
 <p>如果这个时候，我们试图传入一个没有实现接口Comparable的类的实例，将会发生编译错误。</p>
-<p><img src="/.xyz//clip_image028.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之泛型/clip_image028.jpg" alt="img"></p>
 <p>同时extends左右都允许有多个，如 T,V <strong>extends</strong> Comparable &amp; Serializable</p>
 <p>注意限定类型中，只允许有一个类，而且如果有类，这个类必须是限定列表的第一个。</p>
 <p>这种类的限定既可以用在泛型方法上也可以用在泛型类上。</p>
