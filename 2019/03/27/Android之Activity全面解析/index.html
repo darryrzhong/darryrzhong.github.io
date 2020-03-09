@@ -13,6 +13,7 @@
 <meta name="theme-color" content="#222">
 <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
 <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<meta name="referrer" content="no-referrer">
 
 
 
@@ -90,17 +91,17 @@
 <meta property="og:site_name" content="darryrzhong">
 <meta property="og:description" content="前言 基于最近要准备去面试,特意系统的复习了下Android基础,看到Activity这块时,发现很多都忘了,而且之前也没有系统的学习和写笔记记录,所以,特此写下这篇关于Activity的一些理解,旨在帮助大家更好的理解Activity.  Activity是什么?Activity是一个Android应用程序组件(也称为Android四大组件之一)，它提供了一个屏幕，用户可以通过该屏幕进行交互以执">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-916e91d7d4c6f38b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-dd6569a60a33bcf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-8a59e39c40d5d8f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-20fe15469305d588.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-6d33af4fe0be32ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-99cea11671255a7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-27T03:41:48.000Z">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132630482.png">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132635414.png">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132638662.png">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132640832.png">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132643260.png">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132645808.png">
+<meta property="og:updated_time" content="2020-03-09T05:26:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android之Activity全面解析">
 <meta name="twitter:description" content="前言 基于最近要准备去面试,特意系统的复习了下Android基础,看到Activity这块时,发现很多都忘了,而且之前也没有系统的学习和写笔记记录,所以,特此写下这篇关于Activity的一些理解,旨在帮助大家更好的理解Activity.  Activity是什么?Activity是一个Android应用程序组件(也称为Android四大组件之一)，它提供了一个屏幕，用户可以通过该屏幕进行交互以执">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5549640-916e91d7d4c6f38b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132630482.png">
 
 
 
@@ -643,7 +644,7 @@ window.onmouseout = function () {
 <li><p>Activity的前景生命周期<br>Activity的前景生命周期发生在调用onResume()和调用之间onPause()。在此期间，Activity位于屏幕上的所有其他活动之前，并且具有用户输入焦点。Activity可以频繁地进出前台 - 例如，onPause()当设备进入睡眠状态或出现对话框时调用。因为这种状态可以经常转换，所以这两种方法中的代码应该相当轻量级，以避免使用户等待的缓慢转换。</p>
 </li>
 </ul>
-<p>2.Activity生命周期循环图<br><img src="https://upload-images.jianshu.io/upload_images/5549640-916e91d7d4c6f38b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="activity_lifecycle.png"></p>
+<p>2.Activity生命周期循环图<br><img src="//darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132630482.png" alt="activity_lifecycle.png"></p>
 <blockquote>
 <p>图中说明了这些循环以及活动在状态之间可能采用的路径。矩形表示当活动在状态之间转换时可以实现的回调方法。</p>
 </blockquote>
@@ -715,7 +716,7 @@ window.onmouseout = function () {
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">onSaveInstanceState()  //用来保存用户状态信息</span><br></pre></td></tr></table></figure>
 <p>onSaveInstanceState() 在Activity受破坏之前，系统会自动调用。系统会传递一个Bundle对象,您可以使用诸如putString()和putInt()之类的方法将关于Activity的状态信息保存为<code>名称 - 值</code>的键值对.</p>
 <p>然后，如果系统终止您的应用程序进程,系统将重新创建活动并将其Bundle传递给Activity的onCreate()和onRestoreInstanceState()。使用这些方法之一，您可以从中提取已保存的状态Bundle并恢复活动状态。如果没有要恢复的状态信息，则Bundle传递给您的是null（这是第一次创建活动时的情况）。</p>
-<p>如下图所示:<br><img src="https://upload-images.jianshu.io/upload_images/5549640-dd6569a60a33bcf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="restore_instance.png"></p>
+<p>如下图所示:<br><img src="//darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132635414.png" alt="restore_instance.png"></p>
 <p>活动返回到用户焦点且状态完好无损的两种方式：活动被销毁，然后重新创建，活动必须恢复先前保存的状态，或者活动停止，然后恢复，活动状态仍然存在完整。</p>
 <blockquote>
 <p>注意：onSaveInstanceState()在您的活动被销毁之前不能保证会被调用，因为在某些情况下不需要保存状态（例如当用户使用“ 返回”按钮离开您的活动时，因为用户是明确的关闭活动）。如果系统调用onSaveInstanceState()，则会在onPause()和onStop()之前执行.</p>
@@ -729,18 +730,18 @@ window.onmouseout = function () {
 <p>Android设备主屏幕是大多数任务的起始位置。当用户触摸应用程序启动器中的图标（或主屏幕上的快捷方式）时，该应用程序的任务将到达前台。如果应用程序不存在任务（最近未使用该应用程序），则会创建一个新任务，该应用程序的“主”Activity将作为堆栈中的根Activity打开。</p>
 <p>1.后台堆栈<br>后台堆栈指的是Activitys在后台任务中的排列规则,按”后进先出”排列.</p>
 <p>例如当前Activity启动另一个Activity时，新Activity将被推到堆栈顶部并获得焦点。之前的Activity仍在堆栈中，但已停止。当活动停止时，系统将保留其用户界面的当前状态。当用户按下“ 返回” 按钮时，当前Activity将从堆栈顶部弹出（活动被销毁），之前的Activity将恢复（其UI的先前状态将恢复）。堆栈中的活动永远不会重新排列，只能在当前Activity启动时从堆栈推送和弹出到堆栈中，并在用户使用Back按钮退出时弹出.因此，后台堆栈作为“后进先出”对象结构操作。</p>
-<p>如下图所示:<br><img src="https://upload-images.jianshu.io/upload_images/5549640-8a59e39c40d5d8f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="diagram_backstack.png"></p>
+<p>如下图所示:<br><img src="//darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132638662.png" alt="diagram_backstack.png"></p>
 <p>图中表示任务中的每个新Activity如何将项添加到后台堆栈。当用户按下“ 返回”按钮时，将破坏当前Activity并恢复先前的Activity。</p>
 <p>如果用户继续按Back，则弹出堆栈中的每个Activity以显示前一个Activity，直到用户返回主屏幕（或任务开始时运行的任何活动）。从堆栈中删除所有活动后，该任务不再存在。</p>
 <p>2.后台任务<br>任务是一个内聚单元，当用户开始新任务或通过主页按钮进入主屏幕时，可以移动到“后台背景” 。在后台，任务中的所有Activitys都会停止，但任务的后台堆栈保持不变 - 任务在发生另一项任务时完全失去焦点.</p>
-<p>如下图所示:<br><img src="https://upload-images.jianshu.io/upload_images/5549640-20fe15469305d588.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="diagram_multitasking.png"></p>
+<p>如下图所示:<br><img src="//darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132640832.png" alt="diagram_multitasking.png"></p>
 <p>两个任务：任务B在前台接收用户交互，而任务A在后台，等待恢复,这就是Android上的多任务处理的一个示例。</p>
 <blockquote>
 <p>注意：可以在后台同时保存多个任务。但是，如果用户同时运行许多后台任务，系统可能会开始销毁后台活动以恢复内存，从而导致活动状态丢失。</p>
 </blockquote>
 <p>由于后台堆栈中的活动永远不会重新排列，如果您的应用程序允许用户从多个Activitys启动特定Activity，则会创建该Acticity的新实例并将其推送到堆栈（而不是引入任何先前的活动实例）到顶部。因此，应用程序中的一个Acticity可能会被多次实例化（甚至来自不同的任务）.</p>
 <p>如下图所示:</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5549640-6d33af4fe0be32ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="diagram_multiple_instances.png"></p>
+<p><img src="//darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132643260.png" alt="diagram_multiple_instances.png"></p>
 <p>如果不希望多次实例化Acticity，则可以修改此行为。通常来说关于这部分内容是不太需要我们去更改的,所以这里我就不介绍了,有兴趣的同学可以自行翻阅<code>[官方文档]</code>.</p>
 <p>3.定义Activity启动模式</p>
 <p>启动模式允许您定义Activity的新实例与当前任务的关联方式。您可以通过两种方式定义不同的启动模式：</p>
@@ -780,7 +781,7 @@ window.onmouseout = function () {
 <blockquote>
 <p>无论Activity是在新任务中启动还是在与启动它的Activity相同的任务中启动，“ 返回”按钮始终会将用户带到上一个Activity。但是，如果启动指定singleTask启动模式的活动，则如果后台任务中存在该Activity的实例，则将整个任务带到前台。此时，后端堆栈现在包括堆栈顶部提出的任务中的所有Activitys。</p>
 </blockquote>
-<p>如下图所示:<br><img src="https://upload-images.jianshu.io/upload_images/5549640-99cea11671255a7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="diagram_backstack_singletask_multiactivity.png"></p>
+<p>如下图所示:<br><img src="//darryrzhong.xyz/2019/03/27/Android之Activity全面解析/1240-20200309132645808.png" alt="diagram_backstack_singletask_multiactivity.png"></p>
 <ul>
 <li>使用 Intent flags(意图传递)</li>
 </ul>

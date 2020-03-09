@@ -13,6 +13,7 @@
 <meta name="theme-color" content="#222">
 <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
 <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<meta name="referrer" content="no-referrer">
 
 
 
@@ -90,13 +91,13 @@
 <meta property="og:site_name" content="darryrzhong">
 <meta property="og:description" content="写在最前面的那些话相信对于大多数小白来说,关于MVP、MVC设计模式肯定是听过也看到过很多次了,也许也有过一些简单了解,但关于TA的具体概念,如何使用以及具体应用等都毫无所知,所以本着许多小伙伴一看到mvp、mvc就一脸懵逼的表情(当然也包括本人了⊙▽⊙)#),最近上手一个基于mvp框架的mosby框架的练手项目,所以决定去好好研究一番mvp设计模式以及mosby的原理以及使用,所以在此写下这篇博">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-d19032132e09b611.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-a805ca72d8a5219f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-27T03:10:24.000Z">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/03/27/关于MVC-P-的简单介绍/1240-20200309134414327.png">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/03/27/关于MVC-P-的简单介绍/1240-20200309134417733.png">
+<meta property="og:updated_time" content="2020-03-09T05:44:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于MVC&#x2F;P 的简单介绍">
 <meta name="twitter:description" content="写在最前面的那些话相信对于大多数小白来说,关于MVP、MVC设计模式肯定是听过也看到过很多次了,也许也有过一些简单了解,但关于TA的具体概念,如何使用以及具体应用等都毫无所知,所以本着许多小伙伴一看到mvp、mvc就一脸懵逼的表情(当然也包括本人了⊙▽⊙)#),最近上手一个基于mvp框架的mosby框架的练手项目,所以决定去好好研究一番mvp设计模式以及mosby的原理以及使用,所以在此写下这篇博">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5549640-d19032132e09b611.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://darryrzhong.xyz/2019/03/27/关于MVC-P-的简单介绍/1240-20200309134414327.png">
 
 
 
@@ -586,13 +587,13 @@ window.onmouseout = function () {
 <blockquote>
 <p>快加入学习的队伍来吧,欢迎各路大神留下宝贵意见.</p>
 </blockquote>
-<p><code>什么是MVC(Model View Controller)模式?</code><br><img src="https://upload-images.jianshu.io/upload_images/5549640-d19032132e09b611.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mvc模式"></p>
+<p><code>什么是MVC(Model View Controller)模式?</code><br><img src="//darryrzhong.xyz/2019/03/27/关于MVC-P-的简单介绍/1240-20200309134414327.png" alt="mvc模式"></p>
 <p><code>MVC</code>全名是<code>Model View Controller</code>，是模型(<code>model</code>)－视图(<code>view</code>)－控制器(<code>controller</code>)的缩写，一种软件设计典范，用一种业务逻辑、数据、界面显示分离的方法组织代码，将业务逻辑聚集到一个部件里面，在改进和个性化定制界面及用户交互的同时，不需要重新编写业务逻辑。其中M层处理数据，业务逻辑等(适合做一些业务逻辑处理，比如数据库存取操作，网络操作，复杂的算法，耗时的任务等都在model层处理)；V层处理界面的显示结果(XML布局可以视为V层，显示Model层的数据结果)；C层起到桥梁的作用，来控制V层和M层通信以此来达到分离视图显示和业务逻辑层(在Android中，Activity处理用户交互问题，因此可以认为Activity是控制器，Activity读取V视图层的数据，控制用户输入，并向Model发送数据请求)。</p>
 <p><code>Model</code>: 数据层. 负责与网络层和数据库层的逻辑交互.<br><code>View</code>: UI层. 显示数据, 并向Controller报告用户行为.<br><code>Controller</code>:负责从视图中取得数据然后发送给模型,根据用户在视图中的行为去更新模型的逻辑.</p>
 <p>一般业务逻辑如下:</p>
 <a id="more"></a>
 <p>1、为了使得视图接口可以与模型和控制器进行交互，控制器执行一些初始化事件<br>2、用户通过视图（用户接口）执行一些操作<br>3、控制器处理用户行为(可以用观察着模式实现)并通知模型进行更新<br>4、模型引发一些事件，以便将改变发告知视图<br>5、视图处理模型变更的事件，然后显示新的模型数据<br>6、用户接口等待用户的进一步操作</p>
-<p><code>什么是MVP(Model-View-Presenter)模式?</code><br><img src="https://upload-images.jianshu.io/upload_images/5549640-a805ca72d8a5219f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mvp模式"></p>
+<p><code>什么是MVP(Model-View-Presenter)模式?</code><br><img src="//darryrzhong.xyz/2019/03/27/关于MVC-P-的简单介绍/1240-20200309134417733.png" alt="mvp模式"></p>
 <p><code>MVP</code>是从经典的模式<code>MVC</code>演变而来，它们的基本思想有相通的地方：<code>Controller</code>/<code>Presenter</code>负责逻辑的处理，<code>Model</code>提供数据，<code>View</code>负责显示。作为一种新的模式，<code>MVP</code>与<code>MVC</code>有着一个重大的区别：在<code>MVP</code>中<code>View</code>并不直接使用<code>Model</code>，它们之间的通信是通过<code>Presenter</code> (<code>MVC</code>中的<code>Controller</code>)来进行的，所有的交互都发生在<code>Presenter</code>内部，而在<code>MVC</code>中<code>View</code>会从直接<code>Model</code>中读取数据而不是通过 <code>Controller</code>。</p>
 <p><code>Model</code>: 数据层. 负责与网络层和数据库层的逻辑交互.<br><code>View</code>: UI层. 显示数据, 并向Presenter报告用户行为.<br><code>Presenter</code>: 从Model拿数据, 应用到UI层, 管理UI的状态, 决定要显示什么, 响应用户的行为.</p>
 <p><code>MVP</code>模式的最主要优势就是耦合降低, <code>Presenter</code>变为纯Java的代码逻辑, 不再与Android Framework中的类如Activity, Fragment等关联, 便于写单元测试.</p>

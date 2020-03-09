@@ -13,6 +13,7 @@
 <meta name="theme-color" content="#222">
 <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
 <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<meta name="referrer" content="no-referrer">
 
 
 
@@ -90,13 +91,13 @@
 <meta property="og:site_name" content="darryrzhong">
 <meta property="og:description" content="为什么要了解虚拟机JVM不单单只支持Java语言，也支持其他语言（Scala、Kotlin、Groovy等等） 区块链2.0–以太坊(比特币是区块链1.0) 中提供了EVM的虚拟机，它的实现和JVM类似，基于栈、生成脚本编译成字节码来执行。知识通用。（理论大于实际） 虚拟机历史了解即可，无需关注 Hotspot什么意思：热点代码探测技术，及时编译器（发现最有价值的代码，如果代码用得非常多，就会把这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-7e84275fb0f58758.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5549640-58fe9bb42ebca185.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-09-15T08:54:36.000Z">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之初识虚拟机/1240-20200309133536138.jpeg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之初识虚拟机/1240-20200309133538603.jpeg">
+<meta property="og:updated_time" content="2020-03-09T05:35:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java系列之初始虚拟机">
 <meta name="twitter:description" content="为什么要了解虚拟机JVM不单单只支持Java语言，也支持其他语言（Scala、Kotlin、Groovy等等） 区块链2.0–以太坊(比特币是区块链1.0) 中提供了EVM的虚拟机，它的实现和JVM类似，基于栈、生成脚本编译成字节码来执行。知识通用。（理论大于实际） 虚拟机历史了解即可，无需关注 Hotspot什么意思：热点代码探测技术，及时编译器（发现最有价值的代码，如果代码用得非常多，就会把这">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5549640-7e84275fb0f58758.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://darryrzhong.xyz/2019/09/15/java系列之初识虚拟机/1240-20200309133536138.jpeg">
 
 
 
@@ -622,8 +623,8 @@ window.onmouseout = function () {
 <p>例如- Xmx256m</p>
 <h1 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h1><p>不是虚拟机运行时数据区的一部分，也不是java虚拟机规范中定义的内存区域；如果使用了NIO,这块区域会被频繁使用，在java堆内可以用directByteBuffer对象直接引用并操作；</p>
 <p>这块内存不受java堆大小限制，但受本机总内存的限制，可以通过-XX:MaxDirectMemorySize来设置（默认与堆内存最大值一样），所以也会出现OOM异常。</p>
-<h1 id="站在线程角度来看"><a href="#站在线程角度来看" class="headerlink" title="站在线程角度来看"></a>站在线程角度来看</h1><p><img src="https://upload-images.jianshu.io/upload_images/5549640-7e84275fb0f58758.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="clip_image002.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5549640-58fe9bb42ebca185.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="clip_image004.jpg"></p>
+<h1 id="站在线程角度来看"><a href="#站在线程角度来看" class="headerlink" title="站在线程角度来看"></a>站在线程角度来看</h1><p><img src="//darryrzhong.xyz/2019/09/15/java系列之初识虚拟机/1240-20200309133536138.jpeg" alt="clip_image002.jpg"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之初识虚拟机/1240-20200309133538603.jpeg" alt="clip_image004.jpg"></p>
 <h1 id="深入辨析堆和栈"><a href="#深入辨析堆和栈" class="headerlink" title="深入辨析堆和栈"></a>深入辨析堆和栈</h1><p>n  <strong>功能</strong> </p>
 <p>Ø 以栈帧的方式存储方法调用的过程，并存储方法调用过程中基本数据类型的变量（int、short、long、byte、float、double、boolean、char等）以及对象的引用变量，其内存分配在栈上，变量出了作用域就会自动释放； </p>
 <p>Ø 而堆内存用来存储Java中的对象。无论是成员变量，局部变量，还是类变量，它们指向的对象都存储在堆内存中； </p>
