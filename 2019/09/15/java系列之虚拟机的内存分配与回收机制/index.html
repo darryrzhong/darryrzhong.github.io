@@ -87,22 +87,22 @@
 <meta name="keywords" content="虚拟机">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java系列之虚拟机的内存分配与回收机制">
-<meta property="og:url" content="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/index.html">
+<meta property="og:url" content="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/index.html">
 <meta property="og:site_name" content="darryrzhong">
 <meta property="og:description" content="学习垃圾回收的意义Java与C++等语言最大的技术区别：自动化的垃圾回收机制（GC） 为什么要了解GC和内存分配策略 1、面试需要 2、GC对应用的性能是有影响的； 3、写代码有好处 栈：栈中的生命周期是跟随线程，所以一般不需要关注 堆：堆中的对象是垃圾回收的重点 方法区/元空间：这一块也会发生垃圾回收，不过这块的效率比较低，一般不是我们关注的重点 GC案例自动回收机制也有失败的时候（Oom类）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131912847.jpeg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131940882.jpeg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131944401.jpeg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131947566.jpeg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131949999.jpeg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/strip.gif">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/strip-20200309131959999.gif">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131912847.jpeg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131940882.jpeg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131944401.jpeg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131947566.jpeg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131949999.jpeg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/strip.gif">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/strip-20200309131959999.gif">
 <meta property="og:updated_time" content="2020-03-09T05:20:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java系列之虚拟机的内存分配与回收机制">
 <meta name="twitter:description" content="学习垃圾回收的意义Java与C++等语言最大的技术区别：自动化的垃圾回收机制（GC） 为什么要了解GC和内存分配策略 1、面试需要 2、GC对应用的性能是有影响的； 3、写代码有好处 栈：栈中的生命周期是跟随线程，所以一般不需要关注 堆：堆中的对象是垃圾回收的重点 方法区/元空间：这一块也会发生垃圾回收，不过这块的效率比较低，一般不是我们关注的重点 GC案例自动回收机制也有失败的时候（Oom类）">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131912847.jpeg">
+<meta name="twitter:image" content="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131912847.jpeg">
 
 
 
@@ -132,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/">
+  <link rel="canonical" href="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/">
 
 
 
@@ -445,7 +445,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -615,7 +615,7 @@ window.onmouseout = function () {
 <p>2.回收效率过低也会有限制</p>
 <p>为什么new出的对象不会被回收了，我们来看看GC是如何判断对象的存活</p>
 <h1 id="判断对象的存活"><a href="#判断对象的存活" class="headerlink" title="判断对象的存活"></a>判断对象的存活</h1><p>引用计数法：快，方便，实现简单，缺点：对象相互引用时，很难判断对象是否该回收。（PHP语言在用）</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131912847.jpeg" alt="clip_image002.jpg"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131912847.jpeg" alt="clip_image002.jpg"></p>
 <h2 id="可达性分析"><a href="#可达性分析" class="headerlink" title="可达性分析"></a>可达性分析</h2><p>（<strong>面试时重要的知识点，牢记</strong>）</p>
 <a id="more"></a>
 <p>来判定对象是否存活的。这个算法的基本思路就是通过一系列的称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链（Reference Chain），当一个对象到GC Roots没有任何引用链相连时，则证明此对象是不可用的。</p>
@@ -627,14 +627,14 @@ window.onmouseout = function () {
 <h1 id="各种引用"><a href="#各种引用" class="headerlink" title="各种引用"></a>各种引用</h1><h2 id="强引用"><a href="#强引用" class="headerlink" title="强引用"></a>强引用</h2><p>一般的Object obj = new Object() ，就属于强引用。</p>
 <h2 id="软引用-SoftReference"><a href="#软引用-SoftReference" class="headerlink" title="软引用 SoftReference"></a>软引用 SoftReference</h2><p>一些有用但是并非必需，用软引用关联的对象，系统将要发生OOM之前，这些对象就会被回收。参见代码：</p>
 <p>VM参数 -Xms10m  -Xmx10m -XX:+PrintGC</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131940882.jpeg" alt="clip_image004.jpg"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131940882.jpeg" alt="clip_image004.jpg"></p>
 <p>运行结果</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131944401.jpeg" alt="clip_image006.jpg"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131944401.jpeg" alt="clip_image006.jpg"></p>
 <p>例如，一个程序用来处理用户提供的图片。如果将所有图片读入内存，这样虽然可以很快的打开图片，但内存空间使用巨大，一些使用较少的图片浪费内存空间，需要手动从内存中移除。如果每次打开图片都从磁盘文件中读取到内存再显示出来，虽然内存占用较少，但一些经常使用的图片每次打开都要访问磁盘，代价巨大。这个时候就可以用软引用构建缓存。</p>
 <h2 id="弱引用-WeakReference"><a href="#弱引用-WeakReference" class="headerlink" title="弱引用 WeakReference"></a>弱引用 WeakReference</h2><p>一些有用（程度比软引用更低）但是并非必需，用弱引用关联的对象，只能生存到下一次垃圾回收之前，GC发生时，不管内存够不够，都会被回收。</p>
 <p>参看代码：</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131947566.jpeg" alt="clip_image008.jpg"></p>
-<p><img src="//yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131949999.jpeg" alt="clip_image010.jpg"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131947566.jpeg" alt="clip_image008.jpg"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/1240-20200309131949999.jpeg" alt="clip_image010.jpg"></p>
 <p><strong>注意：</strong>软引用 SoftReference和弱引用 WeakReference，可以用在内存资源紧张的情况下以及创建不是很重要的数据缓存。当系统内存不足的时候，缓存中的内容是可以被释放的。</p>
 <p>实际运用（WeakHashMap、ThreadLocal）</p>
 <h2 id="虚引用-PhantomReference"><a href="#虚引用-PhantomReference" class="headerlink" title="虚引用 PhantomReference"></a>虚引用 PhantomReference</h2><p>幽灵引用，最弱，被垃圾回收的时候收到一个通知</p>
@@ -655,7 +655,7 @@ window.onmouseout = function () {
 <p>在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用复制算法，只需要付出少量存活对象的复制成本就可以完成收集。</p>
 <p>而老年代中因为对象存活率高、没有额外空间对它进行分配担保，就必须使用“标记—清理”或者“标记—整理”算法来进行回收。</p>
 <p><strong>请记住下图的垃圾收集器和之间的连线关系。</strong></p>
-<p><img src="//yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/strip.gif" alt="clip_image012.gif"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/strip.gif" alt="clip_image012.gif"></p>
 <table>
 <thead>
 <tr>
@@ -752,7 +752,7 @@ window.onmouseout = function () {
 <p>由于整个过程中耗时最长的并发标记和并发清除过程收集器线程都可以与用户线程一起工作，所以，从总体上来说，CMS收集器的内存回收过程是与用户线程一起并发执行的。</p>
 <p>-XX:+UseConcMarkSweepGC ，表示新生代使用ParNew，老年代的用CMS</p>
 <p><strong>浮动垃圾：</strong>由于CMS并发清理阶段用户线程还在运行着，伴随程序运行自然就还会有新的垃圾不断产生，这一部分垃圾出现在标记过程之后，CMS无法在当次收集中处理掉它们，只好留待下一次GC时再清理掉。这一部分垃圾就称为“浮动垃圾”。</p>
-<h2 id="G1"><a href="#G1" class="headerlink" title="G1"></a>G1</h2><p><img src="//yoursite.com/2019/09/15/java系列之虚拟机的内存分配与回收机制/strip-20200309131959999.gif" alt="clip_image014.gif"></p>
+<h2 id="G1"><a href="#G1" class="headerlink" title="G1"></a>G1</h2><p><img src="//darryrzhong.xyz/2019/09/15/java系列之虚拟机的内存分配与回收机制/strip-20200309131959999.gif" alt="clip_image014.gif"></p>
 <p>-XX:+UseG1GC</p>
 <p><strong>并行与并发</strong>：G1能充分利用多CPU、多核环境下的硬件优势，使用多个CPU（CPU或者CPU核心）来缩短Stop-The-World停顿的时间，部分其他收集器原本需要停顿Java线程执行的GC动作，G1收集器仍然可以通过并发的方式让Java程序继续执行。</p>
 <p><strong>分代收集</strong>：与其他收集器一样，分代概念在G1中依然得以保留。虽然G1可以不需要其他收集器配合就能独立管理整个GC堆，但它能够采用不同的方式去处理新创建的对象和已经存活了一段时间、熬过多次GC的旧对象以获取更好的收集效果。</p>

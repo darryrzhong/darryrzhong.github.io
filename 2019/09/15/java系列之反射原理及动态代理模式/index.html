@@ -87,34 +87,34 @@
 <meta name="keywords" content="反射及动态代理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java系列之反射原理及动态代理模式">
-<meta property="og:url" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/index.html">
+<meta property="og:url" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/index.html">
 <meta property="og:site_name" content="darryrzhong">
 <meta property="og:description" content="反射原理及动态代理模式反射（Reflect）反射之中包含了一个「反」字，所以了解反射我们先从「正」开始。 一般情况下，我们使用某个类时必定知道它是什么类，是用来做什么的。于是我们直接对这个类进行实例化，之后使用这个类对象进行操作。 反射则是一开始并不知道我要初始化的类对象是什么，自然也无法使用 new 关键字来创建对象了。这时候，我们使用 JDK 提供的反射 API 进行反射调用。反射就是在运行时">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image002.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image004.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image006.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image008.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image010.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image012.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image014.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image016.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image018.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image020.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image022.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image024.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image026.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image028.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image030.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image032.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image034.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image036.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image038.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image002.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image004.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image006.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image008.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image010.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image012.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image014.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image016.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image018.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image020.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image022.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image024.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image026.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image028.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image030.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image032.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image034.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image036.jpg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image038.jpg">
 <meta property="og:updated_time" content="2019-09-15T08:33:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java系列之反射原理及动态代理模式">
 <meta name="twitter:description" content="反射原理及动态代理模式反射（Reflect）反射之中包含了一个「反」字，所以了解反射我们先从「正」开始。 一般情况下，我们使用某个类时必定知道它是什么类，是用来做什么的。于是我们直接对这个类进行实例化，之后使用这个类对象进行操作。 反射则是一开始并不知道我要初始化的类对象是什么，自然也无法使用 new 关键字来创建对象了。这时候，我们使用 JDK 提供的反射 API 进行反射调用。反射就是在运行时">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image002.jpg">
+<meta name="twitter:image" content="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image002.jpg">
 
 
 
@@ -144,7 +144,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/">
+  <link rel="canonical" href="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/">
 
 
 
@@ -457,7 +457,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -619,15 +619,15 @@ window.onmouseout = function () {
 <p>　　2.通过对象获取      对象名.getClass()</p>
 <p>　　3.通过全类名获取    Class.forName(全类名)</p>
 <p>Class类的常用方法</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image002.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image002.jpg" alt="img"></p>
 <h3 id="类加载器、构造器、Method、Field"><a href="#类加载器、构造器、Method、Field" class="headerlink" title="类加载器、构造器、Method、Field"></a>类加载器、构造器、Method、Field</h3><p>参见包cn.enjoyedu.refle.more下对应的类</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image004.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image004.jpg" alt="img"></p>
 <h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><h3 id="代理模式和静态代理"><a href="#代理模式和静态代理" class="headerlink" title="代理模式和静态代理"></a>代理模式和静态代理</h3><a id="more"></a>
 <p>代理模式给某一个对象提供一个代理对象，并由代理对象控制对原对象的引用。通俗的来讲代理模式就是我们生活中常见的中介。</p>
 <p>举个例子来说明：张三想买某种用品，虽然他可以自己去找，但是这确实太浪费时间和精力了，或者不好意思去买。于是张三就通过中介Mark来买，Mark来帮张三，张三只是负责选择自己喜欢的的size，然后付钱就可以了。</p>
 <p>目的：（1）通过引入代理对象的方式来间接访问目标对象，防止直接访问目标对象给系统带来的不必要复杂性； （2）通过代理对象对原有的业务增强；</p>
 <p>代理模式一般会有三个角色：</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image006.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image006.jpg" alt="img"></p>
 <p><strong>抽象角色</strong>：指代理角色和真实角色对外提供的公共方法，一般为一个接口</p>
 <p><strong>真实角色</strong>：需要实现抽象角色接口，定义了真实角色所要实现的业务逻辑，以便供代理角色调用。也就是真正的业务逻辑在此。</p>
 <p><strong>代理角色</strong>：需要实现抽象角色接口，是真实角色的代理，通过真实角色的业务逻辑方法来实现抽象方法，并可以附加自己的操作。将统一的流程控制都放到代理角色中处理！</p>
@@ -645,43 +645,43 @@ window.onmouseout = function () {
 <p>InvocationHandler接口是给动态代理类实现的，负责处理被代理对象的操作的，而Proxy是用来创建动态代理类实例对象的，因为只有得到了这个对象我们才能调用那些需要代理的方法。</p>
 <p>具体使用，参见包cn.enjoyedu.proxy.dynamic下MarkCompany类</p>
 <h4 id="动态代理实现原理"><a href="#动态代理实现原理" class="headerlink" title="动态代理实现原理"></a>动态代理实现原理</h4><p>通过调试模式我们发现，动态代理里，代理类的类名是这样的：</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image008.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image008.jpg" alt="img"></p>
 <p>这个代理类为何是这个名字？它是如何执行被代理对象的相关方法呢？我们在java文件编译后的目录里其实找不到这个名为$Proxy0的class文件的。</p>
 <p>观察Proxy.<em>newProxyInstance</em>方法，与创建对象有关的代码主要有：</p>
 <p>获得代理类的class对象：</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image010.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image010.jpg" alt="img"></p>
 <p>获得代理类的构造器：</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image012.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image012.jpg" alt="img"></p>
 <p>创建代理类的实例</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image014.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image014.jpg" alt="img"></p>
 <p>看来其中的关键点就是如何获得代理类的class对象，我们进入<em>getProxyClass0</em>方法，进而进入<strong>proxyClassCache</strong>.get方法，通过这个这个方法所在的类名，我们可以推测，JDK内部使用了某种机制缓存了我们的代理类的class对象，同时get方法接受的参数是被代理类的类加载器和类实现的的接口。</p>
 <p>在这个get方法中，除去和缓存相关的操作，同时用到了被代理类的类加载器和类实现的的接口这两个参数的是</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image016.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image016.jpg" alt="img"></p>
 <p>我们再进入这个方法的实现，</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image018.jpg" alt="img"></p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image020.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image018.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image020.jpg" alt="img"></p>
 <p>而最终生成代理类的class对象是<em>defineClass0</em>方法，但是这个方法是个native方法，所以我们不去也无法深究它，但是通过这个方法的参数我们可以明显看到它接收了上面所生成的byte数组。</p>
 <p>而我们通过ProxyUtils，这个自己写的工具类，将这个byte数组写入文件，我们并反编译，我们将会看到</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image022.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image022.jpg" alt="img"></p>
 <p>同时我们还会看到其中实现了业务接口的方法</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image024.jpg" alt="img"></p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image026.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image024.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image026.jpg" alt="img"></p>
 <p>而h则来自派生类Proxy中</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image028.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image028.jpg" alt="img"></p>
 <p>这个h的实例来自哪里？不就是我们在创建代理类的实例时传入的吗？</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image030.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image030.jpg" alt="img"></p>
 <h4 id="使用了动态代理的-Retrofit"><a href="#使用了动态代理的-Retrofit" class="headerlink" title="使用了动态代理的`Retrofit"></a>使用了动态代理的`Retrofit</h4><p>Retrofit简单的说就是一个网络请求的适配器，它将一个基本的Java接口通过动态代理的方式翻译成一个HTTP请求，并通过OkHttp去发送请求。此外它还具有强大的可扩展性，支持各种格式转换以及RxJava。我们基于Retrofit2解析。</p>
 <p>先定义一个名为X的java接口，当然里面有各种注解。</p>
 <p>@FormUrlEncoded注解表示from表单，另外还有@Multipart等注解。@POST表示post请求，此外还可以使用@GET请求</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image032.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image032.jpg" alt="img"></p>
 <p>然后如何使用的呢？</p>
 <p>首先将域名传入构造一个Retrofit，然后通过retrofit中的create方法传入一个Java接口并得到一个x(当然x这个对象是经过处理了的)调用getPersonalListInfo(12)然后返回一个Call，最后这个Call调用了enqueue方法去异步请求http，这就是一个基本的Retrofit的网络请求。Retrofit2中Call接口的默认实现是OkHttpCall，它默认使用OkHttp3作为底层http请求client。</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image034.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image034.jpg" alt="img"></p>
 <p>我们只定义了一个接口X，并没有实现这个接口，那么它是如何工作的呢？我们看看create方法的实现。</p>
 <p>create()方法是个泛型方法，调用它时会返回一个范型T的对象，我们这里类型是X接口，在内部实现上，很明显了使用了动态代理返回了一个X的代理类。当调用X内部方法的时候，会调用invoke方法。invoke方法内则通过内部一系列的封装最后返回一个Call对象。</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image036.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image036.jpg" alt="img"></p>
 <p>将一段Java代码编译成Class文件，然后再用字节码反编译工具进行反编译后，将会发现泛型都不见了，程序又变回了Java泛型出现之前的写法，泛型类型都变回了原生类型</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之反射原理及动态代理模式/clip_image038.jpg" alt="img"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之反射原理及动态代理模式/clip_image038.jpg" alt="img"></p>
 <p>上面这段代码是不能被编译的，因为参数List＜Integer＞和List＜String＞编译之后都被擦除了，变成了一样的原生类型List＜E＞，擦除动作导致这两种方法的特征签名变得一模一样。</p>
 <p>由于Java泛型的引入，各种场景（虚拟机解析、反射等）下的方法调用都可能对原有的基础产生影响和新的需求，如在泛型类中如何获取传入的参数化类型等。因此，JCP组织对虚拟机规范做出了相应的修改，引入了诸如Signature、LocalVariableTypeTable等新的属性用于解决伴随泛型而来的参数类型的识别问题，Signature是其中最重要的一项属性，它的作用就是存储一个方法在字节码层面的特征签名[3]，这个属性中保存的参数类型并不是原生类型，而是包括了参数化类型的信息。修改后的虚拟机规范要求所有能识别49.0以上版本的Class文件的虚拟机都要能正确地识别Signature参数。</p>
 <p>另外，从Signature属性的出现我们还可以得出结论，擦除法所谓的擦除，仅仅是对方法的Code属性中的字节码进行擦除，实际上元数据中还是保留了泛型信息，这也是我们能通过反射手段取得参数化类型的根本依据。</p>

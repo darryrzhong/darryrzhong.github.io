@@ -87,20 +87,20 @@
 <meta name="keywords" content="javaIO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java系列之io框架">
-<meta property="og:url" content="http://yoursite.com/2019/09/15/java系列之io框架/index.html">
+<meta property="og:url" content="http://darryrzhong.xyz/2019/09/15/java系列之io框架/index.html">
 <meta property="og:site_name" content="darryrzhong">
 <meta property="og:description" content="IO框架1Java IO的学习是一件非常艰巨的任务。 它的挑战是来自于要覆盖所有的可能性。不仅存在各种I/O源端还有想要和他通信的接收端（文件/控制台/网络链接），而且还需要以不同的方式与他们进行通信（顺序/随机存取/缓冲/二进制/字符/行/字 等等）这些情况综合起来就给我们带来了大量的学习任务，大量的类需要学习。 我们要学会所有的这些java 的IO是很难的，因为我们没有构建一个关于IO的体系，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之io框架/1240-20200309133318419.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之io框架/1240-20200309133323218.jpeg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之io框架/1240-20200309133325980.jpeg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之io框架/1240-20200309133329346.jpeg">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/java系列之io框架/1240-20200309133331558.jpeg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之io框架/1240-20200309133318419.png">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之io框架/1240-20200309133323218.jpeg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之io框架/1240-20200309133325980.jpeg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之io框架/1240-20200309133329346.jpeg">
+<meta property="og:image" content="http://darryrzhong.xyz/2019/09/15/java系列之io框架/1240-20200309133331558.jpeg">
 <meta property="og:updated_time" content="2020-03-09T05:33:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java系列之io框架">
 <meta name="twitter:description" content="IO框架1Java IO的学习是一件非常艰巨的任务。 它的挑战是来自于要覆盖所有的可能性。不仅存在各种I/O源端还有想要和他通信的接收端（文件/控制台/网络链接），而且还需要以不同的方式与他们进行通信（顺序/随机存取/缓冲/二进制/字符/行/字 等等）这些情况综合起来就给我们带来了大量的学习任务，大量的类需要学习。 我们要学会所有的这些java 的IO是很难的，因为我们没有构建一个关于IO的体系，">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/15/java系列之io框架/1240-20200309133318419.png">
+<meta name="twitter:image" content="http://darryrzhong.xyz/2019/09/15/java系列之io框架/1240-20200309133318419.png">
 
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/15/java系列之io框架/">
+  <link rel="canonical" href="http://darryrzhong.xyz/2019/09/15/java系列之io框架/">
 
 
 
@@ -443,7 +443,7 @@ window.onmouseout = function () {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/java系列之io框架/">
+    <link itemprop="mainEntityOfPage" href="http://darryrzhong.xyz/2019/09/15/java系列之io框架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="darryrzhong">
@@ -598,14 +598,14 @@ window.onmouseout = function () {
 <li>非流式部分——如：File类、RandomAccessFile类和FileDescriptor等类</li>
 <li>其他——文件读取部分的与安全相关的类，如：SerializablePermission类，以及与本地操作系统相关的文件系统的类，如：FileSystem类和Win32FileSystem类和WinNTFileSystem类。</li>
 </ol>
-<p><img src="//yoursite.com/2019/09/15/java系列之io框架/1240-20200309133318419.png" alt="IO图谱.png"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之io框架/1240-20200309133318419.png" alt="IO图谱.png"></p>
 <h1 id="IO详细介绍"><a href="#IO详细介绍" class="headerlink" title="IO详细介绍"></a>IO详细介绍</h1><p>​          在Android 平台，从应用的角度出发，我们最需要关注和研究的就是 字节流（Stream）字符流（Reader/Writer）和 File/ RandomAccessFile。当我们需要的时候再深入研究也未尝不是一件好事。关于字符和字节，例如文本文件，XML这些都是用字符流来读取和写入。而如RAR，EXE文件，图片等非文本，则用字节流来读取和写入。<strong>面对如此复杂的类关系，有一个点是我们必须要首先掌握的，那就是设计模式中的修饰模式</strong>，学会并理解修饰模式是搞懂流必备的前提条件哦。</p>
 <h2 id="字节流的学习"><a href="#字节流的学习" class="headerlink" title="字节流的学习"></a>字节流的学习</h2><p>​        在具体的学习流之前，我们必须要学的一个设计模式是装饰模式。因为从流的整个发展历史，出现的各种类之间的关系看，都是沿用了修饰模式，都是一个类的功能可以用来修饰其他类，然后组合成为一个比较复杂的流。比如说：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	DataOutputStream out = new DataOutputStream(</span><br><span class="line">new	BufferedOutputStream(</span><br><span class="line">new FileOutputStream(file)));</span><br></pre></td></tr></table></figure>
 <p>​        从上面的代码块中大家不难看出这些类的关系：<strong>为了向文件中写入数据，首先需要创建一个FileOutputStream，然后为了提升访问的效率，所以将它发送给具备缓存功能的BufferedOutput-Stream,而为了实现与机器类型无关的java基本类型数据的输出，所以，我们将缓存的流传递给了DataOutputStream</strong>。从上面的关系，我们可以看到，其根本目的都是为outputSteam添加额外的功能。<strong>而这种额外功能的添加就是采用了装饰模式来构建的代码</strong>。因此，学习流，必须要学好装饰模式。</p>
 <a id="more"></a>
 <p>​       下面的图是一个关于字节流的图谱，这张图谱比较全面的概况了我们字节流中间的各个类以及他们之间的关系。</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之io框架/1240-20200309133323218.jpeg" alt="输入输出流.jpg"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之io框架/1240-20200309133323218.jpeg" alt="输入输出流.jpg"></p>
 <h4 id="字节流的学习过程"><a href="#字节流的学习过程" class="headerlink" title="字节流的学习过程"></a>字节流的学习过程</h4><p>​       为什么要按照一个学习路线来呢？原因是他们的功能决定的。</p>
 <p>​      OutputStream -&gt; FileOutputStream/FilterOutputStream -&gt;DataOutputStream-&gt;bufferedOutputStream</p>
 <p>​      相应的学习InputStream方法就好了。</p>
@@ -613,7 +613,7 @@ window.onmouseout = function () {
 <p>​        为了提升Stream的执行效率，所以出现了bufferedOutputStream。bufferedOutputStream就是将本地添加了一个缓存的数组。在使用bufferedOutputStream之前每次从磁盘读入数据的时候都是需要访问多少byte数据就向磁盘中读多少个byte的数据，而出现bufferedOutputSteam之后，策略就改了，会先读取整个缓存空间相应大小的数据，这样就是从磁盘读取了一块比较大的数据，然后缓存起来，从而减少了对磁盘的访问的次数以达到提升性能的目的。</p>
 <p>​          另外一方面，我们知道了outputStream（输出流）的发展历史后，我们便可以知道如何使用outpuSteam了，同样的方法，我们可以运用到inputStream中来，这样对称的解释就出现到了inputStream相关的中来了，于是，我们对整个字节流就有了全方位的理解，所以这样子我们就不会感觉到流的复杂了。这个时候对于其他的一些字节流的使用(byteArrayOutputStream/PipeOutputStream/ObjectOutputStream)的学习就自需要在使用的时候看看API即可。</p>
 <h2 id="字符流的学习"><a href="#字符流的学习" class="headerlink" title="字符流的学习"></a>字符流的学习</h2><p>下图则是一个关于字符流的图谱，这张图谱比较全面的概况了我们字符流中间的各个类以及他们之间的关系。</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之io框架/1240-20200309133325980.jpeg" alt="字符输入输出流.jpg"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之io框架/1240-20200309133325980.jpeg" alt="字符输入输出流.jpg"></p>
 <p>​        字符流的学习和字节流的学习是一样的，它和字节流有着同样的发展过程，只是，字节流面向的是我们未知或者即使知道了他们的编码格式也意义不大的文件（png，exe, zip）的时候是采用字节，而面对一些我们知道文件构造我们就能够搞懂它的意义的文件（json，xml）等文件的时候我们还是需要以字符的形式来读取，所以就出现了字符流。reader 和 Stream最大的区别我认为是它包含了一个readline（）接口，这个接口标明了，一行数据的意义，这也是可以理解的，因为自有字符才具备行的概念，相反字节流中的行也就是一个字节符号。</p>
 <h4 id="字符流的学习历程："><a href="#字符流的学习历程：" class="headerlink" title="字符流的学习历程："></a>字符流的学习历程：</h4><p>​        Writer- &gt;FilterWriter-&gt;BufferedWriter-&gt;OutputStreamWriter-&gt;FileWriter-&gt;其他</p>
 <p>​        同时类比着学习Reader相关的类。</p>
@@ -630,9 +630,9 @@ window.onmouseout = function () {
 <p>​        从源码可以发现FileWriter 文件字符输出流、主要用于将字符写入到指定的打开的文件中、其本质是通过传入的文件名、文件、或者文件描述符来创建FileOutputStream、然后使用OutputStreamWriter使用默认编码将FileOutputStream转换成Writer（这个Writer就是FileWriter）。如果使用这个类的话、最好使用BufferedWriter包装一下、高端大气上档次、低调奢华有内涵！</p>
 <p>​       FileReader  文件字符输入流、用于将文件内容以字符形式读取出来、一般用于读取字符形式的文件内容、也可以读取字节形式、但是因为FileReader内部也是通过传入的参数构造InputStreamReader、并且只能使用默认编码、所以我们无法控制编码问题、这样的话就很容易造成乱码。所以读取字节形式的文件还是使用字节流来操作的好、同样在使用此流的时候用BufferedReader包装一下、就算冲着BufferedReader的readLine()方法去的也要使用这个包装类、不说他还能提高效率、保护存储介质。</p>
 <h2 id="字节流与字符流的关系"><a href="#字节流与字符流的关系" class="headerlink" title="字节流与字符流的关系"></a>字节流与字符流的关系</h2><p>那么字节输入流和字符输入流之间的关系是怎样的呢？请看下图</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之io框架/1240-20200309133329346.jpeg" alt="字节与字符输入流.jpg"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之io框架/1240-20200309133329346.jpeg" alt="字节与字符输入流.jpg"></p>
 <p>同样的字节与字符输出流字节的关系也如下图所示</p>
-<p><img src="//yoursite.com/2019/09/15/java系列之io框架/1240-20200309133331558.jpeg" alt="字节与字符输出流.jpg"></p>
+<p><img src="//darryrzhong.xyz/2019/09/15/java系列之io框架/1240-20200309133331558.jpeg" alt="字节与字符输出流.jpg"></p>
 <h4 id="字节流与字符流的区别"><a href="#字节流与字符流的区别" class="headerlink" title="字节流与字符流的区别"></a><strong>字节流与字符流的区别</strong></h4><p>​       字节流和字符流使用是非常相似的，那么除了操作代码的不同之外，还有哪些不同呢？</p>
 <p>　　<em>字节流在操作的时候本身是不会用到缓冲区（内存）的，是与文件本身直接操作的，而字符流在操作的时候是使用到缓冲区的字节流在操作文件时，即使不关闭资源（close方法），文件也能输出，但是如果字符流不使用close方法的话，则不会输出任何内容，说明字符流用的是缓冲区，并且可以使用flush方法强制进行刷新缓冲区，这时才能在不close的情况下输出内容</em></p>
 <h6 id="那开发中究竟用字节流好还是用字符流好呢？"><a href="#那开发中究竟用字节流好还是用字符流好呢？" class="headerlink" title="那开发中究竟用字节流好还是用字符流好呢？"></a>那开发中究竟用字节流好还是用字符流好呢？</h6><p>　　在所有的硬盘上保存文件或进行传输的时候都是以字节的方法进行的，包括图片也是按字节完成，而字符是只有在内存中才会形成的，所以使用字节的操作是最多的。</p>
