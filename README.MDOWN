@@ -1,9 +1,9 @@
 # darryrzhong的个人博客
 
-个人博客站点:   http://darryrzhong.xyz
+个人博客站点:   [https://darryrzhong.github.io/](https://darryrzhong.github.io/)
 
 # 关于我
-Android开发者 + Python语言爱好者 + ios粉，爱技术， 爱开源，爱赚钱。
+Android开发者 + Kotlin语言爱好者 + ios粉，爱技术， 爱开源，爱赚钱。
 
 # 联系我
 
